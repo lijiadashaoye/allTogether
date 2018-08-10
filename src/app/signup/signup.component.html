@@ -1,0 +1,41 @@
+<form novalidate [formGroup]="forms">
+  <div class="login">
+    <div class="tip">
+      <span>{{tipText}}</span>
+    </div>
+    <div class="inputName">
+      <label>
+        <span>名字：</span>
+        <input type="text" placeholder="name" formControlName="name">
+      </label>
+      <label>
+        <span>工作：</span>
+        <input type="text" placeholder="job" formControlName="job">
+      </label>
+      <label>
+        <span>邮箱：</span>
+        <input type="text" placeholder="email" formControlName="email">
+      </label>
+      <label>
+        <span>密码：</span>
+        <input type="password" placeholder="英文开头大于3位小于10位" formControlName="password">
+      </label>
+      <label>
+        <app-check-logo formControlName="logo"></app-check-logo>
+      </label>
+    </div>
+    <div class="buttons">
+      <div>
+        <!--在form标签内的button， 必须标明 type="button"，否则会自动执行submit -->
+        <button type="button" (click)="signup()">{{buttonText}}</button>
+        <button type="button" (click)="back()">back</button>
+      </div>
+    </div>
+  </div>
+</form>
+<div>
+  <h2>使用到的技术</h2>
+  <ul>
+    <li *ngFor="let text of useTech">{{text}}</li>
+  </ul>
+</div>

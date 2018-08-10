@@ -4,25 +4,71 @@ import {
 import {
   NgModule
 } from '@angular/core';
-
+import {
+  FormsModule,
+  ReactiveFormsModule
+} from "@angular/forms";
+import {
+  HttpClientModule
+} from "@angular/common/http";
+/*****************************************************************/
 import {
   AppComponent
 } from './app.component';
+import {
+  LoginComponent
+} from './login/login.component';
+import {
+  SignupComponent
+} from './signup/signup.component';
+import { ForgetComponent } from './forget/forget.component';
+import {
+  CheckLogoComponent
+} from './signup/check-logo/check-logo.component';
 
+/*****************************************************************/
 import {
   MainRoutingModule
 } from './main.route';
-import { LoginComponent } from './login/login.component';
+import {
+  HttpService,
+  BASE_URL,
+  urlText
+} from "./http.service";
+import {
+  UserService
+} from "./user.service";
+import {
+  resolveService,
+  ResolveGuard
+} from './main.guard';
+
+
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    SignupComponent,
+    CheckLogoComponent,
+    ForgetComponent
   ],
   imports: [
     BrowserModule,
-    MainRoutingModule
+    MainRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    HttpService,
+    UserService,
+    resolveService,
+    ResolveGuard,
+    {
+      provide: BASE_URL,
+      useValue: urlText
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

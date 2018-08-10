@@ -1,20 +1,16 @@
 {
-  "datas": [{
-      "email": "adjfajdf@qq.com",
-      "job": "job随机patch-38",
-      "name": "name随机patch-85",
-      "password": "1234",
-      "id": 2
-    },
+  "datas": [
     {
-      "email": "adjfajdf@qq.com",
-      "job": "job随机post-35",
-      "name": "name随机post-93",
-      "password": "123",
-      "id": 5
+      "name": "张三",
+      "password": "li123",
+      "email": "937681195@qq.com",
+      "job": "吃",
+      "logo": "assets/logo/3.jpg",
+      "id": 1
     }
   ],
-  "test": [{
+  "test": [
+    {
       "name": "ccc",
       "job": "ccc",
       "id": 1

@@ -1,0 +1,50 @@
+.login {
+    width: 40%;
+    margin: 10vh auto 0;
+    background: rgb(214, 194, 235);
+    min-width: 400px;
+    max-width: 600px;
+    padding: 10px;
+  }
+  .tip{
+      height:40px;
+      color:red;
+      font-size:20px;
+      text-align:center;
+  }
+  .inputName label {
+    display: block;
+    display: flex;
+    margin-top:10px;
+    justify-content: center;
+  }
+  
+  .inputName label span {
+    display: inline-block;
+    width: 80px;
+    text-align: right;
+  }
+  
+  .inputName label input {
+    width: 60%;
+    min-width: 200px;
+  }
+  .buttons{
+      margin-top:20px;
+  }
+  .buttons div{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top:20px;
+  }
+  
+  .buttons>div>button {
+    display: block;
+    font-size: 20px;
+    padding:5px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    outline: none;
+  }
+  

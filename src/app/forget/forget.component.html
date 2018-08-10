@@ -1,5 +1,5 @@
 <form novalidate [formGroup]="forms">
-  
+
   <div class="content">
     <div class="login">
       <div class="tip">
@@ -14,20 +14,20 @@
           <span>密码：</span>
           <input type="text" placeholder="password" formControlName="password">
         </label>
+        <label *ngIf="userId">
+          <span>确认：</span>
+          <input type="text" placeholder="makesure" formControlName="makesure">
+        </label>
         <p style="text-align: center">名字：张三，密码：li123</p>
       </div>
       <div class="buttons">
         <div>
           <!--在form标签内的button， 必须标明 type="button"，否则会自动执行submit -->
-          <button type="button" (click)="login()">Login</button>
-          <button type="button" (click)="signup()">Signup</button>
-          <button type="button" (click)="forget()">forget</button>
-          <button type="button" (click)="changeInformation()">changeInformation</button>
+          <button type="button" (click)="changePassword()">{{buttonText}}</button>
+          <button type="button" (click)="getPassword()">getPassword</button>
+          <button type="button" (click)="back()">back</button>
         </div>
       </div>
-    </div>
-    <div class="rightImg">
-      <img [src]="imgSrc">
     </div>
   </div>
 </form>

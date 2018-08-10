@@ -1,0 +1,15 @@
+<div class="bigImg">
+  <div class="left">
+    <div class="intoImg">
+        <img [src]="showImg">
+    </div>
+    <p>
+      选择头像
+    </p>
+  </div>
+  <ul class="right">
+    <li *ngFor="let img of imgs" (click)="checkImg(img.id)">
+      <img [src]="img.img">
+    </li>
+  </ul>
+</div>
