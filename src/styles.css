@@ -1,16 +1,47 @@
-body,html,p,h2,h3,h4{
-    margin:0;
-    padding:0;
+body,
+html,
+p,
+h2,
+h3,
+h4 {
+  margin: 0;
+  padding: 0;
 }
-ul{
-    outline: none;
-    list-style: none;
-    margin:0;
-    padding:0;
+
+ul {
+  outline: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
-li{
-    cursor: pointer;
-    margin:0;
-    padding:0;
-    outline: none;
+
+li {
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  outline: none;
+}
+
+.nav {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.nav li {
+  border: 1px solid rgb(231, 223, 223);
+  font-size:16px;
+  padding:3px 10px;
+  cursor: pointer;
+}
+button {
+  font-size: 16px;
+  padding: 3px 10px;
+  margin: 5px;
+}
+
+input {
+  width: 200px;
+  height: 22px;
+  font-size: 16px;
+  margin:5px;
 }

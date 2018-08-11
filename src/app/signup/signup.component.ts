@@ -23,8 +23,7 @@ import {
 })
 export class SignupComponent implements OnInit {
   tipText = ''; // 提示
-  resolveDatas;
-  useTech; // 技术解释
+  resolveDatas; // 通过resolve获取的数据
   buttonText = 'Signup';
   constructor(
     public fb: FormBuilder,
@@ -64,11 +63,6 @@ export class SignupComponent implements OnInit {
         logo: logoSrc
       })
     };
-    this.useTech = [
-      '表单中使用表单组件',
-      '表单添加angular个验证和自定义验证函数',
-      '修改个人信息时，使用resolve传递获取的用户数据，根据使用服务传递的用户名字'
-    ]
   }
   signup() { // 登陆行为
     this.tipText = '';
@@ -90,7 +84,7 @@ export class SignupComponent implements OnInit {
         this.userService.changeUserInfo(data).subscribe(val => {
           this.resolveDatas = val;
           this.tipText = '信息修改成功！'
-          setTimeout(_ => {
+          setTimeout(_ => { // 信息提交成功后初始化组件
             this.tipText = '';
             this.forms.patchValue({ // this.forms.reset() 不好使
               name: '',
@@ -100,7 +94,7 @@ export class SignupComponent implements OnInit {
               logo: '',
             });
             this.buttonText = 'Signup';
-          }, 3000)
+          }, 2000)
         })
       } else {
         this.userService.signup(this.forms.value)
@@ -136,10 +130,9 @@ export class SignupComponent implements OnInit {
       return null
     }
   }
-  back() { //  退到登陆页
-    this.route.navigate(['login'], {
-      queryParams: this.resolveDatas
-    })
+  back() { //  退到登陆页，并传递数据
+    this.route.navigate(['login', {
+      ...this.resolveDatas
+    }])
   }
-  
 }

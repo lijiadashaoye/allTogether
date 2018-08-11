@@ -1,4 +1,4 @@
-<p>
-  module1 works!
-</p>
+<ul class="nav">
+  <li *ngFor="let url of urlList"  (click)="goto(url)">{{url}}</li>
+</ul>
 <router-outlet></router-outlet>

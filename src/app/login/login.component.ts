@@ -7,7 +7,9 @@ import {
   FormBuilder
 } from '@angular/forms'
 import {
-  Router
+  Router,
+  ActivatedRoute,
+  ParamMap
 } from '@angular/router';
 import {
   UserService
@@ -15,6 +17,9 @@ import {
 import {
   resolveService
 } from '../main.guard';
+import {
+  controlLogoutService
+} from '../controlLogout';
 
 @Component({
   selector: 'app-login',
@@ -25,13 +30,27 @@ export class LoginComponent implements OnInit {
   tipText: string = '';
   imgSrc = 'assets/backImg/0.jpg';
   forms: FormGroup;
+  routeData;
   constructor(
     public fb: FormBuilder,
     public route: Router,
     public userService: UserService,
-    public resolveService: resolveService
-  ) {}
-
+    public resolveService: resolveService,
+    private activeRoute: ActivatedRoute,
+    public logout:controlLogoutService
+  ) {
+    // 获取路由数据，如果是从注册页面过来，会有数据
+    this.activeRoute.paramMap.subscribe((paramsMap: ParamMap) => {
+      // console.log(paramsMap['params'])
+      if (paramsMap.get('name') &&
+        paramsMap.get('password')) {
+        this.routeData = {
+          name: paramsMap.get('name'),
+          password: paramsMap.get('password')
+        }
+      }
+    })
+  }
   ngOnInit() {
     this.forms = this.fb.group({
       name: [''],
@@ -39,6 +58,11 @@ export class LoginComponent implements OnInit {
     })
     let num = Math.floor(Math.random() * 10)
     this.imgSrc = `assets/backImg/${num}.jpg`;
+    if (this.routeData) {
+      this.forms.patchValue({
+        ...this.routeData
+      })
+    }
   }
   login() {
     if (this.forms.get('name').value) {
@@ -48,6 +72,7 @@ export class LoginComponent implements OnInit {
             let kk = val.filter(data => data['password'] === this.forms.get('password').value);
             if (kk.length > 0) {
               this.route.navigate(['module1']);
+              this.logout.logout.emit('module1');  // 用于显示退出按钮
             } else {
               this.tipText = '请输入正确密码'
               setTimeout(_ => this.tipText = '', 3000)
@@ -68,13 +93,13 @@ export class LoginComponent implements OnInit {
   forget() {
     this.route.navigate(['forget']);
   }
-  changeInformation(){
+  changeInformation() {
     if (this.forms.get('name').value) {
       this.userService.login(this.forms.value)
         .subscribe(val => {
           if (val.length > 0) {
-           this.resolveService.name=val[0].name;
-           this.signup();
+            this.resolveService.name = val[0].name;
+            this.signup();
           } else {
             this.tipText = '请输入正确名字'
             setTimeout(_ => this.tipText = '', 3000)

@@ -1,0 +1,29 @@
+<div class="jsonServer">
+  <h2>json-server</h2>
+  <input type="text" #name placeholder="name">{{tip}}
+  <br>
+  <input type="text" #eat placeholder="eat">
+  <br>
+  <input type="text" #id placeholder="id">
+  <br>
+  <button (click)="search(name,eat,id,'all')">所有数据</button>
+  <button (click)="search(name,eat,id,'name')">根据name查询</button>
+  <button (click)="search(name,eat,id,'job')">根据job查询</button>
+  <button (click)="search(name,eat,id,'sort')">根据name或job排序</button>
+  <button (click)="search(name,eat,id,'id')">根据id查询</button>
+  <br>
+  <button (click)="search(name,eat,id,'like')">包含</button>
+  <button (click)="search(name,eat,id,'gte')">大于等于</button>
+  <button (click)="search(name,eat,id,'lte')">小于等于</button>
+  <button (click)="search(name,eat,id,'ne')">不等于</button>
+  <br>
+  <button (click)="itGet()">Get</button>
+  <button (click)="itPost()">Post</button>
+  <button (click)="itDelete()">Delete</button>
+  <button (click)="itPut()">Put</button>
+  <button (click)="itPatch()">Patch</button>
+  <button (click)="itSearch()">Search</button>
+</div>
+<ul style="margin-top:10px;">
+  <li *ngFor="let data of datas" (click)="goto(url)">{{data|json}}</li>
+</ul>

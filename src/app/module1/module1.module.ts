@@ -13,8 +13,19 @@ import {
 
 import {
   Module1RoutingModule
-} from './module1.route'
+} from './module1.route';
+import {
+  JsonServerComponent
+} from './jsonServer/jsonServer.component';
 
+/***************************************************************************/
+import {
+  Module1HttpService,
+  Module1BASE_URL,
+  urlText
+} from './module1-http';
+
+/***************************************************************************/
 @NgModule({
   imports: [
     CommonModule,
@@ -22,7 +33,15 @@ import {
   ],
   declarations: [
     ObservablesComponent,
-    Module1Component
+    Module1Component,
+    JsonServerComponent
+  ],
+  providers: [
+    Module1HttpService,
+    {
+      provide: Module1BASE_URL,
+      useValue: urlText
+    },
   ]
 })
 export class Module1Module {}

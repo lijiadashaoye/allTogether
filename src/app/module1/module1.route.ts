@@ -8,21 +8,30 @@ import {
 import {
   CommonModule
 } from '@angular/common';
-
+/****************************************************************************/
 import {
   Module1Component
 } from './module1.component';
 import {
   ObservablesComponent
 } from './observables/observables.component';
+import {
+  JsonServerComponent
+} from './jsonServer/jsonServer.component';
 
+/****************************************************************************/
 const routes: Routes = [{
   path: '',
   component: Module1Component,
   children: [{
-    path: 'observables',
-    component: ObservablesComponent
-  }]
+      path: 'observables',
+      component: ObservablesComponent
+    },
+    {
+      path: 'jsonServer',
+      component: JsonServerComponent
+    }
+  ]
 }];
 
 @NgModule({

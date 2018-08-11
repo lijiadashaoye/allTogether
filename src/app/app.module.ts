@@ -21,7 +21,9 @@ import {
 import {
   SignupComponent
 } from './signup/signup.component';
-import { ForgetComponent } from './forget/forget.component';
+import {
+  ForgetComponent
+} from './forget/forget.component';
 import {
   CheckLogoComponent
 } from './signup/check-logo/check-logo.component';
@@ -38,6 +40,9 @@ import {
 import {
   UserService
 } from "./user.service";
+import {
+  controlLogoutService
+} from './controlLogout';
 
 @NgModule({
   declarations: [
@@ -57,7 +62,7 @@ import {
   providers: [
     HttpService,
     UserService,
-
+    controlLogoutService,
     {
       provide: BASE_URL,
       useValue: urlText

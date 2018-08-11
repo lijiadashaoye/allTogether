@@ -1,3 +1,83 @@
-<p>
-  observables works!
-</p>
+<div class="waper">
+  <h2>rxjs 6</h2>
+  <br>
+
+  <div class="buttons">
+    <button (click)="delayTest()">delayTest</button>
+    <button (click)="ajaxTest()">ajaxTest</button>
+    <button (click)="ajaxErrorTest()">ajaxErrorTest</button>
+    <button (click)="filerTest()">filerTest</button>
+    <input type="text" placeholder="distinctUntilChanged" id="search-box">
+    <button (click)="distinctUntilChangedTest()">distinctUntilChangedTestArray</button>
+    <button (click)="intervalTest()">interval 和 timer</button>
+    <button (click)="subjectTest()">subjectTest</button>
+    <button (click)="finalizeTest()">finalizeTest</button>
+    <button (click)="switchMapTest()">switchMapTest</button>
+    <button (click)="deferTest()">deferTest</button>
+    <button (click)="concatTest()">concatTest</button>
+    <button (click)="combineLatestTest()">combineLatestTest</button>
+    <button (click)="zipTest()">zipTest</button>
+    <button (click)="concatMapTest()">concatMapTest</button>
+    <button (click)="exhaustMapTest()">exhaustMapTest</button>
+    <button (click)="shareTest()">shareTest</button>
+    <button (click)="takeUntilTest()">takeUntilTest</button>
+    <button (click)="mergeMapTest()">mergeMapTest</button>
+    <button (click)="mergeTest()">mergeTest</button>
+    <button (click)="testHttpError()">testHttpError</button>
+    <button (click)="testFind()">find</button>
+    <button (click)="subscribeObservableFn()">创建Observable，并指定最后发出的值</button>
+  </div>
+  <div class="bottomDiv">
+    <div>
+      <div style="width:400px;height:150px;background:rgb(255, 251, 0);" id="my-element">
+        <div style="width:40px;height:30px;background:rgb(0, 255, 76);"></div> {{mouseData}} {{tips}}
+      </div>
+    </div>
+    <div>
+      <h2>常用操作符</h2>
+        <table>
+          <tr>
+            <td> 创建</td>
+            <td> new Observable</td>
+            <td> fromPromise</td>
+            <td> fromEvent</td>
+            <td> of</td>
+          </tr>
+          <tr>
+            <td> 组合</td>
+            <td> combineLatest</td>
+            <td> concat</td>
+            <td> merge</td>
+            <td> startWith</td>
+            <td> withLatestFrom</td>
+            <td> zip</td>
+          </tr>
+          <tr>
+            <td> 过滤</td>
+            <td> debounceTime</td>
+            <td> distinctUntilChanged</td>
+            <td> filer</td>
+            <td> take</td>
+            <td> takeUntil</td>
+          </tr>
+          <tr>
+            <td> 转换</td>
+            <td> bufferTime</td>
+            <td> concatMap</td>
+            <td> map</td>
+            <td> mergeMap</td>
+            <td> scan</td>
+            <td> switchMap</td>
+          </tr>
+          <tr>
+            <td> 工具</td>
+            <td> tap</td>
+          </tr>
+          <tr>
+            <td> 多播</td>
+            <td> share</td>
+          </tr>
+        </table>
+    </div>
+  </div>
+</div>

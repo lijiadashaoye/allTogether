@@ -49,6 +49,6 @@ export class canLoadGuard implements CanLoad {
   canLoad(
     route: Route
   ): Observable < boolean > | Promise < boolean > | boolean {
-    return confirm('CanLoad three')
+    return true
   }
 }

@@ -1,7 +1,6 @@
 import {
   HttpHeaders,
   HttpClient,
-  HttpResponse,
 } from '@angular/common/http';
 
 import {
@@ -17,7 +16,7 @@ import {
   InjectionToken
 } from '@angular/core';
 export const BASE_URL = new InjectionToken < string > ('');
-export const urlText = '/datas';
+export const urlText = '/userdatas';
 /**************************************************************/
 const HEADER = {
   headers: new HttpHeaders({
@@ -25,7 +24,6 @@ const HEADER = {
     token: 'tokentokentokentoken'
   })
 };
-const homeUrl = 'http://localhost:3000/'
 /**************************************************************/
 @Injectable()
 export class HttpService {
@@ -34,7 +32,7 @@ export class HttpService {
     private http: HttpClient
   ) {}
 
-  login(data): Observable < any > {
+  login(data): Observable < any > { // 登陆
     let url = this.baseUrl;
     let params = {
       name: data.name
@@ -43,18 +41,18 @@ export class HttpService {
       params
     })
   }
-  signup(item): Observable < any > {
+  signup(item): Observable < any > { // 注册
     let url = this.baseUrl;
     return this.http.post(`${url}`, JSON.stringify(item), HEADER)
   }
-  changeUserPassword(data): Observable < any > {
+  changeUserPassword(data): Observable < any > { // 修改密码
     let url = this.baseUrl + `/${data.id}`;
     let params = {
       password: data.password
     }
     return this.http.patch(url, params)
   }
-  changeUserInfo(data): Observable < any > {
+  changeUserInfo(data): Observable < any > { // 修改个人信息
     let url = this.baseUrl + `/${data.id}`;
     let params = {
       name: data.name,

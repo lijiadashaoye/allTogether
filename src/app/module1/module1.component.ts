@@ -1,4 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit
+} from '@angular/core';
+import {
+  Router
+} from '@angular/router';
+import {
+  controlLogoutService
+} from '../controlLogout';
 
 @Component({
   selector: 'app-module1',
@@ -6,10 +15,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./module1.component.css']
 })
 export class Module1Component implements OnInit {
-
-  constructor() { }
+  urlList = [];
+  constructor(
+    public route: Router,
+    public logout: controlLogoutService
+  ) {}
 
   ngOnInit() {
+    this.urlList = [
+      'observables',
+      'jsonServer',
+    ]
   }
-
+  ngAfterViewInit() {
+    setTimeout(_ => this.logout.logout.emit('module1'),200)
+  }
+  goto(data) {
+    this.route.navigate([`module1/${data}`])
+  }
 }
