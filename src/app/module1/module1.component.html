@@ -1,4 +1,4 @@
 <ul class="nav">
-  <li *ngFor="let url of urlList"  (click)="goto(url)">{{url}}</li>
+  <li *ngFor="let url of urlList" routerLinkActive="act" (click)="goto(url)">{{url}}</li>
 </ul>
 <router-outlet></router-outlet>

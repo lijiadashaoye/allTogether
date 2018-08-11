@@ -54,10 +54,10 @@ import {
   ],
   imports: [
     BrowserModule,
-    MainRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MainRoutingModule,
   ],
   providers: [
     HttpService,
