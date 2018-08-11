@@ -38,11 +38,6 @@ import {
 import {
   UserService
 } from "./user.service";
-import {
-  resolveService,
-  ResolveGuard
-} from './main.guard';
-
 
 @NgModule({
   declarations: [
@@ -62,8 +57,7 @@ import {
   providers: [
     HttpService,
     UserService,
-    resolveService,
-    ResolveGuard,
+
     {
       provide: BASE_URL,
       useValue: urlText
