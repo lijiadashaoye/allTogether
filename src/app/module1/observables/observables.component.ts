@@ -1,10 +1,7 @@
-import {
-  Component,
-  OnInit
-} from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 import {
   Observable,
-  of ,
+  of,
   BehaviorSubject,
   timer,
   zip,
@@ -16,7 +13,7 @@ import {
   defer,
   merge,
   concat,
-  combineLatest,
+  combineLatest
 } from "rxjs";
 import {
   find,
@@ -43,16 +40,12 @@ import {
   retry,
   findIndex
 } from "rxjs/operators";
-import {
-  Module1HttpService
-} from "../module1-http";
-import {
-  ajax
-} from "rxjs/ajax";
+import { Module1HttpService } from "../module1-http";
+import { ajax } from "rxjs/ajax";
 @Component({
-  selector: 'app-observables',
-  templateUrl: './observables.component.html',
-  styleUrls: ['./observables.component.css']
+  selector: "app-observables",
+  templateUrl: "./observables.component.html",
+  styleUrls: ["./observables.component.css"]
 })
 export class ObservablesComponent implements OnInit {
   creatObservable; // 创建自定义Observable 事件
@@ -79,7 +72,7 @@ export class ObservablesComponent implements OnInit {
     this.fromEventTest();
   }
   delayTest() {
-    const source = of ("delay test").pipe(delay(3000));
+    const source = of("delay test").pipe(delay(3000));
     source.subscribe(val => console.log(val));
   }
   ajaxTest() {
@@ -101,7 +94,7 @@ export class ObservablesComponent implements OnInit {
         map(res => {
           return res.response;
         }),
-        catchError(err => of ('这是ajax的请求错误！', err))
+        catchError(err => of("这是ajax的请求错误！", err))
       )
       .subscribe({
         next(x) {
@@ -109,8 +102,9 @@ export class ObservablesComponent implements OnInit {
         }
       });
   }
-  filerTest() { of (1, 2, 3, 4, 5)
-    .pipe(
+  filerTest() {
+    of(1, 2, 3, 4, 5)
+      .pipe(
         filter(n => n % 2 !== 0),
         map(n => n * n),
         scan((acc, x) => acc + x, 0)
@@ -120,7 +114,7 @@ export class ObservablesComponent implements OnInit {
   distinctUntilChangedTest() {
     let subscription: Subscription;
     let arr = [];
-    subscription = of (1, 1, 2, 2, 1, 1, 2, 3, 3, 4)
+    subscription = of(1, 1, 2, 2, 1, 1, 2, 3, 3, 4)
       .pipe(distinctUntilChanged())
       .subscribe(x => arr.push(x));
     subscription.unsubscribe();
@@ -134,7 +128,7 @@ export class ObservablesComponent implements OnInit {
       debounceTime(800),
       // 当前值与上一个值不同时才发出值
       distinctUntilChanged(),
-      switchMap(val => of (val))
+      switchMap(val => of(val))
     );
     typeahead.subscribe(data => {
       console.log(data);
@@ -146,12 +140,14 @@ export class ObservablesComponent implements OnInit {
         // startWith 会在整个数据序列最开始添加上数据，从而导致后边take(2)之后值得到一共3个值，最后一个是1
         startWith("添加了 startWith"),
         take(3),
-        tap(val => console.log(`${val} tap过，tap 就是 do`)),
+        tap(val => console.log(`${val} tap过，tap 就是 do`))
       )
       .subscribe(n => console.log(n));
-    timer(3000, 1000).pipe(take(3)).subscribe(val => {
-      console.log('等待三秒后输出值，然后执行每一秒输出值', val)
-    })
+    timer(3000, 1000)
+      .pipe(take(3))
+      .subscribe(val => {
+        console.log("等待三秒后输出值，然后执行每一秒输出值", val);
+      });
   }
 
   mouseData = "监听mousemove事件";
@@ -179,7 +175,7 @@ export class ObservablesComponent implements OnInit {
   }
   subjectTest() {
     // https://segmentfault.com/a/1190000008886598#articleHeader11
-    let subject = new Subject < any > ();
+    let subject = new Subject<any>();
     // 用了asObservable()，则无法使用next()发出值
     let spinnerState = subject.asObservable();
     subject.subscribe(val => {
@@ -198,7 +194,7 @@ export class ObservablesComponent implements OnInit {
       subject.subscribe(val => console.log(val));
     }, 2000);
     /**************************************************************************/
-    let replaysubject = new ReplaySubject < any > (2); // 参数是2，所以只取最后执行两次next的值
+    let replaysubject = new ReplaySubject<any>(2); // 参数是2，所以只取最后执行两次next的值
     replaysubject.next("ReplaySubject1");
     replaysubject.next("ReplaySubject2");
     replaysubject.next("ReplaySubject3");
@@ -244,7 +240,7 @@ export class ObservablesComponent implements OnInit {
   }
   testHttpError() {
     // 用来测试  catchError
-    let catchBadResponse = (err: any, source: Observable < any > ) => {
+    let catchBadResponse = (err: any, source: Observable<any>) => {
       console.log("err", err);
       // console.log('source',source)  // 没多大用
       return of("错误处理函数返回的数据"); // 返回一个Observable，让后边的subscribe可以订阅，发生错误时返回这个数据
@@ -344,6 +340,7 @@ export class ObservablesComponent implements OnInit {
       .subscribe(val => console.log(val));
   }
   zipTest() {
+    // zip会等待每一个Observable都发出index对应的值，才会发出值组成的数组
     let obs1 = interval(1000).pipe(
       take(3),
       map(val => `obs1-${val}`)
@@ -374,23 +371,17 @@ export class ObservablesComponent implements OnInit {
         )
       )
       .subscribe(val => console.log(val));
-
-    // const clicks = fromEvent(document, 'click');
-    // const result = clicks.pipe(
-    //   exhaustMap((ev) => interval(1000).pipe(take(5))),
-    // );
-    // result.subscribe(x => console.log(x));
   }
   shareTest() {
     // 它可以多播（共享）原始的Observable。只要至少有一个订阅者，此Observable将被订阅并发送数据
     // multicast(() => new Subject()), refCount() 的别名,无论什么时候订阅的obs1，得到的val都市当下最新值
     let obs1 = interval(1000).pipe(
-      take(10),
+      take(6),
       share()
     );
-    setTimeout(_ => obs1.subscribe(val => console.log(val + "**800")), 800);
-    setTimeout(_ => obs1.subscribe(val => console.log(val + "**1200")), 1200);
-    setTimeout(_ => obs1.subscribe(val => console.log(val + "**2100")), 2100);
+    setTimeout(_ => obs1.subscribe(val => console.log(val + "**800ms")), 800);
+    setTimeout(_ => obs1.subscribe(val => console.log(val + "**1200ms")), 1200);
+    setTimeout(_ => obs1.subscribe(val => console.log(val + "**2100ms")), 2100);
   }
   takeUntilTest() {
     // obs2一直执行着，直到obs1发出值才停止
@@ -400,7 +391,7 @@ export class ObservablesComponent implements OnInit {
   }
   mergeMapTest() {
     // 内侧的每一个值，都会与外侧的所有值过一遍
-    const letters = of ("a", "b", "c");
+    const letters = of("a", "b", "c");
     const result = letters.pipe(
       mergeMap(x =>
         interval(1000).pipe(
@@ -430,8 +421,8 @@ export class ObservablesComponent implements OnInit {
   }
   testFind() {
     // 仅发出满足某些条件的源Observable发出的第一个值。
-    of ("a", "s", "d", "f", "g", "h")
-    .pipe(
+    of("a", "s", "d", "f", "g", "h")
+      .pipe(
         find(val => {
           return val == "f";
         })
@@ -440,8 +431,8 @@ export class ObservablesComponent implements OnInit {
         console.log(val);
       });
     // 仅发出满足某些条件的源Observable发出的第一个值的index。
-    of ("a", "s", "d", "f", "g", "h")
-    .pipe(
+    of("a", "s", "d", "f", "g", "h")
+      .pipe(
         findIndex(val => {
           return val == "f";
         })

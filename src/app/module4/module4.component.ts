@@ -19,7 +19,6 @@ export class Module4Component implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(this)
     this.urlList = [
       'gaode',
     ]
