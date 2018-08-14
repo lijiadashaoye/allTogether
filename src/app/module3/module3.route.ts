@@ -12,16 +12,16 @@ import {
   import {
     Module3Component
   } from './module3.component'
-  
+  import { SomeCss3Component } from './some-css3/some-css3.component';
   
   
   const routes: Routes = [{
     path: '',
     component: Module3Component,
-    // children: [{
-    //   path: 'gaode',
-    //   component: GaodeComponent
-    // }]
+    children: [{
+      path: 'Css3',
+      component: SomeCss3Component
+    }]
   }];
   
   @NgModule({
