@@ -18,6 +18,7 @@ import {
 import {
   JsonServerComponent
 } from './jsonServer/jsonServer.component';
+import { IndexDBLearnComponent } from './index-dblearn/index-dblearn.component';
 
 /****************************************************************************/
 const routes: Routes = [{
@@ -30,6 +31,10 @@ const routes: Routes = [{
     {
       path: 'jsonServer',
       component: JsonServerComponent
+    },
+    {
+      path: 'indexDB',
+      component: IndexDBLearnComponent
     }
   ]
 }];

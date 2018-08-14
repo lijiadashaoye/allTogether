@@ -1,0 +1,27 @@
+要先点击启动：
+<br>
+<input type="button" value="启动" (click)="openDB()">
+
+
+<div>
+  <input type="text" placeholder="title" #getDatas>
+  <input type="button" value="getData" (click)="getData(getDatas.value)">
+</div>
+
+<div>
+  <input type="text" placeholder="title" #titleInput>
+  <input type="text" placeholder="name" #contentInput>
+  <input type="button" value="save" (click)="save(titleInput.value,contentInput.value)">
+</div>
+
+<div>
+  <input type="text" placeholder="name" #contentInput1>
+  <input type="button" value="update" (click)="update(contentInput1.value)">
+</div>
+<div>
+  <input type="text" placeholder="title" #keypath>
+  <input type="button" value="deleteData" (click)="deleteData(keypath.value)">
+</div>
+<div>
+  {{tip|json}}
+</div>
