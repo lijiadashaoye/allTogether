@@ -1,6 +1,7 @@
 import {
   Component,
-  OnInit
+  OnInit,
+  HostListener
 } from '@angular/core';
 import {
   FormGroup,
@@ -37,7 +38,7 @@ export class LoginComponent implements OnInit {
     public userService: UserService,
     public resolveService: resolveService,
     private activeRoute: ActivatedRoute,
-    public logout:controlLogoutService
+    public logout: controlLogoutService
   ) {
     // 获取路由数据，如果是从注册页面过来，会有数据
     this.activeRoute.paramMap.subscribe((paramsMap: ParamMap) => {
@@ -64,6 +65,11 @@ export class LoginComponent implements OnInit {
       })
     }
   }
+  @HostListener('keyup.enter')
+  toLogin() {
+    this.login();
+  }
+
   login() {
     if (this.forms.get('name').value) {
       this.userService.login(this.forms.value)
@@ -72,7 +78,7 @@ export class LoginComponent implements OnInit {
             let kk = val.filter(data => data['password'] === this.forms.get('password').value);
             if (kk.length > 0) {
               this.route.navigate(['module1']);
-              this.logout.logout.emit('module1');  // 用于显示退出按钮
+              this.logout.logout.emit('module1'); // 用于显示退出按钮
             } else {
               this.tipText = '请输入正确密码'
               setTimeout(_ => this.tipText = '', 3000)
