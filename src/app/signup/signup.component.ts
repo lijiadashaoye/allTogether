@@ -72,27 +72,13 @@ export class SignupComponent implements OnInit {
         }
       }
     }
-    if (this.forms.valid && this.forms.dirty) {
-      if (this.resolveDatas) {
+    if (this.resolveDatas) {
+      if (this.forms.valid && this.forms.dirty) {
         let data = this.forms.value;
         data["id"] = this.resolveDatas.id;
         this.userService.changeUserInfo(data).subscribe(val => {
           this.resolveDatas = val;
           this.tipText = "信息修改成功！";
-
-          // setTimeout(_ => {
-          //   // 信息提交成功后初始化组件(清空已填入的数据)
-          //   this.tipText = "";
-          //   this.forms.patchValue({
-          //     // this.forms.reset() 不好使
-          //     name: "",
-          //     password: "",
-          //     email: "",
-          //     job: "",
-          //     logo: ""
-          //   });
-          //   this.buttonText = "Signup";
-          // }, 2000);
           setTimeout(_ => {
             // 信息提交成功后初始化组件(不清空数据，只是变更其他验证状态)
             this.tipText = "";
@@ -106,16 +92,33 @@ export class SignupComponent implements OnInit {
           }, 2000);
         });
       } else {
-        this.userService.signup(this.forms.value).subscribe(val => {
-          this.route.navigate(["login"]);
-        });
+        this.tipText = "没有变更的信息！";
+        setTimeout(_ => {
+          // 信息提交成功后初始化组件
+          this.tipText = "";
+        }, 2000);
       }
     } else {
-      this.tipText = "没有变更的信息！";
-      setTimeout(_ => {
-        // 信息提交成功后初始化组件
-        this.tipText = "";
-      }, 2000);
+      this.userService.signup(this.forms.value).subscribe(val => {
+        this.route.navigate(["login"]);
+      });
+    }
+  }
+  makeNew() {
+    // 信息提交成功后初始化组件(清空已填入的数据)
+    this.tipText = "";
+    let controls = this.forms.controls;
+    for (let i in controls) {
+      controls[i].markAsUntouched({ onlySelf: true }); // 将当前控件标记为untouched
+      controls[i].reset({ onlySelf: true }); // 重置当前input
+      controls[i].setValue([""]); // 重置后再赋值
+      if (i == "logo") {
+        let num = Math.floor(Math.random() * 10);
+        let logoSrc = `assets/logo/${num}.jpg`;
+        this.forms.patchValue({
+          logo: logoSrc
+        });
+      }
     }
   }
   validEmail(c: FormControl) {

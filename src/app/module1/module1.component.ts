@@ -12,7 +12,7 @@ export class Module1Component implements OnInit {
   constructor(public route: Router, public logout: controlLogoutService) {}
 
   ngOnInit() {
-    this.urlList = ["observables", "jsonServer", "indexDB"];
+    this.urlList = ["observables", "jsonServer", "indexDB", "scssLearn"];
   }
   ngAfterViewInit() {
     setTimeout(_ => this.logout.logout.emit("module1"), 200);
