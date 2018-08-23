@@ -104,4 +104,9 @@ export class GaodeComponent implements OnInit {
     // 销毁地图，释放内存
     this.map.destroy();
   }
+  /**********************************************************************************/
+  // ng-amap
+  onMarkerClick(e) {
+    console.log(e);
+  }
 }

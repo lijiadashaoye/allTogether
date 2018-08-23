@@ -1,22 +1,12 @@
-import {
-  NgModule
-} from '@angular/core';
-import {
-  CommonModule
-} from '@angular/common';
-import {
-  GaodeComponent
-} from './gaode/gaode.component';
-import {
-  Module4Component
-} from './module4.component';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { GaodeComponent } from "./gaode/gaode.component";
+import { Module4Component } from "./module4.component";
 
-import {
-  module4RoutingModule
-} from './module4.route';
+import { module4RoutingModule } from "./module4.route";
 
-import { NgxAmapModule } from 'ngx-amap'; // 高德地图
-
+import { NgxAmapModule } from "ngx-amap"; // 高德地图
+import { AnimateCssComponent } from "./animate-css/animate-css.component"; 
 
 @NgModule({
   imports: [
@@ -27,9 +17,6 @@ import { NgxAmapModule } from 'ngx-amap'; // 高德地图
       apiKey: "300a1e620eeb81580a2ed9615182d726"
     })
   ],
-  declarations: [
-    Module4Component,
-    GaodeComponent
-  ]
+  declarations: [Module4Component, AnimateCssComponent, GaodeComponent]
 })
 export class Module4Module {}

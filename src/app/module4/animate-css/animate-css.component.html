@@ -1,0 +1,15 @@
+<div>
+  https://github.com/daneden/animate.css
+  <br> 引入方法：
+  <br> 1：npm install animate.css --save
+  <br> 2：在index.html引入样式文件，或者在css文件内通过@import引入
+  <br>如：
+  <br>写在style.css全局样式文件内：@import '../node_modules/animate.css/animate.min.css';
+  <br>写在当前组件css文件内：@import '../../../../node_modules/animate.css/animate.min.css';
+  <br> 3：使用class名添加动画
+</div>
+<div>
+
+  <button *ngFor="let item of animateArr;let i=index"
+   class="animated" (click)="addAnimate($event,item)">{{item}}</button>
+</div>

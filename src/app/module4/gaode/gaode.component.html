@@ -4,6 +4,11 @@
 <h2>使用ngx-amap</h2>
 <p>
   https://xieziyu.github.io/ngx-amap/#/home
+  <br> https://xieziyu.github.io/ngx-amap/api-doc/
   <br> cnpm install ngx-amap --save
 </p>
-<ngx-amap class="demo-map"></ngx-amap>
+
+<ngx-amap class="demo-map" [center]="[116.397428, 39.90923]">
+  <amap-tool-bar></amap-tool-bar>
+  <amap-marker [position]="[116.397428, 39.90923]" (markerClick)="onMarkerClick($event)"></amap-marker>
+</ngx-amap>
