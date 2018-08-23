@@ -86,26 +86,80 @@ export class AnimateCssComponent implements OnInit {
     "slideOutUp",
     "heartBeat"
   ];
+  animateArr2 = [
+    {
+      name: "delay-2s",
+      time: "2s"
+    },
+    {
+      name: "delay-5s",
+      time: "5s"
+    },
+    {
+      name: "slow",
+      time: "2s"
+    },
+    {
+      name: "slower",
+      time: "3s"
+    },
+    {
+      name: "fast",
+      time: "800ms"
+    },
+    {
+      name: "faster",
+      time: "500ms"
+    }
+  ];
   num = 0;
   sub: Subscription;
+  sub2: Subscription;
   ngOnInit() {}
   addAnimate(ev: Event, className) {
     let target = ev.target;
     this.rd.addClass(target, className);
-    this.sub = of(
+    of(
       "webkitAnimationEnd",
       "mozAnimationEnd",
       "MSAnimationEnd",
       "oanimationend",
       "animationend"
     ).subscribe(item => {
-      fromEvent(target, item).subscribe(_ => {
+      this.sub = fromEvent(target, item).subscribe(_ => {
         // 监听动画执行结束
         this.rd.removeClass(target, className);
+        this.sub.unsubscribe();
       });
     });
   }
-  ngOnDestroy(): void {
-    this.sub.unsubscribe();
+  addAnimate2(ev: Event, className) {
+    let target = ev.target;
+    this.rd.addClass(target, className);
+    this.rd.addClass(target, "bounce");
+    of(
+      "webkitAnimationEnd",
+      "mozAnimationEnd",
+      "MSAnimationEnd",
+      "oanimationend",
+      "animationend"
+    ).subscribe(item => {
+      this.sub2 = fromEvent(target, item).subscribe(_ => {
+        // 监听动画执行结束
+        this.rd.removeClass(target, "bounce");
+        this.sub2.unsubscribe();
+      });
+    });
+  }
+  stop = false;
+  stopToggle(ev: Event, className) {
+    if (this.stop) {
+      let target = ev.target;
+      this.rd.removeClass(target, className);
+    } else {
+      let target = ev.target;
+      this.rd.addClass(target, className);
+    }
+    this.stop = !this.stop;
   }
 }

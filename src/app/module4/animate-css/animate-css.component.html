@@ -9,7 +9,10 @@
   <br> 3：使用class名添加动画
 </div>
 <div>
-
-  <button *ngFor="let item of animateArr;let i=index"
-   class="animated" (click)="addAnimate($event,item)">{{item}}</button>
+  <button *ngFor="let item of animateArr;let i=index" class="animated" (click)="addAnimate($event,item)">{{item}}</button>
+</div>
+<div>
+  <button class="animated infinite" (click)="stopToggle($event,'bounce')">infinite</button>
+  <button *ngFor="let item of animateArr2;let i=index" class="animated" (click)="addAnimate2($event,item.name)">
+    {{item.name}}: {{item.time}}</button>
 </div>
