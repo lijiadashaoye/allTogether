@@ -5,10 +5,11 @@ import { CommonModule } from "@angular/common";
 import { Module4Component } from "./module4.component";
 import { GaodeComponent } from "./gaode/gaode.component";
 import { AnimateCssComponent } from "./animate-css/animate-css.component";
-import { EchartsLearnComponent } from './echarts-learn/echarts-learn.component';
-import { NgxWorkspaceComponent } from './ngx-workspace/ngx-workspace.component';
+import { EchartsLearnComponent } from "./echarts-learn/echarts-learn.component";
+import { NgxWorkspaceComponent } from "./ngx-workspace/ngx-workspace.component";
 import { AosentubiaoComponent } from "./aosentubiao/aosentubiao.component";
 import { NgxDropzoneWrapperComponent } from "./ngx-dropzone-wrapper/ngx-dropzone-wrapper.component";
+import { DragAndDropComponent } from "./drag-and-drop/drag-and-drop.component";
 const routes: Routes = [
   {
     path: "",
@@ -37,6 +38,10 @@ const routes: Routes = [
       {
         path: "NgxDropzoneWrapper",
         component: NgxDropzoneWrapperComponent
+      },
+      {
+        path: "dragdrop",
+        component: DragAndDropComponent
       }
     ]
   }

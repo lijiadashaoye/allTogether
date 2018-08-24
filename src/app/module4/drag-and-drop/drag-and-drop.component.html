@@ -1,0 +1,22 @@
+<h2>拖放功能插件</h2>
+<br>https://github.com/reppners/ngx-drag-drop
+<br>https://www.npmjs.com/package/ngx-drag-drop
+
+<hr>
+<div [dndDraggable]="draggable.data" style="background:skyblue;" [dndEffectAllowed]="draggable.effectAllowed" [dndDisableIf]="draggable.disable"
+  (dndStart)="onDragStart($event)" (dndCopied)="onDraggableCopied($event)" (dndLinked)="onDraggableLinked($event)" (dndMoved)="onDraggableMoved($event)"
+  (dndCanceled)="onDragCanceled($event)" (dndEnd)="onDragEnd($event)">
+
+  <div *ngIf="draggable.handle" dndHandle>HANDLE
+  </div>
+
+  draggable ({{draggable.effectAllowed}})
+  <span [hidden]="!draggable.disable">DISABLED</span>
+  <div dndDragImageRef>DRAG_IMAGE</div>
+
+</div>
+<section dndDropzone (dndDragover)="onDragover($event)" (dndDrop)="onDrop($event)" style="background:pink;margin-top:20px;height:100px;">
+  <div style="border: 1px orangered solid; border-radius: 5px; height: 60px" dndPlaceholderRef>
+    拖放到这里
+  </div>
+</section>

@@ -9,6 +9,8 @@ import { NgxAmapModule } from "ngx-amap"; // 高德地图
 import { NgxEchartsModule } from "ngx-echarts"; // echarts
 // cnpm i ngx-workspace --save
 import { NgxWorkspaceModule } from "ngx-workspace"; // 组件拼接插件
+import { DndModule } from "ngx-drag-drop"; // 拖放插件
+
 /*************************************************************************************/
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome"; //奥森图标
 import { fab } from "@fortawesome/free-brands-svg-icons";
@@ -44,6 +46,7 @@ import { OneComponentComponent } from "./ngx-workspace/one-component/one-compone
 import { TwoComponentComponent } from "./ngx-workspace/two-component/two-component.component";
 import { AosentubiaoComponent } from "./aosentubiao/aosentubiao.component";
 import { NgxDropzoneWrapperComponent } from "./ngx-dropzone-wrapper/ngx-dropzone-wrapper.component";
+import { DragAndDropComponent } from "./drag-and-drop/drag-and-drop.component";
 @NgModule({
   imports: [
     CommonModule,
@@ -55,7 +58,8 @@ import { NgxDropzoneWrapperComponent } from "./ngx-dropzone-wrapper/ngx-dropzone
     }),
     NgxWorkspaceModule,
     FontAwesomeModule,
-    DropzoneModule
+    DropzoneModule,
+    DndModule
   ],
   declarations: [
     Module4Component,
@@ -66,7 +70,8 @@ import { NgxDropzoneWrapperComponent } from "./ngx-dropzone-wrapper/ngx-dropzone
     OneComponentComponent,
     AosentubiaoComponent,
     NgxDropzoneWrapperComponent,
-    TwoComponentComponent
+    TwoComponentComponent,
+    DragAndDropComponent
   ],
   entryComponents: [OneComponentComponent, TwoComponentComponent],
   providers: [

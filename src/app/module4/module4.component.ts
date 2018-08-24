@@ -18,7 +18,8 @@ export class Module4Component implements OnInit {
       "echarts",
       "ngx-workspace",
       "ao sen",
-      'NgxDropzoneWrapper'
+      "NgxDropzoneWrapper",
+      "dragdrop"
     ];
   }
   ngAfterViewInit() {

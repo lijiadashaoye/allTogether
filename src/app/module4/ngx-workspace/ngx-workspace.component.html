@@ -1,41 +1,40 @@
+<h2>
+  多个组件拼图式一起显示</h2>
 <div>
-  <h2>多个组件拼图式一起显示</h2>
   <div>
-    <div>
-      <button (click)="toEdit()">{{editable?'固定':'可移动'}}</button>
-      <div class="sets">
-        <div>
-          <div>one
-            <button (click)="changeOneSize(oneWidth.value,oneHeight.value)">变更尺寸</button>
-          </div>
-          <label>宽:
-            <input type="number" min='1' max='12' value='1' #oneWidth>
-          </label>
-          <label>高:
-            <input type="number" min='1' max='12' value='1' #oneHeight>
-          </label>
+    <button (click)="toEdit()">{{editable?'固定':'可移动'}}</button>
+    <div class="sets">
+      <div>
+        <div>one
+          <button (click)="changeOneSize(oneWidth.value,oneHeight.value)">变更尺寸</button>
         </div>
-        <div>
-          <div>two
-            <button (click)="changeTwoSize(twoWidth.value,twoHeight.value)">变更尺寸</button>
-          </div>
-          <label>宽:
-            <input type="number" min='1' max='12' value='1' #twoWidth>
-          </label>
-          <label>高:
-            <input type="number" min='1' max='12' value='1' #twoHeight>
-          </label>
+        <label>宽:
+          <input type="number" min='1' max='12' value='1' #oneWidth>
+        </label>
+        <label>高:
+          <input type="number" min='1' max='12' value='1' #oneHeight>
+        </label>
+      </div>
+      <div>
+        <div>two
+          <button (click)="changeTwoSize(twoWidth.value,twoHeight.value)">变更尺寸</button>
         </div>
-        <div style="margin-left:10px;">
-          1：cnpm i ngx-workspace --save
-          <br> 2：模模块文件中
-          <br> imports: [ NgxWorkspaceModule]，
-          <br>entryComponents: [ OneComponentComponent, TwoComponentComponent]
-        </div>
+        <label>宽:
+          <input type="number" min='1' max='12' value='1' #twoWidth>
+        </label>
+        <label>高:
+          <input type="number" min='1' max='12' value='1' #twoHeight>
+        </label>
+      </div>
+      <div style="margin-left:10px;">
+        1：cnpm i ngx-workspace --save
+        <br> 2：模模块文件中
+        <br> imports: [ NgxWorkspaceModule]，
+        <br>entryComponents: [ OneComponentComponent, TwoComponentComponent]
       </div>
     </div>
-    <div class="workBoard">
-      <ngx-workboard [wsWidgets]="widgets" [wsResponsive]="responsive" [wsResponsiveScale]="responsiveScale" [wsEditable]="editable"></ngx-workboard>
-    </div>
+  </div>
+  <div class="workBoard">
+    <ngx-workboard [wsWidgets]="widgets" [wsResponsive]="responsive" [wsResponsiveScale]="responsiveScale" [wsEditable]="editable"></ngx-workboard>
   </div>
 </div>
