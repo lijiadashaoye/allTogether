@@ -105,6 +105,29 @@ export class NgxsFormsTemplateComponent {
     // // 第二种监听state的方法
     // this.store.select(state => state).pipe(debounceTime(200))
     //   .subscribe(val => console.log(val))
+
+    // 每个页面都有状态，如果路由离开再回来，会发现状态打印两次
+    this.actions // action的生命周期
+      .pipe(
+        ofActionDispatched(lifeTimeAction) // 在调度lifeTimeAction操作时触发
+      )
+      .subscribe(val => {
+        console.log("ofActionDispatched", val);
+      });
+    this.actions
+      .pipe(
+        ofAction(lifeTimeAction) // 全周期，只要触发lifeTimeAction，就会执行
+      )
+      .subscribe(val => {
+        console.log("ofAction", val);
+      });
+    this.actions
+      .pipe(
+        ofActionSuccessful(lifeTimeAction) // 成功完成操作时触发
+      )
+      .subscribe(val => {
+        console.log("ofActionSuccessful", val);
+      });
   }
   ngOnInit(): void {
     // this.store.dispatch(new ConnectWebSocket(  // 建立连接
@@ -120,15 +143,6 @@ export class NgxsFormsTemplateComponent {
       ],
       extras: this.createExtras()
     });
-    this.actions
-    .pipe(      // action的生命周期
-      ofAction(lifeTimeAction),   // 全周期，只要触发action，就会执行
-      ofActionDispatched(lifeTimeAction),   // 在调度操作时触发
-      ofActionSuccessful(lifeTimeAction)    // 成功完成操作时触发
-    )
-    .subscribe(val => {
-      console.log(val)
-    })
   }
 
   addTodo(todo: string) {
@@ -172,14 +186,14 @@ export class NgxsFormsTemplateComponent {
   routeTest() {
     this.store.dispatch(new Navigate(["/module2/ngxs/list"]));
   }
-  oneData='';
+  oneData = "";
   OneAction1() {
     let data = {
       name: "243234234",
       age: 2344234234
     };
     this.store.dispatch(new OneAction(data)).subscribe(val => {
-      this.oneData=val.myState.one;
+      this.oneData = val.myState.one;
     });
   }
   listData = [];
@@ -197,7 +211,6 @@ export class NgxsFormsTemplateComponent {
       this.listData = val.myState.one;
     });
   }
-
   useSetState() {
     this.store.dispatch(new useSetStateAction("test")).subscribe(val => {
       console.log(val);
@@ -210,7 +223,6 @@ export class NgxsFormsTemplateComponent {
         console.log(val);
       });
   }
-
   lifetime() {
     this.store.dispatch(new lifeTimeAction("lifeTime")).subscribe(val => {
       console.log(val);

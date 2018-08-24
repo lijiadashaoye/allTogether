@@ -1,9 +1,10 @@
 /* @import '../node_modules/animate.css/animate.min.css'; */
 
-body{
-  padding:0 10px;
+body {
+  padding: 0 10px;
   box-sizing: border-box;
 }
+
 html,
 p,
 h2,
@@ -20,24 +21,19 @@ ul {
   padding: 0;
 }
 
-li {
-  cursor: pointer;
-  margin: 3px 10px 0 0;
-  padding: 0;
-  outline: none;
-}
-
 .nav {
   display: flex;
   justify-content: flex-start;
 }
 
-.nav li {
+.nav>li {
   border: 1px solid rgb(231, 223, 223);
-  font-size:16px;
-  padding:3px 10px;
+  font-size: 16px;
+  padding: 3px 10px;
   cursor: pointer;
+  margin: 3px 5px 0 0;
 }
+
 button {
   font-size: 16px;
   padding: 3px 10px;
@@ -48,5 +44,5 @@ input {
   width: 200px;
   height: 22px;
   font-size: 16px;
-  margin:5px;
+  margin: 5px;
 }
