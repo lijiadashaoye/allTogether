@@ -5,7 +5,10 @@ import { CommonModule } from "@angular/common";
 import { Module4Component } from "./module4.component";
 import { GaodeComponent } from "./gaode/gaode.component";
 import { AnimateCssComponent } from "./animate-css/animate-css.component";
-import { EchartsLearnComponent } from './echarts-learn/echarts-learn.component'
+import { EchartsLearnComponent } from './echarts-learn/echarts-learn.component';
+import { NgxWorkspaceComponent } from './ngx-workspace/ngx-workspace.component';
+import { AosentubiaoComponent } from "./aosentubiao/aosentubiao.component";
+import { NgxDropzoneWrapperComponent } from "./ngx-dropzone-wrapper/ngx-dropzone-wrapper.component";
 const routes: Routes = [
   {
     path: "",
@@ -22,6 +25,18 @@ const routes: Routes = [
       {
         path: "echarts",
         component: EchartsLearnComponent
+      },
+      {
+        path: "ngx-workspace",
+        component: NgxWorkspaceComponent
+      },
+      {
+        path: "ao sen",
+        component: AosentubiaoComponent
+      },
+      {
+        path: "NgxDropzoneWrapper",
+        component: NgxDropzoneWrapperComponent
       }
     ]
   }

@@ -8,10 +8,12 @@ import {
 import {
   Module2Component
 } from './module2.component';
-
+import {NgxsComponent} from './ngxs/ngxs.component';
 import {
   module2RoutingModule
-} from './module2.route'
+} from './module2.route';
+
+
 @NgModule({
   imports: [
     CommonModule,
@@ -19,7 +21,7 @@ import {
   ],
   declarations: [
     Module2Component,
-    
+    NgxsComponent
   ]
 })
 export class Module2Module { }

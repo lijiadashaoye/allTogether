@@ -1,0 +1,158 @@
+<p>
+  https://fontawesome.com
+  <br> https://www.npmjs.com/package/@fortawesome/angular-fontawesome
+
+  <br> cnpm i @fortawesome/fontawesome-svg-core --save
+  <br> cnpm i @fortawesome/free-solid-svg-icons --save
+  <br> cnpm i @fortawesome/angular-fontawesome --save
+  <br> cnpm i @fortawesome/free-brands-svg-icons --save
+  <br> cnpm i @fortawesome/free-regular-svg-icons --save
+</p>
+<div class="iconWaper">
+  <div>
+    <p>普通图标</p>
+    <fa-icon [icon]="['fas', 'coffee']"></fa-icon>
+    <fa-icon [icon]="['fas', 'cog']" size="lg"></fa-icon>
+    <fa-icon [icon]="['fas', 'power-off']" size="lg"></fa-icon>
+    <fa-icon [icon]="['fas', 'keyboard']" size="lg"></fa-icon>
+    <fa-icon [icon]="['fas', 'sync']" size="lg"> </fa-icon>
+    <fa-icon [icon]="['fas', 'bug']" size="lg"></fa-icon>
+    <fa-icon [icon]="['fas', 'cog']" size="lg"></fa-icon>
+    <fa-icon [icon]="['fas', 'question-circle']" size="lg"></fa-icon>
+    <fa-icon [icon]="['fas', 'times']"> </fa-icon>
+    <fa-icon [icon]="['fas', 'calendar']"></fa-icon>
+  </div>
+  <div>
+    <p>样式：
+      <br>固定宽度：fixedWidth
+    </p>
+    <fa-icon [fixedWidth]="true" [icon]="['fas','times']" [ngStyle]="{color: 'red'}" *ngIf="true" size="xs"> </fa-icon>
+  </div>
+  <div>
+    <p>旋转</p>
+    <fa-icon [icon]="['fas', 'magic']"></fa-icon>正常
+    <br>
+    <fa-icon [icon]="['fas', 'magic']" rotate="90"></fa-icon>90度
+    <br>
+    <fa-icon [icon]="['fas', 'magic']" rotate="270"></fa-icon>270度
+    <br>
+    <fa-icon [icon]="['fas', 'magic']" flip="horizontal"></fa-icon>左右镜像
+    <br>
+    <fa-icon [icon]="['fas', 'magic']" transform="flip-v"></fa-icon>上下镜像，
+    <br>
+    <fa-icon [icon]="['fas', 'magic']" transform="flip-v flip-h"></fa-icon>左右、上下镜像
+  </div>
+  <div>
+    <p>渲染方法</p>
+    <fa-icon [icon]="['far', 'keyboard']" size="lg"></fa-icon>
+    <fa-icon [icon]="['fas', 'keyboard']" size="lg"></fa-icon>
+    <fa-icon [icon]="['fab', 'twitter']"></fa-icon>
+  </div>
+  <div>
+    <p>有border</p>
+    <fa-icon [icon]="['fas', 'stroopwafel']" [border]="true"></fa-icon>
+  </div>
+  <div>
+    <p>旋转</p>
+    <fa-icon [icon]="['fas', 'spinner']" [spin]="true"></fa-icon>
+    <br>
+    <fa-icon [icon]="['fas', 'spinner']" [pulse]="true"></fa-icon> 以8步旋转
+  </div>
+
+  <div>
+    <p>缩放及偏移</p>
+    <fa-icon [icon]="['fas', 'coffee']" transform="shrink-5 right-2 grow-2 top-2" [ngStyle]="{color: 'blue'}" [mask]="['fas', 'square']"></fa-icon>
+  </div>
+  <div>
+    <p>缩放及偏移</p>
+    <fa-icon [icon]="['fas', 'coffee']" transform="shrink-5"></fa-icon>shrink-5
+    <br>
+    <fa-icon [icon]="['fas', 'coffee']" transform="grow-2"></fa-icon>grow-2
+    <br>
+    <fa-icon [icon]="['fas', 'coffee']" transform="left-2"></fa-icon>left-2
+    <br>
+    <fa-icon [icon]="['fas', 'coffee']" transform="right-2"></fa-icon>right-2
+    <br>
+    <fa-icon [icon]="['fas', 'coffee']" transform="up-2"></fa-icon>up-2
+    <br>
+    <fa-icon [icon]="['fas', 'coffee']" transform="down-2"></fa-icon>down-2
+    <br>
+  </div>
+  <div>
+    <p>单击切换旋转动画</p>
+    <fa-icon [icon]="['fas', 'sync']" [spin]="isSyncAnimated" (click)="isSyncAnimated=!isSyncAnimated"></fa-icon>
+  </div>
+  <div>
+    <p>根据输入值设定旋转角度</p>
+    <fa-icon [icon]="['fas', 'magic']" transform="rotate-{{magicLevel}}"></fa-icon>
+    <input type='range' [value]="magicLevel" (input)="magicLevel=$event.target.value" />
+  </div>
+  <div>
+    <p>图层、图标组合，一定要有 fa-inverse</p>
+    <fa-layers class="fa-stack fa-2x">
+      <fa-icon [icon]="['fas', 'square']" class="fa-2x"></fa-icon>
+      <fa-icon [inverse]="true" [icon]="['fas', 'spinner']" class="fa-1x fa-inverse"></fa-icon>
+    </fa-layers>
+  </div>
+  <div>
+    <p>图层、文字组合</p>
+    <fa-layers style="width:40px;">
+      <fa-icon [icon]="['fas', 'square']" style="color: rgb(116, 211, 38);width:20px;"></fa-icon>
+      <fa-layers-text content="Y3" [ngStyle]="{'font-size': '12px','color':'blue','width':'40px'}"></fa-layers-text>
+    </fa-layers>
+  </div>
+  <div style="font-size:20px;">
+    <p>小上标</p>
+    <fa-layers>
+      <fa-icon [icon]="['fas', 'envelope']"></fa-icon>
+      <fa-layers-counter content="965" [ngStyle]="{'font-size': '30px','color':'blue'}"></fa-layers-counter>
+    </fa-layers>
+  </div>
+  <div>
+    <p>在列表中</p>
+    <ul class="fa-ul">
+      <li>
+        <fa-icon class="fa-li" [icon]="['fas', 'envelope']"></fa-icon>erfewrwe
+        <li>
+          <fa-icon class="fa-li" [icon]="['fas', 'envelope']"></fa-icon>
+          be used to</li>
+        <li>
+          <fa-icon class="fa-li" [icon]="['fas', 'envelope']"></fa-icon>replace bullets</li>
+        <li>
+          <fa-icon class="fa-li" [icon]="['fas', 'envelope']"></fa-icon>
+          in lists
+        </li>
+    </ul>
+  </div>
+  <div style="width:100px;">
+    <p>位置</p>
+    <fa-icon [icon]="['fas', 'coffee']" pull="left"></fa-icon>
+    <fa-icon [icon]="['fas', 'coffee']" pull="right"></fa-icon>
+  </div>
+  <div style="font-size: 24px;color: Tomato;">
+    <p>尺寸</p>
+    <fa-icon [icon]="['fas', 'bug']" size="xs"></fa-icon>0.75em
+    <br>
+    <fa-icon [icon]="['fas', 'bug']" size="sm"></fa-icon>0.875em
+    <br>
+    <fa-icon [icon]="['fas', 'bug']" size="lg"></fa-icon>1.33em
+    <br>
+    <fa-icon [icon]="['fas', 'bug']" size="2x"></fa-icon>2em
+    <br>
+    <fa-icon [icon]="['fas', 'bug']" size="3x"></fa-icon>3em
+    <br>
+    <fa-icon [icon]="['fas', 'bug']" size="4x"></fa-icon>4em
+    <br>
+    <fa-icon [icon]="['fas', 'bug']" size="5x"></fa-icon>5em
+    <br>
+    <fa-icon [icon]="['fas', 'bug']" size="6x"></fa-icon>6em
+    <br>
+    <fa-icon [icon]="['fas', 'bug']" size="7x"></fa-icon>7em
+    <br>
+    <fa-icon [icon]="['fas', 'bug']" size="8x"></fa-icon>8em
+    <br>
+    <fa-icon [icon]="['fas', 'bug']" size="9x"></fa-icon>9em
+    <br>
+    <fa-icon [icon]="['fas', 'bug']" size="10x"></fa-icon>10em
+    <br>
+  </div>
