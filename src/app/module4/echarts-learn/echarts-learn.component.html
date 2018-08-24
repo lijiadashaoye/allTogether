@@ -1,0 +1,26 @@
+https://xieziyu.github.io/ngx-echarts/#/home
+<p>
+  1：cnpm install echarts --save
+  <br>2: cnpm install ngx-echarts --save
+  <br>
+</p>
+<p>
+  主题设置：
+  <br> 在main.ts文件内引入主题文件
+</p>
+<div>
+  <button class="btn btn-outline-primary" (click)="theme=undefined">default</button>
+  <button class="btn btn-outline-primary ml-4" (click)="theme='macarons'">macarons</button>
+  <button class="btn btn-outline-primary ml-4" (click)="theme='dark'">dark</button>
+  <button class="btn btn-outline-primary" type="button" (click)="isLoading = !isLoading">Toggle Loading</button>
+  <button class="btn btn-outline-primary" (click)="getWidth()">getWidth()</button>
+  <button class="btn btn-outline-primary" (click)="getHeight()">getHeight()</button>
+  <button class="btn btn-outline-primary" (click)="getDom()">getDom()</button>
+  <button class="btn btn-outline-primary" (click)="getOption()">getOption()</button>
+  <button class="btn btn-outline-danger" (click)="clear()">clear()</button>
+</div>
+<div echarts [options]="chartOption" id="one" class="chart" [theme]="theme" [initOpts]="initOpts" [loading]="isLoading" [loadingOpts]="loadingOpts"
+  (chartInit)="onChartInit($event)" (chartInit)="onChartEvent($event, 'chartInit')" (chartClick)="onChartEvent($event, 'chartClick')"
+  (chartDblClick)="onChartEvent($event, 'chartDblClick')" (chartMouseDown)="onChartEvent($event, 'chartMouseDown')" (chartMouseUp)="onChartEvent($event, 'chartMouseUp')"
+  (chartMouseOver)="onChartEvent($event, 'chartMouseOver')" (chartMouseOut)="onChartEvent($event, 'chartMouseOut')" (chartGlobalOut)="onChartEvent($event, 'chartGlobalOut')"
+  (chartContextMenu)="onChartEvent($event, 'chartContextMenu')" (chartDataZoom)="onChartEvent($event, 'chartDataZoom')"></div>

@@ -5,7 +5,7 @@ import { CommonModule } from "@angular/common";
 import { Module4Component } from "./module4.component";
 import { GaodeComponent } from "./gaode/gaode.component";
 import { AnimateCssComponent } from "./animate-css/animate-css.component";
-
+import { EchartsLearnComponent } from './echarts-learn/echarts-learn.component'
 const routes: Routes = [
   {
     path: "",
@@ -18,6 +18,10 @@ const routes: Routes = [
       {
         path: "animateCss",
         component: AnimateCssComponent
+      },
+      {
+        path: "echarts",
+        component: EchartsLearnComponent
       }
     ]
   }

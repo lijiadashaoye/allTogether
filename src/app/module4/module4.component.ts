@@ -20,7 +20,7 @@ export class Module4Component implements OnInit {
 
   ngOnInit() {
     this.urlList = [
-      'gaode','animateCss'
+      'gaode','animateCss','echarts'
     ]
   }
   ngAfterViewInit() {
