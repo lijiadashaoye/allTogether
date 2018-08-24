@@ -1,0 +1,12 @@
+
+
+.iconWaper {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.iconWaper>div {
+  padding: 10px;
+  border: 1px solid rgb(228, 217, 217);
+}

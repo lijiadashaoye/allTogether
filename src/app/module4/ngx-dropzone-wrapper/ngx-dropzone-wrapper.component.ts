@@ -9,7 +9,7 @@ import { DropzoneConfigInterface } from "ngx-dropzone-wrapper";
 export class NgxDropzoneWrapperComponent implements OnInit {
   config: DropzoneConfigInterface = {
     clickable: true,
-    autoReset: null,
+    autoReset: 2000,
     errorReset: null,
     cancelReset: null
   };

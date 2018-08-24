@@ -84,8 +84,9 @@
   </div>
   <div>
     <p>根据输入值设定旋转角度</p>
-    <fa-icon [icon]="['fas', 'magic']" transform="rotate-{{magicLevel}}"></fa-icon>
-    <input type='range' [value]="magicLevel" (input)="magicLevel=$event.target.value" />
+    <fa-icon [icon]="['fas', 'magic']" transform="rotate-{{magicLevel}}"></fa-icon>&nbsp;&nbsp;&nbsp;{{magicLevel}}
+    <br>
+    <input type='range' [value]="magicLevel" step="10" min="0" max="360" (input)="magicLevel=$event.target.value" />
   </div>
   <div>
     <p>图层、图标组合，一定要有 fa-inverse</p>
