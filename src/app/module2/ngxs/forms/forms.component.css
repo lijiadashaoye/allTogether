@@ -1,0 +1,41 @@
+.add-todo {
+  position: relative;
+  display: flex;
+}
+
+.add-todo input {
+  display: inline-flex;
+  width: 100%;
+  margin-right: 5px;
+}
+
+.todo-list {
+  background: #FFF;
+  font-size: 20px;
+  max-width: 30em;
+  margin: auto;
+  padding: 0.5em 1em;
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
+}
+
+.todo {
+  display: block;
+  position: relative;
+  text-align: center;
+  padding: 1em;
+  margin: 0 auto;
+  border-top: solid 1px #ddd;
+}
+
+.checkboxs {
+  display: flex;
+  justify-content: space-between;
+}
+
+label {
+  cursor: pointer;
+}
+
+.checkboxs>label>input {
+  width: 30px;
+}

@@ -12,7 +12,7 @@ const routes: Routes = [
     children: [
       {
         path: "ngxs",
-        component: NgxsComponent
+        loadChildren: "./ngxs/ngxs.module#NgxsPartModule"
       }
     ]
   }

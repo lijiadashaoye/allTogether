@@ -8,7 +8,7 @@ import {
 import {
   Module2Component
 } from './module2.component';
-import {NgxsComponent} from './ngxs/ngxs.component';
+
 import {
   module2RoutingModule
 } from './module2.route';
@@ -20,8 +20,7 @@ import {
     module2RoutingModule
   ],
   declarations: [
-    Module2Component,
-    NgxsComponent
+    Module2Component
   ]
 })
 export class Module2Module { }

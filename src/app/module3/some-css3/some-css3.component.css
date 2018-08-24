@@ -43,10 +43,14 @@
 
 /* ////////////////////////////////////////////////////////////////////////////////// */
 
-img {
+.imgDiv {
+  width: 100%;
+  height:calc( 100% - 21px);
+  margin-right: 10px;
+}
+.imgDiv img{
   width: 100%;
   height: 100%;
-  margin-right: 10px;
 }
 
 .filters {
@@ -114,7 +118,7 @@ img {
 .stickyDiv {
   height: 200px;
   background: rgb(234, 229, 238);
-  margin-top: 80px;
+  margin-top: 40px;
   overflow-y: scroll;
 }
 

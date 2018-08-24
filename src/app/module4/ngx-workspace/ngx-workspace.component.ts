@@ -18,17 +18,17 @@ export class NgxWorkspaceComponent implements OnInit {
     this.widgets = [
       {
         name: "widget-a",
-        unitHeight: 1, // 组件单元高度，从1到12
+        unitHeight: 2, // 组件单元高度，从1到12
         unitWidth: 2, // 组件单元宽度，从1到12
-        offsetLeftUnit: 1, // 组件位置偏移高度单位，从1到12
+        offsetLeftUnit: 0, // 组件位置偏移高度单位，从1到12
         offsetTopUnit: 0, // 组件位置偏移单位的宽度，从1到12
         component: OneComponentComponent
       },
       {
         name: "widget-b",
-        unitHeight: 2,
-        unitWidth: 1,
-        offsetLeftUnit: 0,
+        unitHeight: 1,
+        unitWidth: 2,
+        offsetLeftUnit: 2,
         offsetTopUnit: 0,
         component: TwoComponentComponent
       }

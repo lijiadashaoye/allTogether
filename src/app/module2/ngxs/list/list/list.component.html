@@ -1,0 +1,23 @@
+<h2>懒加载模块状态管理及表单</h2>
+<div>
+  <button (click)="routeTest()">to Forms</button>
+  {{(hello$ | async).list.model|json}}
+</div>
+<button type="button" (click)="biaodan1()">手动执行action</button>
+<button type="button" (click)="biaodan2()">变更表单的脏值状态</button>
+<button type="button" (click)="biaodan3()">为表单赋值</button>
+<button type="button" (click)="biaodan4()">禁用</button>
+<button type="button" (click)="biaodan5()">启用</button>
+
+<!-- <form [formGroup]="forms"> -->
+<form [formGroup]="forms" ngxsForm="lists.list">
+  <label>名字：
+    <input type="text" formControlName="name">
+  </label>
+  <label>年龄：
+    <input type="text" formControlName="age">
+  </label>
+  <label>工作：
+    <input type="text" formControlName="job">
+  </label>
+</form>
