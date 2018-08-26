@@ -6,7 +6,7 @@ import { DndDropEvent, DropEffect } from "ngx-drag-drop";
   templateUrl: "./drag-and-drop.component.html",
   styleUrls: ["./drag-and-drop.component.css"]
 })
-export class DragAndDropComponent implements OnInit {
+export class DragAndDropComponent {
   draggable = {
     data: "myDragData",
     effectAllowed: "all",

@@ -222,6 +222,42 @@
     tree-kill "^1.0.0"
     webpack-sources "^1.1.0"
 
+"@ngxs/form-plugin@^3.2.0":
+  version "3.2.0"
+  resolved "http://registry.npm.taobao.org/@ngxs/form-plugin/download/@ngxs/form-plugin-3.2.0.tgz#4ccb2c38d55a7903f00033fd6529e869b640d7a9"
+  dependencies:
+    tslib "^1.9.0"
+
+"@ngxs/logger-plugin@^3.2.0":
+  version "3.2.0"
+  resolved "http://registry.npm.taobao.org/@ngxs/logger-plugin/download/@ngxs/logger-plugin-3.2.0.tgz#c2b40b79c7b41ca0ef930b25bd19e07043cf7774"
+  dependencies:
+    tslib "^1.9.0"
+
+"@ngxs/router-plugin@^3.2.0":
+  version "3.2.0"
+  resolved "http://registry.npm.taobao.org/@ngxs/router-plugin/download/@ngxs/router-plugin-3.2.0.tgz#d78777bd83fde2ea08a37ef3719ba45067b9400d"
+  dependencies:
+    tslib "^1.9.0"
+
+"@ngxs/storage-plugin@^3.2.0":
+  version "3.2.0"
+  resolved "http://registry.npm.taobao.org/@ngxs/storage-plugin/download/@ngxs/storage-plugin-3.2.0.tgz#29730a068849290018baeed07b44bf3b4284a25f"
+  dependencies:
+    tslib "^1.9.0"
+
+"@ngxs/store@^3.2.0":
+  version "3.2.0"
+  resolved "http://registry.npm.taobao.org/@ngxs/store/download/@ngxs/store-3.2.0.tgz#533939acb41a948a34886943314d2a0d866045c9"
+  dependencies:
+    tslib "^1.9.0"
+
+"@ngxs/websocket-plugin@^3.2.0":
+  version "3.2.0"
+  resolved "http://registry.npm.taobao.org/@ngxs/websocket-plugin/download/@ngxs/websocket-plugin-3.2.0.tgz#f586d6ee96589b0623c3a4f9c890a4a96ed8e3b6"
+  dependencies:
+    tslib "^1.9.0"
+
 "@schematics/angular@0.7.5":
   version "0.7.5"
   resolved "https://registry.yarnpkg.com/@schematics/angular/-/angular-0.7.5.tgz#ccb5ce587161b24042195e100be556ae19b3b7f6"
@@ -3630,9 +3666,9 @@ karma-chrome-launcher@~2.2.0:
     fs-access "^1.0.0"
     which "^1.2.1"
 
-karma-coverage-istanbul-reporter@~2.0.0:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/karma-coverage-istanbul-reporter/-/karma-coverage-istanbul-reporter-2.0.1.tgz#26b969317d191c6a897c783b4ffe7831cb92e684"
+karma-coverage-istanbul-reporter@^2.0.2:
+  version "2.0.2"
+  resolved "http://registry.npm.taobao.org/karma-coverage-istanbul-reporter/download/karma-coverage-istanbul-reporter-2.0.2.tgz#d56fc2a7a7f8c0d0607712aab541d9824f2b2d07"
   dependencies:
     istanbul-api "^1.3.1"
     minimatch "^3.0.4"
@@ -4252,6 +4288,10 @@ ngx-amap@^2.1.1:
   resolved "https://registry.yarnpkg.com/ngx-amap/-/ngx-amap-2.1.1.tgz#02643213bd6b52de20d7444ca1e6d45a635d29bb"
   dependencies:
     tslib "^1.9.0"
+
+ngx-drag-drop@^1.0.3:
+  version "1.0.3"
+  resolved "http://registry.npm.taobao.org/ngx-drag-drop/download/ngx-drag-drop-1.0.3.tgz#a7f51be09342f5b34a0cddb80562e71662e5a3ae"
 
 ngx-dropzone-wrapper@^6.2.0:
   version "6.2.0"
