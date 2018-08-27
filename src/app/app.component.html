@@ -1,7 +1,7 @@
 <ul class="nav" *ngIf="canShow!='login'">
   <li *ngFor="let url of urlList;let i=index" (click)="goto(url,i)" [ngStyle]="{color:isClick==i?'red':''}">{{url}}</li>
 </ul>
-<hr>
+<hr *ngIf="canShow!='login'">
 <router-outlet></router-outlet>
 <button *ngIf="canShow!='login'" type="button" (click)="logOut()">
   当前{{canShow}}，点击退出

@@ -8,7 +8,7 @@ import { LoginComponent } from "./login/login.component";
 import { SignupComponent } from "./signup/signup.component";
 import { ForgetComponent } from "./forget/forget.component";
 import { CheckLogoComponent } from "./signup/check-logo/check-logo.component";
-
+import { A404PageComponent } from './a404-page/a404-page.component'
 /*****************************************************************/
 import { MainRoutingModule } from "./main.route";
 import {
@@ -22,24 +22,25 @@ import { controlLogoutService } from "./controlLogout";
 // 软件初始化方法
 import { AppInitService } from "./main-http-service/appInit.service";
 import { APP_INITIALIZER } from "@angular/core";
+
 export function appInitServiceFactory(provider: AppInitService) {
   return provider.load();
 }
-
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SignupComponent,
     CheckLogoComponent,
-    ForgetComponent
+    ForgetComponent,
+    A404PageComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MainRoutingModule
+    MainRoutingModule,
   ],
   providers: [
     /********************************************/

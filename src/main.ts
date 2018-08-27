@@ -16,15 +16,16 @@ platformBrowserDynamic()
   .bootstrapModule(AppModule) // 返回一个promise，表示页面启动完成，可以执行一些操作
 
   .then(() => {
-    // 执行关闭加载动画
+    // 关闭加载动画，并来个路由跳转
     let animate = document.getElementsByClassName("preloader")[0];
     let num = 1;
     setTimeout(function() {
-      setInterval(_ => {
+      let inter = setInterval(_ => {
         animate["style"]["opacity"] -= 0.1;
         num -= 0.1;
         if (num < 0) {
           animate["style"]["display"] = "none";
+          clearInterval(inter);
         }
       }, 200);
     }, 3000);
