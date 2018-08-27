@@ -3,6 +3,6 @@
 </ul>
 <hr>
 <router-outlet></router-outlet>
-<button *ngIf="canShow!='login'" type="button" (click)="back()">
+<button *ngIf="canShow!='login'" type="button" (click)="logOut()">
   当前{{canShow}}，点击退出
 </button>
