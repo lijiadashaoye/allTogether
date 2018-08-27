@@ -9,7 +9,7 @@ export class AppInitService {
     return this.initData;
   }
   load() {
-    // 使用 APP_INITIALIZER 来做软件初始化，比如获取当前用户数据，从而针对性的渲染页面
+    // 使用 APP_INITIALIZER 来配置系统初始化，比如获取当前用户数据，从而针对性的渲染页面
     return (): Promise<any> => {
       let url = "/userdatas";
       return new Promise((resolve, reject) => {

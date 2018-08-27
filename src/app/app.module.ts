@@ -44,6 +44,7 @@ export function appInitServiceFactory(provider: AppInitService) {
   providers: [
     /********************************************/
     // 软件初始化
+    // 工厂函数的输入参数是依赖对象列表，输出结果是对应的依赖对象。
     AppInitService,
     {
       provide: APP_INITIALIZER,

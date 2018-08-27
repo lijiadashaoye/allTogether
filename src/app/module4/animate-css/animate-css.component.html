@@ -1,4 +1,4 @@
-<div>
+<div class="animated fadeInLeft">
   https://github.com/daneden/animate.css
   <br> 引入方法：
   <br> 1：npm install animate.css --save
@@ -8,10 +8,10 @@
   <br>写在当前组件css文件内：@import '../../../../node_modules/animate.css/animate.min.css';
   <br> 3：使用class名添加动画
 </div>
-<div>
+<div class="animated fadeInLeft">
   <button *ngFor="let item of animateArr;let i=index" class="animated" (click)="addAnimate($event,item)">{{item}}</button>
 </div>
-<div>
+<div class="animated fadeInLeft ">
   <button class="animated infinite" (click)="stopToggle($event,'bounce')">infinite</button>
   <button *ngFor="let item of animateArr2;let i=index" class="animated" (click)="addAnimate2($event,item.name)">
     {{item.name}}: {{item.time}}</button>

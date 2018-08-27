@@ -116,6 +116,7 @@ export class AnimateCssComponent implements OnInit {
   sub: Subscription;
   sub2: Subscription;
   ngOnInit() {}
+
   addAnimate(ev: Event, className) {
     let target = ev.target;
     this.rd.addClass(target, className);
