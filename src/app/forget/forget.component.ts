@@ -11,7 +11,7 @@ import {
 } from '@angular/router';
 import {
   UserService
-} from '../user.service';
+} from '../main-http-service/user.service';
 import {
   resolveService
 } from '../main.guard';

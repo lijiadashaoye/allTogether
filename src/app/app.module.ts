@@ -11,12 +11,12 @@ import { CheckLogoComponent } from "./signup/check-logo/check-logo.component";
 
 /*****************************************************************/
 import { MainRoutingModule } from "./main.route";
-import { HttpService, BASE_URL, urlText } from "./http.service";
-import { UserService } from "./user.service";
+import { HttpService, BASE_URL, urlText } from "./main-http-service/http.service";
+import { UserService } from "./main-http-service/user.service";
 import { controlLogoutService } from "./controlLogout";
 /*****************************************************************/
 // 软件初始化方法
-import { AppInitService } from "./appInit.service";
+import { AppInitService } from "./main-http-service/appInit.service";
 import { APP_INITIALIZER } from "@angular/core";
 export function appInitServiceFactory(provider: AppInitService) {
   return provider.load();

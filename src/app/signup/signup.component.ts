@@ -6,7 +6,7 @@ import {
   FormControl
 } from "@angular/forms";
 import { Router, ActivatedRoute } from "@angular/router";
-import { UserService } from "../user.service";
+import { UserService } from "../main-http-service/user.service";
 
 @Component({
   selector: "app-signup",

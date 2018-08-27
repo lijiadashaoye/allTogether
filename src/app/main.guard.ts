@@ -13,7 +13,7 @@ import {
 } from 'rxjs';
 import {
   UserService
-} from './user.service'
+} from './main-http-service/user.service'
 /*******************************************************************/
 @Injectable() // 用来定义怎么resolve数据的服务
 export class resolveService {
