@@ -10,6 +10,7 @@ import { controlLogoutService } from "./controlLogout";
 export class AppComponent {
   urlList = [];
   canShow = "login";
+  isClick = 0; // 用来显示被点击的按钮
   constructor(
     public route: Router,
     public actRoute: ActivatedRoute,
@@ -28,7 +29,8 @@ export class AppComponent {
     this.where.logout.emit("login");
     sessionStorage.removeItem("user");
   }
-  goto(data) {
+  goto(data, index) {
+    this.isClick = index;
     this.route.navigate([`${data}`]);
   }
 }

@@ -20,7 +20,7 @@
   </div>
   <div>
     <h2>一些数组的方法</h2>
-    <button *ngFor="let item of arrFns" >{{item}}</button>
+    <button *ngFor="let item of arrFns" (click)="isClick(item)">{{item}}</button>
   </div>
 </div>
 

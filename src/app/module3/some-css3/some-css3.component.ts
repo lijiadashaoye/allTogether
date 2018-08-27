@@ -18,7 +18,9 @@ export class SomeCss3Component implements OnInit {
   ];
   constructor() {}
   ngOnInit() {}
-
+  isClick(item) {
+    this[item]();
+  }
   // 判断一个数组是否包含一个指定的值，传参：（要查找的元素）；返回值：true或 false；
   includesFn() {
     let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -28,8 +30,8 @@ export class SomeCss3Component implements OnInit {
   forEachFn() {
     let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     arr.forEach((item, index) => {
-      console.log(item);
-      console.log(index);
+      console.log("item:", item);
+      console.log("index:", index);
       item * 5;
     });
     console.log(arr);
@@ -39,8 +41,8 @@ export class SomeCss3Component implements OnInit {
   findFn() {
     let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     let kk = arr.find((item, index) => {
-      console.log(item);
-      console.log(index);
+      console.log("item:", item);
+      console.log("index:", index);
       return item > 7;
     });
     console.log(kk);
@@ -48,8 +50,8 @@ export class SomeCss3Component implements OnInit {
   findIndexFn() {
     let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     let kk = arr.find((item, index) => {
-      console.log(item);
-      console.log(index);
+      console.log("item:", item);
+      console.log("index:", index);
       return item > 7;
     });
     console.log(kk);
@@ -59,9 +61,9 @@ export class SomeCss3Component implements OnInit {
   mapFn() {
     let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     let kk = arr.map((item, index) => {
-      console.log(item);
-      console.log(index);
-      item * 5;
+      console.log("item:", item);
+      console.log("index:", index);
+      return item * 5;
     });
     console.log(kk);
   }
@@ -69,8 +71,8 @@ export class SomeCss3Component implements OnInit {
   someFn() {
     let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     let kk = arr.some((item, index) => {
-      console.log(item);
-      console.log(index);
+      console.log("item:", item);
+      console.log("index:", index);
       return item > 8;
     });
     console.log(kk);
@@ -79,8 +81,8 @@ export class SomeCss3Component implements OnInit {
   everyFn() {
     let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     let kk = arr.every((item, index) => {
-      console.log(item);
-      console.log(index);
+      console.log("item:", item);
+      console.log("index:", index);
       return item < 8;
     });
     console.log(kk);
