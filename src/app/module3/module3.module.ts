@@ -14,6 +14,7 @@ import { SomeCss3Component } from './some-css3/some-css3.component';
 import {
   module3RoutingModule
 } from './module3.route';
+import { JsLearnComponent } from './js-learn/js-learn.component';
 
 @NgModule({
   imports: [
@@ -23,6 +24,7 @@ import {
   declarations: [
     Module3Component,
     SomeCss3Component,
+    JsLearnComponent,
 
   ]
 })

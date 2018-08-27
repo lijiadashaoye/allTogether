@@ -13,7 +13,7 @@ import {
     Module3Component
   } from './module3.component'
   import { SomeCss3Component } from './some-css3/some-css3.component';
-  
+  import { JsLearnComponent } from './js-learn/js-learn.component';
   
   const routes: Routes = [{
     path: '',
@@ -21,7 +21,12 @@ import {
     children: [{
       path: 'Css3',
       component: SomeCss3Component
-    }]
+    },
+    {
+      path: 'jsLearn',
+      component: JsLearnComponent
+    }
+  ]
   }];
   
   @NgModule({

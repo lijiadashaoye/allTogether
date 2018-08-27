@@ -19,7 +19,7 @@ export class Module3Component implements OnInit {
 
   ngOnInit() {
     this.urlList = [
-      'Css3',
+      'Css3','jsLearn'
     ]
   }
   ngAfterViewInit() {
