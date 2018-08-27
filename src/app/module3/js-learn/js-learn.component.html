@@ -3,3 +3,8 @@
   <button *ngFor="let item of arrFns" style="cursor: pointer;" (click)="isClick(item)">{{item}}</button>
   <br>方法的结果：{{showData}}
 </div>
+<div>
+  @Self() - 表示只在本级注入器查找依赖对象
+  <br> @SkipSelf() - 表示不从本级注入器获取依赖对象
+  <br> @Optional - 表示该依赖对象是可选的，如果找不到返回 null
+</div>
