@@ -22,6 +22,7 @@ export class AppComponent {
   }
   ngOnInit(): void {
     this.urlList = ["module1", "module2", "module3", "module4"];
+    // console.log(self);  // 可以使用self代表 window 对象
   }
   logOut() {
     //  退到登陆页

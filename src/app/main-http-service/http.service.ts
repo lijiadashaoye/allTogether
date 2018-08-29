@@ -5,7 +5,7 @@ import { Injectable, Inject } from "@angular/core";
 import { Observable } from "rxjs";
 // 使用 InjectionToken 对字符串令牌进行包装，防止命名重复被覆盖
 import { InjectionToken } from "@angular/core";
-export const BASE_URL = new InjectionToken<string>("");
+export const BASE_URL = new InjectionToken<string>("kk");
 export const urlText = "/userdatas";
 /**************************************************************/
 const HEADER = {

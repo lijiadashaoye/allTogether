@@ -1,11 +1,11 @@
 {
 
   "/userdatas": {
-    "target": "http://localhost:3000",
+    "target": "http://localhost:3003",
     "secure": false
   },
   "/module1data": {
-    "target": "http://localhost:3000",
+    "target": "http://localhost:3003",
     "secure": false
   }
 }
