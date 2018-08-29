@@ -29,7 +29,7 @@ export class JsonServerComponent implements OnInit {
       password: "123"
     };
     this.http
-      .signup(obj)
+      .isPost(obj)
       .pipe(
         map(res => {
           return res;

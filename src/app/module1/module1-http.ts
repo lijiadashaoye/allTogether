@@ -57,22 +57,7 @@ export class Module1HttpService {
     @Inject(Module1BASE_URL) private baseUrl,
     private http: HttpClient
   ) {}
-  login(data): Observable<any> {
-    let url = this.baseUrl;
-    // let params = {
-    //   name: data.name
-    // };
-    // return this.http.get(url, {
-    //   params
-    // });
-    const params = new HttpParams();
-    params.set("name", data.name);
-    return this.http.get(url, {
-      params
-    });
-  }
-
-  signup(item): Observable<any> {
+  isPost(item): Observable<any> {
     let url = this.baseUrl;
     return this.http.post(`${url}`, JSON.stringify(item), { headers: HEADER });
   }

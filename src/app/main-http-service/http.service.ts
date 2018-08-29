@@ -1,4 +1,4 @@
-import { HttpHeaders, HttpClient } from "@angular/common/http";
+import { HttpHeaders, HttpClient, HttpParams } from "@angular/common/http";
 
 import { Injectable, Inject } from "@angular/core";
 
@@ -21,9 +21,17 @@ export class HttpService {
   login(data): Observable<any> {
     // 登陆
     let url = this.baseUrl;
-    let params = {
-      name: data.name
-    };
+    // get 携带查询参数
+    // 写法一：
+    // let params = {
+    //   name: data.name
+    // };
+    // return this.http.get(url, {
+    //   params
+    // });
+    // 写法二：
+    const params = new HttpParams();
+    params.set("name", data.name);   // 多个参数需要链式set
     return this.http.get(url, {
       params
     });
