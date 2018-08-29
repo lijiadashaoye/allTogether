@@ -9,6 +9,8 @@ import { controlLogoutService } from "../controlLogout";
 })
 export class Module4Component implements OnInit {
   urlList;
+  isClick = null; // 用来显示被点击的按钮
+
   constructor(public route: Router, public logout: controlLogoutService) {}
 
   ngOnInit() {
@@ -25,7 +27,8 @@ export class Module4Component implements OnInit {
   ngAfterViewInit() {
     setTimeout(_ => this.logout.logout.emit("module4"), 200);
   }
-  goto(data) {
+  goto(data,index) {
+    this.isClick = index;
     this.route.navigate([`module4/${data}`]);
   }
 }

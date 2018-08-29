@@ -1,0 +1,26 @@
+
+  <h2>动画及属性指令</h2>
+  <div class="waper">
+    <div style="width:510px;">
+      <p (click)="hasclidk($event)" [@clicks]="buttonAnimts" id="dd">
+        <span>鼠标点击</span>
+      </p>
+      <p class="nose" (mouseenter)="addBorder($event)" (mouseleave)="moveBorder($event)">
+        <span>鼠标hover</span>
+        H
+      </p>
+      <div class="changeClass">
+        <span [ngClass]="{'one1':one,'two1':two,'three1':three}">自动执行的ngClass样式切换</span>
+      </div>
+    </div>
+    <div class="itemList" [@queryAinm]='datas'>
+      <div>
+        点击按钮查看query动画效果，点击三次数据会清零一次
+        <button (click)="addData()">addData</button>
+      </div>
+      <app-use-animate-list [data]="data" *ngFor="let data of datas"></app-use-animate-list>
+    </div>
+  </div>
+  <p>
+    组件的路由动画只在当前模块路由切换组件中有效，如果路由时，进行的是模块切换，则当前组件的动画就无效了
+  </p>

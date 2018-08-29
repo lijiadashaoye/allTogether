@@ -2,6 +2,8 @@ import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 /*****************************************************************/
 import { AppComponent } from "./app.component";
 import { LoginComponent } from "./login/login.component";
@@ -26,6 +28,7 @@ import { APP_INITIALIZER } from "@angular/core";
 export function appInitServiceFactory(provider: AppInitService) {
   return provider.load();
 }
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,10 +40,11 @@ export function appInitServiceFactory(provider: AppInitService) {
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MainRoutingModule
+    MainRoutingModule,
   ],
   providers: [
     /********************************************/

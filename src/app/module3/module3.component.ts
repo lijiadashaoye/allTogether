@@ -12,6 +12,8 @@ import {
 })
 export class Module3Component implements OnInit {
   urlList;
+  isClick = null; // 用来显示被点击的按钮
+
   constructor(
     public route: Router,
     public logout: controlLogoutService
@@ -25,7 +27,8 @@ export class Module3Component implements OnInit {
   ngAfterViewInit() {
     setTimeout(_ => this.logout.logout.emit('module3'),200)
   }
-  goto(data) {
+  goto(data,index) {
+    this.isClick = index;
     this.route.navigate([`module3/${data}`])
   }
 }

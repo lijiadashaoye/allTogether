@@ -1,0 +1,63 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.addBorder {
+  box-sizing: border-box;
+  border: 5px solid #dcf30b;
+  padding-top: 5%;
+}
+
+.changeClass {
+  text-align: center;
+}
+
+span {
+  display: inline-block;
+  width: 100%;
+  font-weight: bold;
+  color: white;
+  background: none;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.one1 {
+  background: rgb(10, 148, 240);
+}
+
+.two1 {
+  height: 60px;
+  border: 10px solid rgb(158, 57, 57);
+  background: rgb(240, 140, 10);
+}
+
+.three1 {
+  background: rgb(152, 240, 10);
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+.nose {
+  background: rgb(153, 112, 51);
+  height: 150px;
+  width: 80px;
+  text-align: center;
+  font-size: 40px;
+}
+
+.nose>span {
+  font-size: 12px;
+  color: white;
+}
+
+.itemList {
+  width: 100%;
+  height: 480px;
+  overflow: auto;
+  background: rgb(223, 220, 220);
+  box-sizing: border-box;
+}

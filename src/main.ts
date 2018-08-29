@@ -22,7 +22,7 @@ platformBrowserDynamic()
     setTimeout(function() {
       let inter = setInterval(_ => {
         num -= 0.1;
-        if (num < .1) {
+        if (num < .2) {
           animate["style"]["display"] = "none";
           clearInterval(inter);
         }

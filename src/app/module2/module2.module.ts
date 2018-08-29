@@ -8,11 +8,15 @@ import {
 import {
   Module2Component
 } from './module2.component';
-
+import {
+  AnimateMainComponent
+} from './animate/animate.component';
+import {
+  UseAnimateListComponent
+} from './animate/use-animate-list/use-animate-list.component';
 import {
   module2RoutingModule
 } from './module2.route';
-
 
 @NgModule({
   imports: [
@@ -20,7 +24,9 @@ import {
     module2RoutingModule
   ],
   declarations: [
-    Module2Component
+    Module2Component,
+    AnimateMainComponent,
+    UseAnimateListComponent
   ]
 })
-export class Module2Module { }
+export class Module2Module {}

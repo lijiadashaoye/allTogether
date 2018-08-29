@@ -7,6 +7,7 @@ import { Component, OnInit } from "@angular/core";
 })
 export class AosentubiaoComponent implements OnInit {
   magicLevel = 0;
+  coverImg='avatar:svg-8'
   constructor() {}
 
   ngOnInit() {}
