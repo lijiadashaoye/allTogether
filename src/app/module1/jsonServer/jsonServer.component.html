@@ -6,6 +6,8 @@
   <br>
   <input type="text" #id placeholder="id">
   <br>
+  <input type="text" #id2 placeholder="id2">
+  <br>
   <button (click)="search(name,eat,id,'all')">所有数据</button>
   <button (click)="search(name,eat,id,'name')">根据name查询</button>
   <button (click)="search(name,eat,id,'job')">根据job查询</button>
@@ -16,6 +18,7 @@
   <button (click)="search(name,eat,id,'gte')">大于等于</button>
   <button (click)="search(name,eat,id,'lte')">小于等于</button>
   <button (click)="search(name,eat,id,'ne')">不等于</button>
+  <button (click)="between(id.value,id2.value)">获取id区间的数据</button>
   <br>
   <button (click)="itGet()">Get</button>
   <button (click)="itPost()">Post</button>
@@ -27,3 +30,7 @@
 <ul style="margin-top:10px;">
   <li *ngFor="let data of datas" (click)="goto(url)">{{data|json}}</li>
 </ul>
+<div>
+  <h2>将图片放在json-server文件夹内，模拟网络方式加载图片</h2>
+  <img src="http://localhost:3003/22.png">
+</div>

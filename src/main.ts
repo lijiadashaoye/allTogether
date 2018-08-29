@@ -21,12 +21,12 @@ platformBrowserDynamic()
     let num = 1;
     setTimeout(function() {
       let inter = setInterval(_ => {
-        animate["style"]["opacity"] -= 0.1;
         num -= 0.1;
-        if (num < 0) {
+        if (num < .1) {
           animate["style"]["display"] = "none";
           clearInterval(inter);
         }
+        animate["style"]["opacity"] -= 0.1;
       }, 200);
     }, 3000);
   })

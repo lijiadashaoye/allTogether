@@ -1,7 +1,11 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 /***************************************************************************/
-import { Module1HttpService, Module1BASE_URL, urlText } from "./module1-http";
+import {
+  Module1HttpService,
+  Module1BASE_URL,
+  urlText
+} from "./module1-http";
 import { IndexDBLearnComponent } from "./index-dblearn/index-dblearn.component";
 import { IndexDBService } from "./index-dblearn/indexDB.service";
 

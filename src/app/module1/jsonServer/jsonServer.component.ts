@@ -1,24 +1,15 @@
-import {
-  Component,
-  OnInit
-} from '@angular/core';
-import {
-  Module1HttpService
-} from "../module1-http";
-import {
-  map
-} from "rxjs/operators";
+import { Component, OnInit } from "@angular/core";
+import { Module1HttpService } from "../module1-http";
+import { map } from "rxjs/operators";
 @Component({
-  templateUrl: './jsonServer.component.html',
-  styleUrls: ['./jsonServer.component.css']
+  templateUrl: "./jsonServer.component.html",
+  styleUrls: ["./jsonServer.component.css"]
 })
 export class JsonServerComponent implements OnInit {
   allDatas;
   nowDatas;
   datas;
-  constructor(
-    public http: Module1HttpService
-  ) {}
+  constructor(public http: Module1HttpService) {}
 
   ngOnInit() {
     this.itGet();
@@ -27,7 +18,7 @@ export class JsonServerComponent implements OnInit {
   itGet() {
     this.http.getData("module1data").subscribe(val => {
       this.allDatas = val;
-      this.datas = val
+      this.datas = val;
     });
   }
   itPost() {
@@ -45,7 +36,7 @@ export class JsonServerComponent implements OnInit {
         })
       )
       .subscribe(val => {
-        this.datas = [val]
+        this.datas = [val];
         this.itGet();
       });
   }
@@ -76,7 +67,7 @@ export class JsonServerComponent implements OnInit {
         })
       )
       .subscribe(val => {
-        this.datas = [val]
+        this.datas = [val];
         this.itGet();
       });
   }
@@ -94,7 +85,7 @@ export class JsonServerComponent implements OnInit {
         })
       )
       .subscribe(val => {
-        this.datas = [val]
+        this.datas = [val];
         this.itGet();
       });
   }
@@ -110,7 +101,7 @@ export class JsonServerComponent implements OnInit {
       )
       .subscribe(val => {
         this.itGet();
-        this.datas = val
+        this.datas = val;
       });
   }
 
@@ -135,7 +126,8 @@ export class JsonServerComponent implements OnInit {
           }
           break;
         case "sort":
-          if (job || name) {} else {
+          if (job || name) {
+          } else {
             this.tip = `输入name或job值`;
             return;
           }
@@ -175,41 +167,51 @@ export class JsonServerComponent implements OnInit {
     this.tip = "";
     switch (type) {
       case "all":
-        url = "http://localhost:3000/test";
+        url = "http://localhost:3003/test";
         break;
       case "name":
-        url = "http://localhost:3000/test" + `?name=${name}`;
+        url = "http://localhost:3003/test" + `?name=${name}`;
         break;
       case "job":
-        url = "http://localhost:3000/test" + `?job=${job}`;
+        url = "http://localhost:3003/test" + `?job=${job}`;
         break;
       case "id":
-        url = "http://localhost:3000/test" + `?id=${id}`;
+        url = "http://localhost:3003/test" + `?id=${id}`;
         break;
       case "sort":
         if (name) {
-          url = "http://localhost:3000/test" + `/?_sort=name,id&_order=asc`;
+          url = "http://localhost:3003/test" + `/?_sort=name,id&_order=asc`;
         }
         if (job) {
-          url = "http://localhost:3000/test" + `/?_sort=job,id&_order=asc`;
+          url = "http://localhost:3003/test" + `/?_sort=job,id&_order=asc`;
         }
         break;
-      case "like":
-        url = "http://localhost:3000/test" + `?name_like=${name}`;
+      case "like": // 等于...
+        url = "http://localhost:3003/test" + `?name_like=${name}`;
         break;
-      case "gte":
-        url = "http://localhost:3000/test" + `?id_gte=${id}`;
+      case "gte": // 大于...
+        url = "http://localhost:3003/test" + `?id_gte=${id}`;
         break;
-      case "lte":
-        url = "http://localhost:3000/test" + `?id_lte=${id}`;
+      case "lte": // 小于...
+        url = "http://localhost:3003/test" + `?id_lte=${id}`;
         break;
-      case "ne":
-        url = "http://localhost:3000/test" + `?id_ne=${id}`;
+      case "ne": // 不等于于...
+        url = "http://localhost:3003/test" + `?id_ne=${id}`;
         break;
     }
     this.http.search(url).subscribe(val => {
-      this.datas = val
+      this.datas = val;
     });
   }
-
+  between(id1, id2) {
+    if (id1 && id2) {
+      let url = "http://localhost:3003/test" + `?id_gte=${id1}&id_lte=${id2}`;
+      this.http.search(url).subscribe(val => {
+        this.datas = val;
+      });
+    } else {
+      this.tip = `输入id值`;
+    }
+  }
+ 
 }

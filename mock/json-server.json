@@ -1,0 +1,7 @@
+{
+  "port": "3003",
+  "delay": 10,
+  "watch": true,
+  "no-gzip": false,
+  "static": "./mock/public"
+}

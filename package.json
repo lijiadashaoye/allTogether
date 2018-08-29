@@ -9,7 +9,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "server": "ng serve --o --port 4000 --proxy-config proxy.conf.json",
-    "json_server": "json-server --port 3003 --watch ./mock/data.json"
+    "json_server": "json-server -c ./mock/json-server.json ./mock/data.json"
   },
   "private": true,
   "dependencies": {
