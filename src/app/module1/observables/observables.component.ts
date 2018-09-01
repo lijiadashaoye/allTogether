@@ -337,7 +337,7 @@ export class ObservablesComponent implements OnInit {
       map(val => `obs3-${val}`)
     );
 
-    // concatMap 是顺序执行外侧，然后外侧的每一个值触发一次内侧的执行，再根据外侧值得顺序输出值
+    // concatMap 是顺序执行外侧，然后外侧的每一个值都触发一次内侧的执行，再根据外侧值得顺序输出值
     obs2
       .pipe(concatMap(_ => interval(500).pipe(take(4))))
       .subscribe(val => console.log(val));
