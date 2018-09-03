@@ -1,9 +1,9 @@
-
-table{
+table {
     margin: 10px;
     border-collapse: collapse;
 }
-td{
+
+td {
     padding: 5px;
-    border:1px solid rgb(233, 229, 229);
+    border: 1px solid rgb(233, 229, 229);
 }
