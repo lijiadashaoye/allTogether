@@ -12,6 +12,7 @@ import {
 
 // Ctrl+K, Ctrl+[：折叠当前函数（局部折叠）
 // Ctrl+Shift+]：展开当前函数（局部展开）
+// ng build --prod --base-href=http://www.dizmix.com/works/
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
