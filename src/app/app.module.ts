@@ -1,7 +1,7 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule ,HTTP_INTERCEPTORS} from "@angular/common/http";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 /*****************************************************************/
@@ -16,7 +16,8 @@ import { MainRoutingModule } from "./main.route";
 import {
   HttpService,
   BASE_URL,
-  urlText
+  urlText,
+  NoopInterceptor
 } from "./main-http-service/http.service";
 import { UserService } from "./main-http-service/user.service";
 import { controlLogoutService } from "./controlLogout";
@@ -66,7 +67,8 @@ export function appInitServiceFactory(provider: AppInitService) {
     {
       provide: BASE_URL,
       useValue: urlText
-    }
+    },
+    { provide: HTTP_INTERCEPTORS, useClass: NoopInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })
