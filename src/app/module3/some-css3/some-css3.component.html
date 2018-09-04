@@ -1,4 +1,9 @@
 <div>
+  <h2>动态设置图标(导航使用)</h2>
+  <div><i class="iconfont" *ngFor="let list of listData" [ngClass]="setClass(list.icon)"></i>{{list.name}}</div>
+</div>
+
+<div>
   <h2>线性渐变</h2>
   <div class="linearGradient1"></div>
 </div>
