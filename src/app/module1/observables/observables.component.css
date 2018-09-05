@@ -1,9 +1,21 @@
+.contain {
+  display: flex;
+  flex-direction: column;
+  height:85vh;
+  box-sizing: border-box
+}
+
+.buttons {
+  flex: 1;
+  background:rgb(172, 173, 243);;
+}
+
 table {
-    margin: 10px;
-    border-collapse: collapse;
+  margin: 10px;
+  border-collapse: collapse;
 }
 
 td {
-    padding: 5px;
-    border: 1px solid rgb(233, 229, 229);
+  padding: 5px;
+  border: 1px solid rgb(233, 229, 229);
 }

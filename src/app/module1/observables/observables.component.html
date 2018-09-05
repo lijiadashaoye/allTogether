@@ -1,7 +1,5 @@
-<div>
-  <h2>rxjs 6</h2>
-  <br>
-
+<div class="contain">
+  <h2>rxjs 6 ，使用弹性盒子做上、中、下三栏结构的布局</h2>
   <div class="buttons">
     <button (click)="delayTest()">delayTest</button>
     <button (click)="ajaxTest()">ajaxTest</button>
@@ -28,13 +26,14 @@
     <button (click)="testFind()">find</button>
     <button (click)="subscribeObservableFn()">创建Observable，并指定最后发出的值</button>
     <button (click)="subscribeObservableFn2()">创建Observable2</button>
-  </div>
-  <div class="bottomDiv">
     <div>
       <div style="width:400px;height:150px;background:rgb(255, 251, 0);" id="my-element">
         <div style="width:40px;height:30px;background:rgb(0, 255, 76);"></div> {{mouseData}} {{tips}}
       </div>
     </div>
+    <h2>中间这栏，永远是自适应高度，而且header永远在最上，footer永远在最下</h2>
+  </div>
+  <div class="bottomDiv">
     <div>
       <h2>常用操作符</h2>
       <table>
