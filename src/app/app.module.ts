@@ -17,7 +17,8 @@ import {
   HttpService,
   BASE_URL,
   urlText,
-  NoopInterceptor
+  NoopInterceptor,
+  UserDataService
 } from "./main-http-service/http.service";
 import { UserService } from "./main-http-service/user.service";
 import { controlLogoutService } from "./controlLogout";
@@ -52,6 +53,7 @@ export function appInitServiceFactory(provider: AppInitService) {
     // 软件初始化
     // 工厂函数的输入参数是依赖对象列表，输出结果是对应的依赖对象。
     AppInitService,
+    UserDataService,
     {
       provide: APP_INITIALIZER,
       useFactory: appInitServiceFactory,

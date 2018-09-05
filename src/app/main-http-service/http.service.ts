@@ -15,11 +15,66 @@ import {
   HttpHandler,
   HttpRequest
 } from "@angular/common/http";
+/*****************************************************************/
+// 设置用户信息，作为拦截器设置token的中转层，用于整个软件用户信息保存分发
+@Injectable()
+export class UserDataService {
+  _useData = {
+    // 用户信息
+    ID: "",
+    Name: "",
+    Pwd: "",
+    Role: ""
+  };
+
+  get user() {
+    return this._useData;
+  }
+  set user(data) {
+    this._useData = data;
+  }
+}
+
+/*****************************************************************/
+@Injectable()
+export class NoopInterceptor implements HttpInterceptor {
+  // @Optional()
+  // 表示依赖是可选的，如果依赖不存在不会报错，返回null,用于设置token时用户还未登录，所以没有token
+  constructor(
+    @Optional()
+    @Inject("getTokenHttpService")
+    public http: any,
+    private userData: UserDataService
+  ) {}
+
+  intercept(
+    req: HttpRequest<any>,
+    next: HttpHandler
+  ): Observable<HttpEvent<any>> {
+    const HEADER = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json",
+        token: this.userData.user.Pwd
+      })
+    };
+    const reqOptions = {
+      // 向拦截器里添加更多有关http的数据
+      ...HEADER,
+      withCredentials: true
+    };
+    const authReq = req.clone(reqOptions); //发送新请求头的http请求;
+    return next.handle(authReq);
+  }
+}
 
 /**************************************************************/
 @Injectable()
 export class HttpService {
-  constructor(@Inject(BASE_URL) private baseUrl, private http: HttpClient) {}
+  constructor(
+    @Inject(BASE_URL) private baseUrl,
+    private http: HttpClient,
+    private userData: UserDataService
+  ) {}
   login(data): Observable<any> {
     // 登陆
     let url = this.baseUrl;
@@ -62,36 +117,5 @@ export class HttpService {
       logo: data.logo
     };
     return this.http.patch(url, params);
-  }
-}
-/*****************************************************************/
-// 拦截器一定要写到http代码后
-@Injectable()
-export class NoopInterceptor implements HttpInterceptor {
-  // @Optional()
-  // 表示依赖是可选的，如果依赖不存在不会报错，返回null,用于设置token时用户还未登录，所以没有token
-  constructor(
-    @Optional()
-    @Inject("getTokenHttpService")
-    public http: any
-  ) {}
-
-  intercept(
-    req: HttpRequest<any>,
-    next: HttpHandler
-  ): Observable<HttpEvent<any>> {
-    const HEADER = {
-      headers: new HttpHeaders({
-        "Content-Type": "application/json",
-        token: "tokentokentokentoken"
-      })
-    };
-    const reqOptions = {
-      // 向拦截器里添加更多有关http的数据
-      ...HEADER,
-      withCredentials: true
-    };
-    const authReq = req.clone(reqOptions); //发送新请求头的http请求;
-    return next.handle(authReq);
   }
 }
