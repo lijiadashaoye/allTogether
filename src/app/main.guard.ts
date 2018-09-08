@@ -15,6 +15,8 @@ import {
   UserService
 } from './main-http-service/user.service'
 /*******************************************************************/
+// resolve方法会在路由开始，页面还未加载时，提前进行一些行为，但如果是执行http，会阻碍
+// 页面的加载，出现一点时间的空白
 @Injectable() // 用来定义怎么resolve数据的服务
 export class resolveService {
   name = '';
