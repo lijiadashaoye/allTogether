@@ -1,25 +1,11 @@
+<div class="waper">
 <div>
   <h2>一些数组的方法</h2>
-  <button *ngFor="let item of arrFns" style="cursor: pointer;" (click)="isClick(item)">{{item}}</button>
-  <br>方法的结果：{{showData}}
+  <button [ngStyle]="{color:num==i?'red':''}" *ngFor="let item of arrFns;let i=index" style="cursor: pointer;" (click)="isClick(item,i)">{{item}}</button>
+  <br>方法的结果：{{showData|json}}
 </div>
-<div>
+<div >
   @Self() - 表示只在本级注入器查找依赖对象
   <br> @SkipSelf() - 表示不从本级注入器获取依赖对象
   <br> @Optional - 表示该依赖对象是可选的，如果找不到返回 null
-</div>
-<div>
-  <form #loginForm="ngForm">
-    Angular版本：
-    <!-- <div *ngFor="let version of versions;">
-        <input 
-          [attr.id]="version"
-           name="version"
-           ngModel
-           required
-    	   [value]="version"
-		    type="radio">
-		 <label [attr.for]="version">{{version}}</label> -->
-	  <!-- </div> -->
-  </form>
 </div>

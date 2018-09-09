@@ -9,6 +9,8 @@ import {
   styleUrls: ["./js-learn.component.css"]
 })
 export class JsLearnComponent implements OnInit {
+  loginForm;
+  num; // 用来传递index
   arrFns = [
     "includesFn",
     "forEachFn",
@@ -18,13 +20,15 @@ export class JsLearnComponent implements OnInit {
     "someFn",
     "everyFn",
     "reduceFn",
-    "filterFn"
+    "filterFn",
+    'moreArray'
   ];
   showData;
-  versions = [];
+
   constructor() {}
   ngOnInit() {}
-  isClick(item) {
+  isClick(item, index) {
+    this.num = index;
     this[item]();
   }
   // 判断一个数组是否包含一个指定的值，
@@ -125,5 +129,19 @@ export class JsLearnComponent implements OnInit {
       return item < 6;
     });
     this.showData = kk;
+  }
+
+  moreArray() {
+    let arr = [];
+    for (let j = 0; j < 20; j++) {
+      let num = Math.floor(Math.random() * 10);
+      arr.push(num)
+    }
+    let arr2 = [];
+    // 对数组数据进行再次分组
+    for (let i = 0; i < arr.length; i += 4) {
+      arr2.push(arr.slice(i, i + 4));
+    }
+    this.showData = arr2;
   }
 }

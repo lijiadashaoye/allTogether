@@ -1,37 +1,47 @@
-<div>
-  <h2>动态设置图标(导航使用)</h2>
-  <div><i class="iconfont" *ngFor="let list of listData" [ngClass]="setClass(list.icon)"></i>{{list.name}}</div>
-</div>
+<div class="css3Waper">
+  <div>
+    <h2>动态设置图标(导航使用)</h2>
+    <div>
+      <i class="iconfont" *ngFor="let lists of listData" [ngClass]="setClass(lists.icon)"> {{lists.name}}</i>
+    </div>
+  </div>
 
-<div>
-  <h2>线性渐变</h2>
-  <div class="linearGradient1"></div>
-</div>
+  <div>
+    <h2>线性渐变</h2>
+    <div class="linearGradient1"></div>
+  </div>
 
-<div>
-  <h2>重复的线性渐变</h2>
-  <div class="linearGradient2">改变窗口宽度看效果</div>
-</div>
+  <div>
+    <h2>重复的线性渐变</h2>
+    <div class="linearGradient2">改变窗口宽度看效果</div>
+  </div>
 
-<div>
-  <h2>@media媒体查询</h2>
-  <div class="mediaDiv"></div>
+  <div>
+    <h2>@media媒体查询</h2>
+    <div class="mediaDiv"></div>
+  </div>
+  <div>
+    <h2>单独设置圆角</h2>
+    <div class="radiusDiv"></div>
+  </div>
+  <div>
+    <h2>阴影</h2>
+    <p class="oneP"></p>
+  </div>
+  <div>
+    <h2>文字超出</h2>
+    <p class="test" style="text-overflow:ellipsis;width:150px;">aksdjflkajsdflkjasldkfjalksdjflasdf</p>
+  </div>
+  <div>
+    <h2>css3变形</h2>
+    <p class="test2">css3变形css3变形css3变形css3变形</p>
+  </div>
 </div>
 <div>
-  <h2>单独设置圆角</h2>
-  <div class="radiusDiv"></div>
-</div>
-<div>
-  <h2>阴影</h2>
-  <p class="oneP"></p>
-</div>
-<div>
-  <h2>文字超出</h2>
-  <p class="test" style="text-overflow:ellipsis;width:150px;">aksdjflkajsdflkjasldkfjalksdjflasdf</p>
-</div>
-<div>
-  <h2>css3变形</h2>
-  <p class="test2">css3变形css3变形css3变形css3变形</p>
+  <p>元素的css样式增删</p>
+  <button (click)="show(isTar)">show</button>
+  <button (click)="hide(isTar)">hide</button>
+  <div #isTar>dfasdfadff</div>
 </div>
 
 <div>

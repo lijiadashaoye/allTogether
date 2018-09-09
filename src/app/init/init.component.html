@@ -1,7 +1,10 @@
 <p>
   这个是初始化组件，可以将整个软件的任何初始化操作在这个组件内完成，类似打开APP时会先来个广告图片
 </p>
+<p>Angular 对所有双花括号中的表达式求值，把求值的结果转换成字符串，并把它们跟相邻的字符串字面量连接起来。</p>
+<p>最后，把这个组合出来的插值结果赋给元素或指令的属性。</p>
+<p>双括号中用的是函数：{{'time:'+times()}}</p>
 <div class="banner">
-  <span>{{time}}</span>
+    <button (click)="goto()">手动跳转 {{'time:'+time}}</button>
   <img [src]="imgSrc">
 </div>

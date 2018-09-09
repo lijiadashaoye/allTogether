@@ -92,6 +92,7 @@ export class AnimateMainComponent implements OnInit {
 
   }
   hasclidk(e) {
+    console.log(e)
     e.preventDefault();
     e.stopPropagation();
     this.buttonAnimts == 'one2' ? this.buttonAnimts = 'two2' : this.buttonAnimts = 'one2';
@@ -119,12 +120,12 @@ export class AnimateMainComponent implements OnInit {
   @HostBinding('@routeAnim') self;
 
   // 设置组件位置的方法一：
-  @HostListener('@routeAnim.start', ['$event'])
+  @HostListener('@routeAnim.start', ['$event']) // 动画执行的回调，形式一
   animateStart(ev) { // 动画开始的回调函数,可以用来设置host的position，这样当路由切换组件时，元素不至于乱跑
     this.top = ev.element.offsetTop + 'px';
   }
   @HostListener('@routeAnim.done', ['$event'])
-  animateDone(ev) {
+  animateDones(ev) {
     ev.element.style.top = this.top;
   }
   // 设置组件位置的方法二：
@@ -132,4 +133,8 @@ export class AnimateMainComponent implements OnInit {
   //   this.top = this.el.nativeElement.getBoundingClientRect().top;
   //   this.el.nativeElement.style.top = this.top + 'px';
   // }
+
+  animateDone(e) { // 动画执行的回调，形式一
+    // console.log(e)
+  }
 }

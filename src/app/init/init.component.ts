@@ -23,7 +23,7 @@ import {
 })
 export class InitComponent implements OnInit {
   imgSrc = '';
-  time = 7;
+  time = 22;
   sub: Subscription;
   private initData; // 用来保存软件启动前需要获取的数据
   constructor(private http: HttpClient, private router: Router) {}
@@ -34,7 +34,7 @@ export class InitComponent implements OnInit {
 
     this.sub = interval(1000)
       .subscribe(val => {
-        this.time = 7 - val;
+        this.time = 22 - val;
         if (this.time <= 0) {
           this.router.navigate(['login'])
         }
@@ -49,10 +49,16 @@ export class InitComponent implements OnInit {
       let post1 = results[0];
       let post2 = results[1];
       this.initData = results;
-      console.log(post1, post2);
+      // console.log(post1, post2);
     });
   }
   ngOnDestroy(): void {
     this.sub.unsubscribe();
+  }
+  goto() {
+    this.router.navigate(['login'])
+  }
+  times(){
+    return this.time
   }
 }

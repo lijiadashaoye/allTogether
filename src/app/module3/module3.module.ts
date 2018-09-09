@@ -9,7 +9,7 @@ import {
   Module3Component
 } from './module3.component';
 import { SomeCss3Component } from './some-css3/some-css3.component';
-
+import {FormsModule} from '@angular/forms'
 
 import {
   module3RoutingModule
@@ -19,7 +19,8 @@ import { JsLearnComponent } from './js-learn/js-learn.component';
 @NgModule({
   imports: [
     CommonModule,
-    module3RoutingModule
+    module3RoutingModule,
+    FormsModule
   ],
   declarations: [
     Module3Component,

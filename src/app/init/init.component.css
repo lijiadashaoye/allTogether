@@ -6,11 +6,13 @@
 .banner>img{
     width:100%;
 }
-.banner>span{
+.banner>button{
     position: absolute;
     top:10px;
     right:10px;
-    color:rgb(247, 242, 242);
     font-size: 18px;
     z-index: 10;
+    border:none;
+    border-radius: 5px;
+    cursor: pointer;
 }
