@@ -51,7 +51,9 @@ export class LoginComponent implements OnInit {
   toLogin() {
     this.login();
   }
-
+  loginFast(){
+    this.route.navigate(["module1"]);
+  }
   login() {
     if (this.forms.get("name").value) {
       this.userService.login(this.forms.value).subscribe(val => {

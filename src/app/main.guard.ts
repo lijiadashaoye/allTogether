@@ -29,6 +29,7 @@ export class resolveService {
   }
 }
 
+// 如果resolve是一个需要长时间才完成的任务，如http，会停滞路由跳转，出现长时间的页面空白
 @Injectable() // 用来定义resolve服务
 export class ResolveGuard implements Resolve < resolveService > {
   constructor(private resol: resolveService) {}

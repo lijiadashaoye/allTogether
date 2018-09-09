@@ -10,9 +10,12 @@ import {
 } from '@angular/router'
 import {
   interval,
-  Subscription
+  Subscription,
+  forkJoin
 } from 'rxjs'
-import { delay } from 'rxjs/operators';
+import {
+  delay
+} from 'rxjs/operators';
 @Component({
   selector: 'app-init',
   templateUrl: './init.component.html',
@@ -30,17 +33,23 @@ export class InitComponent implements OnInit {
     this.imgSrc = `assets/backImg/${num}.jpg`;
 
     this.sub = interval(1000)
-    .subscribe(val => {
-      this.time = 7 - val;
-      if (this.time <= 0) {
-        this.router.navigate(['login'])
-      }
-    })
+      .subscribe(val => {
+        this.time = 7 - val;
+        if (this.time <= 0) {
+          this.router.navigate(['login'])
+        }
+      })
 
     let url = "/userdatas";
-    this.http.get(url).subscribe(res => {
-      this.initData = res; // 可以将这些初始化数据存到一个服务里，或者sessionStorage里，作为全局的数据基础
-      // console.log(this.initData)
+    let http1 = this.http.get(url);
+    let http2 = this.http.get(url);
+
+    forkJoin([http1, http2]).subscribe(results => {
+      // 可以将这些初始化数据存到一个服务里，或者sessionStorage里，作为全局的数据基础
+      let post1 = results[0];
+      let post2 = results[1];
+      this.initData = results;
+      console.log(post1, post2);
     });
   }
   ngOnDestroy(): void {
