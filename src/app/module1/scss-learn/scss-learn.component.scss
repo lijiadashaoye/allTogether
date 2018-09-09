@@ -1,6 +1,7 @@
 $sdf:blue;
 $ffff:rgb(255, 251, 0);
 $ssss:rgb(0, 68, 255);
+
 @mixin mix($asdfa:$ffff) {
   color: rgb(12, 8, 5);
   background: $asdfa; // scss传参方法
@@ -8,18 +9,23 @@ $ssss:rgb(0, 68, 255);
 
 .one {
   color: $sdf;
+
   .one1 {
-    background:rebeccapurple;
+    background: rebeccapurple;
   }
+
   .two {
     font-size: 15px;
     background: rgb(209, 201, 202); // scss 的注释方法
     color: red;
+
     &:hover {
       @include mix($ssss) // 如果这里不写参数，上边就会用默认值$ffff
     }
+
     @import './two.scss';
     @import './one.scss';
+
     .three {
       @extend .one1; // scss的继承
       font-size: 25px;

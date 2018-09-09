@@ -1,0 +1,16 @@
+.banner{
+    position: relative;
+    width:500px;
+    height:420px;
+}
+.banner>img{
+    width:100%;
+}
+.banner>span{
+    position: absolute;
+    top:10px;
+    right:10px;
+    color:rgb(247, 242, 242);
+    font-size: 18px;
+    z-index: 10;
+}

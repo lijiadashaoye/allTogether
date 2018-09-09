@@ -1,4 +1,7 @@
-import { Component, OnInit } from "@angular/core";
+import {
+  Component,
+  OnInit
+} from "@angular/core";
 
 @Component({
   selector: "app-js-learn",
@@ -18,6 +21,7 @@ export class JsLearnComponent implements OnInit {
     "filterFn"
   ];
   showData;
+  versions = [];
   constructor() {}
   ngOnInit() {}
   isClick(item) {

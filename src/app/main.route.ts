@@ -1,13 +1,32 @@
-import { Routes, RouterModule } from "@angular/router";
-import { NgModule } from "@angular/core";
-import { LoginComponent } from "./login/login.component";
-import { SignupComponent } from "./signup/signup.component";
-import { ForgetComponent } from "./forget/forget.component";
-import { A404PageComponent } from "./a404-page/a404-page.component";
-import { resolveService, ResolveGuard, canLoadGuard } from "./main.guard";
+import {
+  Routes,
+  RouterModule
+} from "@angular/router";
+import {
+  NgModule
+} from "@angular/core";
+import {
+  LoginComponent
+} from "./login/login.component";
+import {
+  SignupComponent
+} from "./signup/signup.component";
+import {
+  ForgetComponent
+} from "./forget/forget.component";
+import {
+  A404PageComponent
+} from "./a404-page/a404-page.component";
+import {
+  InitComponent
+} from './init/init.component';
+import {
+  resolveService,
+  ResolveGuard,
+  canLoadGuard
+} from "./main.guard";
 
-const routes: Routes = [
-  {
+const routes: Routes = [{
     path: "",
     redirectTo: "login",
     pathMatch: "full"
@@ -15,6 +34,10 @@ const routes: Routes = [
   {
     path: "login",
     component: LoginComponent
+  },
+  {
+    path: "init",
+    component: InitComponent
   },
   {
     path: "signup",
