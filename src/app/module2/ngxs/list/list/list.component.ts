@@ -88,4 +88,11 @@ export class ListComponent implements OnInit {
   routeTest() {
     this.store.dispatch(new Navigate(["/module2/ngxs/FormsComponent"]));
   }
+  toSave() {
+    if (confirm("保存?")) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

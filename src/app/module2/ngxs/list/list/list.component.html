@@ -1,6 +1,6 @@
 <h2>懒加载模块状态管理及表单</h2>
 <div>
-  <button (click)="routeTest()">to Forms</button>
+  <button (click)="routeTest()">to Forms(添加了离开页面路由守卫)</button>
   {{(hello$ | async).list.model|json}}
 </div>
 <button type="button" (click)="biaodan1()">手动执行action</button>

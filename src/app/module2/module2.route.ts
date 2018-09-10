@@ -10,7 +10,10 @@ import {
 } from "./module2.component";
 import {
   AnimateMainComponent
-} from './animate/animate.component'
+} from './animate/animate.component';
+
+
+
 
 const routes: Routes = [{
   path: "",
