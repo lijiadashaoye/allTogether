@@ -1,8 +1,8 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { HttpClientModule ,HTTP_INTERCEPTORS} from "@angular/common/http";
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 /*****************************************************************/
 import { AppComponent } from "./app.component";
@@ -11,7 +11,7 @@ import { SignupComponent } from "./signup/signup.component";
 import { ForgetComponent } from "./forget/forget.component";
 import { CheckLogoComponent } from "./signup/check-logo/check-logo.component";
 import { A404PageComponent } from "./a404-page/a404-page.component";
-import { InitComponent } from './init/init.component';
+import { InitComponent } from "./init/init.component";
 /*****************************************************************/
 import { MainRoutingModule } from "./main.route";
 import {
@@ -23,12 +23,13 @@ import {
 } from "./main-http-service/http.service";
 import { UserService } from "./main-http-service/user.service";
 import { controlLogoutService } from "./controlLogout";
+
 /*****************************************************************/
 // 软件初始化方法
 import { AppInitService } from "./main-http-service/appInit.service";
 import { APP_INITIALIZER } from "@angular/core";
 export function appInitServiceFactory(provider: AppInitService) {
-  return provider.load();  // load为软件初始化时执行的初始化操作函数
+  return provider.load(); // load为软件初始化时执行的初始化操作函数
 }
 
 @NgModule({
@@ -47,7 +48,7 @@ export function appInitServiceFactory(provider: AppInitService) {
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MainRoutingModule,
+    MainRoutingModule
   ],
   providers: [
     /********************************************/
@@ -71,7 +72,7 @@ export function appInitServiceFactory(provider: AppInitService) {
       provide: BASE_URL,
       useValue: urlText
     },
-    { provide: HTTP_INTERCEPTORS, useClass: NoopInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: NoopInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

@@ -1,5 +1,4 @@
 import { HttpHeaders, HttpClient, HttpParams } from "@angular/common/http";
-
 import { Injectable, Inject, Optional } from "@angular/core";
 
 import { Observable } from "rxjs";
@@ -15,6 +14,7 @@ import {
   HttpHandler,
   HttpRequest
 } from "@angular/common/http";
+import { catchError } from "rxjs/operators";
 /*****************************************************************/
 // 设置用户信息，作为拦截器设置token的中转层，用于整个软件用户信息保存分发
 @Injectable()
@@ -44,7 +44,7 @@ export class NoopInterceptor implements HttpInterceptor {
     @Optional()
     @Inject("getTokenHttpService")
     public http: any,
-    private userData: UserDataService
+    private userData: UserDataService,
   ) {}
 
   intercept(
@@ -63,7 +63,7 @@ export class NoopInterceptor implements HttpInterceptor {
       withCredentials: true
     };
     const authReq = req.clone(reqOptions); //发送新请求头的http请求;
-    return next.handle(authReq);
+    return next.handle(authReq)
   }
 }
 
