@@ -1,14 +1,6 @@
-import {
-  Component
-} from "@angular/core";
-import {
-  Router,
-  ActivatedRoute
-} from "@angular/router";
-import {
-  controlLogoutService
-} from "./controlLogout";
-
+import { Component } from "@angular/core";
+import { Router, ActivatedRoute } from "@angular/router";
+import { controlLogoutService } from "./controlLogout";
 
 // Ctrl+K, Ctrl+[：折叠当前函数（局部折叠）
 // Ctrl+Shift+]：展开当前函数（局部展开）

@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { IndexDBService } from "./indexDB.service";
+import { Router, ActivatedRoute } from "@angular/router";
+import { Title } from "@angular/platform-browser";
 
 @Component({
   selector: "app-index-dblearn",
@@ -7,9 +9,18 @@ import { IndexDBService } from "./indexDB.service";
   styleUrls: ["./index-dblearn.component.css"]
 })
 export class IndexDBLearnComponent implements OnInit {
-  constructor(public DB: IndexDBService) {}
+  constructor(
+    public DB: IndexDBService,
+    public title: Title,
+    private actRout: ActivatedRoute,
+    public route: Router
+  ) {}
   tip;
-  ngOnInit() {}
+  ngOnInit() {  // 动态修改页面的title
+    this.actRout.data.subscribe(val => {
+      this.title.setTitle(val.title);
+    });
+  }
   openDB() {
     let myDB = {
       name: "indexDBLearn",

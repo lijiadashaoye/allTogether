@@ -1,6 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { Module1HttpService } from "../module1-http";
 import { map } from "rxjs/operators";
+import { Router, ActivatedRoute } from "@angular/router";
+import { Title } from "@angular/platform-browser";
+
 @Component({
   templateUrl: "./jsonServer.component.html",
   styleUrls: ["./jsonServer.component.css"]
@@ -9,10 +12,18 @@ export class JsonServerComponent implements OnInit {
   allDatas;
   nowDatas;
   datas;
-  constructor(public http: Module1HttpService) {}
+  constructor(
+    private actRout: ActivatedRoute,
+    public route: Router,
+    public http: Module1HttpService,
+    public title: Title
+  ) {}
 
   ngOnInit() {
     this.itGet();
+    this.actRout.data.subscribe(val => {
+      this.title.setTitle(val.title);
+    });
   }
 
   itGet() {
@@ -213,5 +224,4 @@ export class JsonServerComponent implements OnInit {
       this.tip = `输入id值`;
     }
   }
- 
 }
