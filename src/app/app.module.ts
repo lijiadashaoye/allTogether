@@ -30,7 +30,7 @@ import { APP_INITIALIZER } from "@angular/core";
 export function appInitServiceFactory(provider: AppInitService) {
   return provider.load(); // load为软件初始化时执行的初始化操作函数
 }
-import {MyLibraryModule} from 'my-library'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +48,6 @@ import {MyLibraryModule} from 'my-library'
     ReactiveFormsModule,
     HttpClientModule,
     MainRoutingModule,
-    MyLibraryModule
   ],
   providers: [
     /********************************************/
