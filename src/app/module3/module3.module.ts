@@ -9,7 +9,6 @@ import { module3RoutingModule } from "./module3.route";
 import { JsLearnComponent } from "./js-learn/js-learn.component";
 import { ZaxiangComponent } from "./zaxiang/zaxiang.component";
 
-
 @NgModule({
   imports: [CommonModule, module3RoutingModule, FormsModule],
   declarations: [
