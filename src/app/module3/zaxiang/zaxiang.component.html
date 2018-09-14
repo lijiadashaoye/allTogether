@@ -4,6 +4,14 @@
 <div>
   <h2>构建 Angular CLI 6 库</h2>
   <p>
-    1：ng generate library my-library <br>my-library(库的名字)
+    1：ng generate library my-library <br>my-library(库的名字)<br>
+    2：在projects/src/lib文件夹内创建组件<br>
+    3：在projects/src文件夹内的 public_api.ts引入创建的组件<br>
+
+    4：执行：ng build my-library --prod;创建库<br>
+    5：在app.module中引入projects/src/lib内定义的模块（如：MyLibraryModule）<br>
+    6：在项目里使用不同的标签引用库组件<br>
   </p>
 </div>
+<first-libray-component></first-libray-component>
+ng build my-library --prod
