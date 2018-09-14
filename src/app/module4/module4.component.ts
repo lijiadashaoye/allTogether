@@ -15,19 +15,20 @@ export class Module4Component implements OnInit {
 
   ngOnInit() {
     this.urlList = [
-      "gaode",
       "animateCss",
       "echarts",
       "ngx-workspace",
       "ao sen",
       "NgxDropzoneWrapper",
-      "dragdrop"
+      "dragdrop",
+      "bulma",
+      "gaode",
     ];
   }
   ngAfterViewInit() {
     setTimeout(_ => this.logout.logout.emit("module4"), 200);
   }
-  goto(data,index) {
+  goto(data, index) {
     this.isClick = index;
     this.route.navigate([`module4/${data}`]);
   }

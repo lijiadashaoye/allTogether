@@ -1,0 +1,9 @@
+@import '../../../../node_modules/bulma-start/css/main.css';
+.toFlex{
+    display: flex;
+    justify-content: space-between;
+}
+.toFlex>div{
+    width:100%;
+    padding:10px;
+}

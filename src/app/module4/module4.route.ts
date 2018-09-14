@@ -10,6 +10,7 @@ import { NgxWorkspaceComponent } from "./ngx-workspace/ngx-workspace.component";
 import { AosentubiaoComponent } from "./aosentubiao/aosentubiao.component";
 import { NgxDropzoneWrapperComponent } from "./ngx-dropzone-wrapper/ngx-dropzone-wrapper.component";
 import { DragAndDropComponent } from "./drag-and-drop/drag-and-drop.component";
+import { BulmaComponent } from "./bulma/bulma.component";
 const routes: Routes = [
   {
     path: "",
@@ -42,6 +43,10 @@ const routes: Routes = [
       {
         path: "dragdrop",
         component: DragAndDropComponent
+      },
+      {
+        path: "bulma",
+        component: BulmaComponent
       }
     ]
   }

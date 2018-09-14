@@ -47,6 +47,7 @@ import { TwoComponentComponent } from "./ngx-workspace/two-component/two-compone
 import { AosentubiaoComponent } from "./aosentubiao/aosentubiao.component";
 import { NgxDropzoneWrapperComponent } from "./ngx-dropzone-wrapper/ngx-dropzone-wrapper.component";
 import { DragAndDropComponent } from "./drag-and-drop/drag-and-drop.component";
+import { BulmaComponent } from "./bulma/bulma.component";
 @NgModule({
   imports: [
     CommonModule,
@@ -69,6 +70,7 @@ import { DragAndDropComponent } from "./drag-and-drop/drag-and-drop.component";
     GaodeComponent,
     OneComponentComponent,
     AosentubiaoComponent,
+    BulmaComponent,
     NgxDropzoneWrapperComponent,
     TwoComponentComponent,
     DragAndDropComponent

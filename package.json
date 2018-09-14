@@ -34,6 +34,7 @@
     "@ngxs/store": "^3.2.0",
     "@ngxs/websocket-plugin": "^3.2.0",
     "animate.css": "^3.7.0",
+    "bulma-start": "0.0.2",
     "concurrently": "^3.6.1",
     "core-js": "^2.5.4",
     "echarts": "^4.1.0",

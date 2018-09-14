@@ -1,0 +1,64 @@
+<p>学习官网：https://bulma.io/documentation/</p>
+<p>
+  1：npm install bulma-start --save<br>
+  2：在需要使用bulma的地方，在css内通过@import引入bulma样式文件<br>
+  3：将bulma规定的class样式名放在想作用的元素上，即可改变样式
+</p>
+<a class="button is-primary">Primary</a>
+<a class="button is-link">Link</a>
+<a class="button is-info">Info</a>
+<a class="button is-success">Success</a>
+<a class="button is-warning">Warning</a>
+<a class="button is-danger">Danger</a>
+<br>
+<div>
+  <p>图标需要引入奥森文件</p>
+  <span class="icon has-text-info">
+    <i class="fas fa-info-circle"></i>
+  </span>
+  <span class="icon has-text-success">
+    <i class="fas fa-check-square"></i>
+  </span>
+  <span class="icon has-text-warning">
+    <i class="fas fa-exclamation-triangle"></i>
+  </span>
+  <span class="icon has-text-danger">
+    <i class="fas fa-ban"></i>
+  </span>
+</div>
+<br>
+<div class="toFlex">
+  <div>
+    <progress class="progress is-primary" value="15" max="100">15%</progress>
+    <progress class="progress is-link" value="30" max="100">30%</progress>
+    <progress class="progress is-info" value="45" max="100">45%</progress>
+    <progress class="progress is-success" value="60" max="100">60%</progress>
+    <progress class="progress is-warning" value="75" max="100">75%</progress>
+    <progress class="progress is-danger" value="90" max="100">90%</progress>
+  </div>
+  <div>
+    <div class="field">
+      <label class="label">Name</label>
+      <div class="control">
+        <input class="input" type="text" placeholder="e.g Alex Smith">
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Email</label>
+      <div class="control">
+        <input class="input" type="email" placeholder="e.g. alexsmith@gmail.com">
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="control">
+      <div class="select">
+        <select>
+          <option>Select dropdown</option>
+          <option>With options</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+</div>
