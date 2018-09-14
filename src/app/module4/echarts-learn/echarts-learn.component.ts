@@ -6,7 +6,8 @@ import * as echarts from "echarts";
   templateUrl: './echarts-learn.component.html',
   styleUrls: ['./echarts-learn.component.css']
 })
-export class EchartsLearnComponent implements OnInit {
+    export class EchartsLearnComponent implements OnInit {
+  theme;
   chartOption: EChartOption;
   isLoading = true;
   loadingOpts = {

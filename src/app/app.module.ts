@@ -30,7 +30,6 @@ import { APP_INITIALIZER } from "@angular/core";
 export function appInitServiceFactory(provider: AppInitService) {
   return provider.load(); // load为软件初始化时执行的初始化操作函数
 }
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +46,7 @@ export function appInitServiceFactory(provider: AppInitService) {
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MainRoutingModule,
+    MainRoutingModule
   ],
   providers: [
     /********************************************/

@@ -6,8 +6,9 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./aosentubiao.component.css"]
 })
 export class AosentubiaoComponent implements OnInit {
+  isSyncAnimated;
   magicLevel = 0;
-  coverImg='avatar:svg-8'
+  coverImg = "avatar:svg-8";
   constructor() {}
 
   ngOnInit() {}

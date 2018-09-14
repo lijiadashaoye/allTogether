@@ -1,18 +1,24 @@
 <p>
   学习资源：https://whjin.github.io/full-stack-development/
 </p>
-<div>
-  <h2>构建 Angular CLI 6 库</h2>
-  <p>
-    1：ng generate library my-library <br>my-library(库的名字)<br>
-    2：在projects/src/lib文件夹内创建组件<br>
-    3：在projects/src文件夹内的 public_api.ts引入创建的组件<br>
-
-    4：执行：ng build my-library --prod;创建库<br>
-    5：在app.module中引入projects/src/lib内定义的模块（如：MyLibraryModule）<br>
-    6：在项目里使用不同的标签引用库组件<br>
-  </p>
+<div class="waper">
+  <div>
+    <h2>构建 Angular CLI 6 库</h2>
+    <p>1：ng generate library my-library（my-library为库的名字）</p>
+    <p>2：在projects/src/lib文件夹内创建组件</p>
+    <p>3：在projects/src文件夹内的 public_api.ts 内 export 创建的组件</p>
+    <p>4：执行：ng build my-library --prod;创建库</p>
+    <p>5：在app.module中或其他懒加载模块中引入projects/src/lib内定义的模块（如：MyLibraryModule）</p>
+    <p>6：在项目里使用不同的标签引用库组件</p>
+    <p>6：如果library里的组件发生变动，需要重新执行build</p>
+    <one-com></one-com>
+  </div>
+  <div>
+    <h2>经验总结</h2>
+    <p>1：在html模板文件的标签里，如果有类似：(click)="isSyncAnimated=!isSyncAnimated" 等简单的事件时，
+      应用到的变量（如：isSyncAnimated）也要在ts文件内写出来，否则build时会报错</p>
+    <p>2：Ctrl+kShift+[：折叠当前函数（局部折叠）</p>
+    <p>3：Ctrl+kShift+]：展开当前函数（局部展开）</p>
+    <p>4：打包：ng build --prod --base-href=http://www.dizmix.com/works/</p>
+  </div>
 </div>
-
-ng build my-library --prod
-npm install angular-library-builder --save-dev
