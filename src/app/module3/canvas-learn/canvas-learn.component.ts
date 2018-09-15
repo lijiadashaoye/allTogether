@@ -8,7 +8,7 @@ import {
   templateUrl: './canvas-learn.component.html',
   styleUrls: ['./canvas-learn.component.css']
 })
-export class CanvasLearnComponent{
+export class CanvasLearnComponent {
   constructor(private elem: ElementRef) {}
   contents1 = [
     'canvast 提供了三种方法绘制矩形：',
