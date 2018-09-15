@@ -1,0 +1,49 @@
+<p>https://segmentfault.com/a/1190000016031115?utm_source=weekly&utm_medium=email&utm_campaign=email_weekly</p>
+<div class="wap">
+  <div style="width:60%;">
+    <div>
+      <div>
+        <button (click)="drawAll()">全部</button>
+        <button (click)="draw1()">绘制矩形</button>
+        <button (click)="draw2()">绘制线段</button>
+        <button (click)="draw3()">绘制三角形边框</button>
+        <button (click)="draw4()">填充三角形</button>
+        <button (click)="draw5()">绘制圆弧</button>
+        <button (click)="draw6()">绘制闭合圆弧</button>
+        <button (click)="draw7()">绘制闭合填充圆弧(多参数)</button>
+        <button (click)="draw8()">绘制闭合圆弧(单参数)</button>
+        <button (click)="draw9()">控制点绘制圆弧</button>
+        <button (click)="draw10()">绘制二次贝塞尔曲线</button>
+        <button (click)="draw11()">绘制三次贝塞尔曲线</button>
+        <button (click)="draw12()">添加样式和颜色</button>
+      </div>
+      <p>多次点击按钮，会执行多次绘画，导致图形颜色越点越深</p>
+      <canvas id="c1" width="600" height="130"></canvas>
+      <div style="display: flex;justify-content: space-around;">
+        <div>
+          <p>控制点绘制圆弧</p>
+          <img src="../assets/1.png">
+        </div>
+        <div>
+          <p>绘制二次贝塞尔曲线</p>
+          <img src="../assets/2.png">
+        </div>
+        <div>
+          <p>绘制三次贝塞尔曲线</p>
+          <img src="../assets/3.png">
+        </div>
+      </div>
+    </div>
+    <div>
+      <div>
+        <button (click)="drawAll2()">全部</button>
+        <button (click)="draw12()">绘制填充颜色</button>
+        <button (click)="draw13()">绘制描边</button>
+      </div>
+      <canvas id="c2" width="800" height="600"></canvas>
+    </div>
+  </div>
+  <ul style="width:40%;">
+    <li *ngFor="let content of contents1">{{content}}</li>
+  </ul>
+</div>

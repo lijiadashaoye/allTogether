@@ -15,7 +15,7 @@ import {
   import { SomeCss3Component } from './some-css3/some-css3.component';
   import { JsLearnComponent } from './js-learn/js-learn.component';
   import { ZaxiangComponent } from './zaxiang/zaxiang.component';
-
+  import { CanvasLearnComponent } from './canvas-learn/canvas-learn.component';
 
   const routes: Routes = [{
     path: '',
@@ -31,6 +31,10 @@ import {
     {
       path: 'zaxiang',
       component: ZaxiangComponent
+    },
+    {
+      path: 'canvas-learn',
+      component: CanvasLearnComponent
     }
   ]
   }];

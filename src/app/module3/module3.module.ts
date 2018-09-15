@@ -9,6 +9,7 @@ import { module3RoutingModule } from "./module3.route";
 import { JsLearnComponent } from "./js-learn/js-learn.component";
 import { ZaxiangComponent } from "./zaxiang/zaxiang.component";
 import { MyLibraryModule } from "my-library";
+import { CanvasLearnComponent } from './canvas-learn/canvas-learn.component';
 
 @NgModule({
   imports: [CommonModule, module3RoutingModule, FormsModule,MyLibraryModule],
@@ -16,7 +17,8 @@ import { MyLibraryModule } from "my-library";
     Module3Component,
     SomeCss3Component,
     JsLearnComponent,
-    ZaxiangComponent
+    ZaxiangComponent,
+    CanvasLearnComponent
   ]
 })
 export class Module3Module {}

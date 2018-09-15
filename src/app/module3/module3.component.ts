@@ -1,6 +1,13 @@
-import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
-import { controlLogoutService } from "../controlLogout";
+import {
+  Component,
+  OnInit
+} from "@angular/core";
+import {
+  Router
+} from "@angular/router";
+import {
+  controlLogoutService
+} from "../controlLogout";
 @Component({
   selector: "app-module3",
   templateUrl: "./module3.component.html",
@@ -13,7 +20,7 @@ export class Module3Component implements OnInit {
   constructor(public route: Router, public logout: controlLogoutService) {}
 
   ngOnInit() {
-    this.urlList = ["Css3", "jsLearn", "zaxiang"];
+    this.urlList = ["Css3", "jsLearn", "zaxiang", 'canvas-learn'];
   }
   ngAfterViewInit() {
     setTimeout(_ => this.logout.logout.emit("module3"), 200);
