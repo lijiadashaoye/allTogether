@@ -39,7 +39,12 @@ export class CanvasLearnComponent {
     '1. color:可以是表示 "css"颜色值的字符串、 渐变对象或者图案对象。',
     "2. 默认情况下，线条和填充颜色都是黑色。",
     '3. 一旦设置了 "strokeStyle"或者"fillStyle"的值,那么这个新值就会成为新绘制的图形的默认值。',
-    '如果你要给每个图形上不同的颜色，你需要重新设置"fillStyle"或"strokeStyle"的值。'
+    '如果你要给每个图形上不同的颜色，你需要重新设置"fillStyle"或"strokeStyle"的值。',
+    "给文本添加样式：",
+    "font = value；当前我们用来绘制文本的样式。这个字符串使用和 CSS font属性相同的语法. 默认的字体是 10px sans-serif。",
+    "textAlign = value；文本对齐选项. 可选的值包括：start, end, left, right or center. 默认值是 start。",
+    "textBaseline = value；基线对齐选项，可选的值包括：top, hanging, middle, alphabetic, ideographic, bottom。默认值是 alphabetic。",
+    "direction = value；文本方向。可能的值包括：ltr, rtl, inherit。默认值是 inherit。"
   ];
   draw1() {
     // 绘制矩形
@@ -188,6 +193,13 @@ export class CanvasLearnComponent {
     this.draw9();
     this.draw10();
     this.draw11();
+    this.draw14();
+    this.draw15();
+    this.draw16();
+    this.draw17();
+    this.draw18();
+    this.draw19();
+    this.draw23();
   }
 
   draw12() {
@@ -210,6 +222,7 @@ export class CanvasLearnComponent {
     ctx.fillRect(125, 0, 20, 20);
   }
   draw13() {
+    // 绘制描边
     var canvas = this.elem.nativeElement.querySelector("#c2");
     var ctx = canvas.getContext("2d");
     for (var i = 0; i < 6; i++) {
@@ -232,5 +245,152 @@ export class CanvasLearnComponent {
   drawAll2() {
     this.draw12();
     this.draw13();
+  }
+  draw14() {
+    // 线宽设置
+    var canvas = this.elem.nativeElement.querySelector("#c1");
+    var ctx = canvas.getContext("2d");
+    ctx.beginPath();
+    ctx.moveTo(10, 10);
+    ctx.lineTo(100, 10);
+    // lineWidth = value；线宽。
+    // 只能是正值。默认是1.0。
+    // 起始点和终点的连线为中心，上下各占线宽的一半
+    ctx.lineWidth = 30;
+    ctx.stroke();
+  }
+  draw23() {
+    // 透明度
+    // globalAlpha = transparencyValue
+    // 这个属性影响到 canvas 里所有"后续的"图形的透明度，有效的值范围是 0.0 （完全透明）到 1.0（完全不透明），默认是 1.0。
+    // globalAlpha 属性在需要绘制大量拥有相同透明度的图形时候相当高效。不过，我认为使用rgba()设置透明度更加好一些。
+    var canvas = this.elem.nativeElement.querySelector("#c1");
+    var ctx = canvas.getContext("2d");
+    ctx.beginPath();
+    ctx.moveTo(10, 50);
+    ctx.lineTo(100, 50);
+    // lineWidth = value；线宽。
+    // 只能是正值。默认是1.0。
+    // 起始点和终点的连线为中心，上下各占线宽的一半
+    ctx.lineWidth = 30;
+    ctx.globalAlpha = 0.2;
+    ctx.stroke();
+  }
+  draw15() {
+    // 线条末端样式。
+    var canvas = this.elem.nativeElement.querySelector("#c1");
+    var ctx = canvas.getContext("2d");
+    var lineCaps = ["butt", "round", "square"];
+    for (var i = 0; i < 3; i++) {
+      ctx.beginPath();
+      ctx.moveTo(20 + 30 * i, 50);
+      ctx.lineTo(20 + 30 * i, 130);
+      ctx.lineWidth = 20;
+      // lineCap = type；
+      // 共有3个值：
+      // butt：线段末端以方形结束
+      // round：线段末端以圆形结束
+      // square：线段末端以方形结束，但是增加了一个宽度和线段相同，高度是线段厚度一半的矩形区域。
+      ctx.lineCap = lineCaps[i];
+      ctx.stroke();
+    }
+    ctx.beginPath();
+    ctx.moveTo(0, 50);
+    ctx.lineTo(100, 50);
+    ctx.moveTo(0, 130);
+    ctx.lineTo(100, 130);
+    ctx.strokeStyle = "red";
+    ctx.lineWidth = 1;
+    ctx.stroke();
+  }
+  draw16() {
+    // 同一个path内，设定线条与线条间接合处的样式。
+    var canvas = this.elem.nativeElement.querySelector("#c1");
+    var ctx16 = canvas.getContext("2d");
+
+    // lineJoin = type；
+    // 共有3个值round, bevel 和 miter：
+    // round：通过填充一个额外的，圆心在相连部分末端的扇形，绘制拐角的形状。 圆角的半径是线段的宽度。
+    // bevel：在相连部分的末端填充一个额外的以三角形为底的区域， 每个部分都有各自独立的矩形拐角。
+    // miter(默认)：通过延伸相连部分的外边缘，使其相交于一点，形成一个额外的菱形区域。
+
+    var lineJoin = ["round", "bevel", "miter"];
+    ctx16.lineWidth = 15;
+    for (var i = 0; i < lineJoin.length; i++) {
+      ctx16.lineJoin = lineJoin[i];
+      ctx16.beginPath();
+      ctx16.moveTo(120, 20 + i * 50);
+      ctx16.lineTo(170, 60 + i * 50);
+      ctx16.lineTo(220, 20 + i * 50);
+      ctx16.lineTo(270, 60 + i * 50);
+      ctx16.lineTo(320, 20 + i * 50);
+      ctx16.stroke();
+    }
+  }
+  draw17() {
+    // 虚线
+    var canvas = this.elem.nativeElement.querySelector("#c1");
+    var ctx = canvas.getContext("2d");
+    // setLineDash 方法接受一个数组，来指定线段与间隙的交替；
+    ctx.setLineDash([10, 2]); // [实线长度, 间隙长度]
+    // lineDashOffset属性设置起始偏移量.
+    ctx.lineDashOffset = 10; // 这个值其实没多大用，有值时，看拐角的变化
+    ctx.strokeRect(50, 50, 110, 110);
+  }
+  draw18() {
+    // 文字
+    var canvas = this.elem.nativeElement.querySelector("#c1");
+    var ctx = canvas.getContext("2d");
+    // fillText(text, x, y [, maxWidth])；在指定的(x,y)位置填充指定的文本，绘制的最大宽度是可选的
+    // strokeText(text, x, y [, maxWidth])；在指定的(x,y)位置绘制文本边框，绘制的最大宽度是可选的
+    ctx.font = "50px sans-serif";
+    ctx.fillText("天若有情", 10, 100);
+    ctx.strokeText("天若有情", 10, 155);
+  }
+  draw19() {
+    // 由零开始创建图片
+    var canvas = this.elem.nativeElement.querySelector("#c1");
+    var ctx = canvas.getContext("2d");
+    // ​考虑到图片是从网络加载，如果 drawImage 的时候图片还没有完全加载完成，则什么都不做，个别浏览器会抛异常。
+    // 所以我们应该保证在 img 绘制完成之后再 drawImage。
+
+    var img = new Image(); // 创建img元素
+    img.onload = () => ctx.drawImage(img, 0, 0);
+    img.src = "assets/1.png"; // 设置图片源地址
+    // 绘制img
+    // ctx.drawImage(img, x, y);
+    // 参数1：要绘制的img
+    // 参数x，y：绘制的img在canvas中的坐标
+
+    ctx.drawImage(img, 0, 0);
+  }
+  draw20() {
+    // 绘制 img 标签元素中的图片
+    var canvas = this.elem.nativeElement.querySelector("#c3");
+    var ctx = canvas.getContext("2d");
+    var img = this.elem.nativeElement.querySelector("#isImg");
+
+    ctx.drawImage(img, 0, 0);
+  }
+  draw21() {
+    // 缩放图片
+    var canvas = this.elem.nativeElement.querySelector("#c3");
+    var ctx = canvas.getContext("2d");
+    var img = this.elem.nativeElement.querySelector("#isImg");
+    // ​ drawImage(image, x, y, width, height)
+    // ​ 这个方法多了2个参数：width 和 height，这两个参数用来控制 当像canvas画入时应该缩放的大小。
+    ctx.drawImage(img, 0, 0, 150, 150);
+  }
+  draw22() {
+    // 切片
+    var canvas = this.elem.nativeElement.querySelector("#c3");
+    var ctx = canvas.getContext("2d");
+    var img = this.elem.nativeElement.querySelector("#isImg");
+    // drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)
+    // 参数：
+    // image：一个图像或者另一个 canvas 的引用
+    // sx, sy, sWidth, sHeight；定义图像源的切片位置和大小
+    // dx, dy, dWidth, dHeight；定义切片的目标显示位置和大小
+    ctx.drawImage(img, 0, 0, 100, 100, 130, 80, 50, 50);
   }
 }

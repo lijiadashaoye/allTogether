@@ -15,10 +15,16 @@
         <button (click)="draw9()">控制点绘制圆弧</button>
         <button (click)="draw10()">绘制二次贝塞尔曲线</button>
         <button (click)="draw11()">绘制三次贝塞尔曲线</button>
-        <button (click)="draw12()">添加样式和颜色</button>
+        <button (click)="draw14()">线宽</button>
+        <button (click)="draw15()">线条末端样式</button>
+        <button (click)="draw16()">线条间接合处的样式</button>
+        <button (click)="draw17()">虚线</button>
+        <button (click)="draw18()">绘制文本</button>
+        <button (click)="draw19()">由零开始创建图片</button>
+        <button (click)="draw23()">透明度</button>
       </div>
       <p>多次点击按钮，会执行多次绘画，导致图形颜色越点越深</p>
-      <canvas id="c1" width="600" height="130"></canvas>
+      <canvas id="c1" width="600" height="200"></canvas>
       <div style="display: flex;justify-content: space-around;">
         <div>
           <p>控制点绘制圆弧</p>
@@ -40,7 +46,20 @@
         <button (click)="draw12()">绘制填充颜色</button>
         <button (click)="draw13()">绘制描边</button>
       </div>
-      <canvas id="c2" width="800" height="600"></canvas>
+      <canvas id="c2" width="800" height="130"></canvas>
+    </div>
+    <div>
+      <button (click)="draw20()">绘制 img 标签元素中的图片</button>
+      <button (click)="draw21()">缩放图片</button>
+      <button (click)="draw22()">切片</button>
+
+      <div>
+        <img src="assets/1.png" alt="" id="isImg" width="100">
+        <canvas id="c3" width="400" height="200"></canvas>
+      </div>
+    </div>
+    <div>
+      <img src="assets/111.jpg" alt="" id="isImg">
     </div>
   </div>
   <ul style="width:40%;">
