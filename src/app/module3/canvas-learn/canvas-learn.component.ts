@@ -44,7 +44,35 @@ export class CanvasLearnComponent {
     "font = value；当前我们用来绘制文本的样式。这个字符串使用和 CSS font属性相同的语法. 默认的字体是 10px sans-serif。",
     "textAlign = value；文本对齐选项. 可选的值包括：start, end, left, right or center. 默认值是 start。",
     "textBaseline = value；基线对齐选项，可选的值包括：top, hanging, middle, alphabetic, ideographic, bottom。默认值是 alphabetic。",
-    "direction = value；文本方向。可能的值包括：ltr, rtl, inherit。默认值是 inherit。"
+    "direction = value；文本方向。可能的值包括：ltr, rtl, inherit。默认值是 inherit。",
+    "Saving and restoring state是绘制复杂图形时必不可少的操作。",
+    "save()和restore()",
+    "save 和 restore 方法是用来保存和恢复 canvas 状态的，都没有参数。",
+    " Canvas 的状态就是当前画面应用的所有样式和变形的一个快照。",
+    "关于 save()",
+    "Canvas状态存储在栈中，每当save()方法被调用后，当前的状态就被推送到栈中保存。一个绘画状态包括：",
+    "当前应用的变形（即移动，旋转和缩放）",
+    "strokeStyle, fillStyle, globalAlpha, lineWidth, lineCap, lineJoin, miterLimit, shadowOffsetX, shadowOffsetY, shadowBlur, shadowColor, globalCompositeOperation 的值",
+    "当前的裁切路径（clipping path）",
+    "可以调用任意多次 `save`方法。(类似数组的`push()`)",
+    "关于restore()",
+    "每一次调用 restore 方法，上一个保存的状态就从栈中弹出，所有设定都恢复。(类似数组的pop())",
+    "translate(x, y)：",
+    "用来移动 canvas 的原点到指定的位置",
+    "translate方法接受两个参数。x 是左右偏移量，y 是上下偏移量。",
+    " 在做变形之前先保存状态是一个良好的习惯。大多数情况下，调用 restore 方法比手动恢复原先的状态要简单得多。",
+    "又如果你是在一个循环中做位移但没有保存和恢复canvas 的状态，很可能到最后会发现怎么有些东西不见了，那是因为它很可能已经超出 canvas 范围以外了。",
+    "​ 注意：translate移动的是canvas的坐标原点。(坐标变换)",
+    "scale(x, y)：",
+    "我们用它来增减图形在 canvas 中的像素数目，对形状，位图进行缩小或者放大。",
+    "​scale方法接受两个参数。",
+    "x,y分别是横轴和纵轴的缩放因子，它们都必须是正值。",
+    "值比 1.0 小表示缩 小，比 1.0 大则表示放大，值为 1.0 时什么效果都没有。",
+    "默认情况下，canvas 的 1 单位就是 1 个像素。",
+    "举例说，如果我们设置缩放因子是 0.5，1 个单位就变成对应 0.5 个像素，这样绘制出来的形状就会是原先的一半。",
+    "同理，设置为 2.0 时，1 个单位就对应变成了 2 像素，绘制的结果就是图形放大了 2 倍。",
+    "transform(a, b, c, d, e, f)：",
+    "a (m11),b (m12),c (m21),d (m22),e (dx),f (dy)"
   ];
   draw1() {
     // 绘制矩形
@@ -392,5 +420,67 @@ export class CanvasLearnComponent {
     // sx, sy, sWidth, sHeight；定义图像源的切片位置和大小
     // dx, dy, dWidth, dHeight；定义切片的目标显示位置和大小
     ctx.drawImage(img, 0, 0, 100, 100, 130, 80, 50, 50);
+  }
+  draw28() {  // 状态的保存、恢复
+    var canvas = this.elem.nativeElement.querySelector("#c1");
+    var ctx = canvas.getContext("2d");
+    ctx.fillRect(0, 0, 150, 150); // 使用默认设置绘制一个矩形
+    ctx.save(); // 保存默认状态，[state1]
+
+    ctx.fillStyle = "red"; // 在原有配置基础上对颜色做改变
+    ctx.fillRect(15, 15, 120, 120); // 使用新的设置绘制一个矩形
+    ctx.save(); // 保存当前状态，[state1，state2]
+
+    ctx.fillStyle = "#FFF"; // 再次改变颜色配置
+    ctx.fillRect(30, 30, 90, 90); // 使用新的配置绘制一个矩形
+
+    ctx.restore(); // 重新加载之前的颜色状态，[state2]
+    ctx.fillRect(45, 45, 60, 60); // 使用上一次的配置绘制一个矩形
+
+    ctx.restore(); // 重新加载之前的之前的颜色状态，[state1]
+    ctx.fillRect(60, 60, 30, 30); // 使用加载的配置绘制一个矩形
+  }
+  draw24() {  // 坐标原点移动
+    var canvas = this.elem.nativeElement.querySelector("#c1");
+    var ctx = canvas.getContext("2d");
+    ctx.strokeRect(0, 0, 50, 50);
+    ctx.save(); //保存坐原点平移之前的状态
+    ctx.translate(60, 40);
+    ctx.strokeRect(0, 0, 50, 50);
+    ctx.restore(); //恢复到最初状态
+    ctx.translate(120, 80);
+    ctx.fillRect(0, 0, 50, 50);
+  }
+  draw25() {  // 旋转
+    var canvas = this.elem.nativeElement.querySelector("#c1");
+    var ctx = canvas.getContext("2d");
+    //  rotate(angle)；旋转坐标轴。
+    // ​ 这个方法只接受一个参数：旋转的角度(angle)，它是顺时针方向的，以弧度为单位的值。
+    // ​ 旋转的中心是坐标原点。
+    ctx.fillStyle = "red";
+    ctx.save(); //保存坐原点平移之前的状态
+    ctx.translate(80, 30);
+    ctx.rotate((Math.PI / 180) * 45);
+    ctx.fillStyle = "blue";
+    ctx.fillRect(0, 0, 50, 50);
+    ctx.restore();
+    ctx.scale(0.8, 0.6);
+    ctx.fillRect(0, 0, 50, 50);
+  }
+  draw26() {  // 缩放
+    var canvas = this.elem.nativeElement.querySelector("#c1");
+    var ctx = canvas.getContext("2d");
+
+    ctx.fillRect(0, 0, 50, 50);
+    ctx.scale(0.8, 0.6);
+    ctx.fillRect(70, 0, 50, 50);
+  }
+  draw27() {  // 变形
+    var canvas = this.elem.nativeElement.querySelector("#c1");
+    var ctx = canvas.getContext("2d");
+    // transform(a, b, c, d, e, f)
+    // a (m11),b (m12),c (m21),d (m22),e (dx),f (dy)
+    ctx.transform(1, 1, 0, 1, 0, 0);
+    ctx.fillRect(0, 0, 100, 100);
   }
 }

@@ -22,6 +22,11 @@
         <button (click)="draw18()">绘制文本</button>
         <button (click)="draw19()">由零开始创建图片</button>
         <button (click)="draw23()">透明度</button>
+        <button (click)="draw28()">状态的保存和恢复</button>
+        <button (click)="draw24()">移动 canvas 的原点</button>
+        <button (click)="draw25()">旋转坐标轴</button>
+        <button (click)="draw26()">缩放</button>
+        <button (click)="draw27()">transform(变形矩阵)</button>
       </div>
       <p>多次点击按钮，会执行多次绘画，导致图形颜色越点越深</p>
       <canvas id="c1" width="600" height="200"></canvas>
@@ -58,8 +63,23 @@
         <canvas id="c3" width="400" height="200"></canvas>
       </div>
     </div>
-    <div>
-      <img src="assets/111.jpg" alt="" id="isImg">
+    <div style="display: flex;justify-content: space-around;">
+      <div>
+        <p>切片</p>
+        <img src="assets/111.jpg">
+      </div>
+      <div>
+        <p>移动 canvas 的原点到指定的位置</p>
+        <img src="assets/trans.png">
+      </div>
+      <div>
+        <p>旋转坐标轴</p>
+        <img src="assets/roate.png">
+      </div>
+      <div>
+        <p>transform(a, b, c, d, e, f)(变形矩阵)</p>
+        <img src="assets/transf.png">
+      </div>
     </div>
   </div>
   <ul style="width:40%;">
