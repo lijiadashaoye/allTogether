@@ -29,7 +29,7 @@ import {
       component: JsLearnComponent
     },
     {
-      path: 'zaxiang',
+      path: 'library',
       component: ZaxiangComponent
     },
     {

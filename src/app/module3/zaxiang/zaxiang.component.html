@@ -9,7 +9,7 @@
     <p>3：在projects/src文件夹内的 public_api.ts 内 export 创建的组件</p>
     <p>4：执行：ng build my-library --prod;创建库</p>
     <p>5：在app.module中或其他懒加载模块中引入projects/src/lib内定义的模块（如：MyLibraryModule）</p>
-    <p>6：在项目里使用不同的标签引用库组件</p>
+    <p>6：在项目里使用时先引入库模块，再用不同的标签引用库组件;</p>
     <p>6：如果library里的组件发生变动，需要重新执行build</p>
     <one-com></one-com>
   </div>
