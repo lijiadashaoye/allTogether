@@ -76,7 +76,17 @@ export class CanvasLearnComponent {
     "同理，设置为 2.0 时，1 个单位就对应变成了 2 像素，绘制的结果就是图形放大了 2 倍。",
     "transform(a, b, c, d, e, f)：",
     "a (m11),b (m12),c (m21),d (m22),e (dx),f (dy)",
-    'clip()：把已经创建的路径转换成裁剪路径。', ​'裁剪路径的作用是遮罩。只显示裁剪路径内的区域，裁剪路径外的区域会被隐藏。', ​' 注意：clip()只能遮罩在这个方法调用之后绘制的图像，如果是clip()方法调用之前绘制的图像，则无法实现遮罩。',
+    'clip()：把已经创建的路径转换成裁剪路径。', ​'裁剪路径的作用是遮罩。只显示裁剪路径内的区域，裁剪路径外的区域会被隐藏。', ​
+    '注意：clip()只能遮罩在这个方法调用之后绘制的图像，如果是clip()方法调用之前绘制的图像，则无法实现遮罩。',
+    '动画的基本步骤：',
+    '1.清空canvas',
+    '再绘制每一帧动画之前，需要清空所有。清空所有最简单的做法就是clearRect()方法',
+    '2.保存canvas状态：',
+    '如果在绘制的过程中会更改canvas的状态(颜色、移动了坐标原点等),又在绘制每一帧时都是原始状态的话，则最好保存下canvas的状态',
+    '3.绘制动画图形：',
+    '这一步才是真正的绘制动画帧',
+    '4.恢复canvas状态：',
+    '如果你前面保存了canvas状态，则应该在绘制完成一帧之后恢复canvas状态。',
   ];
   draw1() {
     // 绘制矩形
@@ -148,6 +158,13 @@ export class CanvasLearnComponent {
     var canvas = this.elem.nativeElement.querySelector("#c1");
     var ctx = canvas.getContext("2d");
     ctx.beginPath();
+    // arc(x,y,r,sAngle,eAngle,counterclockwise);
+    // x,y：圆的中心的坐标。
+    // r：圆的半径。
+    // sAngle：起始角，以弧度计。（弧的圆形的三点钟位置是 0 度）。
+    // eAngle：结束角，以弧度计。
+    // counterclockwise：可选。规定应该逆时针还是顺时针绘图。False = 顺时针，true = 逆时针。
+
     ctx.arc(190, 85, 20, 0, Math.PI, false);
     ctx.fill();
   }
@@ -542,5 +559,59 @@ export class CanvasLearnComponent {
     ctx.globalCompositeOperation = type;
     ctx.fillStyle = "blue";
     ctx.fillRect(30, 10, 50, 30);
+  }
+  draw32() {
+    let sun;
+    let earth;
+    let moon;
+    let ctx;
+    var canvas = this.elem.nativeElement.querySelector("#c5");
+    ctx = canvas.getContext("2d");
+    sun = new Image();
+    earth = new Image();
+    moon = new Image();
+    sun.src = "assets/sun.jpeg";
+    earth.src = "assets/earth.jpeg";
+    moon.src = "assets/moon.jpeg";
+    sun.onload = function () {
+      toDraw()
+    }
+
+
+    function toDraw() {
+      ctx.clearRect(0, 0, 300, 300); //清空所有的内容
+      /*绘制 太阳*/
+      ctx.drawImage(sun, 0, 0, 300, 300);
+
+      ctx.save();
+      ctx.translate(150, 150);  // 将canvas坐标系原点移到原画布中心
+
+      //绘制earth轨道
+      ctx.beginPath();
+      ctx.strokeStyle = "rgba(255,255,0,0.5)";
+      ctx.arc(0, 0, 100, 0, 2 * Math.PI);  // 画半径100的圆
+      ctx.stroke()
+
+      let time = new Date();
+      //绘制地球
+      ctx.rotate(2 * Math.PI / 60 * time.getSeconds() + 2 * Math.PI / 60000 * time.getMilliseconds())
+      ctx.translate(100, 0);
+      ctx.drawImage(earth, -12, -12, 40, 40)
+
+      //绘制月球轨道
+      ctx.beginPath();
+      ctx.strokeStyle = "rgba(255,255,255,.3)";
+      ctx.arc(0, 0, 40, 0, 2 * Math.PI);
+      ctx.stroke();
+
+      //绘制月球
+      ctx.rotate(2 * Math.PI / 6 * time.getSeconds() + 2 * Math.PI / 6000 * time.getMilliseconds());
+      ctx.translate(40, 0);
+      ctx.drawImage(moon, -3.5, -3.5, 40, 40);
+      ctx.restore();
+
+      // requestAnimationFrame(callback)//callback为回调函数
+      requestAnimationFrame(toDraw);
+    }
   }
 }

@@ -82,6 +82,15 @@
         <img src="assets/transf.png">
       </div>
     </div>
+    <div style="display: flex;justify-content: space-around;">
+      <div>
+        <p>圆弧</p>
+        <p>中心：arc(100,75,50,0*Math.PI,1.5*Math.PI)</p>
+        <p>起始角：arc(100,75,50,0,1.5*Math.PI)</p>
+        <p>结束角：arc(100,75,50,0*Math.PI,1.5*Math.PI)</p>
+        <img src="assets/arct.png">
+      </div>
+    </div>
     <div>
       <div style="display:flex;justify-content: space-around;flex-wrap: wrap">
         <div *ngFor="let item of arr,let i=index">
@@ -113,6 +122,10 @@
         xor：重叠部分会变成透明<br>
         copy：只有新图像会被保留，其余的全部被清除(边透明)
       </p>
+    </div>
+    <div>
+      <button (click)="draw32()">太阳系</button><br>
+      <canvas id="c5" width="300" height="300"></canvas>
     </div>
   </div>
   <ul style="width:40%;">
