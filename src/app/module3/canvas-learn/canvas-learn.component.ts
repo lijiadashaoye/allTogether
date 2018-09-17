@@ -421,7 +421,8 @@ export class CanvasLearnComponent {
     // dx, dy, dWidth, dHeight；定义切片的目标显示位置和大小
     ctx.drawImage(img, 0, 0, 100, 100, 130, 80, 50, 50);
   }
-  draw28() {  // 状态的保存、恢复
+  draw28() {
+    // 状态的保存、恢复
     var canvas = this.elem.nativeElement.querySelector("#c1");
     var ctx = canvas.getContext("2d");
     ctx.fillRect(0, 0, 150, 150); // 使用默认设置绘制一个矩形
@@ -440,7 +441,8 @@ export class CanvasLearnComponent {
     ctx.restore(); // 重新加载之前的之前的颜色状态，[state1]
     ctx.fillRect(60, 60, 30, 30); // 使用加载的配置绘制一个矩形
   }
-  draw24() {  // 坐标原点移动
+  draw24() {
+    // 坐标原点移动
     var canvas = this.elem.nativeElement.querySelector("#c1");
     var ctx = canvas.getContext("2d");
     ctx.strokeRect(0, 0, 50, 50);
@@ -451,7 +453,8 @@ export class CanvasLearnComponent {
     ctx.translate(120, 80);
     ctx.fillRect(0, 0, 50, 50);
   }
-  draw25() {  // 旋转
+  draw25() {
+    // 旋转
     var canvas = this.elem.nativeElement.querySelector("#c1");
     var ctx = canvas.getContext("2d");
     //  rotate(angle)；旋转坐标轴。
@@ -467,7 +470,8 @@ export class CanvasLearnComponent {
     ctx.scale(0.8, 0.6);
     ctx.fillRect(0, 0, 50, 50);
   }
-  draw26() {  // 缩放
+  draw26() {
+    // 缩放
     var canvas = this.elem.nativeElement.querySelector("#c1");
     var ctx = canvas.getContext("2d");
 
@@ -475,12 +479,47 @@ export class CanvasLearnComponent {
     ctx.scale(0.8, 0.6);
     ctx.fillRect(70, 0, 50, 50);
   }
-  draw27() {  // 变形
+  draw27() {
+    // 变形
     var canvas = this.elem.nativeElement.querySelector("#c1");
     var ctx = canvas.getContext("2d");
     // transform(a, b, c, d, e, f)
     // a (m11),b (m12),c (m21),d (m22),e (dx),f (dy)
     ctx.transform(1, 1, 0, 1, 0, 0);
     ctx.fillRect(0, 0, 100, 100);
+  }
+  draw29() {
+    // 合成
+
+    // globalCompositeOperation = type
+    // type `是下面 13 种字符串值之一：
+    // source-over：这是默认设置，新图像会覆盖在原有图像
+    // source-in：仅仅会出现新图像与原来图像重叠的部分，其他区域都变成透明的。(包括其他的老图像区域也会透明)
+    // source-out：仅仅显示新图像与老图像没有重叠的部分，其余部分全部透明。(老图像也不显示)
+    // source-atop：新图像仅仅显示与老图像重叠区域。老图像仍然可以显示。
+    // destination-over：新图像会在老图像的下面。
+    // destination-in：仅仅新老图像重叠部分的老图像被显示，其他区域全部透明。
+    // destination-out：仅仅老图像与新图像没有重叠的部分。 注意显示的是老图像的部分区域。
+    // destination-atop：老图像仅仅仅仅显示重叠部分，新图像会显示在老图像的下面。
+    // lighter：新老图像都显示，但是重叠区域的颜色做加处理
+    // darken：保留重叠部分最黑的像素。(每个颜色位进行比较，得到最小的)
+    // blue: #0000ff
+    // red: #ff0000
+    // 所以重叠部分的颜色：#000000
+    // lighten：保留重叠部分最量的像素。(每个颜色位进行比较，得到最大的)
+    // blue: #0000ff
+    // red: #ff0000
+    // 所以重叠部分的颜色：#ff00ff
+    // xor：重叠部分会变成透明
+    // copy：只有新图像会被保留，其余的全部被清除(边透明)
+    var canvas = this.elem.nativeElement.querySelector("#c4");
+    var ctx = canvas.getContext("2d");
+    ctx.font = "14px sans-serif";
+    ctx.fillStyle = "blue";
+    ctx.fillRect(20, 0, 30, 30);
+    ctx.globalCompositeOperation = "source-over"; //全局合成操作
+    ctx.fillStyle = "red";
+    ctx.fillRect(30, 10, 30, 30);
+    ctx.fillText("source-over", 5, 52);
   }
 }
