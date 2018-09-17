@@ -1,4 +1,7 @@
-import { Component, ElementRef } from "@angular/core";
+import {
+  Component,
+  ElementRef
+} from "@angular/core";
 
 @Component({
   selector: "app-canvas-learn",
@@ -72,7 +75,8 @@ export class CanvasLearnComponent {
     "举例说，如果我们设置缩放因子是 0.5，1 个单位就变成对应 0.5 个像素，这样绘制出来的形状就会是原先的一半。",
     "同理，设置为 2.0 时，1 个单位就对应变成了 2 像素，绘制的结果就是图形放大了 2 倍。",
     "transform(a, b, c, d, e, f)：",
-    "a (m11),b (m12),c (m21),d (m22),e (dx),f (dy)"
+    "a (m11),b (m12),c (m21),d (m22),e (dx),f (dy)",
+    'clip()：把已经创建的路径转换成裁剪路径。', ​'裁剪路径的作用是遮罩。只显示裁剪路径内的区域，裁剪路径外的区域会被隐藏。', ​' 注意：clip()只能遮罩在这个方法调用之后绘制的图像，如果是clip()方法调用之前绘制的图像，则无法实现遮罩。',
   ];
   draw1() {
     // 绘制矩形
@@ -488,38 +492,55 @@ export class CanvasLearnComponent {
     ctx.transform(1, 1, 0, 1, 0, 0);
     ctx.fillRect(0, 0, 100, 100);
   }
-  draw29() {
-    // 合成
-
-    // globalCompositeOperation = type
-    // type `是下面 13 种字符串值之一：
-    // source-over：这是默认设置，新图像会覆盖在原有图像
-    // source-in：仅仅会出现新图像与原来图像重叠的部分，其他区域都变成透明的。(包括其他的老图像区域也会透明)
-    // source-out：仅仅显示新图像与老图像没有重叠的部分，其余部分全部透明。(老图像也不显示)
-    // source-atop：新图像仅仅显示与老图像重叠区域。老图像仍然可以显示。
-    // destination-over：新图像会在老图像的下面。
-    // destination-in：仅仅新老图像重叠部分的老图像被显示，其他区域全部透明。
-    // destination-out：仅仅老图像与新图像没有重叠的部分。 注意显示的是老图像的部分区域。
-    // destination-atop：老图像仅仅仅仅显示重叠部分，新图像会显示在老图像的下面。
-    // lighter：新老图像都显示，但是重叠区域的颜色做加处理
-    // darken：保留重叠部分最黑的像素。(每个颜色位进行比较，得到最小的)
-    // blue: #0000ff
-    // red: #ff0000
-    // 所以重叠部分的颜色：#000000
-    // lighten：保留重叠部分最量的像素。(每个颜色位进行比较，得到最大的)
-    // blue: #0000ff
-    // red: #ff0000
-    // 所以重叠部分的颜色：#ff00ff
-    // xor：重叠部分会变成透明
-    // copy：只有新图像会被保留，其余的全部被清除(边透明)
-    var canvas = this.elem.nativeElement.querySelector("#c4");
+  draw30() { // 剪切
+    var canvas = this.elem.nativeElement.querySelector("#c3");
     var ctx = canvas.getContext("2d");
-    ctx.font = "14px sans-serif";
-    ctx.fillStyle = "blue";
-    ctx.fillRect(20, 0, 30, 30);
-    ctx.globalCompositeOperation = "source-over"; //全局合成操作
+    ctx.beginPath();
+    ctx.arc(130, 0, 50, 0, Math.PI * 2);
+    ctx.clip();
+
+    ctx.fillStyle = "pink";
+    ctx.fillRect(110, 0, 100, 100);
+  }
+  draw31() { // 复制
+    var canvas = this.elem.nativeElement.querySelector("#c3");
+    var ctx = canvas.getContext("2d");
+    ctx.fillStyle = "pink";
+    ctx.fillRect(10, 0, 70, 70);
+
+    var imgData = ctx.getImageData(10, 0, 50, 50);
+    // getImageData(x,y,width,height);
+    // x,y，开始复制的左上角位置的坐标
+    // width,height，将要复制的矩形区域的宽度  
+
+    ctx.putImageData(imgData, 50, 75, 40, 0, 20, 30);
+    // putImageData(imgData,x,y,dirtyX,dirtyY,dirtyWidth,dirtyHeight);
+    // x,y，相对被复制的 ImageData 对象左上角的坐标，不是画布的坐标，来决定复制的内容的位置
+    // dirtyX,dirtyY，显示复制的内容时，将之前复制的内容的尺寸(50, 50)作为画布，然后用dirtyX,dirtyY决定要显示
+    // 的内容的左上角坐标，如果dirtyX,dirtyY的值越接近复制的内容的尺寸(50, 50)，则显示的内容越少
+    // dirtyWidth,dirtyHeight，在画布上绘制图像所使用的宽度。也可以决定显示的内容的多少
+  }
+
+  arr = [
+    'source-over',
+    'source-atop',
+    'source-in',
+    'source-out',
+    'destination-over',
+    'destination-atop',
+    'destination-in',
+    'destination-out',
+    'lighter',
+    'copy',
+    'xor',
+  ]
+  drawArr(type, index) {
+    var canvas = this.elem.nativeElement.querySelector(`#arrs${index}`);
+    var ctx = canvas.getContext("2d");
     ctx.fillStyle = "red";
-    ctx.fillRect(30, 10, 30, 30);
-    ctx.fillText("source-over", 5, 52);
+    ctx.fillRect(20, 0, 50, 30);
+    ctx.globalCompositeOperation = type;
+    ctx.fillStyle = "blue";
+    ctx.fillRect(30, 10, 50, 30);
   }
 }

@@ -57,6 +57,8 @@
       <button (click)="draw20()">绘制 img 标签元素中的图片</button>
       <button (click)="draw21()">缩放图片</button>
       <button (click)="draw22()">切片</button>
+      <button (click)="draw31()">复制</button>
+      <button (click)="draw30()">剪切</button>
       <div>
         <img src="assets/1.png" alt="" id="isImg" width="100">
         <canvas id="c3" width="400" height="200"></canvas>
@@ -81,11 +83,36 @@
       </div>
     </div>
     <div>
-      <div>
-        <button (click)="draw29()">合成</button>
-
+      <div style="display:flex;justify-content: space-around;flex-wrap: wrap">
+        <div *ngFor="let item of arr,let i=index">
+          <button (click)="drawArr(item,i)">{{item}}</button><br>
+          <canvas [id]="'arrs'+i" width="110" height="60"></canvas>
+        </div>
       </div>
-      <canvas id="c4" width="800" height="250"></canvas>
+      <p style="padding:10px;">
+        合成<br>
+        globalCompositeOperation = type<br>
+        type `是下面 13 种字符串值之一：<br>
+        source-over：这是默认设置，新图像会覆盖在原有图像<br>
+        source-in：仅仅会出现新图像与原来图像重叠的部分，其他区域都变成透明的。(包括其他的老图像区域也会透明)<br>
+        source-out：仅仅显示新图像与老图像没有重叠的部分，其余部分全部透明。(老图像也不显示)<br>
+        source-atop：新图像仅仅显示与老图像重叠区域。老图像仍然可以显示。<br>
+        destination-over：新图像会在老图像的下面。<br>
+        destination-in：仅仅新老图像重叠部分的老图像被显示，其他区域全部透明。<br>
+        destination-out：仅仅老图像与新图像没有重叠的部分。 注意显示的是老图像的部分区域。<br>
+        destination-atop：老图像仅仅仅仅显示重叠部分，新图像会显示在老图像的下面。<br>
+        lighter：新老图像都显示，但是重叠区域的颜色做加处理<br>
+        darken：保留重叠部分最黑的像素。(每个颜色位进行比较，得到最小的)<br>
+        blue: #0000ff<br>
+        red: #ff0000<br>
+        所以重叠部分的颜色：#000000<br>
+        lighten：保留重叠部分最量的像素。(每个颜色位进行比较，得到最大的)<br>
+        blue: #0000ff<br>
+        red: #ff0000<br>
+        所以重叠部分的颜色：#ff00ff<br>
+        xor：重叠部分会变成透明<br>
+        copy：只有新图像会被保留，其余的全部被清除(边透明)
+      </p>
     </div>
   </div>
   <ul style="width:40%;">
