@@ -10,7 +10,7 @@ import { NgxEchartsModule } from "ngx-echarts"; // echarts
 // cnpm i ngx-workspace --save
 import { NgxWorkspaceModule } from "ngx-workspace"; // 组件拼接插件
 import { DndModule } from "ngx-drag-drop"; // 拖放插件
-
+import { NgxXLSXModule } from '@notadd/ngx-xlsx'; // 导出 Excel 插件
 /*************************************************************************************/
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome"; //奥森图标
 import { fab } from "@fortawesome/free-brands-svg-icons";
@@ -48,6 +48,9 @@ import { AosentubiaoComponent } from "./aosentubiao/aosentubiao.component";
 import { NgxDropzoneWrapperComponent } from "./ngx-dropzone-wrapper/ngx-dropzone-wrapper.component";
 import { DragAndDropComponent } from "./drag-and-drop/drag-and-drop.component";
 import { BulmaComponent } from "./bulma/bulma.component";
+import { ExcelComponent } from "./excel/excel.component";
+
+
 @NgModule({
   imports: [
     CommonModule,
@@ -60,7 +63,8 @@ import { BulmaComponent } from "./bulma/bulma.component";
     NgxWorkspaceModule,
     FontAwesomeModule,
     DropzoneModule,
-    DndModule
+    DndModule,
+    NgxXLSXModule
   ],
   declarations: [
     Module4Component,
@@ -73,7 +77,8 @@ import { BulmaComponent } from "./bulma/bulma.component";
     BulmaComponent,
     NgxDropzoneWrapperComponent,
     TwoComponentComponent,
-    DragAndDropComponent
+    DragAndDropComponent,
+    ExcelComponent
   ],
   entryComponents: [OneComponentComponent, TwoComponentComponent],
   providers: [

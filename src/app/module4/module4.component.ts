@@ -22,7 +22,8 @@ export class Module4Component implements OnInit {
       "NgxDropzoneWrapper",
       "dragdrop",
       "bulma",
-      "gaode",
+      "excel",
+      "gaode"
     ];
   }
   ngAfterViewInit() {

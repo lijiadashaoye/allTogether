@@ -1,0 +1,44 @@
+<h2>将数据导出为 Excel 表格</h2>
+<div>
+  <h3>方法一，使用 ngx-xlsx</h3>
+  <p>npm install @notadd/ngx-xlsx --save</p>
+  <p>npm install xlsx --save</p>
+  <p>npm install file-saver --save</p>
+  <p>模块文件内引入: NgxXLSXModule</p>
+  <p>组件内引入：NgxXLSXService </p>
+  <button (click)="download1()">ngx-xlsx</button>
+</div>
+<div>
+  <h3>方法二，使用 XLSX</h3>
+  <p>npm install xlsx --save</p>
+  <p>在组件内声明 XLSX 即可：import * as XLSX from "xlsx";</p>
+  <button (click)="download2()">读取表格数据</button>
+  <button (click)="download3()">提取和解析HTML代码</button>
+  <button (click)="download4()">读取二维数组数据</button>
+  <button (click)="download5()">插入 JS 数组数据</button>
+  <button (click)="download6()">读取对象数组数据</button>
+</div>
+<p>要被读取的表格</p>
+<table id="t1">
+  <tr>
+    <th>一</th>
+    <th>二</th>
+    <th>三</th>
+    <th>四</th>
+    <th>五</th>
+  </tr>
+  <tr>
+    <td>万籁寂无声</td>
+    <td>衾铁棱棱近五更</td>
+    <td>香断灯昏吟未稳</td>
+    <td>凄清</td>
+    <td>只有霜华伴月明</td>
+  </tr>
+  <tr>
+    <td>应是夜寒凝</td>
+    <td>恼得梅花睡不成</td>
+    <td>我念梅花花念我</td>
+    <td>关情</td>
+    <td>起看清冰满玉瓶</td>
+  </tr>
+</table>
