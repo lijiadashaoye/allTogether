@@ -613,8 +613,8 @@ export class CanvasLearnComponent {
       let hourAngle = (pi / 180) * 30 * h + minuteAngle / 12; //计算出来时针的弧度
 
       drawHand(hourAngle, 60, 6, "red", ctx); //绘制时针
-      drawHand(minuteAngle, 106, 4, "green", ctx); //绘制分针
-      drawHand(secondAngle, 129, 2, "gray", ctx); //绘制秒针
+      drawHand(minuteAngle, 75, 4, "green", ctx); //绘制分针
+      drawHand(secondAngle, 85, 2, "gray", ctx); //绘制秒针
     }
     /*绘制时针、或分针、或秒针
      * 参数1：要绘制的针的角度
@@ -625,7 +625,7 @@ export class CanvasLearnComponent {
      * */
     function drawHand(angle, len, width, color, ctx) {
       ctx.save();
-      ctx.translate(150, 150); //把坐标轴的远点平移到原来的中心
+      ctx.translate(100, 100); //把坐标轴的远点平移到原来的中心
       ctx.rotate(-Math.PI / 2 + angle); //旋转坐标轴。 x轴就是针的角度
       ctx.beginPath();
       ctx.moveTo(-10, 0);
@@ -641,12 +641,12 @@ export class CanvasLearnComponent {
     /*绘制表盘*/
     function drawDial(ctx) {
       let pi = Math.PI;
-      ctx.clearRect(0, 0, 300, 300); //清除所有内容
+      ctx.clearRect(0, 0, 200, 200); //清除所有内容
       ctx.save();
       // 画圆
-      ctx.translate(150, 150); //一定坐标原点到原来的中心
+      ctx.translate(100, 100); //一定坐标原点到原来的中心
       ctx.beginPath();
-      ctx.arc(0, 0, 148, 0, 2 * pi); //绘制圆周
+      ctx.arc(0, 0, 98, 0, 2 * pi); //绘制圆周
       ctx.stroke();
       ctx.closePath();
 
@@ -655,8 +655,9 @@ export class CanvasLearnComponent {
         ctx.save();
         ctx.rotate(-pi / 2 + (i * pi) / 30); //旋转坐标轴。坐标轴x的正方形从0度向上开始算起
         ctx.beginPath();
-        ctx.moveTo(110, 0);
-        ctx.lineTo(140, 0);
+        let long = i % 5 ? 85 : 75;
+        ctx.moveTo(long, 0);
+        ctx.lineTo(95, 0);
         ctx.lineWidth = i % 5 ? 2 : 4;
         ctx.strokeStyle = i % 5 ? "blue" : "red";
         ctx.stroke();
@@ -677,23 +678,23 @@ export class CanvasLearnComponent {
     earth = new Image();
     moon = new Image();
     sun.src = "assets/sun.jpeg";
-    earth.src = "assets/earth.jpeg";
-    moon.src = "assets/moon.jpeg";
+    earth.src = "assets/earth.png";
+    moon.src = "assets/moon.png";
     sun.onload = function() {
       toDraw();
     };
 
     function toDraw() {
-      ctx.clearRect(0, 0, 300, 300); //清空所有的内容
+      ctx.clearRect(0, 0, 200, 200); //清空所有的内容
       /*绘制 太阳*/
-      ctx.drawImage(sun, 0, 0, 300, 300);
+      ctx.drawImage(sun, 0, 0, 200, 200);
       ctx.save();
-      ctx.translate(150, 150); // 将canvas坐标系原点移到原画布中心
+      ctx.translate(100, 100); // 将canvas坐标系原点移到原画布中心
 
       //绘制earth轨道
       ctx.beginPath();
       ctx.strokeStyle = "rgba(255,255,0,0.5)";
-      ctx.arc(0, 0, 120, 0, 2 * Math.PI); // 画半径120的圆
+      ctx.arc(0, 0, 60, 0, 2 * Math.PI); // 画半径6的圆
       ctx.stroke();
 
       let time = new Date();
@@ -702,13 +703,13 @@ export class CanvasLearnComponent {
         ((2 * Math.PI) / 60) * time.getSeconds() +
           ((2 * Math.PI) / 60000) * time.getMilliseconds()
       );
-      ctx.translate(120, 0); // 定位地球
-      ctx.drawImage(earth, -20, -20, 40, 40);
+      ctx.translate(60, 0); // 定位地球
+      ctx.drawImage(earth, -15, -15, 30, 30);
 
       //绘制月球轨道
       ctx.beginPath();
       ctx.strokeStyle = "rgba(255,255,255,.3)";
-      ctx.arc(0, 0, 40, 0, 2 * Math.PI);
+      ctx.arc(0, 0, 30, 0, 2 * Math.PI);
       ctx.stroke();
 
       //设置月球的旋转
@@ -716,7 +717,7 @@ export class CanvasLearnComponent {
         ((2 * Math.PI) / 6) * time.getSeconds() +
           ((2 * Math.PI) / 6000) * time.getMilliseconds()
       );
-      ctx.translate(40, 0);
+      ctx.translate(30, 0);
       ctx.drawImage(moon, -15, -15, 30, 30);
       ctx.restore();
 
