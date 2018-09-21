@@ -1,32 +1,35 @@
-.waper {
-    display: flex;
-    justify-content: flex-start;
-  }
-  
-  .waper>div {
-    border: 1px dashed rgb(168, 163, 163);
-    display: flex;
-    justify-content: flex-start;
-    width: 50%;
-    min-width: 800px;
-    padding:5px;
-  }
-  
-  .canWaper {
-    width: 300px;
-  }
-  
-  ul {
-    font-size: 16px;
-    padding-left: 15px;
-  }
-  li{
-      padding-top:2px;
-  }
-  
-  button {
-    margin-right: 3px
-  }
-  p{
-      margin:2px 0;
-  }
+.waper,
+.waper2 {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.waper>div {
+  border: 1px dashed rgb(168, 163, 163);
+  display: flex;
+  justify-content: flex-start;
+  width: 50%;
+  min-width: 800px;
+  padding: 5px;
+}
+
+.canWaper {
+  width: 300px;
+}
+
+ul {
+  font-size: 16px;
+  padding-left: 15px;
+}
+
+li {
+  padding-top: 2px;
+}
+
+button {
+  margin-right: 3px
+}
+
+p {
+  margin: 2px 0;
+}

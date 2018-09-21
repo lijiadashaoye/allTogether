@@ -142,43 +142,46 @@
 
   </div>
 
-  <div class="waper">
-
+  <div class="waper2">
     <div>
-      <div style="margin-right: 10px;">
-        <div>
-          <button (click)="createImg()">创建图片</button>
+      <div class="waper2">
+        <div style="margin-right: 10px;">
+          <div>
+            <button (click)="createImg()">创建图片</button>
+          </div>
+          <canvas id="d6" width="120px" height="240px"></canvas>
         </div>
-        <canvas id="d6" width="120px" height="240px"></canvas>
+        <div style="margin-right: 10px">
+          <div>
+            <button (click)="fromImg()">img标签中的图片</button><br>
+            <img src="assets/over1.png" id="isImg">
+          </div>
+          <canvas id="d7" width="120px" height="240px"></canvas>
+        </div>
+        <div style="margin-right: 10px">
+          <div>
+            <button (click)="scaleImg()">缩放图片</button><br>
+            <img src="assets/over1.png" id="isImg2">
+          </div>
+          <canvas id="d8" width="150px" height="240px"></canvas>
+        </div>
+        <div style="margin-right: 10px">
+          <div>
+            <button (click)="qpImg()">从Img标签复制</button><br>
+            <img src="assets/over1.png" id="isImg3">
+          </div>
+          <canvas id="d9" width="150px" height="240px"></canvas>
+        </div>
+        <div style="margin-right: 10px">
+          <div>
+            <button (click)="fzImg()">从当前canvas复制</button>
+          </div>
+          <canvas id="fz" width="220px" height="300px"></canvas>
+        </div>
       </div>
-      <div style="margin-right: 10px">
-        <div>
-          <button (click)="fromImg()">img标签中的图片</button><br>
-          <img src="assets/over1.png" id="isImg">
-        </div>
-        <canvas id="d7" width="120px" height="240px"></canvas>
-      </div>
-      <div style="margin-right: 10px">
-        <div>
-          <button (click)="scaleImg()">缩放图片</button><br>
-          <img src="assets/over1.png" id="isImg2">
-        </div>
-        <canvas id="d8" width="150px" height="240px"></canvas>
-      </div>
-
-      <div style="margin-right: 10px">
-        <div>
-          <button (click)="qpImg()">从Img标签复制</button><br>
-          <img src="assets/over1.png" id="isImg3">
-        </div>
-        <canvas id="d9" width="150px" height="240px"></canvas>
-      </div>
-
-      <div style="margin-right: 10px">
-        <div>
-          <button (click)="fzImg()">从当前canvas复制</button>
-        </div>
-        <canvas id="fz" width="220px" height="300px"></canvas>
+      <div>
+        <p>图片剪切复制</p>
+        <img src="../assets/111.jpg" style="width:300px;height:300px;">
       </div>
     </div>
 
@@ -196,8 +199,6 @@
         </ul>
       </div>
     </div>
-
-
   </div>
 
   <div style="display: flex;border: 1px dashed rgb(168, 163, 163);">
@@ -241,7 +242,7 @@
           <canvas id="d15" width="100px" height="240px"></canvas>
         </div>
       </div>
-      <div style="display: flex">
+      <div style="display: flex;justify-content: space-around">
         <div>
           <button (click)="clock()">模拟时钟</button><br>
           <canvas id="clock" width="300" height="300"></canvas>
@@ -249,6 +250,10 @@
         <div>
           <button (click)="sun()">太阳系</button><br>
           <canvas id="sun" width="300" height="300"></canvas>
+        </div>
+        <div>
+          <p>旋转角度</p>
+          <img src="../assets/roate.png">
         </div>
       </div>
     </div>
