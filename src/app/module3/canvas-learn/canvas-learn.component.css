@@ -1,26 +1,32 @@
-ul {
-    list-style: none;
-    font-size: 16px
-  }
-  
-  li {
-    padding: 3px 0;
-    margin: 0;
-  }
-  
-  .wap {
+.waper {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
   }
-  canvas{
-      margin:3px 0;
+  
+  .waper>div {
+    border: 1px dashed rgb(168, 163, 163);
+    display: flex;
+    justify-content: flex-start;
+    width: 50%;
+    min-width: 800px;
+    padding:5px;
   }
-  button{
-      margin-right: 5px;
-      cursor: pointer;
+  
+  .canWaper {
+    width: 300px;
+  }
+  
+  ul {
+    font-size: 16px;
+    padding-left: 15px;
+  }
+  li{
+      padding-top:2px;
+  }
+  
+  button {
+    margin-right: 3px
   }
   p{
-      font-size:16px;
-      padding:5px 0;
-      margin:0;
+      margin:2px 0;
   }

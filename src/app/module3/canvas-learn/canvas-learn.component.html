@@ -1,138 +1,262 @@
-<p>https://segmentfault.com/a/1190000016031115?utm_source=weekly&utm_medium=email&utm_campaign=email_weekly</p>
-<div class="wap">
-  <div style="width:60%;">
+<div>
+  <div class="waper">
     <div>
-      <div>
-        <button (click)="drawAll()">全部</button>
-        <button (click)="draw1()">绘制矩形</button>
-        <button (click)="draw2()">绘制线段</button>
-        <button (click)="draw3()">绘制三角形边框</button>
-        <button (click)="draw4()">填充三角形</button>
-        <button (click)="draw5()">绘制圆弧</button>
-        <button (click)="draw6()">绘制闭合圆弧</button>
-        <button (click)="draw7()">绘制闭合填充圆弧(多参数)</button>
-        <button (click)="draw8()">绘制闭合圆弧(单参数)</button>
-        <button (click)="draw9()">控制点绘制圆弧</button>
-        <button (click)="draw10()">绘制二次贝塞尔曲线</button>
-        <button (click)="draw11()">绘制三次贝塞尔曲线</button>
-        <button (click)="draw14()">线宽</button>
-        <button (click)="draw15()">线条末端样式</button>
-        <button (click)="draw16()">线条间接合处的样式</button>
-        <button (click)="draw17()">虚线</button>
-        <button (click)="draw18()">绘制文本</button>
-        <button (click)="draw19()">由零开始创建图片</button>
-        <button (click)="draw23()">透明度</button>
-        <button (click)="draw28()">状态的保存和恢复</button>
-        <button (click)="draw24()">移动 canvas 的原点</button>
-        <button (click)="draw25()">旋转坐标轴</button>
-        <button (click)="draw26()">缩放</button>
-        <button (click)="draw27()">transform(变形矩阵)</button>
-      </div>
-      <p>多次点击按钮，会执行多次绘画，导致图形颜色越点越深</p>
-      <canvas id="c1" width="600" height="200"></canvas>
-      <div style="display: flex;justify-content: space-around;">
+      <div class="canWaper">
         <div>
-          <p>控制点绘制圆弧</p>
-          <img src="../assets/1.png">
+          <button (click)="fillRect()">fillRect</button>
+          <button (click)="strokeRect()">strokeRect</button>
+          <button (click)="clearRect()">clearRect</button>
         </div>
+        <canvas id="d1" width="180px" height="180px"></canvas>
+      </div>
+      <ul>
+        <strong>绘制矩形</strong>
+        <li *ngFor="let t of text1">{{t}}</li>
+      </ul>
+    </div>
+    <div>
+      <div class="canWaper">
         <div>
-          <p>绘制二次贝塞尔曲线</p>
-          <img src="../assets/2.png">
+          <button (click)="line()">线</button>
+          <button (click)="xx()">虚线</button>
+          <button (click)="sj()">三角</button>
+          <button (click)="tcsj()">填充三角</button>
         </div>
-        <div>
-          <p>绘制三次贝塞尔曲线</p>
-          <img src="../assets/3.png">
-        </div>
+        <canvas id="d2" width="180px" height="200px"></canvas>
       </div>
-    </div>
-    <div>
-      <div>
-        <button (click)="drawAll2()">全部</button>
-        <button (click)="draw12()">绘制填充颜色</button>
-        <button (click)="draw13()">绘制描边</button>
-      </div>
-      <canvas id="c2" width="800" height="130"></canvas>
-    </div>
-    <div>
-      <button (click)="draw20()">绘制 img 标签元素中的图片</button>
-      <button (click)="draw21()">缩放图片</button>
-      <button (click)="draw22()">切片</button>
-      <button (click)="draw31()">复制</button>
-      <button (click)="draw30()">剪切</button>
-      <div>
-        <img src="assets/1.png" alt="" id="isImg" width="100">
-        <canvas id="c3" width="400" height="200"></canvas>
-      </div>
-    </div>
-    <div style="display: flex;justify-content: space-around;">
-      <div>
-        <p>切片</p>
-        <img src="assets/111.jpg">
-      </div>
-      <div>
-        <p>移动 canvas 的原点到指定的位置</p>
-        <img src="assets/trans.png">
-      </div>
-      <div>
-        <p>旋转坐标轴</p>
-        <img src="assets/roate.png">
-      </div>
-      <div>
-        <p>transform(a, b, c, d, e, f)(变形矩阵)</p>
-        <img src="assets/transf.png">
-      </div>
-    </div>
-    <div style="display: flex;justify-content: space-around;">
-      <div>
-        <p>圆弧</p>
-        <p>中心：arc(100,75,50,0*Math.PI,1.5*Math.PI)</p>
-        <p>起始角：arc(100,75,50,0,1.5*Math.PI)</p>
-        <p>结束角：arc(100,75,50,0*Math.PI,1.5*Math.PI)</p>
-        <img src="assets/arct.png">
-      </div>
-    </div>
-    <div>
-      <div style="display:flex;justify-content: space-around;flex-wrap: wrap">
-        <div *ngFor="let item of arr,let i=index">
-          <button (click)="drawArr(item,i)">{{item}}</button><br>
-          <canvas [id]="'arrs'+i" width="110" height="60"></canvas>
-        </div>
-      </div>
-      <p style="padding:10px;">
-        合成<br>
-        globalCompositeOperation = type<br>
-        type `是下面 13 种字符串值之一：<br>
-        source-over：这是默认设置，新图像会覆盖在原有图像<br>
-        source-in：仅仅会出现新图像与原来图像重叠的部分，其他区域都变成透明的。(包括其他的老图像区域也会透明)<br>
-        source-out：仅仅显示新图像与老图像没有重叠的部分，其余部分全部透明。(老图像也不显示)<br>
-        source-atop：新图像仅仅显示与老图像重叠区域。老图像仍然可以显示。<br>
-        destination-over：新图像会在老图像的下面。<br>
-        destination-in：仅仅新老图像重叠部分的老图像被显示，其他区域全部透明。<br>
-        destination-out：仅仅老图像与新图像没有重叠的部分。 注意显示的是老图像的部分区域。<br>
-        destination-atop：老图像仅仅仅仅显示重叠部分，新图像会显示在老图像的下面。<br>
-        lighter：新老图像都显示，但是重叠区域的颜色做加处理<br>
-        darken：保留重叠部分最黑的像素。(每个颜色位进行比较，得到最小的)<br>
-        blue: #0000ff<br>
-        red: #ff0000<br>
-        所以重叠部分的颜色：#000000<br>
-        lighten：保留重叠部分最量的像素。(每个颜色位进行比较，得到最大的)<br>
-        blue: #0000ff<br>
-        red: #ff0000<br>
-        所以重叠部分的颜色：#ff00ff<br>
-        xor：重叠部分会变成透明<br>
-        copy：只有新图像会被保留，其余的全部被清除(边透明)
-      </p>
-    </div>
-    <div>
-      <button (click)="draw32()">太阳系</button><br>
-      <canvas id="c5" width="300" height="300"></canvas>
-    </div>
-    <div>
-      <button (click)="draw33()">模拟时钟</button><br>
-      <canvas id="c6" width="300" height="300"></canvas>
+      <ul>
+        <strong>绘制路径(path)</strong>
+        <li *ngFor="let t of text2">{{t}}</li>
+      </ul>
     </div>
   </div>
-  <ul style="width:40%;">
-    <li *ngFor="let content of contents1">{{content}}</li>
-  </ul>
+
+  <div class="waper">
+    <div>
+      <div class="canWaper">
+        <div>
+          <button (click)="arc()">绘制圆弧</button>
+          <button (click)="arc2()">控制点</button>
+          <button (click)="arcFill()">绘制闭合</button>
+          <button (click)="arcFill2()">绘制填充</button>
+        </div>
+        <canvas id="d3" width="180px" height="200px"></canvas>
+      </div>
+      <ul>
+        <strong>绘制圆弧</strong>
+        <li *ngFor="let t of text3">{{t}}</li>
+      </ul>
+      <div>
+        <p>圆弧：X轴方向为 0°</p>
+        <p>arc(100,75,50,0*Math.PI,1.5*Math.PI,true)</p>
+        <p>中心：100,75</p>
+        <p>起始角：0*Math.PI，Math.PI / 2=90°</p>
+        <p>结束角：1.5*Math.PI</p>
+        <p>Math.PI / 2=90°，-Math.PI / 2=-90°</p>
+        <p>方向：顺时针 true，逆时针 false</p>
+        <p>1.圆的周长C=2πr=πd</p>
+        <p>2.圆的面积S=πr²</p>
+        <p>3.扇形弧长l=(πr/180)*n</p>
+        <p>4.扇形面积S=(πr²/360)*n=rl/2</p>
+        <div style="display: flex">
+          <div>
+            <img src="assets/arct.png" style="width:200px;">
+          </div>
+          <div>
+            <p>控制点绘制圆弧</p>
+            <img src="../assets/1.png" style="width:160px;">
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div>
+      <div class="canWaper">
+        <div>
+          <button (click)="er()">二次贝塞尔</button>
+          <button (click)="san()">三次贝塞尔</button>
+          <button (click)="wenzi()">文字</button>
+        </div>
+        <canvas id="d4" width="250px" height="350px"></canvas>
+      </div>
+      <div>
+        <div style="display: flex">
+          <div>
+            <p>绘制二次贝塞尔曲线</p>
+            <img src="../assets/2.png">
+          </div>
+          <div>
+            <p>绘制三次贝塞尔曲线</p>
+            <img src="../assets/3.png">
+          </div>
+        </div>
+        <strong>给文本添加样式：</strong>
+        <ul>
+          <li *ngFor="let t of text5">{{t}}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div style="display: flex;border: 1px dashed rgb(168, 163, 163);">
+    <div style="margin-right: 10px">
+      <div>
+        <button (click)="tc()">填充</button>
+      </div>
+      <canvas id="tc" width="150px" height="240px"></canvas>
+    </div>
+    <div style="margin-right: 10px">
+      <div>
+        <button (click)="mb()">描边</button>
+      </div>
+      <canvas id="mb" width="150px" height="240px"></canvas>
+    </div>
+    <div style="margin-right: 10px">
+      <div>
+        <button (click)="xk()">线宽</button>
+      </div>
+      <canvas id="xk" width="150px" height="240px"></canvas>
+    </div>
+    <div style="margin-right: 10px">
+      <div>
+        <button (click)="tmd()">透明度</button>
+      </div>
+      <canvas id="tmd" width="150px" height="240px"></canvas>
+    </div>
+    <div style="margin-right: 10px">
+      <div>
+        <button (click)="xtmd()">线条末端样式</button>
+      </div>
+      <canvas id="xtmd" width="150px" height="240px"></canvas>
+    </div>
+    <div style="margin-right: 10px">
+      <div>
+        <button (click)="xj()">线条间接合处的样式</button>
+      </div>
+      <canvas id="d5" width="150px" height="240px"></canvas>
+    </div>
+    <ul>
+      <strong>添加样式</strong>
+      <li *ngFor="let t of text4">{{t}}</li>
+    </ul>
+
+  </div>
+
+  <div class="waper">
+
+    <div>
+      <div style="margin-right: 10px;">
+        <div>
+          <button (click)="createImg()">创建图片</button>
+        </div>
+        <canvas id="d6" width="120px" height="240px"></canvas>
+      </div>
+      <div style="margin-right: 10px">
+        <div>
+          <button (click)="fromImg()">img标签中的图片</button><br>
+          <img src="assets/over1.png" id="isImg">
+        </div>
+        <canvas id="d7" width="120px" height="240px"></canvas>
+      </div>
+      <div style="margin-right: 10px">
+        <div>
+          <button (click)="scaleImg()">缩放图片</button><br>
+          <img src="assets/over1.png" id="isImg2">
+        </div>
+        <canvas id="d8" width="150px" height="240px"></canvas>
+      </div>
+
+      <div style="margin-right: 10px">
+        <div>
+          <button (click)="qpImg()">从Img标签复制</button><br>
+          <img src="assets/over1.png" id="isImg3">
+        </div>
+        <canvas id="d9" width="150px" height="240px"></canvas>
+      </div>
+
+      <div style="margin-right: 10px">
+        <div>
+          <button (click)="fzImg()">从当前canvas复制</button>
+        </div>
+        <canvas id="fz" width="220px" height="300px"></canvas>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div style="display:flex;justify-content:flex-start;flex-wrap: wrap;align-content: flex-start">
+          <div *ngFor="let item of arr,let i=index">
+            <button (click)="drawArr(item,i)">{{item}}</button><br>
+            <canvas [id]="'arrs'+i" width="110" height="60"></canvas>
+          </div>
+        </div>
+        <ul>
+          <strong>合成</strong>
+          <li *ngFor="let t of text7">{{t}}</li>
+        </ul>
+      </div>
+    </div>
+
+
+  </div>
+
+  <div style="display: flex;border: 1px dashed rgb(168, 163, 163);">
+    <div style="width:60%;">
+      <div style="display: flex;justify-content: space-around">
+        <div style="margin-right: 10px">
+          <div>
+            <button (click)="state()">状态的保存、恢复</button>
+          </div>
+          <canvas id="d10" width="140px" height="240px"></canvas>
+        </div>
+
+        <div style="margin-right: 10px">
+          <div>
+            <button (click)="move()">坐标原点移动</button>
+          </div>
+          <canvas id="d11" width="100px" height="240px"></canvas>
+        </div>
+        <div style="margin-right: 10px">
+          <div>
+            <button (click)="rotate()">旋转</button>
+          </div>
+          <canvas id="d12" width="100px" height="240px"></canvas>
+        </div>
+        <div style="margin-right: 10px">
+          <div>
+            <button (click)="scale()">缩放</button>
+          </div>
+          <canvas id="d13" width="100px" height="240px"></canvas>
+        </div>
+        <div style="margin-right: 10px">
+          <div>
+            <button (click)="transform()">变形</button>
+          </div>
+          <canvas id="d14" width="100px" height="240px"></canvas>
+        </div>
+        <div style="margin-right: 10px">
+          <div>
+            <button (click)="clip()">剪切</button>
+          </div>
+          <canvas id="d15" width="100px" height="240px"></canvas>
+        </div>
+      </div>
+      <div style="display: flex">
+        <div>
+          <button (click)="clock()">模拟时钟</button><br>
+          <canvas id="clock" width="300" height="300"></canvas>
+        </div>
+        <div>
+          <button (click)="sun()">太阳系</button><br>
+          <canvas id="sun" width="300" height="300"></canvas>
+        </div>
+      </div>
+    </div>
+    <ul>
+      <strong>状态的保存、恢复</strong>
+      <li *ngFor="let t of text6">{{t}}</li>
+      <strong>动画的基本步骤</strong>
+      <li *ngFor="let t of text8">{{t}}</li>
+    </ul>
+  </div>
 </div>
