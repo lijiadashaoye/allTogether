@@ -1,4 +1,7 @@
-import { Component, ElementRef } from "@angular/core";
+import {
+  Component,
+  ElementRef
+} from "@angular/core";
 
 @Component({
   selector: "app-canvas-learn",
@@ -8,6 +11,7 @@ import { Component, ElementRef } from "@angular/core";
 export class CanvasLearnComponent {
   constructor(private elem: ElementRef) {}
   text1 = [
+    '一定要使用 Canvas 自带的 width 和 height 属性，不要使用 CSS 来控制，因为 CSS 控制会导致 Canvas 变形',
     "canvast 提供了三种方法绘制矩形：",
     "fillRect(x, y, width, height)；绘制一个填充的矩形",
     "strokeRect(x, y, width, height)；绘制一个矩形的边框",
@@ -45,11 +49,22 @@ export class CanvasLearnComponent {
     var canvas = this.elem.nativeElement.querySelector("#d2");
     var ctx = canvas.getContext("2d");
     ctx.beginPath(); //新建一条path
-    ctx.moveTo(10, 15); //把画笔移动到指定的坐标
-    ctx.lineTo(130, 15); //绘制一条从当前位置到指定坐标(200, 50)的直线.
+    ctx.moveTo(10, 15); //把画笔移动到指定的坐标,新开起点
+    ctx.lineTo(100, 15); //绘制一条从当前位置到指定坐标(200, 50)的直线.
     //闭合路径。会拉一条从当前点到path起始点的直线。如果当前点与起始点重合，则什么都不做
     ctx.closePath();
     ctx.stroke(); //绘制路径。
+  }
+  line2() {
+    var canvas = this.elem.nativeElement.querySelector("#d2");
+    var ctx = canvas.getContext("2d");
+    ctx.beginPath(); //新建一条path
+    ctx.moveTo(110, 10); // 新开起点
+    ctx.lineTo(150, 50);
+    ctx.lineTo(180, 50);
+    ctx.moveTo(110, 20);  // 再开起点
+    ctx.lineTo(140, 70);
+    ctx.stroke();  // 统一输出
   }
   sj() {
     // 绘制三角
@@ -57,8 +72,8 @@ export class CanvasLearnComponent {
     var ctx = canvas.getContext("2d");
     ctx.beginPath();
     ctx.moveTo(10, 30);
-    ctx.lineTo(130, 30);
-    ctx.lineTo(130, 70);
+    ctx.lineTo(100, 30);
+    ctx.lineTo(100, 70);
     ctx.closePath(); //虽然我们只绘制了两条线段，但是closePath会closePath，仍然是一个3角形
     ctx.stroke(); //描边。stroke不会自动closePath()
   }
@@ -69,8 +84,8 @@ export class CanvasLearnComponent {
     var ctx = canvas.getContext("2d");
     ctx.beginPath();
     ctx.moveTo(10, 80);
-    ctx.lineTo(130, 80);
-    ctx.lineTo(130, 120);
+    ctx.lineTo(100, 80);
+    ctx.lineTo(100, 120);
     ctx.closePath(); //虽然我们只绘制了两条线段，但是closePath会closePath，仍然是一个三角形
     ctx.fill(); //描边。stroke不会自动closePath()
   }
@@ -680,7 +695,7 @@ export class CanvasLearnComponent {
     sun.src = "assets/sun.jpeg";
     earth.src = "assets/earth.png";
     moon.src = "assets/moon.png";
-    sun.onload = function() {
+    sun.onload = function () {
       toDraw();
     };
 
@@ -701,7 +716,7 @@ export class CanvasLearnComponent {
       // 设置地球的旋转
       ctx.rotate(
         ((2 * Math.PI) / 60) * time.getSeconds() +
-          ((2 * Math.PI) / 60000) * time.getMilliseconds()
+        ((2 * Math.PI) / 60000) * time.getMilliseconds()
       );
       ctx.translate(60, 0); // 定位地球
       ctx.drawImage(earth, -15, -15, 30, 30);
@@ -715,7 +730,7 @@ export class CanvasLearnComponent {
       //设置月球的旋转
       ctx.rotate(
         ((2 * Math.PI) / 6) * time.getSeconds() +
-          ((2 * Math.PI) / 6000) * time.getMilliseconds()
+        ((2 * Math.PI) / 6000) * time.getMilliseconds()
       );
       ctx.translate(30, 0);
       ctx.drawImage(moon, -15, -15, 30, 30);
