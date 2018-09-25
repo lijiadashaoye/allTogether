@@ -136,6 +136,13 @@
       </div>
       <canvas id="d5" width="150px" height="240px"></canvas>
     </div>
+    <div style="margin-right: 10px">
+      <div>
+        <button (click)="rectJB()">矩形渐变</button>
+        <button (click)="arcJB()">圆形渐变</button>
+      </div>
+      <canvas id="rectJB" width="150px" height="240px"></canvas>
+    </div>
     <ul>
       <strong>添加样式</strong>
       <li *ngFor="let t of text4">{{t}}</li>
@@ -274,7 +281,19 @@
       <div>
         <button (click)="animate1()">点线动画</button>
       </div>
-        <canvas id="c1" width="400px" height="300px"></canvas>
+      <canvas id="c1" width="400px" height="300px"></canvas>
+    </div>
+    <div style="margin-right: 10px">
+      <div>
+        <button (click)="clicks()">鼠标事件判定</button>
+      </div>
+      <canvas id="cas"></canvas>
+    </div>
+    <div style="margin-right: 10px">
+      <div>
+        <button (click)="isRepeat()">重复repeat</button>
+      </div>
+      <canvas id="rep"></canvas>
     </div>
   </div>
 </div>

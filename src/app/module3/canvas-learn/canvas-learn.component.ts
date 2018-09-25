@@ -8,7 +8,8 @@ import { Component, ElementRef } from "@angular/core";
 export class CanvasLearnComponent {
   constructor(private elem: ElementRef) {}
   text1 = [
-    "一定要使用 Canvas 自带的 width 和 height 属性，不要使用 CSS 来控制，因为 CSS 控制会导致 Canvas 变形",
+    "标签内width和height属性设置画布的尺寸，不会造成图片的变形，对画布尺寸的改变相当于将画布切去一块或者添加一块；",
+    "css的width和height属性，是以变形方式来拉伸和压缩画布，会导致图片变形。所以尽量避免使用css设置canvas尺寸。",
     "canvast 提供了三种方法绘制矩形：",
     "fillRect(x, y, width, height)；绘制一个填充的矩形",
     "strokeRect(x, y, width, height)；绘制一个矩形的边框",
@@ -172,28 +173,26 @@ export class CanvasLearnComponent {
     "font = value；当前我们用来绘制文本的样式。这个字符串使用和 CSS font属性相同的语法. 默认的字体是 10px sans-serif。",
     "textAlign = value；文本对齐选项. 可选的值包括：start, end, left, right or center. 默认值是 start。",
     "textBaseline = value；基线对齐选项，可选的值包括：top, hanging, middle, alphabetic, ideographic, bottom。默认值是 alphabetic。",
-    "direction = value；文本方向。可能的值包括：ltr, rtl, inherit。默认值是 inherit。"
+    "direction = value；文本方向。可能的值包括：ltr, rtl, inherit。默认值是 inherit。",
+    "连续写多个quadraticCurveTo的话，会将上一条线的终点作为下一条线的起点"
   ];
   er() {
     // 绘制二次贝塞尔曲线
     var canvas = this.elem.nativeElement.querySelector("#d4");
     var ctx = canvas.getContext("2d");
     ctx.beginPath();
-    ctx.moveTo(10, 100); //起始点
-    var cp1x = 40;
-    var cp1y = 15; //控制点
-    var x = 200;
-    var y = 100; // 结束点
+    ctx.moveTo(10, 70); //起始点
     // quadraticCurveTo(cp1x, cp1y, x, y):
     // ​参数cp1x, cp1y：控制点坐标
     // ​参数 x, y：结束点坐标
-    ctx.quadraticCurveTo(cp1x, cp1y, x, y);
-    ctx.stroke();
-    ctx.beginPath();
-    ctx.rect(10, 100, 10, 10);
-    ctx.rect(cp1x, cp1y, 10, 10);
-    ctx.rect(x, y, 10, 10);
+    // 连续写多个quadraticCurveTo的话，会将上一条线的终点作为下一条线的起点
+    ctx.quadraticCurveTo(40, 10, 100, 50);
+    ctx.quadraticCurveTo(50, 35, 40, 80);
+    ctx.quadraticCurveTo(50, 20, 10, 70);
+
+    ctx.fillStyle = "#614248";
     ctx.fill();
+    ctx.stroke();
   }
   san() {
     //绘制三次贝塞尔曲线
@@ -227,10 +226,11 @@ export class CanvasLearnComponent {
     // fillText(text, x, y [, maxWidth])；在指定的(x,y)位置填充指定的文本，绘制的最大宽度是可选的
     // strokeText(text, x, y [, maxWidth])；在指定的(x,y)位置绘制文本边框，绘制的最大宽度是可选的
     ctx.font = "bold 40px sans-serif";
-    ctx.shadowOffsetX = 5; // 向右为正
-    ctx.shadowOffsetY = 5; // 向下为正
+    ctx.shadowOffsetX = 5; // 向右为正，设置或返回阴影距形状的水平距离
+    ctx.shadowOffsetY = 5; // 向下为正，设置或返回阴影距形状的垂直距离
     ctx.shadowBlur = 5; // 模糊程度
     ctx.shadowColor = "red";
+    ctx.textAlign = "center"; // 设置多次绘画的文字的对齐方式
     ctx.fillText("带阴影文字", 20, 280);
     ctx.strokeText("带阴影文字", 20, 325);
   }
@@ -334,6 +334,7 @@ export class CanvasLearnComponent {
       ctx.lineCap = lineCaps[i];
       ctx.stroke();
     }
+    // 红色参考线
     ctx.beginPath();
     ctx.moveTo(10, 20);
     ctx.lineTo(110, 20);
@@ -365,6 +366,49 @@ export class CanvasLearnComponent {
       ctx16.lineTo(100, 20 + i * 70);
       ctx16.stroke();
     }
+  }
+  rectJB() {
+    var canvas = this.elem.nativeElement.querySelector("#rectJB");
+    var ctx = canvas.getContext("2d");
+    //创建线性渐变对象
+    // context.createLinearGradient(x0,y0,x1,y1);
+    // x0	渐变开始点的 x 坐标
+    // y0	渐变开始点的 y 坐标
+    // x1	渐变结束点的 x 坐标
+    // y1	渐变结束点的 y 坐标
+    var lg = ctx.createLinearGradient(10, 10, 150, 30);
+    // 此段代码就是规定图像的30%-80%之间是渐变区域
+    lg.addColorStop(0.3, "red");
+    lg.addColorStop(0.5, "blue");
+    lg.addColorStop(0.8, "green");
+
+    //带线性渐变矩形
+    ctx.fillStyle = lg;
+    ctx.fillRect(10, 10, 150, 30);
+  }
+  arcJB() {
+    var canvas = this.elem.nativeElement.querySelector("#rectJB");
+    var ctx = canvas.getContext("2d");
+    //创建线性渐变对象
+    // context.createRadialGradient(x0,y0,r0,x1,y1,r1);
+    // x0	渐变的开始圆的 x 坐标
+    // y0	渐变的开始圆的 y 坐标
+    // r0	开始圆的半径
+    // x1	渐变的结束圆的 x 坐标
+    // y1	渐变的结束圆的 y 坐标
+    // r1	结束圆的半径
+    var lg = ctx.createRadialGradient(70, 100, 20, 70, 100, 50);
+    // 渐变是发生在从内圆到外圆之间的区间内
+    // 渐变的起点之前和渐变的终点之后填充对应的起点纯色和终点纯色。
+    lg.addColorStop(0.2, "red");
+    lg.addColorStop(0.4, "blue");
+    lg.addColorStop(0.8, "yellow");
+    //带线性渐变圆
+    ctx.beginPath();
+    ctx.arc(70, 100, 50, 0, Math.PI * 2);
+    ctx.fillStyle = lg;
+    ctx.fill();
+    ctx.closePath();
   }
   /**************************************************************/
 
@@ -449,7 +493,7 @@ export class CanvasLearnComponent {
     "每一次调用 restore() 方法，上一个保存的状态就从栈中弹出，所有设定都恢复。(类似数组的pop())",
     "translate(x, y)：",
     "用来移动 canvas 的原点到指定的位置",
-    "translate方法接受两个参数。x 是左右偏移量，y 是上下偏移量。",
+    "translate方法接受两个参数。x 是左右偏移量，y 是上下偏移量。如果某点被确定为原点，不管原本坐标是多少，当前坐标都是（0,0）",
     "在做变形之前先保存状态是一个良好的习惯。大多数情况下，调用 restore 方法比手动恢复原先的状态要简单得多。",
     "又如果你是在一个循环中做位移但没有保存和恢复canvas 的状态，很可能到最后会发现怎么有些东西不见了，那是因为它很可能已经超出 canvas 范围以外了。",
     "​注意：translate移动的是canvas的坐标原点。(坐标变换)",
@@ -597,6 +641,7 @@ export class CanvasLearnComponent {
     "xor"
   ];
   drawArr(type, index) {
+    // 合成
     var canvas = this.elem.nativeElement.querySelector(`#arrs${index}`);
     var ctx = canvas.getContext("2d");
     ctx.fillStyle = "red";
@@ -767,8 +812,8 @@ export class CanvasLearnComponent {
     var warea = { x: null, y: null, max: 20000 };
     window.onmousemove = function(e: MouseEvent) {
       let ev = e || self.event;
-      warea.x = ev["clientX"];
-      warea.y = ev["clientY"];
+      warea.x = ev["pageX"];
+      warea.y = ev["pageY"];
     };
     window.onmouseout = function(e) {
       warea.x = null;
@@ -841,5 +886,87 @@ export class CanvasLearnComponent {
       });
       RAF(animate);
     }
+  }
+  clicks() {
+    // canvas的鼠标点击事件判定
+    var CANVAS_WIDTH = 300;
+    var CANVAS_HEIGHT = 300;
+
+    let myCanvas = this.elem.nativeElement.querySelector("#cas");
+
+    myCanvas.width = CANVAS_WIDTH;
+    myCanvas.height = CANVAS_HEIGHT;
+
+    var huabi = myCanvas.getContext("2d");
+
+    huabi.fillRect(10, 10, 100, 100);
+    huabi.strokeStyle = "red";
+    huabi.strokeRect(110, 110, 100, 100);
+
+    function drawCircle() {
+      huabi.beginPath();
+      huabi.arc(160, 60, 50, 0, Math.PI * 2);
+      huabi.stroke();
+      huabi.closePath();
+    }
+
+    drawCircle();
+
+    function drawSanjiao() {
+      huabi.beginPath();
+      huabi.moveTo(60, 110);
+      huabi.lineTo(110, 210);
+      huabi.lineTo(10, 210);
+      huabi.lineTo(60, 110);
+      huabi.stroke();
+      huabi.closePath();
+    }
+    drawSanjiao();
+
+    myCanvas.onclick = function(event) {
+      var e = event;
+      var x = e.pageX - myCanvas.offsetLeft;
+      var y = e.pageY - myCanvas.offsetTop;
+
+      if (x >= 10 && x <= 110 && y >= 10 && y <= 110) {
+        alert("你点中了黑色矩形");
+      } else if (x >= 110 && x <= 210 && y >= 110 && y <= 210) {
+        alert("你点中了红色矩形");
+      } else {
+        drawCircle();
+        // context.isPointInPath(x,y);	如果指定的点位于当前路径范围内，则返回 true，否则返回 false
+        // x	测试的 x 坐标（鼠标点击位置坐标）
+        // y	测试的 y 坐标（鼠标点击位置坐标）
+        if (huabi.isPointInPath(x, y)) {
+          alert("你点击了圆圈");
+        }
+        drawSanjiao();
+        if (huabi.isPointInPath(x, y)) {
+          alert("你点击了三角");
+        }
+      }
+    };
+  }
+  isRepeat() {
+    var CANVAS_WIDTH = 300;
+    var CANVAS_HEIGHT = 200;
+
+    let myCanvas = this.elem.nativeElement.querySelector("#rep");
+
+    myCanvas.width = CANVAS_WIDTH;
+    myCanvas.height = CANVAS_HEIGHT;
+
+    var ctx = myCanvas.getContext("2d");
+    ctx.moveTo(10, 10);
+    ctx.lineTo(300, 200);
+    ctx.lineWidth = 30;
+    var img = new Image();
+    img.src = "../assets/over1.png";
+    img.onload = function() {
+      // createPattern() 方法在指定的方向内重复指定的元素。
+      var pat = ctx.createPattern(img, "repeat");
+      ctx.strokeStyle = pat;
+      ctx.stroke();
+    };
   }
 }
