@@ -3,9 +3,11 @@
     <div>
       <div class="canWaper">
         <div>
-          <button (click)="fillRect()">fillRect</button>
-          <button (click)="strokeRect()">strokeRect</button>
-          <button (click)="clearRect()">clearRect</button>
+          <button (click)="fillRect()">填充矩形</button>
+          <button (click)="strokeRect()">空心矩形</button>
+          <button (click)="clearRect()">矩形清除</button>
+          <button (click)="clearArc()">圆型清除</button>
+          <button (click)="rects()">使用路径</button>
         </div>
         <canvas id="d1" width="180px" height="180px"></canvas>
       </div>
@@ -136,6 +138,13 @@
       </div>
       <canvas id="d5" width="150px" height="240px"></canvas>
     </div>
+    <div style="margin-right: 10px">
+      <div>
+        <button (click)="rectJB()">矩形渐变</button>
+        <button (click)="arcJB()">圆形渐变</button>
+      </div>
+      <canvas id="rectJB" width="150px" height="240px"></canvas>
+    </div>
     <ul>
       <strong>添加样式</strong>
       <li *ngFor="let t of text4">{{t}}</li>
@@ -246,6 +255,7 @@
       <div style="display: flex;justify-content: space-around">
         <div>
           <button (click)="clock()">模拟时钟</button><br>
+          <button (click)="stopClock()">停止</button><br>
           <canvas id="clock" width="200" height="200"></canvas>
         </div>
         <div>
@@ -268,5 +278,28 @@
       <strong>动画的基本步骤</strong>
       <li *ngFor="let t of text8">{{t}}</li>
     </ul>
+  </div>
+  <div class="waper2">
+    <div style="margin-right: 10px">
+      <div>
+        <button (click)="animate1()">点线动画</button>
+      </div>
+      <canvas id="c1" width="400px" height="300px"></canvas>
+    </div>
+    <div style="margin-right: 10px">
+      <div>
+        <button (click)="clicks()">鼠标事件判定</button>
+      </div>
+      <canvas id="cas"></canvas>
+    </div>
+    <div style="margin-right: 10px">
+      <div>
+        <button (click)="isRepeat()">重复repeat</button>
+      </div>
+      <canvas id="rep"></canvas>
+    </div>
+    <p>
+      严重提示：canvas的绘图过程（即填充与描边）是非常消耗资源的，如果想节省系统资源提高效率，最好是绘制好所有路径，再一次性填充或描边图形。
+    </p>
   </div>
 </div>

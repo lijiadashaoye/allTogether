@@ -1,7 +1,4 @@
-import {
-  Component,
-  ElementRef
-} from "@angular/core";
+import { Component, ElementRef } from "@angular/core";
 
 @Component({
   selector: "app-canvas-learn",
@@ -11,7 +8,8 @@ import {
 export class CanvasLearnComponent {
   constructor(private elem: ElementRef) {}
   text1 = [
-    '一定要使用 Canvas 自带的 width 和 height 属性，不要使用 CSS 来控制，因为 CSS 控制会导致 Canvas 变形',
+    "标签内width和height属性设置画布的尺寸，不会造成图片的变形，对画布尺寸的改变相当于将画布切去一块或者添加一块；",
+    "css的width和height属性，是以变形方式来拉伸和压缩画布，会导致图片变形。所以尽量避免使用css设置canvas尺寸。",
     "canvast 提供了三种方法绘制矩形：",
     "fillRect(x, y, width, height)；绘制一个填充的矩形",
     "strokeRect(x, y, width, height)；绘制一个矩形的边框",
@@ -34,14 +32,36 @@ export class CanvasLearnComponent {
   clearRect() {
     let can = this.elem.nativeElement.querySelector("#d1");
     let ctx = can.getContext("2d");
-    ctx.clearRect(20, 20, 80, 30);
+    ctx.clearRect(20, 20, 80, 20);
+  }
+  clearArc() {
+    let canvas = this.elem.nativeElement.querySelector("#d1");
+    let ctx = canvas.getContext("2d");
+    ctx.save();
+    ctx.beginPath(); // clip会以上一个beginPath()后面所绘的所有路径进行一个切割
+    ctx.arc(60, 75, 15, 0, Math.PI * 2, true);
+    ctx.arc(80, 95, 10, 0, Math.PI * 2, true);
+    ctx.clip();
+    ctx.clearRect(40, 55, 50, 55);
+    ctx.restore();
+  }
+  rects() {
+    let canvas = this.elem.nativeElement.querySelector("#d1");
+    let ctx = canvas.getContext("2d");
+    ctx.rect(120.5, 10.5, 30, 130);
+    ctx.closePath();
+    ctx.stroke();
+    // ctx.fill();
   }
   /**************************************************************/
   text2 = [
     "beginPath()；新建一条路径， 路径一旦创建成功， 图形绘制命令被指向到路径上生成路径",
+    "canvas中的绘制方法（如stroke,fill），都会以“上一次beginPath”之后的所有路径为基础进行绘制",
     "moveTo(x, y)；把画笔移动到指定的坐标(x, y)。 相当于设置路径的起始点坐标",
-    "closePath()；闭合路径之后， 图形绘制命令又重新指向到上下文中",
-    "stroke()；通过线条来绘制图形轮廓",
+    "lineTo(x，y)；开始画一条路径出来，但不会反映在画布上，如果多个lineTo连续使用，则上一个线的终点变成下一个线的起点",
+    "closePath()；闭合路径，当起点和最后终点坐标相同时，这样只是让路径最后一个点和起点重合了而已，路径本身却没有闭合，所以要用closePath()收尾",
+    "closePath的意思不是结束路径，而是关闭路径，它会试图从当前路径的终点连一条路径到起点，让整个路径闭合起来。但是，这并不意味着它之后的路径就是新路径了！",
+    "stroke()；通过渲染路径，来绘制图形轮廓",
     "fill()；通过填充路径的内容区域生成实心的图形"
   ];
   line() {
@@ -62,9 +82,9 @@ export class CanvasLearnComponent {
     ctx.moveTo(110, 10); // 新开起点
     ctx.lineTo(150, 50);
     ctx.lineTo(180, 50);
-    ctx.moveTo(110, 20);  // 再开起点
+    ctx.moveTo(110, 20); // 再开起点
     ctx.lineTo(140, 70);
-    ctx.stroke();  // 统一输出
+    ctx.stroke(); // 统一输出
   }
   sj() {
     // 绘制三角
@@ -75,7 +95,7 @@ export class CanvasLearnComponent {
     ctx.lineTo(100, 30);
     ctx.lineTo(100, 70);
     ctx.closePath(); //虽然我们只绘制了两条线段，但是closePath会closePath，仍然是一个3角形
-    ctx.stroke(); //描边。stroke不会自动closePath()
+    ctx.stroke(); // 空心三角。stroke不会自动closePath()
   }
 
   tcsj() {
@@ -87,7 +107,7 @@ export class CanvasLearnComponent {
     ctx.lineTo(100, 80);
     ctx.lineTo(100, 120);
     ctx.closePath(); //虽然我们只绘制了两条线段，但是closePath会closePath，仍然是一个三角形
-    ctx.fill(); //描边。stroke不会自动closePath()
+    ctx.fill(); // 填充三角。stroke不会自动closePath()
   }
   xx() {
     // 虚线
@@ -107,14 +127,16 @@ export class CanvasLearnComponent {
   text3 = [
     "有两个方法可以绘制圆弧：",
     "arc(x, y, r, startAngle, endAngle, anticlockwise):",
-    "以(x, y) 为圆心， 以r为半径， 从 startAngle弧度开始到endAngle弧度结束。",
+    "以(x, y) 为圆心， 以r为半径， 从 startAngle 弧度开始到endAngle弧度结束。",
     "anticlosewise是布尔值， true表示逆时针， false表示顺时针。(默认是顺时针)",
     "注意：",
     "1：这里的度数都是弧度，0 弧度是指的x轴正方向",
     "2：arcTo(x1, y1, x2, y2, radius):",
     "根据给定的控制点和半径画一段圆弧， 最后再以直线连接两个控制点。",
     "使用角度：Math.PI / 180=1°",
-    "(Math.PI / 180) * N，N为多少即是多少度，+N为顺时针，-N为逆时针"
+    "(Math.PI / 180) * N，N为多少即是多少度，+N为顺时针，-N为逆时针",
+    "使用弧度：Math.PI=180°",
+    "Math.PI * 2 = 360°"
   ];
   arc() {
     // 绘制圆弧
@@ -173,28 +195,26 @@ export class CanvasLearnComponent {
     "font = value；当前我们用来绘制文本的样式。这个字符串使用和 CSS font属性相同的语法. 默认的字体是 10px sans-serif。",
     "textAlign = value；文本对齐选项. 可选的值包括：start, end, left, right or center. 默认值是 start。",
     "textBaseline = value；基线对齐选项，可选的值包括：top, hanging, middle, alphabetic, ideographic, bottom。默认值是 alphabetic。",
-    "direction = value；文本方向。可能的值包括：ltr, rtl, inherit。默认值是 inherit。"
+    "direction = value；文本方向。可能的值包括：ltr, rtl, inherit。默认值是 inherit。",
+    "连续写多个quadraticCurveTo的话，会将上一条线的终点作为下一条线的起点"
   ];
   er() {
     // 绘制二次贝塞尔曲线
     var canvas = this.elem.nativeElement.querySelector("#d4");
     var ctx = canvas.getContext("2d");
     ctx.beginPath();
-    ctx.moveTo(10, 100); //起始点
-    var cp1x = 40;
-    var cp1y = 15; //控制点
-    var x = 200;
-    var y = 100; // 结束点
+    ctx.moveTo(10, 70); //起始点
     // quadraticCurveTo(cp1x, cp1y, x, y):
     // ​参数cp1x, cp1y：控制点坐标
     // ​参数 x, y：结束点坐标
-    ctx.quadraticCurveTo(cp1x, cp1y, x, y);
-    ctx.stroke();
-    ctx.beginPath();
-    ctx.rect(10, 100, 10, 10);
-    ctx.rect(cp1x, cp1y, 10, 10);
-    ctx.rect(x, y, 10, 10);
+    // 连续写多个quadraticCurveTo的话，会将上一条线的终点作为下一条线的起点
+    ctx.quadraticCurveTo(40, 10, 100, 50);
+    ctx.quadraticCurveTo(50, 35, 40, 80);
+    ctx.quadraticCurveTo(50, 20, 10, 70);
+
+    ctx.fillStyle = "#614248";
     ctx.fill();
+    ctx.stroke();
   }
   san() {
     //绘制三次贝塞尔曲线
@@ -227,9 +247,14 @@ export class CanvasLearnComponent {
     var ctx = canvas.getContext("2d");
     // fillText(text, x, y [, maxWidth])；在指定的(x,y)位置填充指定的文本，绘制的最大宽度是可选的
     // strokeText(text, x, y [, maxWidth])；在指定的(x,y)位置绘制文本边框，绘制的最大宽度是可选的
-    ctx.font = "bold 40px sans-serif";
-    ctx.fillText("天若有情", 30, 280);
-    ctx.strokeText("天若有情", 30, 325);
+    ctx.font = "bold 40px sans-serif"; // 字体大小和字体名称(40px sans-serif)是缺一不可的
+    ctx.shadowOffsetX = 5; // 向右为正，设置或返回阴影距形状的水平距离
+    ctx.shadowOffsetY = 5; // 向下为正，设置或返回阴影距形状的垂直距离
+    ctx.shadowBlur = 5; // 模糊程度
+    ctx.shadowColor = "red";
+    ctx.textAlign = "center"; // 设置多次绘画的文字的对齐方式
+    ctx.fillText("带阴影文字", 20, 280);
+    ctx.strokeText("带阴影文字", 20, 325);
   }
   /**************************************************************/
   text4 = [
@@ -248,7 +273,7 @@ export class CanvasLearnComponent {
     var ctx = canvas.getContext("2d");
     for (var i = 0; i < 6; i++) {
       for (var j = 0; j < 6; j++) {
-        ctx.fillStyle =
+        ctx.fillStyle = // 每次绘画都要重新设置填充色，才可实现每个方块有不同的颜色
           "rgb(" +
           Math.floor(255 - 42.5 * i) +
           "," +
@@ -331,6 +356,7 @@ export class CanvasLearnComponent {
       ctx.lineCap = lineCaps[i];
       ctx.stroke();
     }
+    // 红色参考线
     ctx.beginPath();
     ctx.moveTo(10, 20);
     ctx.lineTo(110, 20);
@@ -355,13 +381,66 @@ export class CanvasLearnComponent {
     for (var i = 0; i < lineJoin.length; i++) {
       ctx16.lineJoin = lineJoin[i];
       ctx16.beginPath();
-      ctx16.moveTo(20, 20 + i * 70);
-      ctx16.lineTo(40, 60 + i * 70);
-      ctx16.lineTo(60, 20 + i * 70);
-      ctx16.lineTo(80, 60 + i * 70);
-      ctx16.lineTo(100, 20 + i * 70);
+      ctx16.moveTo(20, 15 + i * 45);
+      ctx16.lineTo(40, 55 + i * 45);
+      ctx16.lineTo(60, 15 + i * 45);
+      ctx16.lineTo(80, 55 + i * 45);
+      ctx16.lineTo(100, 15 + i * 45);
       ctx16.stroke();
     }
+    ctx16.beginPath();
+    ctx16.moveTo(20, 180.5); // 由于canvas的线是沿着中线向两边扩展的，所以为了避免画出额线显得模糊
+    ctx16.lineTo(130.5, 180.5); // 要对画线的路径取中，从而让线可以正好占满一像素
+    ctx16.lineTo(130.5, 100);
+    ctx16.lineJoin = "round";
+    ctx16.stroke();
+  }
+  rectJB() {
+    var canvas = this.elem.nativeElement.querySelector("#rectJB");
+    var ctx = canvas.getContext("2d");
+    // 创建线性渐变对象
+    // context.createLinearGradient(x0,y0,x1,y1);
+    // x0	渐变开始点的 x 坐标
+    // y0	渐变开始点的 y 坐标
+    // x1	渐变结束点的 x 坐标
+    // y1	渐变结束点的 y 坐标
+    // 如果用坐标画出的线是有角度的，则填充也会有角度
+    var lg = ctx.createLinearGradient(10, 10, 150, 10);
+    // addColorStop不是加在画笔上，而是加在前面的那个保存渐变的变量上（lg）
+    // 此段代码就是规定图像的30%-80%之间是渐变区域，永远是介于0-1之间的数字,可以是两位小数，表示百分比
+    lg.addColorStop(0.3, "red");
+    lg.addColorStop(0.5, "blue");
+    lg.addColorStop(0.8, "green");
+
+    //带线性渐变矩形
+    ctx.fillStyle = lg;
+    ctx.fillRect(10, 10, 150, 30);
+  }
+  arcJB() {
+    var canvas = this.elem.nativeElement.querySelector("#rectJB");
+    var ctx = canvas.getContext("2d");
+    //创建线性渐变对象
+    // context.createRadialGradient(x0,y0,r0,x1,y1,r1);
+    // x0	渐变的开始圆的 x 坐标
+    // y0	渐变的开始圆的 y 坐标
+    // r0	开始圆的半径
+    // x1	渐变的结束圆的 x 坐标
+    // y1	渐变的结束圆的 y 坐标
+    // r1	结束圆的半径
+    // 圆心不同，会产生不一样的效果
+    var lg = ctx.createRadialGradient(70, 100, 10, 60, 90, 55);
+    // 渐变是发生在从内圆到外圆之间的区间内
+    // 起点之前的颜色就是起点色，终点之后的颜色一直是终点色。
+    // canvas中径向渐变的起点色，是从起点圆的范围之外绘制的，而起点圆的整个颜色都是起点色。
+    lg.addColorStop(0.2, "red");
+    lg.addColorStop(0.4, "blue");
+    lg.addColorStop(0.8, "yellow");
+    //带线性渐变圆
+    ctx.beginPath();
+    ctx.arc(70, 100, 65, 0, Math.PI * 2);
+    ctx.fillStyle = lg;
+    ctx.fill();
+    ctx.closePath();
   }
   /**************************************************************/
 
@@ -379,6 +458,7 @@ export class CanvasLearnComponent {
     // ctx.drawImage(img, x, y);
     // 参数1：要绘制的img
     // 参数x，y：绘制的img在canvas中的坐标
+    // 也可以用来将video进行复制
   }
   fromImg() {
     // 绘制 img 标签元素中的图片
@@ -446,7 +526,7 @@ export class CanvasLearnComponent {
     "每一次调用 restore() 方法，上一个保存的状态就从栈中弹出，所有设定都恢复。(类似数组的pop())",
     "translate(x, y)：",
     "用来移动 canvas 的原点到指定的位置",
-    "translate方法接受两个参数。x 是左右偏移量，y 是上下偏移量。",
+    "translate方法接受两个参数。x 是左右偏移量，y 是上下偏移量。如果某点被确定为原点，不管原本坐标是多少，当前坐标都是（0,0）",
     "在做变形之前先保存状态是一个良好的习惯。大多数情况下，调用 restore 方法比手动恢复原先的状态要简单得多。",
     "又如果你是在一个循环中做位移但没有保存和恢复canvas 的状态，很可能到最后会发现怎么有些东西不见了，那是因为它很可能已经超出 canvas 范围以外了。",
     "​注意：translate移动的是canvas的坐标原点。(坐标变换)",
@@ -460,7 +540,8 @@ export class CanvasLearnComponent {
     "a (m11),b (m12),c (m21),d (m22),e (dx),f (dy)",
     "clip()：把已经创建的路径转换成裁剪路径。",
     "裁剪路径的作用是遮罩。只显示裁剪路径内的区域，裁剪路径外的区域会被隐藏。",
-    "注意：clip()只能遮罩在这个方法调用之后绘制的图像，如果是clip()方法调用之前绘制的图像，则无法实现遮罩。"
+    "注意：clip()只能遮罩在这个方法调用之后绘制的图像，如果是clip()方法调用之前绘制的图像，则无法实现遮罩。",
+    "clip是一直存在的，不论你后面画多少路径,所以最好用save()和resotre()"
   ];
   text8 = [
     "1.清空canvas：绘制每一帧动画之前，需要清空所有。清空所有最简单的做法就是clearRect()方法",
@@ -594,6 +675,7 @@ export class CanvasLearnComponent {
     "xor"
   ];
   drawArr(type, index) {
+    // 合成
     var canvas = this.elem.nativeElement.querySelector(`#arrs${index}`);
     var ctx = canvas.getContext("2d");
     ctx.fillStyle = "red";
@@ -604,15 +686,25 @@ export class CanvasLearnComponent {
   }
 
   /**************************************************************/
-
+  toStop = null;
+  stopClock() {
+    cancelAnimationFrame(this.toStop); // 用来停止 requestAnimationFrame
+  }
   clock() {
     var canvas = this.elem.nativeElement.querySelector(`#clock`);
     var ctx = canvas.getContext("2d");
-    requestAnimationFrame(function step() {
+    let that=this;
+    step();
+    function step() {
       drawDial(ctx); //绘制表盘
       drawAllHands(ctx); //绘制时分秒针
-      requestAnimationFrame(step);
-    });
+      that.toStop = requestAnimationFrame(step);
+      // 1：requestAnimationFrame 会把每一帧中的所有DOM操作集中起来，在一次重绘或回流中就完成，
+      // 并且重绘或回流的时间间隔紧紧跟随浏览器的刷新频率
+      // 2：在隐藏或不可见的元素中，requestAnimationFrame 将不会进行重绘或回流，这当然就意味着更少的CPU、GPU和内存使用量
+      // 3：requestAnimationFrame 是由浏览器专门为动画提供的API，在运行时浏览器会自动优化方法的调用，
+      // 并且如果页面不是激活状态下的话，动画会自动暂停，有效节省了CPU开销
+    }
 
     /*绘制时分秒针*/
     function drawAllHands(ctx) {
@@ -695,7 +787,7 @@ export class CanvasLearnComponent {
     sun.src = "assets/sun.jpeg";
     earth.src = "assets/earth.png";
     moon.src = "assets/moon.png";
-    sun.onload = function () {
+    sun.onload = function() {
       toDraw();
     };
 
@@ -716,7 +808,7 @@ export class CanvasLearnComponent {
       // 设置地球的旋转
       ctx.rotate(
         ((2 * Math.PI) / 60) * time.getSeconds() +
-        ((2 * Math.PI) / 60000) * time.getMilliseconds()
+          ((2 * Math.PI) / 60000) * time.getMilliseconds()
       );
       ctx.translate(60, 0); // 定位地球
       ctx.drawImage(earth, -15, -15, 30, 30);
@@ -730,7 +822,7 @@ export class CanvasLearnComponent {
       //设置月球的旋转
       ctx.rotate(
         ((2 * Math.PI) / 6) * time.getSeconds() +
-        ((2 * Math.PI) / 6000) * time.getMilliseconds()
+          ((2 * Math.PI) / 6000) * time.getMilliseconds()
       );
       ctx.translate(30, 0);
       ctx.drawImage(moon, -15, -15, 30, 30);
@@ -739,5 +831,186 @@ export class CanvasLearnComponent {
       // requestAnimationFrame(callback)  //  callback为动画执行内容创建函数
       requestAnimationFrame(toDraw);
     }
+  }
+  /*******************************************************/
+  animate1() {
+    var canvas = this.elem.nativeElement.querySelector("#c1");
+    var ctx = canvas.getContext("2d");
+
+    // window.onresize = resize;   // 用在全页面时
+    // resize();
+    // function resize() {
+    //   canvas.width = window.innerWidth - 15;
+    //   canvas.height = window.innerHeight - 15;
+    // }
+    var RAF = (function() {
+      return (
+        window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        function(callback) {
+          window.setTimeout(callback, 1000 / 60);
+        }
+      );
+    })();
+    // 鼠标活动时，获取鼠标坐标
+    var warea = { x: null, y: null, max: 20000 };
+    window.onmousemove = function(e: MouseEvent) {
+      let ev = e || self.event;
+      warea.x = ev["pageX"];
+      warea.y = ev["pageY"];
+    };
+    window.onmouseout = function(e) {
+      warea.x = null;
+      warea.y = null;
+    };
+    // 添加粒子
+    // x，y为粒子坐标，xa, ya为粒子xy轴加速度，max为连线的最大距离
+    var dots = [];
+    for (var i = 0; i < 200; i++) {
+      var x = Math.random() * canvas.width;
+      var y = Math.random() * canvas.height;
+      var xa = Math.random() * 1.1 - 1;
+      var ya = Math.random() * 1.1 - 1;
+      dots.push({
+        x: x,
+        y: y,
+        xa: xa,
+        ya: ya,
+        max: 6000
+      });
+    }
+    // 延迟100秒开始执行动画，如果立即执行有时位置计算会出错
+    setTimeout(function() {
+      animate();
+    }, 100);
+    // 每一帧循环的逻辑
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      // 将鼠标坐标添加进去，产生一个用于比对距离的点数组
+      var ndots = [warea].concat(dots);
+      dots.forEach(function(dot) {
+        // 粒子位移
+        dot.x += dot.xa;
+        dot.y += dot.ya;
+        // 遇到边界将加速度反向
+        dot.xa *= dot.x > canvas.width || dot.x < 0 ? -1 : 1;
+        dot.ya *= dot.y > canvas.height || dot.y < 0 ? -1 : 1;
+        // 绘制点
+        ctx.fillRect(dot.x - 0.5, dot.y - 0.5, 1, 1);
+        // 循环比对粒子间的距离
+        for (var i = 0; i < ndots.length; i++) {
+          var d2 = ndots[i];
+          if (dot === d2 || d2.x === null || d2.y === null) continue;
+          var xc = dot.x - d2.x;
+          var yc = dot.y - d2.y;
+          // 两个粒子之间的距离
+          var dis = xc * xc + yc * yc;
+          // 距离比
+          var ratio;
+          // 如果两个粒子之间的距离小于粒子对象的max值，则在两个粒子间画线
+          if (dis < d2.max) {
+            // 如果是鼠标，则让粒子向鼠标的位置移动
+            if (d2 === warea && dis > d2.max / 2) {
+              dot.x -= xc * 0.03;
+              dot.y -= yc * 0.03;
+            }
+            // 计算距离比
+            ratio = (d2.max - dis) / d2.max;
+            // 画线
+            ctx.beginPath();
+            ctx.lineWidth = ratio / 2;
+            ctx.strokeStyle = "rgba(141, 137, 137," + (ratio + 0.2) + ")";
+            ctx.moveTo(dot.x, dot.y);
+            ctx.lineTo(d2.x, d2.y);
+            ctx.stroke();
+          }
+        }
+        // 将已经计算过的粒子从数组中删除
+        ndots.splice(ndots.indexOf(dot), 1);
+      });
+      RAF(animate);
+    }
+  }
+  clicks() {
+    // canvas的鼠标点击事件判定
+    var CANVAS_WIDTH = 300;
+    var CANVAS_HEIGHT = 300;
+
+    let myCanvas = this.elem.nativeElement.querySelector("#cas");
+
+    myCanvas.width = CANVAS_WIDTH;
+    myCanvas.height = CANVAS_HEIGHT;
+
+    var huabi = myCanvas.getContext("2d");
+
+    huabi.fillRect(10, 10, 100, 100);
+    huabi.strokeStyle = "red";
+    huabi.strokeRect(110, 110, 100, 100);
+
+    function drawCircle() {
+      huabi.beginPath();
+      huabi.arc(160, 60, 50, 0, Math.PI * 2);
+      huabi.stroke();
+      huabi.closePath();
+    }
+
+    drawCircle();
+
+    function drawSanjiao() {
+      huabi.beginPath();
+      huabi.moveTo(60, 110);
+      huabi.lineTo(110, 210);
+      huabi.lineTo(10, 210);
+      huabi.lineTo(60, 110);
+      huabi.stroke();
+      huabi.closePath();
+    }
+    drawSanjiao();
+
+    myCanvas.onclick = function(event) {
+      var e = event;
+      var x = e.pageX - myCanvas.offsetLeft;
+      var y = e.pageY - myCanvas.offsetTop;
+
+      if (x >= 10 && x <= 110 && y >= 10 && y <= 110) {
+        alert("你点中了黑色矩形");
+      } else if (x >= 110 && x <= 210 && y >= 110 && y <= 210) {
+        alert("你点中了红色矩形");
+      } else {
+        drawCircle();
+        // context.isPointInPath(x,y);	如果指定的点位于当前路径范围内，则返回 true，否则返回 false
+        // x	测试的 x 坐标（鼠标点击位置坐标）
+        // y	测试的 y 坐标（鼠标点击位置坐标）
+        if (huabi.isPointInPath(x, y)) {
+          alert("你点击了圆圈");
+        }
+        drawSanjiao();
+        if (huabi.isPointInPath(x, y)) {
+          alert("你点击了三角");
+        }
+      }
+    };
+  }
+  isRepeat() {
+    var CANVAS_WIDTH = 300;
+    var CANVAS_HEIGHT = 200;
+
+    let myCanvas = this.elem.nativeElement.querySelector("#rep");
+
+    myCanvas.width = CANVAS_WIDTH;
+    myCanvas.height = CANVAS_HEIGHT;
+
+    var ctx = myCanvas.getContext("2d");
+    ctx.moveTo(10, 10);
+    ctx.lineTo(300, 200);
+    ctx.lineWidth = 30;
+    var img = new Image();
+    img.src = "../assets/over1.png";
+    img.onload = function() {
+      // createPattern() 方法在指定的方向内重复指定的元素。
+      var pat = ctx.createPattern(img, "repeat");
+      ctx.strokeStyle = pat;
+      ctx.stroke();
+    };
   }
 }

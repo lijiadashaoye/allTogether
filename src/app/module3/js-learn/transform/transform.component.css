@@ -1,0 +1,9 @@
+.box{
+    display: flex
+}
+.isDiv {
+  width: 200px;
+  height: 100px;
+  margin-left: 150px;
+  background: red;
+}
