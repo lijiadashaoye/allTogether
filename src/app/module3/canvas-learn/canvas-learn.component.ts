@@ -458,6 +458,7 @@ export class CanvasLearnComponent {
     // ctx.drawImage(img, x, y);
     // 参数1：要绘制的img
     // 参数x，y：绘制的img在canvas中的坐标
+    // 也可以用来将video进行复制
   }
   fromImg() {
     // 绘制 img 标签元素中的图片
