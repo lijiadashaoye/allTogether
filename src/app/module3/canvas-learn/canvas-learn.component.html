@@ -7,6 +7,7 @@
           <button (click)="strokeRect()">空心矩形</button>
           <button (click)="clearRect()">矩形清除</button>
           <button (click)="clearArc()">圆型清除</button>
+          <button (click)="rects()">使用路径</button>
         </div>
         <canvas id="d1" width="180px" height="180px"></canvas>
       </div>
@@ -296,5 +297,8 @@
       </div>
       <canvas id="rep"></canvas>
     </div>
+    <p>
+      严重提示：canvas的绘图过程（即填充与描边）是非常消耗资源的，如果想节省系统资源提高效率，最好是绘制好所有路径，再一次性填充或描边图形。
+    </p>
   </div>
 </div>

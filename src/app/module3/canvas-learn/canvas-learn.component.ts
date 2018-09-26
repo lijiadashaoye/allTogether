@@ -34,19 +34,27 @@ export class CanvasLearnComponent {
     let ctx = can.getContext("2d");
     ctx.clearRect(20, 20, 80, 20);
   }
-  clearArc(){
+  clearArc() {
     let canvas = this.elem.nativeElement.querySelector("#d1");
     let ctx = canvas.getContext("2d");
-    ctx.arc(60, 75, 20, 0, Math.PI*2,true);
+    ctx.arc(60, 75, 20, 0, Math.PI * 2, true);
     ctx.clip();
-    ctx.clearRect(40,55, 40, 40);
+    ctx.clearRect(40, 55, 40, 40);
+  }
+  rects() {
+    let canvas = this.elem.nativeElement.querySelector("#d1");
+    let ctx = canvas.getContext("2d");
+    ctx.rect(120.5, 10.5, 30, 130);
+    ctx.closePath();
+    ctx.stroke();
+    // ctx.fill();
   }
   /**************************************************************/
   text2 = [
     "beginPath()；新建一条路径， 路径一旦创建成功， 图形绘制命令被指向到路径上生成路径",
     "moveTo(x, y)；把画笔移动到指定的坐标(x, y)。 相当于设置路径的起始点坐标",
     "lineTo(x，y)；开始画一条路径出来，但不会反映在画布上，如果多个lineTo连续使用，则上一个线的终点变成下一个线的起点",
-    "closePath()；闭合路径之后， 图形绘制命令又重新指向到上下文中",
+    "closePath()；闭合路径，当起点和最后终点坐标相同时，这样只是让路径最后一个点和起点重合了而已，路径本身却没有闭合，所以要用closePath()收尾",
     "stroke()；通过渲染路径，来绘制图形轮廓",
     "fill()；通过填充路径的内容区域生成实心的图形"
   ];
@@ -65,7 +73,7 @@ export class CanvasLearnComponent {
     var canvas = this.elem.nativeElement.querySelector("#d2");
     var ctx = canvas.getContext("2d");
     ctx.beginPath(); //新建一条path
-    ctx.moveTo(110, 10); // 新开起点
+    ctx.moveTo(110, 10) // 新开起点
     ctx.lineTo(150, 50);
     ctx.lineTo(180, 50);
     ctx.moveTo(110, 20); // 再开起点
@@ -367,25 +375,33 @@ export class CanvasLearnComponent {
     for (var i = 0; i < lineJoin.length; i++) {
       ctx16.lineJoin = lineJoin[i];
       ctx16.beginPath();
-      ctx16.moveTo(20, 20 + i * 70);
-      ctx16.lineTo(40, 60 + i * 70);
-      ctx16.lineTo(60, 20 + i * 70);
-      ctx16.lineTo(80, 60 + i * 70);
-      ctx16.lineTo(100, 20 + i * 70);
+      ctx16.moveTo(20, 15 + i * 45);
+      ctx16.lineTo(40, 55 + i * 45);
+      ctx16.lineTo(60, 15 + i * 45);
+      ctx16.lineTo(80, 55 + i * 45);
+      ctx16.lineTo(100, 15 + i * 45);
       ctx16.stroke();
     }
+    ctx16.beginPath();
+    ctx16.moveTo(20, 180.5); // 由于canvas的线是沿着中线向两边扩展的，所以为了避免画出额线显得模糊
+    ctx16.lineTo(130.5, 180.5); // 要对画线的路径取中，从而让线可以正好占满一像素
+    ctx16.lineTo(130.5, 100);
+    ctx16.lineJoin = "round";
+    ctx16.stroke();
   }
   rectJB() {
     var canvas = this.elem.nativeElement.querySelector("#rectJB");
     var ctx = canvas.getContext("2d");
-    //创建线性渐变对象
+    // 创建线性渐变对象
     // context.createLinearGradient(x0,y0,x1,y1);
     // x0	渐变开始点的 x 坐标
     // y0	渐变开始点的 y 坐标
     // x1	渐变结束点的 x 坐标
     // y1	渐变结束点的 y 坐标
-    var lg = ctx.createLinearGradient(10, 10, 150, 30);
-    // 此段代码就是规定图像的30%-80%之间是渐变区域
+    // 如果用坐标画出的线是有角度的，则填充也会有角度
+    var lg = ctx.createLinearGradient(10, 10, 150, 10);
+    // addColorStop不是加在画笔上，而是加在前面的那个保存渐变的变量上（lg）
+    // 此段代码就是规定图像的30%-80%之间是渐变区域，永远是介于0-1之间的数字,可以是两位小数，表示百分比
     lg.addColorStop(0.3, "red");
     lg.addColorStop(0.5, "blue");
     lg.addColorStop(0.8, "green");
@@ -405,15 +421,17 @@ export class CanvasLearnComponent {
     // x1	渐变的结束圆的 x 坐标
     // y1	渐变的结束圆的 y 坐标
     // r1	结束圆的半径
-    var lg = ctx.createRadialGradient(70, 100, 20, 70, 100, 50);
+    // 圆心不同，会产生不一样的效果
+    var lg = ctx.createRadialGradient(70, 100, 10, 60, 90, 55);
     // 渐变是发生在从内圆到外圆之间的区间内
-    // 渐变的起点之前和渐变的终点之后填充对应的起点纯色和终点纯色。
+    // 起点之前的颜色就是起点色，终点之后的颜色一直是终点色。
+    // canvas中径向渐变的起点色，是从起点圆的范围之外绘制的，而起点圆的整个颜色都是起点色。
     lg.addColorStop(0.2, "red");
     lg.addColorStop(0.4, "blue");
     lg.addColorStop(0.8, "yellow");
     //带线性渐变圆
     ctx.beginPath();
-    ctx.arc(70, 100, 50, 0, Math.PI * 2);
+    ctx.arc(70, 100, 65, 0, Math.PI * 2);
     ctx.fillStyle = lg;
     ctx.fill();
     ctx.closePath();
