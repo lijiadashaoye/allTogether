@@ -37,9 +37,13 @@ export class CanvasLearnComponent {
   clearArc() {
     let canvas = this.elem.nativeElement.querySelector("#d1");
     let ctx = canvas.getContext("2d");
-    ctx.arc(60, 75, 20, 0, Math.PI * 2, true);
+    ctx.save();
+    ctx.beginPath(); // clip会以上一个beginPath()后面所绘的所有路径进行一个切割
+    ctx.arc(60, 75, 15, 0, Math.PI * 2, true);
+    ctx.arc(80, 95, 10, 0, Math.PI * 2, true);
     ctx.clip();
-    ctx.clearRect(40, 55, 40, 40);
+    ctx.clearRect(40, 55, 50, 55);
+    ctx.restore();
   }
   rects() {
     let canvas = this.elem.nativeElement.querySelector("#d1");
@@ -52,9 +56,11 @@ export class CanvasLearnComponent {
   /**************************************************************/
   text2 = [
     "beginPath()；新建一条路径， 路径一旦创建成功， 图形绘制命令被指向到路径上生成路径",
+    "canvas中的绘制方法（如stroke,fill），都会以“上一次beginPath”之后的所有路径为基础进行绘制",
     "moveTo(x, y)；把画笔移动到指定的坐标(x, y)。 相当于设置路径的起始点坐标",
     "lineTo(x，y)；开始画一条路径出来，但不会反映在画布上，如果多个lineTo连续使用，则上一个线的终点变成下一个线的起点",
     "closePath()；闭合路径，当起点和最后终点坐标相同时，这样只是让路径最后一个点和起点重合了而已，路径本身却没有闭合，所以要用closePath()收尾",
+    "closePath的意思不是结束路径，而是关闭路径，它会试图从当前路径的终点连一条路径到起点，让整个路径闭合起来。但是，这并不意味着它之后的路径就是新路径了！",
     "stroke()；通过渲染路径，来绘制图形轮廓",
     "fill()；通过填充路径的内容区域生成实心的图形"
   ];
@@ -73,7 +79,7 @@ export class CanvasLearnComponent {
     var canvas = this.elem.nativeElement.querySelector("#d2");
     var ctx = canvas.getContext("2d");
     ctx.beginPath(); //新建一条path
-    ctx.moveTo(110, 10) // 新开起点
+    ctx.moveTo(110, 10); // 新开起点
     ctx.lineTo(150, 50);
     ctx.lineTo(180, 50);
     ctx.moveTo(110, 20); // 再开起点
@@ -241,7 +247,7 @@ export class CanvasLearnComponent {
     var ctx = canvas.getContext("2d");
     // fillText(text, x, y [, maxWidth])；在指定的(x,y)位置填充指定的文本，绘制的最大宽度是可选的
     // strokeText(text, x, y [, maxWidth])；在指定的(x,y)位置绘制文本边框，绘制的最大宽度是可选的
-    ctx.font = "bold 40px sans-serif";
+    ctx.font = "bold 40px sans-serif"; // 字体大小和字体名称(40px sans-serif)是缺一不可的
     ctx.shadowOffsetX = 5; // 向右为正，设置或返回阴影距形状的水平距离
     ctx.shadowOffsetY = 5; // 向下为正，设置或返回阴影距形状的垂直距离
     ctx.shadowBlur = 5; // 模糊程度
@@ -533,7 +539,8 @@ export class CanvasLearnComponent {
     "a (m11),b (m12),c (m21),d (m22),e (dx),f (dy)",
     "clip()：把已经创建的路径转换成裁剪路径。",
     "裁剪路径的作用是遮罩。只显示裁剪路径内的区域，裁剪路径外的区域会被隐藏。",
-    "注意：clip()只能遮罩在这个方法调用之后绘制的图像，如果是clip()方法调用之前绘制的图像，则无法实现遮罩。"
+    "注意：clip()只能遮罩在这个方法调用之后绘制的图像，如果是clip()方法调用之前绘制的图像，则无法实现遮罩。",
+    "clip是一直存在的，不论你后面画多少路径,所以最好用save()和resotre()"
   ];
   text8 = [
     "1.清空canvas：绘制每一帧动画之前，需要清空所有。清空所有最简单的做法就是clearRect()方法",
@@ -678,15 +685,25 @@ export class CanvasLearnComponent {
   }
 
   /**************************************************************/
-
+  toStop = null;
+  stopClock() {
+    cancelAnimationFrame(this.toStop); // 用来停止 requestAnimationFrame
+  }
   clock() {
     var canvas = this.elem.nativeElement.querySelector(`#clock`);
     var ctx = canvas.getContext("2d");
-    requestAnimationFrame(function step() {
+    let that=this;
+    step();
+    function step() {
       drawDial(ctx); //绘制表盘
       drawAllHands(ctx); //绘制时分秒针
-      requestAnimationFrame(step);
-    });
+      that.toStop = requestAnimationFrame(step);
+      // 1：requestAnimationFrame 会把每一帧中的所有DOM操作集中起来，在一次重绘或回流中就完成，
+      // 并且重绘或回流的时间间隔紧紧跟随浏览器的刷新频率
+      // 2：在隐藏或不可见的元素中，requestAnimationFrame 将不会进行重绘或回流，这当然就意味着更少的CPU、GPU和内存使用量
+      // 3：requestAnimationFrame 是由浏览器专门为动画提供的API，在运行时浏览器会自动优化方法的调用，
+      // 并且如果页面不是激活状态下的话，动画会自动暂停，有效节省了CPU开销
+    }
 
     /*绘制时分秒针*/
     function drawAllHands(ctx) {
