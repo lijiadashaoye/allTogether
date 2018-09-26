@@ -32,7 +32,14 @@ export class CanvasLearnComponent {
   clearRect() {
     let can = this.elem.nativeElement.querySelector("#d1");
     let ctx = can.getContext("2d");
-    ctx.clearRect(20, 20, 80, 30);
+    ctx.clearRect(20, 20, 80, 20);
+  }
+  clearArc(){
+    let canvas = this.elem.nativeElement.querySelector("#d1");
+    let ctx = canvas.getContext("2d");
+    ctx.arc(60, 75, 20, 0, Math.PI*2,true);
+    ctx.clip();
+    ctx.clearRect(40,55, 40, 40);
   }
   /**************************************************************/
   text2 = [
