@@ -1,11 +1,17 @@
 <div class="waper">
-<div>
-  <h2>一些数组的方法</h2>
-  <button [ngStyle]="{color:num==i?'red':''}" *ngFor="let item of arrFns;let i=index" style="cursor: pointer;" (click)="isClick(item,i)">{{item}}</button>
-  <br>方法的结果：{{showData|json}}
-</div>
-<div >
-  @Self() - 表示只在本级注入器查找依赖对象
-  <br> @SkipSelf() - 表示不从本级注入器获取依赖对象
-  <br> @Optional - 表示该依赖对象是可选的，如果找不到返回 null
-</div>
+  <div>
+    <h2>一些数组的方法</h2>
+    <button [ngStyle]="{color:num==i?'red':''}" *ngFor="let item of arrFns;let i=index" style="cursor: pointer;"
+      (click)="isClick(item,i)">{{item}}</button>
+    <br>方法的结果：{{showData|json}}
+    <div>
+      <button [ngStyle]="{color:num2==i?'red':''}" *ngFor="let item of arrFns2;let i=index" style="cursor: pointer;"
+        (click)="isClick2(item,i)">{{item}}</button>
+      <br>方法的结果： {{arrFns2Result|json}}
+    </div>
+  </div>
+  <div>
+    @Self() - 表示只在本级注入器查找依赖对象
+    <br> @SkipSelf() - 表示不从本级注入器获取依赖对象
+    <br> @Optional - 表示该依赖对象是可选的，如果找不到返回 null
+  </div>

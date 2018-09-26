@@ -144,4 +144,82 @@ export class JsLearnComponent implements OnInit {
     }
     this.showData = arr2;
   }
+  /************************************************************/
+  arrFns2 = [
+    'getMax_Min',
+    'doubleCan',
+    'zhengxu',
+    'daoxu',
+    'getRandom'
+  ];
+  num2 = null;
+  arrFns2Result = null;
+  isClick2(item, index) {
+    this.num2 = index;
+    this[item]();
+  }
+  getMax_Min() { // 取数组最大值和最小值的排序
+    var arr = [10, 14, 3, 8, 1, 7];
+    let arr2 = [];
+    let arr3 = arr;
+    let num = arr.length / 2;
+
+    for (let i = 0; i < num; i++) {
+      let max1 = Math.max(...arr3);
+      let min1 = Math.min(...arr3);
+      arr2.push(max1, min1);
+      arr3 = arr3.filter(item => item != max1);
+      arr3 = arr3.filter(item => item != min1);
+    }
+    this.arrFns2Result = arr2;
+  }
+  doubleCan() { // 函数嵌套函数，并集中调用
+    function fn(a) {
+      return function (b) {
+        return a + b
+      }
+    }
+    this.arrFns2Result = fn(3)(4);
+  }
+  zhengxu() {
+    this.objectSort(true)
+  }
+  daoxu() {
+    this.objectSort(false)
+  }
+  objectSort(how) {
+    let arr = [{
+        name: 'ffff',
+        age: 51
+      },
+      {
+        name: 'hjytjh',
+        age: 61
+      },
+    ]
+    this.arrFns2Result = arr.sort(toSort('age'));
+
+    function toSort(type) {
+      return function (obj1, obj2) {
+        let val1 = obj1[type];
+        let val2 = obj2[type];
+        if (how) {
+          return val1 - val2; // 正序
+        } else {
+          return val2 - val1; // 倒序
+        }
+      }
+    }
+  }
+  getRandom() { // 随机获取数组项
+    let arr = ['red', 'blue', 'green', 'yellow', 'pink'];
+
+    function takeRandom(max, min) { // 获取指定区间随机数
+      let num = max - min + 1;
+      return Math.floor(Math.random() * num + min)
+    };
+    let num = takeRandom(3, 19);
+    let num2 = arr[takeRandom(0, arr.length - 1)];
+    this.arrFns2Result = num2
+  }
 }
