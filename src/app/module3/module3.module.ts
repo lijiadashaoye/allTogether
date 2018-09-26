@@ -10,6 +10,7 @@ import { JsLearnComponent } from "./js-learn/js-learn.component";
 import { ZaxiangComponent } from "./zaxiang/zaxiang.component";
 import { MyLibraryModule } from "my-library";
 import { CanvasLearnComponent } from './canvas-learn/canvas-learn.component';
+import { TransformComponent } from './js-learn/transform/transform.component';
 
 @NgModule({
   imports: [CommonModule, module3RoutingModule, FormsModule,MyLibraryModule],
@@ -18,7 +19,8 @@ import { CanvasLearnComponent } from './canvas-learn/canvas-learn.component';
     SomeCss3Component,
     JsLearnComponent,
     ZaxiangComponent,
-    CanvasLearnComponent
+    CanvasLearnComponent,
+    TransformComponent
   ]
 })
 export class Module3Module {}

@@ -1,0 +1,13 @@
+<div class="box">
+  <div>
+    <h2>matrix(aa,bb,cc,dd,ee,ff)</h2>
+    aa：水平缩放(宽窄变化)<input [(ngModel)]="aa" (ngModelChange)="mackeChange()"><br>
+    bb：垂直拉伸(上下拉伸)<input [(ngModel)]="bb" (ngModelChange)="mackeChange()"><br>
+    cc：水平拉伸(左右拉伸)<input [(ngModel)]="cc" (ngModelChange)="mackeChange()"><br>
+    dd：垂直缩放(高矮变化)<input [(ngModel)]="dd" (ngModelChange)="mackeChange()"><br>
+    ee：水平位移(左右移动)<input [(ngModel)]="ee" (ngModelChange)="mackeChange()"><br>
+    ff：垂直位移(上下移动)<input [(ngModel)]="ff" (ngModelChange)="mackeChange()"><br>
+  </div>
+  <div class="isDiv" id="divs"></div>
+  
+</div>
