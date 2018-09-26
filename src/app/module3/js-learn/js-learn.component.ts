@@ -144,4 +144,5 @@ export class JsLearnComponent implements OnInit {
     }
     this.showData = arr2;
   }
+
 }
