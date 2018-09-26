@@ -144,7 +144,6 @@ export class JsLearnComponent implements OnInit {
     }
     this.showData = arr2;
   }
-<<<<<<< HEAD
   /************************************************************/
   arrFns2 = [
     'getMax_Min',
@@ -223,7 +222,4 @@ export class JsLearnComponent implements OnInit {
     let num2 = arr[takeRandom(0, arr.length - 1)];
     this.arrFns2Result = num2
   }
-=======
-
->>>>>>> 556d3f6dcac2acb9e8d740ed7be739171675d916
 }
