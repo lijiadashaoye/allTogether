@@ -16,7 +16,7 @@ import {
   import { JsLearnComponent } from './js-learn/js-learn.component';
   import { ZaxiangComponent } from './zaxiang/zaxiang.component';
   import { CanvasLearnComponent } from './canvas-learn/canvas-learn.component';
-
+  
   const routes: Routes = [{
     path: '',
     component: Module3Component,

@@ -1,0 +1,14 @@
+<div style="display:flex;">
+  <div>
+    <h2>本地预览图片</h2>
+    <input type="file" #files><br>
+    <button (click)="toSubmit(files)">使用readAsDataURL</button><br>
+    <img id="imgs" [src]="imgSrc" *ngIf="imgSrc" style="width:150px;height:200px">
+  </div>
+  <div>
+    <a id="one">生成txt</a>&nbsp;
+    <a id="two">生成doc</a>&nbsp;
+    <br>
+    <textarea style="width:150px;height:100px;" (input)="tomake(textA)" #textA></textarea>
+  </div>
+</div>
