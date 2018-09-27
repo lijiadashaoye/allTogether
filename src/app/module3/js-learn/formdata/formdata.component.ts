@@ -16,10 +16,24 @@ export class FormdataComponent {
     // 这里的FormElement是html元素为form表单；当然这里也可以直接构造不用填写form元素，
     // 填写form元素的目的是可以直接选取form中表单元素的name和value为formData添加键值对。
     // angular中没有明确在标签里写上name，而是用formControlName，所以不需要初始化时写FormElement
+    /**********************************************************/
+    // 在此将formGroup数据apped进去
     let formData = new FormData();
-    formData.append("userfile", target.files[0]);
+    formData.append("userfile", target.files[0]); // 到时候上传这个formData即可
+
+    let forms = {
+      value: {
+        one: "one",
+        two: "two",
+        userfile: ""
+      }
+    };
+    for (let name in forms.value) {
+      formData.append(name, forms.value[name]);
+    }
+    /**********************************************************/
+    // 将文件以Data URL形式进行读取，用img展现出来
     var reader = new FileReader();
-    // 将文件以Data URL形式进行读入页面
     reader.readAsDataURL(target.files[0]);
     reader.onload = e => {
       this.imgSrc = reader.result;
