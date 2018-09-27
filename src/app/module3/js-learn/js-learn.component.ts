@@ -147,7 +147,7 @@ export class JsLearnComponent implements OnInit {
   /************************************************************/
   arrFns2 = [
     'getMax_Min',
-    'doubleCan',
+    'qiantao',
     'zhengxu',
     'daoxu',
     'getRandom'
@@ -173,7 +173,7 @@ export class JsLearnComponent implements OnInit {
     }
     this.arrFns2Result = arr2;
   }
-  doubleCan() { // 函数嵌套函数，并集中调用
+  qiaotao() { // 函数嵌套函数，并集中调用
     function fn(a) {
       return function (b) {
         return a + b
