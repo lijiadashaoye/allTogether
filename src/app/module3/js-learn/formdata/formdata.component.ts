@@ -31,6 +31,7 @@ export class FormdataComponent {
     for (let name in forms.value) {
       formData.append(name, forms.value[name]);
     }
+    // 生成formData后直接将formData作为数据post上去即可
     /**********************************************************/
     // 将文件以Data URL形式进行读取，用img展现出来
     var reader = new FileReader();
