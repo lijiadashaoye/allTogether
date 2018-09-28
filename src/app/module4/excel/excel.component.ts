@@ -69,17 +69,33 @@ export class ExcelComponent implements OnInit {
   }
 
   download6() {
-    // 读取对象数组数据
     let data = [
-      { S: 1, h: 2, e: 3, e_1: 4, t: 5, J: 6, S_1: 7 },
-      { S: 2, h: 3, e: 4, e_1: 5, t: 6, J: 7, S_1: 8 }
+      {
+        one: "11111",
+        two: "22222",
+        three: "33333"
+      },
+      {
+        one: "11111",
+        two: "22222",
+        three: "33333"
+      }
     ];
-    let header: ["S", "h", "e", "e_1", "t", "J", "S_1"];
+    let header = ["表头一", "表头二", "表头三"];
+    let title='读取对象数组';
+    let downData = [];
+    data.forEach(item => {
+      let obj = {
+        表头一: item.one,
+        表头二: item.two,
+        表头三: item.three
+      };
+      downData.push(obj);
+    });
 
-    var ws = XLSX.utils.json_to_sheet(data, { header });
-    // json_to_sheet 将JS对象数组转换为工作表。
-    let wb: XLSX.WorkBook = XLSX.read(data, { type: "array" }); // XLSX.read(data, read_opts)尝试解析data。
-    XLSX.utils.book_append_sheet(wb, ws, "Sheet4");
-    XLSX.writeFile(wb, "读取对象数组数据.xlsx");
+    const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(downData, { header });
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();  // 使用新表格，Sheet1
+    XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
+    XLSX.writeFile(wb, `${title}.xlsx`);
   }
 }
