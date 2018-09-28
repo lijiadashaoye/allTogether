@@ -24,10 +24,10 @@ export class ExcelComponent implements OnInit {
   download2() {
     // 读取表格数据
     let tables = this.elem.nativeElement.querySelector("#t1");
-    let wb: XLSX.WorkBook = XLSX.utils.table_to_book(tables);
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();  // 使用新表格，Sheet1
     // table_to_sheet 将DOM TABLE元素转换为工作表。
     let ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(tables);
-    XLSX.utils.book_append_sheet(wb, ws, "Sheet5");
+    XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
     XLSX.writeFile(wb, "读取表格数据.xlsx");
   }
 
@@ -43,8 +43,8 @@ export class ExcelComponent implements OnInit {
     let data = [["表头一", "表头二", "表头三"], [1, 2, 3], [1, 2, 3]];
     let ws: XLSX.WorkSheet = XLSX.utils.aoa_to_sheet(data);
     // aoa_to_sheet 将JS数据数组的数组转换为工作表。
-    let wb: XLSX.WorkBook = XLSX.read(data, { type: "array" }); // XLSX.read(data, read_opts)尝试解析data。
-    XLSX.utils.book_append_sheet(wb, ws, "Sheet2"); // 用来标识将表格写到第几sheet，可以不写
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();  // 使用新表格，Sheet1
+    XLSX.utils.book_append_sheet(wb, ws, "Sheet1"); // 用来标识将表格写到第几sheet，可以不写
     XLSX.writeFile(wb, "读取二维数组数据.xlsx");
   }
   download5() {
@@ -63,8 +63,9 @@ export class ExcelComponent implements OnInit {
     });
     XLSX.utils.sheet_add_aoa(ws, [[42, 52, 62, 72]], { origin: 1 });
     XLSX.utils.sheet_add_aoa(ws, [[4, 5, 6, 7, 8, 9, 0]], { origin: -1 });
-    let wb: XLSX.WorkBook = XLSX.read(data, { type: "array" }); // XLSX.read(data, read_opts)尝试解析data。
-    XLSX.utils.book_append_sheet(wb, ws, "Sheet3");
+
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();  // 使用新表格，Sheet1
+    XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
     XLSX.writeFile(wb, "读取二维数组数据.xlsx");
   }
 
