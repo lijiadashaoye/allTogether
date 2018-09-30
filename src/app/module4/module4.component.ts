@@ -23,7 +23,8 @@ export class Module4Component implements OnInit {
       "dragdrop",
       "bulma",
       "excel",
-      "gaode"
+      "gaode",
+      "socket-io"
     ];
   }
   ngAfterViewInit() {

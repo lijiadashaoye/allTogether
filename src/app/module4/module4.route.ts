@@ -12,6 +12,8 @@ import { NgxDropzoneWrapperComponent } from "./ngx-dropzone-wrapper/ngx-dropzone
 import { DragAndDropComponent } from "./drag-and-drop/drag-and-drop.component";
 import { BulmaComponent } from "./bulma/bulma.component";
 import { ExcelComponent } from "./excel/excel.component";
+import { SocketIoComponent } from "./socket-io/socket-io.component";
+
 const routes: Routes = [
   {
     path: "",
@@ -52,6 +54,10 @@ const routes: Routes = [
       {
         path: "excel",
         component: ExcelComponent
+      },
+      {
+        path: "socket-io",
+        component: SocketIoComponent
       }
     ]
   }

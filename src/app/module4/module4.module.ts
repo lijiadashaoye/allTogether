@@ -10,7 +10,7 @@ import { NgxEchartsModule } from "ngx-echarts"; // echarts
 // cnpm i ngx-workspace --save
 import { NgxWorkspaceModule } from "ngx-workspace"; // 组件拼接插件
 import { DndModule } from "ngx-drag-drop"; // 拖放插件
-import { NgxXLSXModule } from '@notadd/ngx-xlsx'; // 导出 Excel 插件
+import { NgxXLSXModule } from "@notadd/ngx-xlsx"; // 导出 Excel 插件
 /*************************************************************************************/
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome"; //奥森图标
 import { fab } from "@fortawesome/free-brands-svg-icons";
@@ -49,7 +49,11 @@ import { NgxDropzoneWrapperComponent } from "./ngx-dropzone-wrapper/ngx-dropzone
 import { DragAndDropComponent } from "./drag-and-drop/drag-and-drop.component";
 import { BulmaComponent } from "./bulma/bulma.component";
 import { ExcelComponent } from "./excel/excel.component";
+import { SocketIoComponent } from "./socket-io/socket-io.component";
+import { ChatService } from "./socket-io/socket-service";
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
+const config: SocketIoConfig = { url: "http://localhost:3000", options: {} };
 
 @NgModule({
   imports: [
@@ -64,7 +68,8 @@ import { ExcelComponent } from "./excel/excel.component";
     FontAwesomeModule,
     DropzoneModule,
     DndModule,
-    NgxXLSXModule
+    NgxXLSXModule,
+    SocketIoModule.forRoot(config)
   ],
   declarations: [
     Module4Component,
@@ -75,6 +80,7 @@ import { ExcelComponent } from "./excel/excel.component";
     OneComponentComponent,
     AosentubiaoComponent,
     BulmaComponent,
+    SocketIoComponent,
     NgxDropzoneWrapperComponent,
     TwoComponentComponent,
     DragAndDropComponent,
@@ -85,7 +91,8 @@ import { ExcelComponent } from "./excel/excel.component";
     {
       provide: DROPZONE_CONFIG,
       useValue: DEFAULT_DROPZONE_CONFIG
-    }
+    },
+    ChatService
   ]
 })
 export class Module4Module {}

@@ -45,6 +45,7 @@
     "ngx-drag-drop": "^1.0.3",
     "ngx-dropzone-wrapper": "^6.2.0",
     "ngx-echarts": "^4.0.0",
+    "ngx-socket-io": "^1.1.1",
     "ngx-workspace": "^0.2.5",
     "rxjs": "^6.0.0",
     "xlsx": "^0.14.0",
