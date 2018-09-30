@@ -24,7 +24,7 @@ export class ExcelComponent implements OnInit {
   download2() {
     // 读取表格数据
     let tables = this.elem.nativeElement.querySelector("#t1");
-    const wb: XLSX.WorkBook = XLSX.utils.book_new();  // 使用新表格，Sheet1
+    const wb: XLSX.WorkBook = XLSX.utils.book_new(); // 使用新表格，Sheet1
     // table_to_sheet 将DOM TABLE元素转换为工作表。
     let ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(tables);
     XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
@@ -43,7 +43,7 @@ export class ExcelComponent implements OnInit {
     let data = [["表头一", "表头二", "表头三"], [1, 2, 3], [1, 2, 3]];
     let ws: XLSX.WorkSheet = XLSX.utils.aoa_to_sheet(data);
     // aoa_to_sheet 将JS数据数组的数组转换为工作表。
-    const wb: XLSX.WorkBook = XLSX.utils.book_new();  // 使用新表格，Sheet1
+    const wb: XLSX.WorkBook = XLSX.utils.book_new(); // 使用新表格，Sheet1
     XLSX.utils.book_append_sheet(wb, ws, "Sheet1"); // 用来标识将表格写到第几sheet，可以不写
     XLSX.writeFile(wb, "读取二维数组数据.xlsx");
   }
@@ -64,7 +64,7 @@ export class ExcelComponent implements OnInit {
     XLSX.utils.sheet_add_aoa(ws, [[42, 52, 62, 72]], { origin: 1 });
     XLSX.utils.sheet_add_aoa(ws, [[4, 5, 6, 7, 8, 9, 0]], { origin: -1 });
 
-    const wb: XLSX.WorkBook = XLSX.utils.book_new();  // 使用新表格，Sheet1
+    const wb: XLSX.WorkBook = XLSX.utils.book_new(); // 使用新表格，Sheet1
     XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
     XLSX.writeFile(wb, "读取二维数组数据.xlsx");
   }
@@ -83,7 +83,7 @@ export class ExcelComponent implements OnInit {
       }
     ];
     let header = ["表头一", "表头二", "表头三"];
-    let title='读取对象数组';
+    let title = "读取对象数组";
     let downData = [];
     data.forEach(item => {
       let obj = {
@@ -95,8 +95,56 @@ export class ExcelComponent implements OnInit {
     });
 
     const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(downData, { header });
-    const wb: XLSX.WorkBook = XLSX.utils.book_new();  // 使用新表格，Sheet1
+    const wb: XLSX.WorkBook = XLSX.utils.book_new(); // 使用新表格，Sheet1
     XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
     XLSX.writeFile(wb, `${title}.xlsx`);
+  }
+
+  /*****************************************/
+
+  imgSrc = null;
+  toSubmit(target) {
+    // var formData = new FormData(FormElement);
+    // 这里的FormElement是html元素为form表单；当然这里也可以直接构造不用填写form元素，
+    // 填写form元素的目的是可以直接选取form中表单元素的name和value为formData添加键值对。
+    // angular中没有明确在标签里写上name，而是用formControlName，所以不需要初始化时写FormElement
+    /**********************************************************/
+    // 在此将formGroup数据apped进去
+    let formData = new FormData();
+    formData.append("userfile", target.files[0]); // 到时候上传这个formData即可
+
+    let forms = {
+      value: {
+        one: "one",
+        two: "two",
+        userfile: ""
+      }
+    };
+    for (let name in forms.value) {
+      formData.append(name, forms.value[name]);
+    }
+    // 生成formData后直接将formData作为数据post上去即可
+    /**********************************************************/
+    // 将文件以Data URL形式进行读取，用img展现出来
+    var reader = new FileReader();
+    reader.readAsDataURL(target.files[0]);
+    reader.onload = e => {
+      this.imgSrc = reader.result;
+    };
+  }
+  tomake(target) {
+    var blob1 = new Blob([target.value], { type: "text/plain;charset=utf-8" });
+    let one = this.elem.nativeElement.querySelector("#one");
+    // useTA.innerHTML = fileName;
+    one.download = "isTxT.txt";
+    one.href = URL.createObjectURL(blob1);
+    /****************************************************************/
+    var blob2 = new Blob([target.value], {
+      type: "application/msword;charset=utf-8"
+    });
+    let two = this.elem.nativeElement.querySelector("#two");
+    // useTA.innerHTML = fileName;
+    two.download = "isWord.doc";
+    two.href = URL.createObjectURL(blob2);
   }
 }

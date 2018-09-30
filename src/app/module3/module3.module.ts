@@ -11,7 +11,6 @@ import { ZaxiangComponent } from "./zaxiang/zaxiang.component";
 import { MyLibraryModule } from "my-library";
 import { CanvasLearnComponent } from './canvas-learn/canvas-learn.component';
 import { TransformComponent } from './js-learn/transform/transform.component';
-import { FormdataComponent } from './js-learn/formdata/formdata.component';
 
 @NgModule({
   imports: [CommonModule, module3RoutingModule, FormsModule,MyLibraryModule],
@@ -22,7 +21,6 @@ import { FormdataComponent } from './js-learn/formdata/formdata.component';
     ZaxiangComponent,
     CanvasLearnComponent,
     TransformComponent,
-    FormdataComponent
   ]
 })
 export class Module3Module {}

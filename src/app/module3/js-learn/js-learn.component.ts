@@ -1,7 +1,5 @@
-import {
-  Component,
-  OnInit
-} from "@angular/core";
+import { Component, OnInit, ElementRef, Renderer2 } from "@angular/core";
+import { FormBuilder, FormGroup } from "@angular/forms";
 
 @Component({
   selector: "app-js-learn",
@@ -21,11 +19,11 @@ export class JsLearnComponent implements OnInit {
     "everyFn",
     "reduceFn",
     "filterFn",
-    'moreArray'
+    "moreArray"
   ];
   showData;
 
-  constructor() {}
+  constructor(private elem: ElementRef) {}
   ngOnInit() {}
   isClick(item, index) {
     this.num = index;
@@ -135,7 +133,7 @@ export class JsLearnComponent implements OnInit {
     let arr = [];
     for (let j = 0; j < 20; j++) {
       let num = Math.floor(Math.random() * 10);
-      arr.push(num)
+      arr.push(num);
     }
     let arr2 = [];
     // 对数组数据进行再次分组
@@ -145,20 +143,15 @@ export class JsLearnComponent implements OnInit {
     this.showData = arr2;
   }
   /************************************************************/
-  arrFns2 = [
-    'getMax_Min',
-    'qiantao',
-    'zhengxu',
-    'daoxu',
-    'getRandom'
-  ];
+  arrFns2 = ["getMax_Min", "qiantao", "zhengxu", "daoxu", "getRandom"];
   num2 = null;
   arrFns2Result = null;
   isClick2(item, index) {
     this.num2 = index;
     this[item]();
   }
-  getMax_Min() { // 取数组最大值和最小值的排序
+  getMax_Min() {
+    // 取数组最大值和最小值的排序
     var arr = [10, 14, 3, 8, 1, 7];
     let arr2 = [];
     let arr3 = arr;
@@ -173,34 +166,36 @@ export class JsLearnComponent implements OnInit {
     }
     this.arrFns2Result = arr2;
   }
-  qiaotao() { // 函数嵌套函数，并集中调用
+  qiaotao() {
+    // 函数嵌套函数，并集中调用
     function fn(a) {
-      return function (b) {
-        return a + b
-      }
+      return function(b) {
+        return a + b;
+      };
     }
     this.arrFns2Result = fn(3)(4);
   }
   zhengxu() {
-    this.objectSort(true)
+    this.objectSort(true);
   }
   daoxu() {
-    this.objectSort(false)
+    this.objectSort(false);
   }
   objectSort(how) {
-    let arr = [{
-        name: 'ffff',
+    let arr = [
+      {
+        name: "ffff",
         age: 51
       },
       {
-        name: 'hjytjh',
+        name: "hjytjh",
         age: 61
-      },
-    ]
-    this.arrFns2Result = arr.sort(toSort('age'));
+      }
+    ];
+    this.arrFns2Result = arr.sort(toSort("age"));
 
     function toSort(type) {
-      return function (obj1, obj2) {
+      return function(obj1, obj2) {
         let val1 = obj1[type];
         let val2 = obj2[type];
         if (how) {
@@ -208,18 +203,20 @@ export class JsLearnComponent implements OnInit {
         } else {
           return val2 - val1; // 倒序
         }
-      }
+      };
     }
   }
-  getRandom() { // 随机获取数组项
-    let arr = ['red', 'blue', 'green', 'yellow', 'pink'];
+  getRandom() {
+    // 随机获取数组项
+    let arr = ["red", "blue", "green", "yellow", "pink"];
 
-    function takeRandom(max, min) { // 获取指定区间随机数
+    function takeRandom(max, min) {
+      // 获取指定区间随机数
       let num = max - min + 1;
-      return Math.floor(Math.random() * num + min)
-    };
+      return Math.floor(Math.random() * num + min);
+    }
     let num = takeRandom(3, 19);
     let num2 = arr[takeRandom(0, arr.length - 1)];
-    this.arrFns2Result = num2
+    this.arrFns2Result = num2;
   }
 }

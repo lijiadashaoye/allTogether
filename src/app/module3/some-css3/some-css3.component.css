@@ -37,9 +37,32 @@
 }
 
 .test {
+  text-overflow: ellipsis;
+  width: 150px;
   white-space: nowrap;
   width: 12em;
   overflow: hidden;
+}
+
+.isBefore,
+.isAfter {
+  position: relative;
+}
+
+.isBefore::before {
+  content: "@";
+  font-weight: bold;
+  position: absolute;
+  top: 10%;
+  left: -30px;
+}
+
+.isAfter::after {
+  content: "#";
+  font-weight: bold;
+  position: absolute;
+  top: 10%;
+  right: 30px;
 }
 
 .test2 {

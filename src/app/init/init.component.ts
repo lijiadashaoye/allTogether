@@ -23,7 +23,7 @@ import {
 })
 export class InitComponent implements OnInit {
   imgSrc = '';
-  time = 22;
+  time = 3;  // 设置自动跳转时间
   sub: Subscription;
   private initData; // 用来保存软件启动前需要获取的数据
   constructor(private http: HttpClient, private router: Router) {}
@@ -34,14 +34,14 @@ export class InitComponent implements OnInit {
 
     this.sub = interval(1000)
       .subscribe(val => {
-        this.time = 22 - val;
-        if (this.time <= 0) {
+        this.time --;
+        if (this.time < 0) {
           this.router.navigate(['login'])
         }
       })
 
     let url = "/userdatas";
-    let http1 = this.http.get(url);
+    let http1 = this.http.get(url);  // 设置初始化时执行的http
     let http2 = this.http.get(url);
 
     forkJoin([http1, http2]).subscribe(results => {

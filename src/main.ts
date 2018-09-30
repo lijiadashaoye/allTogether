@@ -22,12 +22,12 @@ platformBrowserDynamic()
     setTimeout(function() {
       let inter = setInterval(_ => {
         num -= 0.1;
-        if (num < .2) {
+        if (num < .3) {
           animate["style"]["display"] = "none";
           clearInterval(inter);
         }
         animate["style"]["opacity"] -= 0.1;
       }, 200);
-    }, 3000);
+    }, 1000);
   })
   .catch(err => console.log(err));
