@@ -70,13 +70,14 @@ export class ObservablesComponent implements OnInit {
     });
   }
   /****************************************************/
+  observable$ = null;
   subscribeObservableFn2() {
-    const observable$ = Observable.create(observer => {
+    this.observable$ = Observable.create(observer => {
       observer.next("Semlinker");
       observer.next("Lolo");
     });
 
-    observable$.subscribe(value => {
+    this.observable$.subscribe(value => {
       // 执行订阅操作
       console.log(value);
     });
