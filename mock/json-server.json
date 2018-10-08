@@ -3,5 +3,5 @@
   "delay": 10,
   "watch": true,
   "no-gzip": false,
-  "static": "./mock/public"
+  "static": "./mock/imgs"
 }

@@ -36,8 +36,8 @@ export class JsLearnComponent implements OnInit {
     let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     this.showData = arr.includes(5);
   }
-  // 每个元素执行一次提供的函数，
-  // 传参：（callback(当前元素,索引，该数组)）；
+  // 每个数组元素执行一次提供的函数，
+  // 传参：（callback(当前元素，索引，该数组)）；
   // 返回值：无；
   forEachFn() {
     let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -48,7 +48,7 @@ export class JsLearnComponent implements OnInit {
     });
   }
   // 返回数组中满足提供的测试函数的第一个元素的值，
-  // 传参：（callback(当前元素,索引，该数组)）；
+  // 传参：（callback(当前元素，索引，该数组)）；
   // 返回值：该元素；（[].findIndex()返回索引）
   findFn() {
     let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -69,7 +69,7 @@ export class JsLearnComponent implements OnInit {
     this.showData = "index:" + kk;
   }
   // 创建一个新数组，其结果是该数组中的每个元素都调用一个提供的函数后返回的结果。
-  // 传参：（callback(当前元素,索引，该数组)）；
+  // 传参：（callback(当前元素，索引，该数组)）；
   // 返回值：一个新数组，每个元素都是回调函数的结果；
   mapFn() {
     let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -81,7 +81,7 @@ export class JsLearnComponent implements OnInit {
     this.showData = kk;
   }
   // 测试数组的某些元素是否都通过了指定函数的测试；
-  // 传参：（callback(当前元素,索引，该数组)）；
+  // 传参：（callback(当前元素，索引，该数组)）；
   // 返回值：true或false；
   someFn() {
     let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -93,7 +93,7 @@ export class JsLearnComponent implements OnInit {
     this.showData = kk;
   }
   // 测试数组的所有元素是否都通过了指定函数的测试；
-  // 传参：（callback(当前元素,索引，该数组)）；
+  // 传参：（callback(当前元素，索引，该数组)）；
   // 返回值：true或false；
   everyFn() {
     let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -105,7 +105,7 @@ export class JsLearnComponent implements OnInit {
     this.showData = kk;
   }
   // 对累加器和数组中的每个元素（从左到右）应用一个函数，将其减少为单个值；
-  // 传参：（callback(累加器accumulator，当前元素,索引，该数组)）；
+  // 传参：（callback(累加器accumulator，当前元素，索引，该数组)）；
   // 返回值：函数累计处理的结果；
   reduceFn() {
     let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -198,6 +198,7 @@ export class JsLearnComponent implements OnInit {
       return function(obj1, obj2) {
         let val1 = obj1[type];
         let val2 = obj2[type];
+        // sort函数中，小括号如果是可以作为true的结果（布尔true，大于零的值），则是把后边的（obj2）放在前头
         if (how) {
           return val1 - val2; // 正序
         } else {
