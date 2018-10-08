@@ -147,10 +147,17 @@ export class ExcelComponent implements OnInit {
     two.href = URL.createObjectURL(blob2);
   }
   makePdf(data) {
-    var doc = new jsPDF();
-    doc.text(data, 1, 1);
-    doc.setFontSize(16);
-    doc.save("a4.pdf");
+    var doc = new jsPDF({
+      orientation: "landscape", // 设置纸张方向为横排
+      unit: "pt", // 以像素为单位
+      format: [800, 200] // 数值大的，永远会成为纸张横向尺寸：format: [800,200]和format: [200,800] 效果一样
+    });
+    doc.setFontSize(30); // 设置字体大小
+    doc.setTextColor(255, 0, 0); // 设置字体颜色
+    doc.setFontType("bold"); // 设置字体粗细
+    // 各项设置，要写在字体内容设置之前
+    doc.text(2, 30, data); // 设置字体位置doc.text(x,y,data),位置是以字体基线来计算的，y不能小于lineheight
+    doc.save("单纯文字.pdf");
   }
   makePdf2() {
     if (this.imgSrc) {
@@ -163,10 +170,19 @@ export class ExcelComponent implements OnInit {
 
       // 0, 40, 控制文字距离左边，与上边的距离，100, 125控制图片的尺寸
       doc.addImage(this.imgSrc, "PNG", 100, 40, 100, 125);
-      // jsPDF提供了一个很有用的API，addPage()，来添加一页pdf
-      doc.save("a4.pdf");
+      doc.save("图文混排.pdf");
     } else {
       alert("上传个图片并预览！");
     }
+  }
+  makePdf3() {
+    var doc = new jsPDF("", "pt", "a4");
+    doc.setFontSize(20);
+    doc.text(20, 20, "Hello world!");
+    doc.text(20, 45, "This is client-side Javascript, pumping out a PDF.");
+    doc.addPage(); // jsPDF提供了一个很有用的API，addPage()，来添加一页pdf
+    doc.setTextColor(255, 0, 0);
+    doc.text(20, 20, "This is red.");
+    doc.save("多页.pdf");
   }
 }

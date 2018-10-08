@@ -53,9 +53,12 @@
     <h2>导出为本地文档</h2>
     <a id="one">生成txt</a>&nbsp;
     <a id="two">生成doc</a>&nbsp;
-    <button (click)="makePdf(textA.value)">生成pdf</button>&nbsp;
-    <button (click)="makePdf2()">生成图片、文字混合pdf</button>&nbsp;
     <br>
     <textarea style="width:150px;height:100px;" (input)="tomake(textA)" #textA></textarea>
+  </div>
+  <div>
+    <button (click)="makePdf(textA.value)">生成pdf</button>&nbsp;
+    <button (click)="makePdf2()">生成图片、文字混合pdf</button>&nbsp;
+    <button (click)="makePdf3()">生成多页pdf</button>&nbsp;
   </div>
 </div>
