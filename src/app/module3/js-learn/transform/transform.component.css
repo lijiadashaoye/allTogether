@@ -1,9 +1,25 @@
-.box{
-    display: flex
+.box {
+  display: flex
 }
+
 .isDiv {
   width: 200px;
   height: 100px;
-  margin-left: 150px;
+  margin-left: 100px;
+  margin-top: 10px;
   background: red;
+}
+
+.rightImg {
+  height: 700px;
+}
+
+.rightImg>img:nth-child(1) {
+  height: 100%;
+  width: 50%;
+}
+
+.rightImg>img:nth-child(2) {
+  height: 100%;
+  width: 50%;
 }

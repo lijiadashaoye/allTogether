@@ -46,13 +46,15 @@
   <div>
     <h2>本地预览图片</h2>
     <input type="file" #files><br>
-    <button (click)="toSubmit(files)">预览</button><br>
-    <img id="imgs" [src]="imgSrc" *ngIf="imgSrc" style="width:150px;height:200px">
+    <button (click)="yulan(files)">预览</button><br>
+    <img id="imgs" [src]="imgSrc" *ngIf="imgSrc" style="width:140px;height:200px">
   </div>
   <div>
     <h2>导出为本地文档</h2>
     <a id="one">生成txt</a>&nbsp;
     <a id="two">生成doc</a>&nbsp;
+    <button (click)="makePdf(textA.value)">生成pdf</button>&nbsp;
+    <button (click)="makePdf2()">生成图片、文字混合pdf</button>&nbsp;
     <br>
     <textarea style="width:150px;height:100px;" (input)="tomake(textA)" #textA></textarea>
   </div>

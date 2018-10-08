@@ -1,6 +1,7 @@
 import { Component, OnInit, ElementRef } from "@angular/core";
 import { NgxXLSXService } from "@notadd/ngx-xlsx";
 import * as XLSX from "xlsx"; //XLSX 是浏览器中的公开变量和导出的节点变量
+import * as jsPDF from "jspdf"; // npm install jspdf --save
 @Component({
   selector: "app-excel",
   templateUrl: "./excel.component.html",
@@ -35,7 +36,7 @@ export class ExcelComponent implements OnInit {
     // 提取和解析HTML代码
     let tables = this.elem.nativeElement.querySelector("#t1").outerHTML;
     var wb = XLSX.read(tables, { type: "string" });
-    XLSX.writeFile(wb, "读取表格数据.xlsx");
+    XLSX.writeFile(wb, "提取和解析HTML代码.xlsx");
   }
 
   download4() {
@@ -103,7 +104,7 @@ export class ExcelComponent implements OnInit {
   /*****************************************/
 
   imgSrc = null;
-  toSubmit(target) {
+  yulan(target) {
     // var formData = new FormData(FormElement);
     // 这里的FormElement是html元素为form表单；当然这里也可以直接构造不用填写form元素，
     // 填写form元素的目的是可以直接选取form中表单元素的name和value为formData添加键值对。
@@ -135,16 +136,37 @@ export class ExcelComponent implements OnInit {
   tomake(target) {
     var blob1 = new Blob([target.value], { type: "text/plain;charset=utf-8" });
     let one = this.elem.nativeElement.querySelector("#one");
-    // useTA.innerHTML = fileName;
     one.download = "isTxT.txt";
     one.href = URL.createObjectURL(blob1);
     /****************************************************************/
     var blob2 = new Blob([target.value], {
-      type: "application/msword;charset=utf-8"
+      type: "application/msword;charset=UTF-8"
     });
     let two = this.elem.nativeElement.querySelector("#two");
-    // useTA.innerHTML = fileName;
     two.download = "isWord.doc";
     two.href = URL.createObjectURL(blob2);
+  }
+  makePdf(data) {
+    var doc = new jsPDF();
+    doc.text(data, 1, 1);
+    doc.setFontSize(16);
+    doc.save("a4.pdf");
+  }
+  makePdf2() {
+    if (this.imgSrc) {
+      var doc = new jsPDF("", "pt", "a4");
+      //设置字体大小
+      doc.setFontSize(20);
+
+      //10,20这两参数控制文字距离左边，与上边的距离
+      doc.text("Stone", 100, 20);
+
+      // 0, 40, 控制文字距离左边，与上边的距离，100, 125控制图片的尺寸
+      doc.addImage(this.imgSrc, "PNG", 100, 40, 100, 125);
+      // jsPDF提供了一个很有用的API，addPage()，来添加一页pdf
+      doc.save("a4.pdf");
+    } else {
+      alert("上传个图片并预览！");
+    }
   }
 }

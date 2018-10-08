@@ -252,9 +252,9 @@ export class CanvasLearnComponent {
     ctx.shadowOffsetY = 5; // 向下为正，设置或返回阴影距形状的垂直距离
     ctx.shadowBlur = 5; // 模糊程度
     ctx.shadowColor = "red";
-    ctx.textAlign = "center"; // 设置多次绘画的文字的对齐方式
-    ctx.fillText("带阴影文字", 20, 280);
-    ctx.strokeText("带阴影文字", 20, 325);
+    ctx.textAlign = "center"; // 设置多次绘画的文字的对齐方式，从而也改变了定位参考点的位置
+    ctx.fillText("带阴影文字", 120, 280);
+    ctx.strokeText("带阴影文字", 120, 335);
   }
   /**************************************************************/
   text4 = [
@@ -531,11 +531,11 @@ export class CanvasLearnComponent {
     "又如果你是在一个循环中做位移但没有保存和恢复canvas 的状态，很可能到最后会发现怎么有些东西不见了，那是因为它很可能已经超出 canvas 范围以外了。",
     "​注意：translate移动的是canvas的坐标原点。(坐标变换)",
     "scale(x, y)：我们用它来增减图形在 canvas 中的像素数目，对形状，位图进行缩小或者放大。",
-    "​scale(x, y)方法接受两个参数。x，y 分别是横轴和纵轴的缩放因子，它们都必须是正值。",
+    "​scale(x, y) 方法接受两个参数。x，y 分别是横轴和纵轴的缩放因子，它们都必须是正值。",
     "值比 1.0 小表示缩小，比 1.0 大则表示放大，值为 1.0 时什么效果都没有。",
     "默认情况下，canvas 的 1 单位就是 1 个像素。",
     "举例说，如果我们设置缩放因子是 0.5，1 个单位就变成对应 0.5 个像素，这样绘制出来的形状就会是原先的一半。",
-    "同理，设置为 2.0 时，1 个单位就对应变成了 2 像素，绘制的结果就是图形放大了 2 倍。",
+    "同理，设置为 2.0 时，1 个单位就对应变成了 2 像素，绘制的结果就是图形放大了 2 倍。会变得模糊",
     "transform(a, b, c, d, e, f)：",
     "a (m11),b (m12),c (m21),d (m22),e (dx),f (dy)",
     "clip()：把已经创建的路径转换成裁剪路径。",
@@ -574,7 +574,7 @@ export class CanvasLearnComponent {
     var canvas = this.elem.nativeElement.querySelector("#d11");
     var ctx = canvas.getContext("2d");
     ctx.strokeRect(10, 10, 30, 30);
-    ctx.save(); //保存坐原点平移之前的状态
+    ctx.save(); //保存坐标原点平移之前的状态
     ctx.translate(30, 30);
     ctx.strokeRect(0, 0, 30, 30);
     ctx.restore(); //恢复到最初状态
@@ -693,7 +693,7 @@ export class CanvasLearnComponent {
   clock() {
     var canvas = this.elem.nativeElement.querySelector(`#clock`);
     var ctx = canvas.getContext("2d");
-    let that=this;
+    let that = this;
     step();
     function step() {
       drawDial(ctx); //绘制表盘

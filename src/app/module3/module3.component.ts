@@ -20,7 +20,7 @@ export class Module3Component implements OnInit {
   constructor(public route: Router, public logout: controlLogoutService) {}
 
   ngOnInit() {
-    this.urlList = ["Css3", "jsLearn", "library", 'canvas-learn','formdata'];
+    this.urlList = ["Css3", "jsLearn", "library", 'canvas-learn'];
   }
   ngAfterViewInit() {
     setTimeout(_ => this.logout.logout.emit("module3"), 200);
