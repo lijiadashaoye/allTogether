@@ -210,7 +210,8 @@ export class ObservablesComponent implements OnInit {
       subject.subscribe(val => console.log(val));
     }, 2000);
     /**************************************************************************/
-    let replaysubject = new ReplaySubject<any>(2); // 参数是2，所以只取最后执行两次next的值
+    // 参数是2，所以只取最后执行两次next的值，如果不给参数，则会保存所有的值
+    let replaysubject = new ReplaySubject<any>(2);
     replaysubject.next("ReplaySubject1");
     replaysubject.next("ReplaySubject2");
     replaysubject.next("ReplaySubject3");
@@ -230,7 +231,7 @@ export class ObservablesComponent implements OnInit {
     /**************************************************************************/
     // BehaviorSubject 跟 Subject 最大的不同就是 BehaviorSubject 是用来保存当前最新的值，
     // 而不是单纯的发送事件。BehaviorSubject 会记住最近一次发送的值，并把该值作为当前值保存在内部的属性中。
-    let behaviorsubject = new BehaviorSubject(0); // 设定初始值
+    let behaviorsubject = new BehaviorSubject(null); // 设定初始值
     behaviorsubject.next(1);
     behaviorsubject.next(2);
     behaviorsubject.next(3);
@@ -265,7 +266,7 @@ export class ObservablesComponent implements OnInit {
       .getData("module1datax")
       .pipe(
         retry(3), // 规定发生错误后尝试再次请求次数
-        catchError(catchBadResponse)
+        catchError(catchBadResponse) // catchBadResponse 是定义怎么处理最原始的错误数据的函数
       )
       .subscribe(
         data => console.log(data)
@@ -339,9 +340,10 @@ export class ObservablesComponent implements OnInit {
     );
 
     // concatMap 是顺序执行外侧，然后外侧的每一个值都触发一次内侧的执行，再根据外侧值得顺序输出值
-    obs2
-      .pipe(concatMap(_ => interval(500).pipe(take(4))))
-      .subscribe(val => console.log(val));
+    // obs2
+    //   .pipe(concatMap(_ => interval(500).pipe(take(4))))
+    //   .subscribe(val => console.log(val));
+    obs2.pipe(concatMap(_ => obs1)).subscribe(val => console.log(val));
   }
   combineLatestTest() {
     let obs1 = interval(1000).pipe(
@@ -358,19 +360,21 @@ export class ObservablesComponent implements OnInit {
     );
 
     // 第一种用法，用来监听很多个Observable，并实时更新数据组，返回相应顺序的数组
-    // combineLatest(obs1, obs2, obs3)
-    //   .subscribe(val => console.log(val));
-
-    // 第二种用法，将数据经过固定的combineLatest函数进行处理，返回处理结果
-    combineLatest(obs1, obs2)
-      .pipe(
-        map(([data1, data2]) => {
-          console.log(data1);
-          console.log(data2);
-          return 3;
-        })
-      )
+    // 任何一个Observable发出值都会发出各个Observable目前的最新值，即使有的Observable
+    // 的值发出一次后就没变过，但也属于他的最新值
+    combineLatest(obs1, obs2, obs3)
       .subscribe(val => console.log(val));
+
+    // // 第二种用法，将数据经过固定的combineLatest函数进行处理，返回处理结果
+    // combineLatest(obs1, obs2)
+    //   .pipe(
+    //     map(([data1, data2]) => {
+    //       console.log(data1);
+    //       console.log(data2);
+    //       return 3;
+    //     })
+    //   )
+    //   .subscribe(val => console.log(val));
   }
   zipTest() {
     // zip会等待每一个Observable都发出index对应的值，才会发出值组成的数组
@@ -390,7 +394,7 @@ export class ObservablesComponent implements OnInit {
     zip(obs1, obs3, obs2).subscribe(val => console.log(val));
   }
   exhaustMapTest() {
-    // 外侧每次发出的值，都会触发内侧的执行，但内侧会完整的执行一边，在执行过程中会忽略外侧的值
+    // 外侧每次发出的值，都会触发内侧的执行，但内侧会完整的执行一遍，在执行过程中会忽略外侧的值
     // 等内侧执行完毕后，如果外侧又发出新值，就会触发内侧再次完整的执行一次
     let obs3 = interval(600).pipe(take(5));
     obs3
@@ -406,15 +410,16 @@ export class ObservablesComponent implements OnInit {
       .subscribe(val => console.log(val));
   }
   shareTest() {
-    // 它可以多播（共享）原始的Observable。只要至少有一个订阅者，此Observable将被订阅并发送数据
-    // multicast(() => new Subject()), refCount() 的别名,无论什么时候订阅的obs1，得到的val都市当下最新值
+    // 它可以多播（共享）原始的Observable。只要至少有一个订阅者，此Observable才开始发送数据
+    // multicast(() => new Subject()), refCount() 的别名
+    // 无论什么时候订阅的obs1，得到的val都是当下obs1的最新值
     let obs1 = interval(1000).pipe(
-      take(6),
+      take(10),
       share()
     );
     setTimeout(_ => obs1.subscribe(val => console.log(val + "**800ms")), 800);
-    setTimeout(_ => obs1.subscribe(val => console.log(val + "**1200ms")), 1200);
-    setTimeout(_ => obs1.subscribe(val => console.log(val + "**2100ms")), 2100);
+    setTimeout(_ => obs1.subscribe(val => console.log(val + "**3000ms")), 3000);
+    setTimeout(_ => obs1.subscribe(val => console.log(val + "**10000ms")), 10000);
   }
   takeUntilTest() {
     // obs2一直执行着，直到obs1发出值才停止
@@ -436,7 +441,7 @@ export class ObservablesComponent implements OnInit {
     result.subscribe(x => console.log(x));
   }
   mergeTest() {
-    //  与 combineLatest 类似，但发出的值时一个值，任何一个Observable发出值，都会触发merge
+    //  与 combineLatest 类似，但只发出一个值，这个值是任何一个Observable发出的最新值
     let obs1 = interval(1000).pipe(
       take(3),
       map(val => `obs1-${val}`)
@@ -449,7 +454,6 @@ export class ObservablesComponent implements OnInit {
       take(3),
       map(val => `obs3-${val}`)
     );
-
     merge(obs1, obs3, obs2).subscribe(val => console.log(val));
   }
   testFind() {
