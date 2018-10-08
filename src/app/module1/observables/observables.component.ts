@@ -133,8 +133,8 @@ export class ObservablesComponent implements OnInit {
     subscription = of(1, 1, 2, 2, 1, 1, 2, 3, 3, 4)
       .pipe(distinctUntilChanged())
       .subscribe(x => arr.push(x));
-    subscription.unsubscribe();
     console.log(arr);
+    subscription.unsubscribe();
   }
   inputKuang() {
     const searchBox = document.getElementById("search-box");
