@@ -74,6 +74,14 @@
   /* transform: translate(50px, 100px); */
   /* transform: rotateY(40deg); */
 }
+#boxs{
+  width:350px;
+  display:column;
+  column-count:3;
+  column-gap:20px;
+  column-rule:1px outset #ff00ff;
+}
+
 
 /* ////////////////////////////////////////////////////////////////////////////////// */
 
