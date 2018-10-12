@@ -14,10 +14,10 @@
     @Self() - 表示只在本级注入器查找依赖对象
     <br> @SkipSelf() - 表示不从本级注入器获取依赖对象
     <br> @Optional - 表示该依赖对象是可选的，如果找不到返回 null
-    <div>
-      <button (click)="times()">时间</button><br>
-      {{datas}}
-    </div>
+  </div>
+  <div>
+    <h2>时间方法</h2>
+    <p style="margin:3px;" *ngFor="let da of datas">{{da}}</p>
   </div>
 </div>
 <hr>

@@ -24,7 +24,9 @@ export class JsLearnComponent implements OnInit {
   showData;
 
   constructor(private elem: ElementRef) {}
-  ngOnInit() {}
+  ngOnInit() {
+    this.times();
+  }
   isClick(item, index) {
     this.num = index;
     this[item]();
@@ -222,8 +224,8 @@ export class JsLearnComponent implements OnInit {
     let num2 = arr[takeRandom(0, arr.length - 1)];
     this.arrFns2Result = num2;
   }
-  datas = null;
-  times(){
+  datas = [];
+  times() {
     let da = new Date();
     let one1 = da.getFullYear(); //  取得年
     let one2 = da.getMonth() + 1; //  取得月
@@ -234,6 +236,15 @@ export class JsLearnComponent implements OnInit {
     let one7 = da.getSeconds(); //  取得秒
     let one8 = da.getTime(); //  取得时间戳
     let one9 = Date.now(); //  取得时间戳
-    this.datas=`${one1}年${one2}月${one3}日，星期${one4}，${one5}时${one6}分${one7}秒，时间戳${one8}`
+    let one10 = da
+      .toLocaleDateString()
+      .split("/")
+      .join("-");
+    let one11 = da.toLocaleTimeString();
+    this.datas.push(`${one1}年${one2}月${one3}日，星期${one4}`);
+    this.datas.push(`${one5}时${one6}分${one7}秒`);
+    this.datas.push(`时间戳 ${one8}`);
+    this.datas.push(one10);
+    this.datas.push(one11);
   }
 }
