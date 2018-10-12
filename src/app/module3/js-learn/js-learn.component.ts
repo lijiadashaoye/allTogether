@@ -247,4 +247,13 @@ export class JsLearnComponent implements OnInit {
     this.datas.push(one10);
     this.datas.push(one11);
   }
+  // arguments对象还有一个名叫callee的属性，该属性是一个指针，指向拥有这个arguments对象的函数
+  // 从而避免了函数名字变更了，但函数的执行结果不变，解耦
+  factorial(num) {
+    if (num <= 1) {
+      return 1;
+    } else {
+      return num * arguments.callee(num - 1);
+    }
+  }
 }
