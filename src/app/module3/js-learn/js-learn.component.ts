@@ -199,6 +199,8 @@ export class JsLearnComponent implements OnInit {
         let val1 = obj1[type];
         let val2 = obj2[type];
         // sort函数中，小括号如果是可以作为true的结果（布尔true，大于零的值），则是把后边的（obj2）放在前头
+        // 比较函数接收两个参数，如果第一个参数应该位于第二个之前则返回一个负数，如果两个参数相等,则返回 0，
+        // 如果第一个参数应该位于第二个之后则返回一个正数。
         if (how) {
           return val1 - val2; // 正序
         } else {
@@ -219,5 +221,19 @@ export class JsLearnComponent implements OnInit {
     let num = takeRandom(3, 19);
     let num2 = arr[takeRandom(0, arr.length - 1)];
     this.arrFns2Result = num2;
+  }
+  datas = null;
+  times(){
+    let da = new Date();
+    let one1 = da.getFullYear(); //  取得年
+    let one2 = da.getMonth() + 1; //  取得月
+    let one3 = da.getDate(); //  取得日
+    let one4 = da.getDay(); //  取得星期几
+    let one5 = da.getHours(); //  取得小时
+    let one6 = da.getMinutes(); //  取得分钟
+    let one7 = da.getSeconds(); //  取得秒
+    let one8 = da.getTime(); //  取得时间戳
+    let one9 = Date.now(); //  取得时间戳
+    this.datas=`${one1}年${one2}月${one3}日，星期${one4}，${one5}时${one6}分${one7}秒，时间戳${one8}`
   }
 }
