@@ -51,18 +51,18 @@ export class NoopInterceptor implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    console.log(req)
     const HEADER = {
       headers: new HttpHeaders({
         "Content-Type": "application/json",
-        token: this.userData.user.Pwd
+        token: this.userData.user.Pwd,
       })
     };
     const reqOptions = {
       // 向拦截器里添加更多有关http的数据
       ...HEADER,
-      withCredentials: true
+      // withCredentials: true
     };
+
     const authReq = req.clone(reqOptions); //发送新请求头的http请求;
     return next.handle(authReq)
   }
