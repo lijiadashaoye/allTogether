@@ -51,6 +51,7 @@ export class NoopInterceptor implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
+    console.log(req)
     const HEADER = {
       headers: new HttpHeaders({
         "Content-Type": "application/json",
