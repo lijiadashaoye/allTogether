@@ -250,7 +250,7 @@ export class JsLearnComponent implements OnInit {
   // arguments对象还有一个名叫callee的属性，该属性是一个指针，指向拥有这个arguments对象的函数
   // 从而避免了函数名字变更了，但函数的执行结果不变，解耦
   // this 引用的是函数据以执行的环境对象
-  
+
   factorial(num) {
     if (num <= 1) {
       return 1;
@@ -268,5 +268,11 @@ export class JsLearnComponent implements OnInit {
     }
     var objectSayColor = sayColor.bind(o);
     objectSayColor(); //blue
+  }
+  contextmenuData = null;
+  fff(e: Event) {
+    // 自定义点击鼠标右键
+    e.preventDefault();
+    this.contextmenuData = "执行了contextmenu事件";
   }
 }
