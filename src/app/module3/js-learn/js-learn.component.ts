@@ -249,11 +249,24 @@ export class JsLearnComponent implements OnInit {
   }
   // arguments对象还有一个名叫callee的属性，该属性是一个指针，指向拥有这个arguments对象的函数
   // 从而避免了函数名字变更了，但函数的执行结果不变，解耦
+  // this 引用的是函数据以执行的环境对象
+  
   factorial(num) {
     if (num <= 1) {
       return 1;
     } else {
       return num * arguments.callee(num - 1);
     }
+  }
+  // bind()。这个方法会创建一个函数的实例，其this值会被绑定到传给bind()函数的值
+  color = null;
+  binds() {
+    this.color = "red";
+    var o = { color: "blue" };
+    function sayColor() {
+      alert(this.color);
+    }
+    var objectSayColor = sayColor.bind(o);
+    objectSayColor(); //blue
   }
 }
