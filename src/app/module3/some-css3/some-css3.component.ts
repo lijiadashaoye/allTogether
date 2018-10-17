@@ -60,7 +60,7 @@ export class SomeCss3Component implements OnInit {
   dragFn(e: Event) {
     let tar = e.target;
     let mouseX = e["clientX"];
-    let mouseY = e["clientY"] + 2;
+    let mouseY = e["clientY"];
     this.rd.setAttribute(
       tar,
       "style",
