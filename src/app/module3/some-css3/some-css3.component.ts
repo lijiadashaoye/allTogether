@@ -45,6 +45,13 @@ export class SomeCss3Component implements OnInit {
     this.itemX = e.clientX - tar.offsetLeft;
     this.itemY = e.clientY - tar.offsetTop;
   }
+  dragstartFn1(e) {
+    // 可传递数据
+    e.dataTransfer.setData("text", JSON.stringify({
+      name:'fff',
+      id:4
+    }));
+  }
   dragFn(e: Event) {
     let tar = e.target;
     let mouseX = e["clientX"];
@@ -62,5 +69,6 @@ export class SomeCss3Component implements OnInit {
   dropFn(e) {
     let dragImg = this.elem.nativeElement.querySelector("#dragImg");
     this.rd.appendChild(e.target, dragImg);
+    console.log(e.dataTransfer.getData("text")); // 获取传递来的数据
   }
 }
