@@ -20,8 +20,8 @@
     <p style="margin:3px;" *ngFor="let da of datas">{{da}}</p>
   </div>
   <div>
-      <h2>contextmenu事件</h2>
-    <input type="button" style="font-size:12px;padding:0;"value="contextmenu事件"(contextmenu)="fff($event)">
+    <h2>contextmenu事件</h2>
+    <input type="button" style="font-size:12px;padding:0;" value="自定义点击鼠标右键" (contextmenu)="fff($event)">
     {{contextmenuData}}
   </div>
 </div>
