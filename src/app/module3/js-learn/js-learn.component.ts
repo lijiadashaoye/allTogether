@@ -26,6 +26,12 @@ export class JsLearnComponent implements OnInit {
   constructor(private elem: ElementRef) {}
   ngOnInit() {
     this.times();
+    // this.autoAudio();
+  }
+  autoAudio() {
+    // 实现后台播放音频
+    let au = new Audio("../assets/33.mp3");
+    au.play();
   }
   isClick(item, index) {
     this.num = index;
