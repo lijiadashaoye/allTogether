@@ -47,10 +47,15 @@ export class SomeCss3Component implements OnInit {
   }
   dragstartFn1(e) {
     // 可传递数据
-    e.dataTransfer.setData("text", JSON.stringify({
-      name:'fff',
-      id:4
-    }));
+    // 在拖动文本框中的文本时，浏览器会调用setData()方法，将拖动的文本以"text"格式保存在dataTransfer对象中。
+    // 类似地，在拖放链接或图像时，会调用setData()方法并保存URL
+    e.dataTransfer.setData(
+      "text",
+      JSON.stringify({
+        name: "fff",
+        id: 4
+      })
+    );
   }
   dragFn(e: Event) {
     let tar = e.target;
@@ -69,6 +74,6 @@ export class SomeCss3Component implements OnInit {
   dropFn(e) {
     let dragImg = this.elem.nativeElement.querySelector("#dragImg");
     this.rd.appendChild(e.target, dragImg);
-    console.log(e.dataTransfer.getData("text")); // 获取传递来的数据
+    console.log(e.dataTransfer.getData("text")); // 获取传递来的数据,保存在dataTransfer对象中的数据只能在drop事件处理程序中读取
   }
 }
