@@ -81,8 +81,19 @@
     </div>
     <div>
       <h2>图片拖动</h2>
-      <img width="100px" height="100px" src="assets/earth.png" draggable="true" (dragstart)="dragstartFn($event)"
-        (dragend)="dragendFn($event)" (drag)="dragFn($event)">
+      <div style="display:flex;justify-content: space-between">
+        <div>
+          <p>拖动图片到div里，执行drag和drop</p>
+          <div  class="dropItem" (dragover)="dragoverFn($event)" (drop)="dropFn($event)"></div>
+          <img width="50px" id="dragImg" height="50px" src="../assets/earth.png" draggable="true">
+        </div>
+        <div>
+          <p>只是将图片相对document进行定位</p>
+          <img width="100px" height="100px" src="assets/earth.png" draggable="true" (dragstart)="dragstartFn($event)"
+            (drag)="dragFn($event)">
+        </div>
+      </div>
+
     </div>
   </div>
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Renderer2 } from "@angular/core";
+import { Component, OnInit, Renderer2, ElementRef } from "@angular/core";
 
 @Component({
   selector: "app-some-css3",
@@ -16,7 +16,7 @@ export class SomeCss3Component implements OnInit {
       icon: "icon-home"
     }
   ];
-  constructor(private rd: Renderer2) {}
+  constructor(private rd: Renderer2, private elem: ElementRef) {}
 
   ngOnInit() {
     document.ondragover = function(e) {
@@ -56,8 +56,11 @@ export class SomeCss3Component implements OnInit {
         this.itemY}px`
     );
   }
-  dragendFn(e: Event) {
-    e.preventDefault();
-    e.stopPropagation();
+  dragoverFn(e) {
+    // console.log(e);
+  }
+  dropFn(e) {
+    let dragImg = this.elem.nativeElement.querySelector("#dragImg");
+    this.rd.appendChild(e.target, dragImg);
   }
 }
