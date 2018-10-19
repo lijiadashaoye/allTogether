@@ -128,6 +128,11 @@ export class ExcelComponent implements OnInit {
     /**********************************************************/
     // 将文件以Data URL形式进行读取，用img展现出来
     var reader = new FileReader();
+    // readAsText(file,encoding)：以纯文本形式读取文件，将读取到的文本保存在result属性中。
+    // 第二个参数用于指定编码类型，是可选的(utf-8)。
+    // readAsDataURL(file)：读取文件并将文件以数据URI的形式保存在result属性中。
+    // readAsBinaryString(file)：读取文件并将一个字符串保存在result属性中，字符串中的每个字符表示一字节。
+    // readAsArrayBuffer(file)：读取文件并将一个包含文件内容的ArrayBuffer保存在result属性中。
     reader.readAsDataURL(target.files[0]);
     reader.onload = e => {
       this.imgSrc = reader.result;
@@ -185,4 +190,6 @@ export class ExcelComponent implements OnInit {
     doc.text(20, 20, "This is red.");
     doc.save("多页.pdf");
   }
+
+  
 }

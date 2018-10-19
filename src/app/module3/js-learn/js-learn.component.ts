@@ -23,7 +23,7 @@ export class JsLearnComponent implements OnInit {
   ];
   showData;
 
-  constructor(private elem: ElementRef) {}
+  constructor(private elem: ElementRef, private rd: Renderer2) {}
   ngOnInit() {
     this.times();
     // this.autoAudio();
@@ -304,7 +304,8 @@ export class JsLearnComponent implements OnInit {
   /****************************************** */
   watchId = null;
   geolocation() {
-    navigator.geolocation.getCurrentPosition(  // 获取位置信息
+    navigator.geolocation.getCurrentPosition(
+      // 获取位置信息
       function(position) {
         console.log(position.coords.latitude, position.coords.longitude);
       },
@@ -313,7 +314,8 @@ export class JsLearnComponent implements OnInit {
         console.log("Error message: " + error.message);
       }
     );
-    this.watchId = navigator.geolocation.watchPosition(  // 监听位置信息，实时是多次调用getCurrentPosition()
+    this.watchId = navigator.geolocation.watchPosition(
+      // 监听位置信息，实时是多次调用getCurrentPosition()
       function(position) {
         console.log(position.coords.latitude, position.coords.longitude);
       },
@@ -326,5 +328,16 @@ export class JsLearnComponent implements OnInit {
   closeGet() {
     console.log(navigator.geolocation);
     navigator.geolocation.clearWatch(this.watchId);
+  }
+
+  /********************************************** */
+  // 使用createObjectURL动态显示图片
+  seefile(e) {
+    var file = e.target.files[0];
+    var imgs = new Image();
+    var ele = this.elem.nativeElement.querySelector("#ele");
+    imgs.style.width = "50px";
+    imgs.src = window.URL.createObjectURL(file);
+    this.rd.appendChild(ele, imgs);
   }
 }
