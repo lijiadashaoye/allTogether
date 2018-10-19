@@ -331,13 +331,16 @@ export class JsLearnComponent implements OnInit {
   }
 
   /********************************************** */
+  fileUrl = null;
   // 使用createObjectURL动态显示图片
   seefile(e) {
     var file = e.target.files[0];
     var imgs = new Image();
     var ele = this.elem.nativeElement.querySelector("#ele");
     imgs.style.width = "50px";
-    imgs.src = window.URL.createObjectURL(file);  // 指向一块内存的地址
+    // 页面卸载时会自动释放对象URL占用的内存
+    this.fileUrl = window.URL.createObjectURL(file); // 指向一块内存的地址
+    imgs.src = this.fileUrl;
     this.rd.appendChild(ele, imgs);
   }
 }
