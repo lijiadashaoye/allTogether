@@ -337,7 +337,7 @@ export class JsLearnComponent implements OnInit {
     var imgs = new Image();
     var ele = this.elem.nativeElement.querySelector("#ele");
     imgs.style.width = "50px";
-    imgs.src = window.URL.createObjectURL(file);
+    imgs.src = window.URL.createObjectURL(file);  // 指向一块内存的地址
     this.rd.appendChild(ele, imgs);
   }
 }
