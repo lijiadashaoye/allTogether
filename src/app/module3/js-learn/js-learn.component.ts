@@ -281,4 +281,24 @@ export class JsLearnComponent implements OnInit {
     e.preventDefault();
     this.contextmenuData = "执行了contextmenu事件";
   }
+  /****************************** */
+  ani = null; // 获取动画id
+  start() {
+    let that = this;
+    var start = null,
+      num = 1;
+    var element = document.getElementById("fff");
+    element.style.position = "absolute";
+
+    function step(timestamp) {
+      if (!start) start = timestamp;
+      var progress = timestamp - start;
+      element.style.left = Number(num++) + "px";
+      that.ani = window.requestAnimationFrame(step);
+    }
+    window.requestAnimationFrame(step);
+  }
+  stop() {
+    window.cancelAnimationFrame(this.ani);
+  }
 }
