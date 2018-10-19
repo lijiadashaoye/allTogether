@@ -112,7 +112,8 @@ export class ExcelComponent implements OnInit {
     /**********************************************************/
     // 在此将formGroup数据apped进去
     let formData = new FormData();
-    formData.append("userfile", target.files[0]); // 到时候上传这个formData即可
+    // 到时候上传这个formData即可,this.http.post(url,formData)
+    formData.append("userfile", target.files[0]);
 
     let forms = {
       value: {
@@ -190,6 +191,4 @@ export class ExcelComponent implements OnInit {
     doc.text(20, 20, "This is red.");
     doc.save("多页.pdf");
   }
-
-  
 }
