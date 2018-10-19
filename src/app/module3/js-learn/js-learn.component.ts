@@ -301,4 +301,30 @@ export class JsLearnComponent implements OnInit {
   stop() {
     window.cancelAnimationFrame(this.ani);
   }
+  /****************************************** */
+  watchId = null;
+  geolocation() {
+    navigator.geolocation.getCurrentPosition(  // 获取位置信息
+      function(position) {
+        console.log(position.coords.latitude, position.coords.longitude);
+      },
+      function(error) {
+        console.log("Error code: " + error.code);
+        console.log("Error message: " + error.message);
+      }
+    );
+    this.watchId = navigator.geolocation.watchPosition(  // 监听位置信息，实时是多次调用getCurrentPosition()
+      function(position) {
+        console.log(position.coords.latitude, position.coords.longitude);
+      },
+      function(error) {
+        console.log("Error code: " + error.code);
+        console.log("Error message: " + error.message);
+      }
+    );
+  }
+  closeGet() {
+    console.log(navigator.geolocation);
+    navigator.geolocation.clearWatch(this.watchId);
+  }
 }

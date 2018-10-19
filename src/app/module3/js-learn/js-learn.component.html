@@ -26,11 +26,17 @@
   </div>
 </div>
 <hr>
-<div>
-  <button (click)="start()">start</button>
-  <button (click)="stop()">stop</button>
-  <div style="padding:20px 0;">
-    <div id="fff" style="display: inline-block">requestAnimationFrame动画函数</div>
+<div class="waper">
+  <div>
+    <button (click)="start()">start</button>
+    <button (click)="stop()">stop</button>
+    <div style="padding:20px 0;">
+      <div id="fff" style="display: inline-block">requestAnimationFrame动画函数</div>
+    </div>
+  </div>
+  <div>
+    <button (click)="geolocation()">获取位置信息</button>
+    <button (click)="closeGet()">关闭监听位置变化</button>
   </div>
 </div>
 <hr>
