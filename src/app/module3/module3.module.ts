@@ -8,12 +8,14 @@ import { FormsModule } from "@angular/forms";
 import { module3RoutingModule } from "./module3.route";
 import { JsLearnComponent } from "./js-learn/js-learn.component";
 import { ZaxiangComponent } from "./zaxiang/zaxiang.component";
-import { MyLibraryModule } from "my-library";
+// import { MyLibraryModule } from "my-library";  // angular库，需要自己打包
 import { CanvasLearnComponent } from './canvas-learn/canvas-learn.component';
 import { TransformComponent } from './js-learn/transform/transform.component';
 
 @NgModule({
-  imports: [CommonModule, module3RoutingModule, FormsModule,MyLibraryModule],
+  imports: [CommonModule, module3RoutingModule, FormsModule,
+    //  MyLibraryModule
+    ],
   declarations: [
     Module3Component,
     SomeCss3Component,
@@ -23,4 +25,4 @@ import { TransformComponent } from './js-learn/transform/transform.component';
     TransformComponent,
   ]
 })
-export class Module3Module {}
+export class Module3Module { }

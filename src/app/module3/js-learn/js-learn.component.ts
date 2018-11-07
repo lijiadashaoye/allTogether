@@ -137,7 +137,7 @@ export class JsLearnComponent implements OnInit {
     this.showData = kk;
   }
 
-  moreArray() {
+  moreArray() {  // 二维数组
     let arr = [];
     for (let j = 0; j < 20; j++) {
       let num = Math.floor(Math.random() * 10);
@@ -149,6 +149,15 @@ export class JsLearnComponent implements OnInit {
       arr2.push(arr.slice(i, i + 4));
     }
     this.showData = arr2;
+
+    // let arrs = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    // let arr3 = [];
+    // for (let i = 0, len = arrs.length; i < len; i += 3) {
+    //   let arr2 = [];
+    //   arr2.push(arrs.slice(i, i + 3))
+    //   arr3.push(arr2)
+    // }
+    // console.log(arr3)
   }
   /************************************************************/
   arrFns2 = ["getMax_Min", "qiantao", "zhengxu", "daoxu", "getRandom"];
