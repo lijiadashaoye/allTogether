@@ -1,5 +1,13 @@
-import { Component, OnInit, ElementRef, Renderer2 } from "@angular/core";
-import { FormBuilder, FormGroup } from "@angular/forms";
+import {
+  Component,
+  OnInit,
+  ElementRef,
+  Renderer2
+} from "@angular/core";
+import {
+  FormBuilder,
+  FormGroup
+} from "@angular/forms";
 
 @Component({
   selector: "app-js-learn",
@@ -137,7 +145,7 @@ export class JsLearnComponent implements OnInit {
     this.showData = kk;
   }
 
-  moreArray() {  // 二维数组
+  moreArray() { // 二维数组
     let arr = [];
     for (let j = 0; j < 20; j++) {
       let num = Math.floor(Math.random() * 10);
@@ -158,6 +166,16 @@ export class JsLearnComponent implements OnInit {
     //   arr3.push(arr2)
     // }
     // console.log(arr3)
+
+    // 使用更少的代码实现固定长度数据的遍历
+    // let arr4 = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    // for (let i = arr4.length; i--;) {;
+    //   if (i < arr4[i]) {
+    //     arr.push(i)
+    //   }
+    //   console.log(i)
+    // }
+    // console.log(arr4)
   }
   /************************************************************/
   arrFns2 = ["getMax_Min", "qiantao", "zhengxu", "daoxu", "getRandom"];
@@ -186,7 +204,7 @@ export class JsLearnComponent implements OnInit {
   qiaotao() {
     // 函数嵌套函数，并集中调用
     function fn(a) {
-      return function(b) {
+      return function (b) {
         return a + b;
       };
     }
@@ -199,8 +217,7 @@ export class JsLearnComponent implements OnInit {
     this.objectSort(false);
   }
   objectSort(how) {
-    let arr = [
-      {
+    let arr = [{
         name: "ffff",
         age: 51
       },
@@ -212,7 +229,7 @@ export class JsLearnComponent implements OnInit {
     this.arrFns2Result = arr.sort(toSort("age"));
 
     function toSort(type) {
-      return function(obj1, obj2) {
+      return function (obj1, obj2) {
         let val1 = obj1[type];
         let val2 = obj2[type];
         // sort函数中，小括号如果是可以作为true的结果（布尔true，大于零的值），则是把后边的（obj2）放在前头
@@ -277,7 +294,10 @@ export class JsLearnComponent implements OnInit {
   color = null;
   binds() {
     this.color = "red";
-    var o = { color: "blue" };
+    var o = {
+      color: "blue"
+    };
+
     function sayColor() {
       alert(this.color);
     }
@@ -315,20 +335,20 @@ export class JsLearnComponent implements OnInit {
   geolocation() {
     navigator.geolocation.getCurrentPosition(
       // 获取位置信息
-      function(position) {
+      function (position) {
         console.log(position.coords.latitude, position.coords.longitude);
       },
-      function(error) {
+      function (error) {
         console.log("Error code: " + error.code);
         console.log("Error message: " + error.message);
       }
     );
     this.watchId = navigator.geolocation.watchPosition(
       // 监听位置信息，实时是多次调用getCurrentPosition()
-      function(position) {
+      function (position) {
         console.log(position.coords.latitude, position.coords.longitude);
       },
-      function(error) {
+      function (error) {
         console.log("Error code: " + error.code);
         console.log("Error message: " + error.message);
       }
