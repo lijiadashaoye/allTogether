@@ -1,39 +1,35 @@
 @import './two.scss'; // @import写在哪里都可以，最好是写到最上边
-
 $sdf:blue;
 $ffff:rgb(255, 251, 0);
 $ssss:rgb(0, 225, 255);
-
 @mixin mix($asdfa:$ffff) {
-  color: rgb(12, 8, 5);
-  background: $asdfa; // scss传参方法
+    color: rgb(12, 8, 5);
+    background: $asdfa; // scss传参方法
 }
 
 .one {
-  color: $sdf;
-
-  .one1 {
-    background: rgb(194, 85, 211);
-  }
-
-  .two {
-    font-size: 15px;
-    background: rgb(209, 201, 202); // scss 的注释方法
-    color: red;
-
-    &:hover {
-      // &用来代表 .one 父元素
-      @include mix($ssss) // 如果这里不写参数，上边就会用默认值$ffff,传了参数就用$ssss
+    color: $sdf;
+    .one1 {
+        background: rgb(194, 85, 211);
     }
-
-    @import './one.scss';
-
-    .three {
-      @extend .one1; // scss的继承
-      font-size: 25px;
-      text-indent: 4em;
+    .two {
+        font-size: 15px;
+        background: rgb(209, 201, 202); // scss 的注释方法
+        color: red;
+        &:hover {
+            // &用来代表 .one 父元素，最终翻译成.one>.two:hover
+            @include mix($ssss) // 如果这里不写参数，上边就会用默认值$ffff,传了参数就用$ssss
+        }
+        @import './one.scss';
+        .three {
+            @extend .one1; // scss的继承
+            text-indent: 4em;
+            font: {
+                // css属性简写，会翻译成font-size: 30px;
+                size: 60px;
+            }
+        }
     }
-  }
 }
 
 ;
