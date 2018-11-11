@@ -38,7 +38,8 @@ export class JsLearnComponent implements OnInit {
   }
   autoAudio() {
     // 实现后台播放音频
-    let au = new Audio("../assets/33.mp3");
+    let au = new Audio();
+    au.src="../assets/33.mp3";
     au.play();
   }
   isClick(item, index) {
