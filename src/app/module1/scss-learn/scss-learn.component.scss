@@ -1,6 +1,8 @@
+@import './two.scss'; // @import写在哪里都可以，最好是写到最上边
+
 $sdf:blue;
 $ffff:rgb(255, 251, 0);
-$ssss:rgb(0, 68, 255);
+$ssss:rgb(0, 225, 255);
 
 @mixin mix($asdfa:$ffff) {
   color: rgb(12, 8, 5);
@@ -11,7 +13,7 @@ $ssss:rgb(0, 68, 255);
   color: $sdf;
 
   .one1 {
-    background: rebeccapurple;
+    background: rgb(194, 85, 211);
   }
 
   .two {
@@ -20,15 +22,16 @@ $ssss:rgb(0, 68, 255);
     color: red;
 
     &:hover {
-      @include mix($ssss) // 如果这里不写参数，上边就会用默认值$ffff
+      // &用来代表 .one 父元素
+      @include mix($ssss) // 如果这里不写参数，上边就会用默认值$ffff,传了参数就用$ssss
     }
 
-    @import './two.scss';
     @import './one.scss';
 
     .three {
       @extend .one1; // scss的继承
       font-size: 25px;
+      text-indent: 4em;
     }
   }
 }
