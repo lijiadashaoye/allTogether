@@ -12,9 +12,6 @@ import {
   AnimateMainComponent
 } from './animate/animate.component';
 
-
-
-
 const routes: Routes = [{
   path: "",
   component: Module2Component,
