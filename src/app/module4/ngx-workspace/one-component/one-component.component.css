@@ -1,7 +1,15 @@
 :host {
-    display: block;
-    width:100%;
-    height:100%;
-    background: rgb(231, 207, 162);
-  }
-  
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: rgb(231, 207, 162);
+}
+
+/***
+  :host用来设置组建标签的外层父元素样式
+   :host-context(class)用来设置组建标签的外层父元素的父元素的样式
+  ****/
+:host-context(.workBoard) {
+  box-sizing: border-box;
+  border: 2px solid red;
+}
