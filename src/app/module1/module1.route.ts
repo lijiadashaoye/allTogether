@@ -17,23 +17,23 @@ const routes: Routes = [
     children: [
       {
         path: "observables",
-        data: { title: "observables" },
+        data: { title: "动态修改title：observables" },
         component: ObservablesComponent,
       },
       {
         path: "jsonServer",
         component: JsonServerComponent,
-        data: { title: "jsonServer" }
+        data: { title: "动态修改title：jsonServer" }
       },
       {
         path: "indexDB",
         component: IndexDBLearnComponent,
-        data: { title: "indexDB" }
+        data: { title: "动态修改title：indexDB" }
       },
       {
         path: "scssLearn",
         component: ScssLearnComponent,
-        data: { title: "scssLearn" }
+        data: { title: "动态修改title：scssLearn" }
       }
     ]
   }

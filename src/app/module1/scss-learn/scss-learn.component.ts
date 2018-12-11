@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
+import { Title } from "@angular/platform-browser";
 
 @Component({
   selector: "app-scss-learn",
@@ -6,8 +8,15 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./scss-learn.component.scss"]
 })
 export class ScssLearnComponent implements OnInit {
-  useClass=false;
-  constructor() {}
+  useClass = false;
+  constructor(
+    public title: Title,
+    public actRout: ActivatedRoute
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.actRout.data.subscribe(val => {
+      this.title.setTitle(val.title);
+    });
+  }
 }

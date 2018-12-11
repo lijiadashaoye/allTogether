@@ -43,6 +43,9 @@ import {
 } from "rxjs/operators";
 import { Module1HttpService } from "../module1-http";
 import { ajax } from "rxjs/ajax";
+import {  ActivatedRoute } from "@angular/router";
+import { Title } from "@angular/platform-browser";
+
 @Component({
   selector: "app-observables",
   templateUrl: "./observables.component.html",
@@ -50,9 +53,16 @@ import { ajax } from "rxjs/ajax";
 })
 export class ObservablesComponent implements OnInit {
   creatObservable; // 创建自定义Observable 事件
-  constructor(public http: Module1HttpService) {}
+  constructor(
+    public http: Module1HttpService,
+    public title: Title,
+    public actRout: ActivatedRoute ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.actRout.data.subscribe(val => {
+      this.title.setTitle(val.title);
+    });
+  }
   /****************************************************/
   creatObservableFn() {
     // 创建Observable，并指定最后发出的值
