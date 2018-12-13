@@ -14,13 +14,13 @@ import {
   styleUrls: ["./module2.component.css"]
 })
 export class Module2Component implements OnInit {
-  urlList;
+  urlList=[];
   isClick = null; // 用来显示被点击的按钮
 
   constructor(public route: Router, public logout: controlLogoutService) {}
 
   ngOnInit() {
-    this.urlList = ["ngxs", 'animate'];
+    this.urlList = ["ngxs", 'animate','angular-biji'];
   }
   ngAfterViewInit() {
     setTimeout(_ => this.logout.logout.emit("module2"), 200);

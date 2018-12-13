@@ -11,6 +11,7 @@ import {
 import {
   AnimateMainComponent
 } from './animate/animate.component';
+import { AngularBiJiComponent } from './angular-bi-ji/angular-bi-ji.component';
 
 const routes: Routes = [{
   path: "",
@@ -22,6 +23,10 @@ const routes: Routes = [{
     {
       path: "animate",
       component: AnimateMainComponent
+    },
+    {
+      path: "angular-biji",
+      component: AngularBiJiComponent
     }
   ]
 }];
