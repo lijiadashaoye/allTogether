@@ -6,15 +6,6 @@ import { AngularBiJiComponent } from './angular-bi-ji.component';
 const routes: Routes = [
     {
         path: '', component: AngularBiJiComponent,
-        children: [
-            { path: 'child1', component: Child1Component },
-            { path: 'child2', component: Child2Component, outlet: 'isOne' },
-            {
-                path: 'child3', loadChildren: './child3/child3.module#Child3Module',
-                outlet: 'isTwo'
-            },
-            
-        ]
     }
 ];
 
