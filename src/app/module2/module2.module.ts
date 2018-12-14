@@ -17,7 +17,6 @@ import {
 import {
   module2RoutingModule
 } from './module2.route';
-import { AngularBiJiComponent } from './angular-bi-ji/angular-bi-ji.component';
 
 @NgModule({
   imports: [
@@ -27,8 +26,7 @@ import { AngularBiJiComponent } from './angular-bi-ji/angular-bi-ji.component';
   declarations: [
     Module2Component,
     AnimateMainComponent,
-    UseAnimateListComponent,
-    AngularBiJiComponent
+    UseAnimateListComponent
   ]
 })
 export class Module2Module {}

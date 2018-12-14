@@ -26,7 +26,7 @@ const routes: Routes = [{
     },
     {
       path: "angular-biji",
-      component: AngularBiJiComponent
+      loadChildren: "./angular-bi-ji/biji.module#BiJiModule"
     }
   ]
 }];
