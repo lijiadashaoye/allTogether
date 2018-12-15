@@ -37,7 +37,6 @@ export class AngularBiJiComponent {
     ], { relativeTo: this.actRoute });
   }
   quxiao(num) {
-    console.log(num)
     let arr = [];
     num == 1 ? arr = [
       {
