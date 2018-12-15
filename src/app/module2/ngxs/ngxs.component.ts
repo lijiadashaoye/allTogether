@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-
+import { Router, ActivatedRoute } from '@angular/router'
 @Component({
   template: `
   <div>
@@ -18,11 +18,15 @@ import { Component, OnInit } from "@angular/core";
      <br>
      npm i @ngxs/router-plugin --save   (路由插件，选用)
   </div>
+  <button (click)="formsComponent()">formsComponent</button>
   <hr>
   <router-outlet></router-outlet>`
 })
 export class NgxsComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit() {}
+  constructor(private rout: Router,
+    private actRoute: ActivatedRoute) { }
+  ngOnInit() { }
+  formsComponent() {
+    this.rout.navigate(['FormsComponent'], { relativeTo: this.actRoute })
+  }
 }

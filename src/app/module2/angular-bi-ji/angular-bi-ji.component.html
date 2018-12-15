@@ -3,3 +3,36 @@
   <li *ngFor="let buttons of comButton" (click)="goto(buttons)">{{buttons}}</li>
 </ul>
 <p>{{data}}</p>
+
+<h2>angular 路由深度学习</h2>
+<p>
+  angular-bi-ji 是加载在懒加载模块 module2 中的，<br>
+  child2是加载在命名插槽isOne内的组件<br>
+  child1是加载在默认插槽内的组件<br>
+  child3是懒加载在命名插槽isThree内的模块，<br>
+  child3中实现了模块的默认插槽的正常路由
+  <br>
+  从而，整个项目，可以实现，默认插槽里懒加载模块，模块内懒加载模块或组件，同时也存在默认插槽和命名插槽，
+  命名插槽内又可以有默认插槽和命名插槽
+  <br>
+  注意模块的路由path命名方式：<br>
+  若在父路由配置文件内path为空字符串时，要在子路由文件内定义好path名字，这样可以实现插槽的多重嵌套；<br>
+  若在父路由配置文件内path<span style="color:red;font-weight: bold">不</span>
+  为空字符串时，<span style="color:red;font-weight: bold">不</span>要在子路由文件定义path名字，这样就不能实现插槽的多重嵌套，默认插槽路由可以使用；<br>
+
+</p>
+<h3>第一个命名路由</h3>
+<button (click)="showOne('child2')">child2</button>
+<button (click)="quxiao(1)">quxiaoisOne</button><br>
+<router-outlet name="isOne"></router-outlet><br>
+
+<h3>第二个命名路由</h3>
+<button (click)="showThree('child3')">child3</button>
+<button (click)="quxiao(2)">quxiaoisThree</button><br>
+<router-outlet name="isThree"></router-outlet>
+
+<h2>同时显示两个命名路由</h2>
+<button (click)="showBoth()">showBoth</button><br>
+<h3>无命名默认路由</h3>
+<button (click)="showTwo('child1')">child1</button>
+<router-outlet></router-outlet><br>

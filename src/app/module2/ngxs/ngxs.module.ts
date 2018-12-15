@@ -24,12 +24,12 @@ import { NgxsFormsTemplateComponent } from "./forms/forms.component";
 
 
 const routes: Routes = [
+  // {   // 懒加载模块才可以这么写
+  //   path: "",
+  //   redirectTo: "FormsComponent"
+  // },
   {
-    path: "",
-    redirectTo: "FormsComponent"
-  },
-  {
-    path: "",
+    path: "ngxs",
     component: NgxsComponent,
     children: [
       {

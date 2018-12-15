@@ -13,3 +13,7 @@ li{
     border-radius: 5px;
     text-align: center
 }
+:host{
+    display:block;
+    padding:10px;
+}

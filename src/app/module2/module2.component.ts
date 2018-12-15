@@ -3,7 +3,7 @@ import {
   OnInit
 } from "@angular/core";
 import {
-  Router
+  Router,ActivatedRoute
 } from "@angular/router";
 import {
   controlLogoutService
@@ -17,7 +17,10 @@ export class Module2Component implements OnInit {
   urlList=[];
   isClick = null; // 用来显示被点击的按钮
 
-  constructor(public route: Router, public logout: controlLogoutService) {}
+  constructor(
+    public route: Router,
+     public logout: controlLogoutService,
+     private active_route: ActivatedRoute) {}
 
   ngOnInit() {
     this.urlList = ["ngxs", 'animate','angular-biji'];
@@ -27,6 +30,6 @@ export class Module2Component implements OnInit {
   }
   goto(data,index) {
     this.isClick = index;
-    this.route.navigate([`module2/${data}`]);
+    this.route.navigate([`${data}`],{ relativeTo: this.active_route });
   }
 }

@@ -5,7 +5,17 @@ import { Child2Component } from './child2/child2.component'
 import { AngularBiJiComponent } from './angular-bi-ji.component';
 const routes: Routes = [
     {
-        path: '', component: AngularBiJiComponent,
+        path: 'angular-biji',
+        component: AngularBiJiComponent,
+        children: [
+            { path: 'child1', component: Child1Component },
+            {
+                path: 'child3', loadChildren: './child3/child3.module#Child3Module', outlet: 'isThree'
+            },
+            {
+                path: 'child2', component: Child2Component, outlet: 'isOne'
+            },
+        ]
     }
 ];
 

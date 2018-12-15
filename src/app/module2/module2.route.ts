@@ -11,13 +11,12 @@ import {
 import {
   AnimateMainComponent
 } from './animate/animate.component';
-import { AngularBiJiComponent } from './angular-bi-ji/angular-bi-ji.component';
 
 const routes: Routes = [{
   path: "",
   component: Module2Component,
   children: [{
-      path: "ngxs",
+      path: "",
       loadChildren: "./ngxs/ngxs.module#NgxsPartModule"
     },
     {
@@ -25,7 +24,7 @@ const routes: Routes = [{
       component: AnimateMainComponent
     },
     {
-      path: "angular-biji",
+      path: "",
       loadChildren: "./angular-bi-ji/biji.module#BiJiModule"
     }
   ]
