@@ -382,6 +382,6 @@ export class JsLearnComponent implements OnInit {
   }
   other_com(){
     let host = this.elem.nativeElement.querySelector('#iskk')
-    console.log(host)
+    console.log(host.children)
   }
 }
