@@ -4,11 +4,6 @@ import {
   ElementRef,
   Renderer2
 } from "@angular/core";
-import {
-  FormBuilder,
-  FormGroup
-} from "@angular/forms";
-
 @Component({
   selector: "app-js-learn",
   templateUrl: "./js-learn.component.html",
@@ -372,5 +367,21 @@ export class JsLearnComponent implements OnInit {
     this.fileUrl = window.URL.createObjectURL(file); // 指向一块内存的地址
     imgs.src = this.fileUrl;
     this.rd.appendChild(ele, imgs);
+  }
+  now_com(){
+    let host = this.rd.selectRootElement("#isH2");
+    console.log(host)
+  }
+  now_isBtn(){
+    let host = this.rd.selectRootElement(".isBtn");
+    console.log(host)
+  }
+  now_host(){
+    let host = this.rd.selectRootElement("#ohter");
+    console.log(host)
+  }
+  other_com(){
+    let host = this.elem.nativeElement.querySelector('#iskk')
+    console.log(host)
   }
 }

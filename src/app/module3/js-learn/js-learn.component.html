@@ -41,8 +41,24 @@
   <div id="ele">
     <input type="file" (change)="seefile($event)"><br>
   </div>
+  <div>
+    <h2>使用 Renderer2 选取dom元素</h2>
+    <p>
+      1.用id或class名都可以选择标签，但如果标签是组件内的元素，则会剪切标签的内容，从而实现，标签还在，但没了子元素，成为一个空标签<br>
+      2.如果选取的标签是其他组件的宿主（host）标签，则不会清空标签的内容<br>
+      3.如果选取的是其他组件内的标签，则会实现第一条的效果
+    </p>
+    <div>
+      <span id="isH2">#id</span>
+      <span class="isBtn">class名</span>
+    </div>
+    <button (click)="now_com()">用 #id 选取当前组件内的元素</button>
+    <button (click)="now_isBtn()">用 class名 选取当前组件内的元素</button>
+    <button (click)="now_host()">选取其他组件内的标签</button>
+    <button (click)="other_com()">选取当前组件内插入的其他组件</button>
+  </div>
 </div>
 <hr>
 <div class="waper">
-  <app-transform></app-transform>
+  <app-transform id="iskk"></app-transform>
 </div>

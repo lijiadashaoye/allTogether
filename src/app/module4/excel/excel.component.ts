@@ -1,5 +1,11 @@
-import { Component, OnInit, ElementRef } from "@angular/core";
-import { NgxXLSXService } from "@notadd/ngx-xlsx";
+import {
+  Component,
+  OnInit,
+  ElementRef
+} from "@angular/core";
+import {
+  NgxXLSXService
+} from "@notadd/ngx-xlsx";
 import * as XLSX from "xlsx"; //XLSX 是浏览器中的公开变量和导出的节点变量
 import * as jsPDF from "jspdf"; // npm install jspdf --save
 @Component({
@@ -15,7 +21,10 @@ export class ExcelComponent implements OnInit {
     // 使用 ngx-xlsx 读取多维数组
     let data = [
       // 数据为数组结构，每一个二维数组代表一个表格，对应下边sheetNames，一般只用一个
-      [["第一行", "第二行"], ["第一列", "第二列"]] // 每一个三维数组，对应Excel一行，三维数组有多少项就会有多少列
+      [
+        ["第一行", "第二行"],
+        ["第一列", "第二列"]
+      ] // 每一个三维数组，对应Excel一行，三维数组有多少项就会有多少列
     ];
     let excelFileName: string = "err"; // 导出的文件的名字，自动给加上时间戳
     let header = ["sheet1表头一", "sheet1表头二"]; // 表格的第一行，要与三维数组在length上一样
@@ -35,13 +44,19 @@ export class ExcelComponent implements OnInit {
   download3() {
     // 提取和解析HTML代码
     let tables = this.elem.nativeElement.querySelector("#t1").outerHTML;
-    var wb = XLSX.read(tables, { type: "string" });
+    var wb = XLSX.read(tables, {
+      type: "string"
+    });
     XLSX.writeFile(wb, "提取和解析HTML代码.xlsx");
   }
 
   download4() {
     // 读取二维数组数据
-    let data = [["表头一", "表头二", "表头三"], [1, 2, 3], [1, 2, 3]];
+    let data = [
+      ["表头一", "表头二", "表头三"],
+      [1, 2, 3],
+      [1, 2, 3]
+    ];
     let ws: XLSX.WorkSheet = XLSX.utils.aoa_to_sheet(data);
     // aoa_to_sheet 将JS数据数组的数组转换为工作表。
     const wb: XLSX.WorkBook = XLSX.utils.book_new(); // 使用新表格，Sheet1
@@ -55,15 +70,38 @@ export class ExcelComponent implements OnInit {
     // string:	使用指定的单元格作为起始行 ({ origin: "B2" })
     // (number >= 0)：从指定行的第一列开始,0代表第一行,如果在插入之前表格已经有数据，会被覆盖
     // -1：附加到工作表的底部
-    let data = [["表头一", "表头二", "表头三"]];
+    let data = [
+      ["表头一", "表头二", "表头三"]
+    ];
     var ws = XLSX.utils.aoa_to_sheet(data);
-    XLSX.utils.sheet_add_aoa(ws, [[1, 2], [2, 3], [3, 4]], { origin: "B8" });
-    // sheet_add_aoa 将JS数据数组添加到现有工作表中。
-    XLSX.utils.sheet_add_aoa(ws, [[5, 6, 7], [6, 7, 8], [7, 8, 9]], {
-      origin: { r: 1, c: 4 }
+    XLSX.utils.sheet_add_aoa(ws, [
+      [1, 2],
+      [2, 3],
+      [3, 4]
+    ], {
+      origin: "B8"
     });
-    XLSX.utils.sheet_add_aoa(ws, [[42, 52, 62, 72]], { origin: 1 });
-    XLSX.utils.sheet_add_aoa(ws, [[4, 5, 6, 7, 8, 9, 0]], { origin: -1 });
+    // sheet_add_aoa 将JS数据数组添加到现有工作表中。
+    XLSX.utils.sheet_add_aoa(ws, [
+      [5, 6, 7],
+      [6, 7, 8],
+      [7, 8, 9]
+    ], {
+      origin: {
+        r: 1,
+        c: 4
+      }
+    });
+    XLSX.utils.sheet_add_aoa(ws, [
+      [42, 52, 62, 72]
+    ], {
+      origin: 1
+    });
+    XLSX.utils.sheet_add_aoa(ws, [
+      [4, 5, 6, 7, 8, 9, 0]
+    ], {
+      origin: -1
+    });
 
     const wb: XLSX.WorkBook = XLSX.utils.book_new(); // 使用新表格，Sheet1
     XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
@@ -71,8 +109,7 @@ export class ExcelComponent implements OnInit {
   }
 
   download6() {
-    let data = [
-      {
+    let data = [{
         one: "11111",
         two: "22222",
         three: "33333"
@@ -95,7 +132,9 @@ export class ExcelComponent implements OnInit {
       downData.push(obj);
     });
 
-    const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(downData, { header });
+    const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(downData, {
+      header
+    });
     const wb: XLSX.WorkBook = XLSX.utils.book_new(); // 使用新表格，Sheet1
     XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
     XLSX.writeFile(wb, `${title}.xlsx`);
@@ -140,7 +179,9 @@ export class ExcelComponent implements OnInit {
     };
   }
   tomake(target) {
-    var blob1 = new Blob([target.value], { type: "text/plain;charset=utf-8" });
+    var blob1 = new Blob([target.value], {
+      type: "text/plain;charset=utf-8"
+    });
     let one = this.elem.nativeElement.querySelector("#one");
     one.download = "isTxT.txt";
     one.href = URL.createObjectURL(blob1);
