@@ -1,5 +1,7 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
+import { FormsModule } from '@angular/forms'
+
 /***************************************************************************/
 import {
   Module1HttpService,
@@ -17,7 +19,11 @@ import { JsonServerComponent } from "./jsonServer/jsonServer.component";
 import { ScssLearnComponent } from "./scss-learn/scss-learn.component";
 
 @NgModule({
-  imports: [CommonModule, Module1RoutingModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    Module1RoutingModule
+  ],
   declarations: [
     ObservablesComponent,
     Module1Component,
@@ -34,4 +40,4 @@ import { ScssLearnComponent } from "./scss-learn/scss-learn.component";
     }
   ]
 })
-export class Module1Module {}
+export class Module1Module { }
