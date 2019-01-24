@@ -1,0 +1,9 @@
+.ani {
+    display: inline-block;
+    background: red;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 5px;
+    position: absolute;
+  }

@@ -23,7 +23,7 @@ import {
 })
 export class InitComponent implements OnInit {
   imgSrc = '';
-  time = 3;  // 设置自动跳转时间
+  time = 4;  // 设置自动跳转时间
   sub: Subscription;
   private initData; // 用来保存软件启动前需要获取的数据
   constructor(private http: HttpClient, private router: Router) {}

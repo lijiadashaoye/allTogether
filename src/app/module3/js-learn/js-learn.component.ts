@@ -2,7 +2,8 @@ import {
   Component,
   OnInit,
   ElementRef,
-  Renderer2
+  Renderer2,
+  ViewChild
 } from "@angular/core";
 @Component({
   selector: "app-js-learn",
@@ -26,7 +27,7 @@ export class JsLearnComponent implements OnInit {
   ];
   showData;
 
-  constructor(private elem: ElementRef, private rd: Renderer2) {}
+  constructor(private elem: ElementRef, private rd: Renderer2) { }
   ngOnInit() {
     this.times();
     // this.autoAudio();
@@ -34,7 +35,7 @@ export class JsLearnComponent implements OnInit {
   autoAudio() {
     // 实现后台播放音频
     let au = new Audio();
-    au.src="../assets/33.mp3";
+    au.src = "../assets/33.mp3";
     au.play();
   }
   isClick(item, index) {
@@ -214,13 +215,13 @@ export class JsLearnComponent implements OnInit {
   }
   objectSort(how) {
     let arr = [{
-        name: "ffff",
-        age: 51
-      },
-      {
-        name: "hjytjh",
-        age: 61
-      }
+      name: "ffff",
+      age: 51
+    },
+    {
+      name: "hjytjh",
+      age: 61
+    }
     ];
     this.arrFns2Result = arr.sort(toSort("age"));
 
@@ -307,24 +308,25 @@ export class JsLearnComponent implements OnInit {
     this.contextmenuData = "执行了contextmenu事件";
   }
   /****************************** */
-  ani = null; // 获取动画id
-  start() {
-    let that = this;
-    var start = null,
-      num = 1;
-    var element = document.getElementById("fff");
-    element.style.position = "absolute";
 
-    function step(timestamp) {
-      if (!start) start = timestamp;
-      var progress = timestamp - start;
-      element.style.left = Number(num++) + "px";
-      that.ani = window.requestAnimationFrame(step);
+  @ViewChild('tar') tars;
+  isAnimate = null;
+  animates() {
+    let ani = () => {
+      let kk = this.tars.nativeElement.style.left;
+      let zz = parseInt(kk) + 1;
+      this.tars.nativeElement.style.left = zz + 'px';
+      this.isAnimate = requestAnimationFrame(ani)
     }
-    window.requestAnimationFrame(step);
+    requestAnimationFrame(ani)
   }
-  stop() {
-    window.cancelAnimationFrame(this.ani);
+  start(da?) {
+    if (da) {
+      this.animates();
+    } else {
+      cancelAnimationFrame(this.isAnimate);
+      this.tars.nativeElement.style.left = 0;
+    }
   }
   /****************************************** */
   watchId = null;
@@ -368,19 +370,19 @@ export class JsLearnComponent implements OnInit {
     imgs.src = this.fileUrl;
     this.rd.appendChild(ele, imgs);
   }
-  now_com(){
+  now_com() {
     let host = this.rd.selectRootElement("#isH2");
     console.log(host)
   }
-  now_isBtn(){
+  now_isBtn() {
     let host = this.rd.selectRootElement(".isBtn");
     console.log(host)
   }
-  now_host(){
+  now_host() {
     let host = this.rd.selectRootElement("#ohter");
     console.log(host)
   }
-  other_com(){
+  other_com() {
     let host = this.elem.nativeElement.querySelector('#iskk')
     console.log(host.children)
   }

@@ -28,10 +28,13 @@
 <hr>
 <div class="waper">
   <div>
-    <button (click)="start()">start</button>
-    <button (click)="stop()">stop</button>
-    <div style="padding:20px 0;">
-      <div id="fff" style="display: inline-block">requestAnimationFrame动画函数</div>
+    <button (click)="start(4)">start</button>
+    <button (click)="start()">stop</button>
+    <div style="position: relative;">
+      <div>requestAnimationFrame动画函数</div>
+      <span class="ani" #tar style='top: 50px;left: 0;'>
+        动画
+      </span>
     </div>
   </div>
   <div>
