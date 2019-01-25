@@ -52,6 +52,7 @@ import { Title } from "@angular/platform-browser";
   styleUrls: ["./observables.component.css"]
 })
 export class ObservablesComponent implements OnInit {
+  name2;
   creatObservable; // 创建自定义Observable 事件
   constructor(
     public http: Module1HttpService,
