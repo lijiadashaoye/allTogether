@@ -17,8 +17,13 @@
     <h2>经验总结</h2>
     <p>1：在html模板文件的标签里，如果有类似：(click)="isSyncAnimated=!isSyncAnimated" 等简单的事件时，
       应用到的变量（如：isSyncAnimated）也要在ts文件内写出来，否则build时会报错</p>
-    <p>2：Ctrl+kShift+[：折叠当前函数（局部折叠）</p>
-    <p>3：Ctrl+kShift+]：展开当前函数（局部展开）</p>
+    <p>2：Ctrl+k Shift+[：折叠当前函数（局部折叠）</p>
+    <p>3：Ctrl+k Shift+]：展开当前函数（局部展开）</p>
     <p>4：打包：ng build --prod --base-href=http://www.dizmix.com/works/</p>
+    <div>
+      <h2>移动端判断</h2>
+      var isAndroid = u.indexOf("Android") > -1 || u.indexOf("Linux") > -1; // 安卓终端<br>
+      var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+    </div>
   </div>
 </div>

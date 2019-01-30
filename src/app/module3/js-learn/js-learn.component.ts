@@ -23,7 +23,9 @@ export class JsLearnComponent implements OnInit {
     "everyFn",
     "reduceFn",
     "filterFn",
-    "moreArray"
+    "moreArray",
+    'fenzu',
+    'daoxubianli'
   ];
   showData;
 
@@ -42,6 +44,7 @@ export class JsLearnComponent implements OnInit {
     this.num = index;
     this[item]();
   }
+  /*******************************************************************/
   // 判断一个数组是否包含一个指定的值，
   // 传参：（要查找的元素）；
   // 返回值：true或 false；
@@ -49,6 +52,7 @@ export class JsLearnComponent implements OnInit {
     let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     this.showData = arr.includes(5);
   }
+  /*******************************************************************/
   // 每个数组元素执行一次提供的函数，
   // 传参：（callback(当前元素，索引，该数组)）；
   // 返回值：无；
@@ -60,6 +64,7 @@ export class JsLearnComponent implements OnInit {
       this.showData += item * 5;
     });
   }
+  /*******************************************************************/
   // 返回数组中满足提供的测试函数的第一个元素的值，
   // 传参：（callback(当前元素，索引，该数组)）；
   // 返回值：该元素；（[].findIndex()返回索引）
@@ -81,6 +86,7 @@ export class JsLearnComponent implements OnInit {
     });
     this.showData = "index:" + kk;
   }
+  /*******************************************************************/
   // 创建一个新数组，其结果是该数组中的每个元素都调用一个提供的函数后返回的结果。
   // 传参：（callback(当前元素，索引，该数组)）；
   // 返回值：一个新数组，每个元素都是回调函数的结果；
@@ -93,6 +99,7 @@ export class JsLearnComponent implements OnInit {
     });
     this.showData = kk;
   }
+  /*******************************************************************/
   // 测试数组的某些元素是否都通过了指定函数的测试；
   // 传参：（callback(当前元素，索引，该数组)）；
   // 返回值：true或false；
@@ -105,6 +112,7 @@ export class JsLearnComponent implements OnInit {
     });
     this.showData = kk;
   }
+  /*******************************************************************/
   // 测试数组的所有元素是否都通过了指定函数的测试；
   // 传参：（callback(当前元素，索引，该数组)）；
   // 返回值：true或false；
@@ -117,6 +125,7 @@ export class JsLearnComponent implements OnInit {
     });
     this.showData = kk;
   }
+  /*******************************************************************/
   // 对累加器和数组中的每个元素（从左到右）应用一个函数，将其减少为单个值；
   // 传参：（callback(累加器accumulator，当前元素，索引，该数组)）；
   // 返回值：函数累计处理的结果；
@@ -129,6 +138,7 @@ export class JsLearnComponent implements OnInit {
     }, 10); // 可以添加第三个参数，作为初始累加值
     this.showData = kk;
   }
+  /*******************************************************************/
   // 创建一个新数组, 其包含通过所提供函数实现的测试的所有元素，
   // 传参：（callback(当前元素,索引，该数组)）；
   // 返回值：通过测试的元素的集合的数组；
@@ -141,7 +151,7 @@ export class JsLearnComponent implements OnInit {
     });
     this.showData = kk;
   }
-
+  /*******************************************************************/
   moreArray() { // 二维数组
     let arr = [];
     for (let j = 0; j < 20; j++) {
@@ -154,25 +164,28 @@ export class JsLearnComponent implements OnInit {
       arr2.push(arr.slice(i, i + 4));
     }
     this.showData = arr2;
-
-    // let arrs = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-    // let arr3 = [];
-    // for (let i = 0, len = arrs.length; i < len; i += 3) {
-    //   let arr2 = [];
-    //   arr2.push(arrs.slice(i, i + 3))
-    //   arr3.push(arr2)
-    // }
-    // console.log(arr3)
-
+  }
+  fenzu() {   // 对数组分组
+    let arrs = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    let arr3 = [];
+    for (let i = 0, len = arrs.length; i < len; i += 3) {
+      let arr2 = [];
+      arr2.push(arrs.slice(i, i + 3))
+      arr3.push(arr2)
+    }
+    console.log(arr3)
+  }
+  daoxubianli() {
     // 使用更少的代码实现固定长度数据的遍历
-    // let arr4 = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-    // for (let i = arr4.length; i--;) {;
-    //   if (i < arr4[i]) {
-    //     arr.push(i)
-    //   }
-    //   console.log(i)
-    // }
-    // console.log(arr4)
+    let arr = [];
+    let arr4 = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    for (let i = arr4.length; i--;) {
+      if (i < 5) {
+        arr.push(i)
+      }
+      console.log(i)
+    }
+    console.log(arr)
   }
   /************************************************************/
   arrFns2 = ["getMax_Min", "qiantao", "zhengxu", "daoxu", "getRandom"];
