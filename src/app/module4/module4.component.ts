@@ -36,7 +36,7 @@ export class Module4Component implements OnInit {
     this.isClick = index;
     this.route.navigate([`module4/${data}`]);
   }
-  setData(da:Array<string>){
+  setData(da:Array<string>){  // ngFor 里执行的函数
     return da.slice(0,da.length/2+2)
   }
 }
