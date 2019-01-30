@@ -83,7 +83,7 @@
     </div>
     <div>
       <label for="quiet">边框大小</label>
-      <input id="quiet" type="range" value="1" min="0" max="4" step="1" [(ngModel)]="quiet">
+      <input id="quiet" type="range" value="1" min="0" max="20" step="1" [(ngModel)]="quiet">
     </div>
     <div>
       <label for="rounded">二维码圆角</label>
@@ -114,4 +114,22 @@
       cnpm install ngx-kjua --save<br>
       cnpm install kjua --save
   </p>
-  
+<br>text 编码内容（默认为``）
+<br>renderAsync天气或不渲染在“requestAnimationFrame”内部完成 - 调用（默认为false，如果要生成多个代码（例如批处理），则使用true）
+<br>render渲染像素完美线条（默认为true）
+<br>minVersion最低版本：1..40（默认为1）
+<br>ecLevel纠错级别：'L'，'M'，'Q'或'H'（默认为L）
+<br>size像素大小（默认为200）
+<br>fill代码颜色（默认为#333）
+<br>back背景颜色（默认为#fff）
+<br>roundedpc中的roundend角：0..100（默认为0）
+<br>quiet模块中的静区（默认为0）
+<br>mode模式：'plain'，'label'或'image'（默认为plain，设置label或image属性，如果你改变这个）
+<br>mSizepc中的标签/图像大小：0..100（默认为30）
+<br>mPosX标签/图像pos x in pc：0..100（默认为50）
+<br>mPosY标签/图像pos y in pc：0..100（默认为50）
+<br>label 附加标签文本（默认为``）
+<br>fontname其他标签文字的字体（默认为sans-serif）
+<br>fontcolor其他标签文本的字体颜色（默认为#333）
+<br>image附加图像（默认为undefined，使用HTMLImageElement）
+<br>cssClass附加到包含qr代码的div容器的附加css类（默认为undefined）

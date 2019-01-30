@@ -24,7 +24,7 @@ export class ErWeiMaComponent {
   imgElement2 = undefined;
   minVersion = '1';
   fill = '#333333';  // 二维码的颜色
-  back = '#fff';  // 二维码的背景色 
+  back = '#ffffff';  // 二维码的背景色 
   contact2 = '输入文字';  // 最终包含的信息内容
   quiet = '0';  // 边框的大小
   rounded = 1;  // 二维码的圆角大小
