@@ -24,7 +24,9 @@ export class Module4Component implements OnInit {
       "bulma",
       "excel",
       "gaode",
-      "socket-io"
+      "socket-io",
+      'er-wei-ma',
+      'other-chajian'
     ];
   }
   ngAfterViewInit() {

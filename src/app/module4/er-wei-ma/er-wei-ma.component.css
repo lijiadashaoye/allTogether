@@ -1,0 +1,26 @@
+#img-buffer {
+  width: 100%;
+  height: 100%;
+  border: 5px solid #fff;
+}
+
+#isBtn {
+  margin-top: 10px;
+  padding: 3px 15px;
+  font-size: 16px;
+}
+label{
+   margin-right:20px;
+}
+div{
+    padding:3px 0;
+}
+.waperP{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+.waper>div{
+    width:200px;
+    padding:10px;
+}

@@ -1,0 +1,117 @@
+<div class="waperP">
+    <div>
+      <label for="contactname">姓名</label>
+      <input id="contactname" [(ngModel)]="contactName" (ngModelChange)="generateCodeData1()">
+    </div>
+    <div>
+      <label for="contactaddress">地址</label>
+      <input id="contactaddress" [(ngModel)]="contactAddress" (ngModelChange)="generateCodeData1()">
+    </div>
+    <div>
+      <label for="contactmail">Email</label>
+      <input id="contactmail" [(ngModel)]="contactEmail" (ngModelChange)="generateCodeData1()">
+    </div>
+    <div>
+      <label for="contacturl">个人主页</label>
+      <input id="contacturl" [(ngModel)]="contactUrl" (ngModelChange)="generateCodeData1()">
+    </div>
+    <div>
+      <label for="contactphone">电话号码</label>
+      <input id="contactphone" [(ngModel)]="contactNumbers" (ngModelChange)="generateCodeData1()">
+    </div>
+    <div>
+      <label for="mode">选择图片</label>
+      <input id="image" type="file" (change)="getFiles1($event)">
+    </div>
+    <div>
+      <button id="isBtn" (click)="toMake1()">生成</button>
+    </div>
+  </div>
+  <div>
+    <ngx-kjua *ngIf="toShow1" [text]="contact1" [render]="'image'" [minVersion]="10" [ecLevel]="'H'" [size]="300" [fill]="'#333'"
+      [back]="'#fff'" [rounded]="10" [quiet]="0" [mode]="mode" [mSize]="20" [mPosX]="50" [mPosY]="50" [label]="'label text'"
+      [fontname]="'sans-serif'" [fontcolor]="'#ff9818'" [image]="imgElement1"></ngx-kjua>
+  </div>
+  
+  <div class="waperP">
+    <div>
+      <label for="mode">模式</label><select id="mode" [(ngModel)]="mode">
+        <option value="plain">plain</option>
+        <option value="label">label</option>
+        <option value="image" selected="selected">image</option>
+      </select>
+    </div>
+    <div>
+      <label for="mode">选择图片</label>
+      <input id="image" type="file" (change)="getFiles2($event)">
+    </div>
+    <div>
+      <label for="render">用img还是canvas</label>
+      <select id="render" [(ngModel)]="render">
+        <option value="image" selected="selected">image</option>
+        <option value="canvas">canvas</option>
+      </select>
+    </div>
+    <div>
+      <label for="size">尺寸</label>
+      <input id="size" type="range" value="100" min="100" max="1000" step="5" [(ngModel)]="size">
+    </div>
+    <div>
+      <label for="fill">二维码的颜色</label>
+      <input id="fill" type="color" value="#333333" [(ngModel)]="fill">
+    </div>
+    <div>
+      <label for="back">背景色</label>
+      <input id="back" type="color" value="#ffffff" [(ngModel)]="back">
+    </div>
+    <div>
+      <label for="text">文字信息</label>
+      <textarea id="text" [(ngModel)]="contact2"></textarea>
+    </div>
+    <div>
+      <label for="minversion">复杂程度</label>
+      <input id="minversion" type="range" value="1" min="1" max="10" step="1" [(ngModel)]="minVersion">
+    </div>
+    <div>
+      <label for="eclevel">纠错级别</label>
+      <select id="eclevel" [(ngModel)]="ecLevel">
+        <option value="L">L - low (7%)</option>
+        <option value="M">M - medium (15%)</option>
+        <option value="Q">Q - quartile (25%)</option>
+        <option value="H" selected="selected">H - high (30%)</option>
+      </select>
+    </div>
+    <div>
+      <label for="quiet">边框大小</label>
+      <input id="quiet" type="range" value="1" min="0" max="4" step="1" [(ngModel)]="quiet">
+    </div>
+    <div>
+      <label for="rounded">二维码圆角</label>
+      <input id="rounded" type="range" value="100" min="0" max="100" step="5" [(ngModel)]="rounded">
+    </div>
+    <div>
+      <label for="mposx">图片的x轴</label>
+      <input id="mposx" type="range" value="50" min="0" max="100" step="1" [(ngModel)]="mPosX">
+    </div>
+    <div>
+      <label for="mposy">图片的y轴</label>
+      <input id="mposy" type="range" value="50" min="0" max="100" step="1" [(ngModel)]="mPosY">
+    </div>
+    <div>
+      <label for="label">使用的文字</label>
+      <input id="label" type="text" [(ngModel)]="label">
+    </div>
+    <div>
+      <label for="fontcolor">文字颜色</label>
+      <input id="fontcolor" type="color" value="#ff9818" [(ngModel)]="fontcolor">
+    </div>
+  </div>
+  <button id="isBtn" (click)="toMake2()">生成</button><br>
+  <ngx-kjua *ngIf="toShow2" [mode]="mode" [text]="contact2" [render]="render" [crisp]="true" [minVersion]="minVersion"
+    [size]="size" [ecLevel]="'H'" [fill]="fill" [back]="back" [rounded]="rounded" [mPosX]="mPosX" [mPosY]="mPosY" [quiet]="quiet"
+    [mSize]="mSize" [label]="label" [fontname]="'sans-serif'" [fontcolor]="fontcolor" [image]="imgElement2"></ngx-kjua>
+  <p>
+      cnpm install ngx-kjua --save<br>
+      cnpm install kjua --save
+  </p>
+  

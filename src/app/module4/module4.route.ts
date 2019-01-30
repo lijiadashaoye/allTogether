@@ -13,6 +13,8 @@ import { DragAndDropComponent } from "./drag-and-drop/drag-and-drop.component";
 import { BulmaComponent } from "./bulma/bulma.component";
 import { ExcelComponent } from "./excel/excel.component";
 import { SocketIoComponent } from "./socket-io/socket-io.component";
+import { ErWeiMaComponent } from './er-wei-ma/er-wei-ma.component';
+import { OtherChajianComponent } from './other-chajian/other-chajian.component';
 
 const routes: Routes = [
   {
@@ -58,7 +60,16 @@ const routes: Routes = [
       {
         path: "socket-io",
         component: SocketIoComponent
+      },
+      {
+        path: "er-wei-ma",
+        component: ErWeiMaComponent
+      },
+      {
+        path: "other-chajian",
+        component: OtherChajianComponent
       }
+
     ]
   }
 ];

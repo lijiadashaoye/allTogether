@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { GaodeComponent } from "./gaode/gaode.component";
 import { Module4Component } from "./module4.component";
+import { FormsModule } from '@angular/forms'
 
 import { module4RoutingModule } from "./module4.route";
 
@@ -11,6 +12,7 @@ import { NgxEchartsModule } from "ngx-echarts"; // echarts
 import { NgxWorkspaceModule } from "ngx-workspace"; // 组件拼接插件
 import { DndModule } from "ngx-drag-drop"; // 拖放插件
 import { NgxXLSXModule } from "@notadd/ngx-xlsx"; // 导出 Excel 插件
+import { NgxKjuaModule } from "ngx-kjua";  // 二维码插件1
 /*************************************************************************************/
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome"; //奥森图标
 import { fab } from "@fortawesome/free-brands-svg-icons";
@@ -30,6 +32,7 @@ library.add(fab, far, fas, faCoffee, faTwitter, faCalendar);
 import { DropzoneModule } from "ngx-dropzone-wrapper";
 import { DROPZONE_CONFIG } from "ngx-dropzone-wrapper";
 import { DropzoneConfigInterface } from "ngx-dropzone-wrapper";
+
 const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
   // 上传文件的
   url: "https://httpbin.org/post",
@@ -52,12 +55,15 @@ import { ExcelComponent } from "./excel/excel.component";
 import { SocketIoComponent } from "./socket-io/socket-io.component";
 import { ChatService } from "./socket-io/socket-service";
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { ErWeiMaComponent } from './er-wei-ma/er-wei-ma.component';
+import { OtherChajianComponent } from './other-chajian/other-chajian.component';
 
 const config: SocketIoConfig = { url: "http://localhost:3000", options: {} };
 
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     module4RoutingModule,
     NgxEchartsModule,
     NgxAmapModule.forRoot({
@@ -69,7 +75,8 @@ const config: SocketIoConfig = { url: "http://localhost:3000", options: {} };
     DropzoneModule,
     DndModule,
     NgxXLSXModule,
-    SocketIoModule.forRoot(config)
+    SocketIoModule.forRoot(config),
+    NgxKjuaModule
   ],
   declarations: [
     Module4Component,
@@ -84,7 +91,9 @@ const config: SocketIoConfig = { url: "http://localhost:3000", options: {} };
     NgxDropzoneWrapperComponent,
     TwoComponentComponent,
     DragAndDropComponent,
-    ExcelComponent
+    ExcelComponent,
+    ErWeiMaComponent,
+    OtherChajianComponent
   ],
   entryComponents: [OneComponentComponent, TwoComponentComponent],
   providers: [

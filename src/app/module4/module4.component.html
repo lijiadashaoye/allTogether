@@ -1,5 +1,8 @@
 <ul class="nav animated fadeInLeft">
-  <li *ngFor="let url of urlList;let i=index" (click)="goto(url,i)" [ngStyle]="{color:isClick==i?'red':''}">{{url}}</li>
+  <li *ngFor="let url of urlList.slice(0,urlList.length/2+2);let i=index" (click)="goto(url,i)" [ngStyle]="{color:isClick==i?'red':''}">{{url}}</li>
+</ul>
+<ul class="nav animated fadeInLeft">
+  <li *ngFor="let url of urlList.slice(urlList.length/2+2);let i=index" (click)="goto(url,i)" [ngStyle]="{color:isClick==i?'red':''}">{{url}}</li>
 </ul>
 <hr id="hr">
 <router-outlet></router-outlet>
