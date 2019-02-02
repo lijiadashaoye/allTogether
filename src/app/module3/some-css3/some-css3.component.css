@@ -244,7 +244,7 @@ section div {
   margin-right: 10px;
   background: red;
   background-image:
-    linear-gradient(10deg, #fae1e1 50px, transparent 50px, transparent 70px, #fae1e1 0px);
+    linear-gradient(10deg, #fae1e1 50px, transparent 50px 70px, #fae1e1 0px);
 }
 
 .kk2 {
@@ -252,5 +252,5 @@ section div {
   height: 50px;
   background: red;
   background-image:
-    -webkit-linear-gradient(10deg, #fae1e1 50px, transparent 50px, transparent 70px, #fae1e1 10px);
+    -webkit-linear-gradient(10deg, #58eb58 40px, transparent 60px 90px, #9293e6 150px);
 }
