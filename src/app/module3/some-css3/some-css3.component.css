@@ -74,12 +74,13 @@
   /* transform: translate(50px, 100px); */
   /* transform: rotateY(40deg); */
 }
-#boxs{
-  width:350px;
-  display:column;
-  column-count:3;
-  column-gap:20px;
-  column-rule:1px outset #ff00ff;
+
+#boxs {
+  width: 350px;
+  display: column;
+  column-count: 3;
+  column-gap: 20px;
+  column-rule: 1px outset #ff00ff;
 }
 
 
@@ -194,8 +195,62 @@
   height: 56px;
   background: url('../../../assets/jinglingtu.png') no-repeat -108px -15px;
 }
-.dropItem{
-  width:150px;
-  height:80px;
+
+.dropItem {
+  width: 150px;
+  height: 80px;
   background: red;
+}
+
+/*******************************************************/
+section div {
+  display: flex
+}
+
+.hexagon {
+  display: inline-block;
+  width: 388px;
+  height: 333px;
+  background-image:
+    linear-gradient(120deg, #fae1e1 83px, transparent 0, transparent 419px, #fae1e1 0),
+    linear-gradient(-120deg, #fae1e1 83px, transparent 0, transparent 419px, #fae1e1 0),
+    linear-gradient(160deg, transparent 345px, #1e934f 0),
+    linear-gradient(140deg, transparent 376px, #1e934f 0),
+    linear-gradient(120deg, transparent 254px, #085b25 0),
+    linear-gradient(150deg, #053b17 183px, transparent 0),
+    linear-gradient(80deg, transparent 0px, #085b25 0);
+  background-color: #053b17,
+}
+
+.hexagon1 {
+  display: inline-block;
+  width: 333px;
+  height: 388px;
+  background-image:
+    -webkit-linear-gradient(120deg, #fae1e1 83px, transparent 0 419px, #fae1e1 0),
+    -webkit-linear-gradient(-120deg, #fae1e1 83px, transparent 0 419px, #fae1e1 0),
+    -webkit-linear-gradient(160deg, transparent 345px, #1e934f 0),
+    -webkit-linear-gradient(140deg, transparent 376px, #1e934f 0),
+    -webkit-linear-gradient(120.6deg, transparent 250.9px, #085b25 0),
+    -webkit-linear-gradient(150deg, #053b17 183px, transparent 0),
+    -webkit-linear-gradient(0deg, transparent 0px, #085b25 0);
+  background-color: #053b17;
+  margin-left: 10px;
+}
+
+.kk1 {
+  width: 150px;
+  height: 100px;
+  margin-right: 10px;
+  background: red;
+  background-image:
+    linear-gradient(10deg, #fae1e1 50px, transparent 50px, transparent 70px, #fae1e1 0px);
+}
+
+.kk2 {
+  width: 200px;
+  height: 50px;
+  background: red;
+  background-image:
+    -webkit-linear-gradient(10deg, #fae1e1 50px, transparent 50px, transparent 70px, #fae1e1 10px);
 }

@@ -41,10 +41,9 @@
     <p class="test2">css3变形css3变形css3变形css3变形</p>
   </div>
   <div>
-    <p>元素的css样式增删</p>
+    <p #isTar>元素的css样式增删</p>
     <button (click)="show(isTar)">show</button>
     <button (click)="hide(isTar)">hide</button>
-    <div #isTar>dfasdfadff</div>
   </div>
   <div>
     <p>精灵图</p>
@@ -55,8 +54,29 @@
     使用css分栏 使用css分栏 使用css分栏 使用css分栏 使用css分栏 使用css分栏 使用css分栏 使用css分栏 使用css分栏 使用css分栏 使用css分栏 使用css分栏 使用css分栏 使用css分栏
     使用css分栏
   </div>
-</div>
+  <section>
+    <div>
 
+
+      <p class="hexagon">no -webkit-</p>
+      <p class="hexagon1">-webkit- </p>
+    </div>
+    <div>
+      <p class="kk1">no -webkit-</p><br>
+      <p class="kk2">-webkit- </p>
+    </div>
+    <p>
+      -webkit-linear-gradient(120deg, #fae1e1 83px, transparent 0 419px, #fae1e1 0),
+      <br>
+      -webkit-linear-gradient(旋转角度, 第一个颜色及宽度; <br>
+      第二个颜色的宽度(如果参数不是两个，就会是渐变，0 419px之间为实色); <br>
+      第三个颜色及宽度(最后一个颜色值，无论写的尺寸是多少，都会作用到余下宽度));<br>
+      每个颜色值的宽度计算起始位置都为坐标轴原点
+      <br>
+      加了 -webkit- 的0deg处于水平x轴，没加的0deg处于数值y轴，都是按照顺时针为正向旋转deg
+    </p>
+  </section>
+</div>
 
 <div>
   <h2>滤镜</h2>
@@ -97,10 +117,7 @@
     </div>
   </div>
 </div>
-<div>
 
-
-</div>
 <div class="stickyDiv">
   <h2>粘性定位</h2>
   <div class="scrollDiv">
@@ -115,39 +132,39 @@
     <div>**********</div>
     <div>**********</div>
     <div>
-        sticky可以使用sticky的前提条件<br>
-        父元素不能overflow:hidden或者overflow:auto属性。<br>
-        必须指定top、bottom、left、right4个值之一，否则只会处于相对定位<br>
-        父元素的高度不能低于sticky元素的高度<br>
-        sticky元素仅在其父元素内生效<br>
+      sticky可以使用sticky的前提条件<br>
+      父元素不能overflow:hidden或者overflow:auto属性。<br>
+      必须指定top、bottom、left、right4个值之一，否则只会处于相对定位<br>
+      父元素的高度不能低于sticky元素的高度<br>
+      sticky元素仅在其父元素内生效<br>
       <div>
-    <div>**********</div>
-    <div>**********</div>
-    <div>**********</div>
-    <div>**********</div>
-    <div>**********</div>
-    <div>**********</div>
-    <div>**********</div>
-    <div>**********</div>
-    <div>**********</div>
-    <div>**********</div>
-    <div>**********</div>
-  </div>
-  <div>另外的元素</div>
-  <div>****另外的元素******</div>
-  <div>****另外的元素******</div>
-  <div>****另外的元素******</div>
-  <div>****另外的元素******</div>
-  <div>****另外的元素******</div>
-  <div>****另外的元素******</div>
-  <div>****另外的元素******</div>
-  <div>****另外的元素******</div>
-  <div>****另外的元素******</div>
-  <div>****另外的元素******</div>
-  <div>****另外的元素******</div>
-  <div>****另外的元素******</div>
-  <div>****另外的元素******</div>
-  <div>****另外的元素******</div>
-  <div>****另外的元素******</div>
-  <div>****另外的元素******</div>
-</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+      </div>
+      <div>另外的元素</div>
+      <div>****另外的元素******</div>
+      <div>****另外的元素******</div>
+      <div>****另外的元素******</div>
+      <div>****另外的元素******</div>
+      <div>****另外的元素******</div>
+      <div>****另外的元素******</div>
+      <div>****另外的元素******</div>
+      <div>****另外的元素******</div>
+      <div>****另外的元素******</div>
+      <div>****另外的元素******</div>
+      <div>****另外的元素******</div>
+      <div>****另外的元素******</div>
+      <div>****另外的元素******</div>
+      <div>****另外的元素******</div>
+      <div>****另外的元素******</div>
+      <div>****另外的元素******</div>
+    </div>
