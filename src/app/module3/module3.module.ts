@@ -11,11 +11,11 @@ import { ZaxiangComponent } from "./zaxiang/zaxiang.component";
 // import { MyLibraryModule } from "my-library";  // angular库，需要自己打包
 import { CanvasLearnComponent } from './canvas-learn/canvas-learn.component';
 import { TransformComponent } from './js-learn/transform/transform.component';
-
+import { JindutiaoComponent } from './canvas-learn/jindutiao'
 @NgModule({
   imports: [CommonModule, module3RoutingModule, FormsModule,
     //  MyLibraryModule
-    ],
+  ],
   declarations: [
     Module3Component,
     SomeCss3Component,
@@ -23,6 +23,7 @@ import { TransformComponent } from './js-learn/transform/transform.component';
     ZaxiangComponent,
     CanvasLearnComponent,
     TransformComponent,
+    JindutiaoComponent,
   ]
 })
 export class Module3Module { }

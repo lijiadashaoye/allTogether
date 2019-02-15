@@ -38,3 +38,55 @@ p {
   width:400px;
   height: 300px;
 }
+/******************************************/
+
+#d3_jindu {
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: none
+}
+
+#d4_jindu {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: none
+}
+
+#waper1 {
+  position: relative;
+}
+
+.toText {
+  position: absolute;
+  z-index: 4;
+  transform-origin: left center;
+  text-align: right;
+  display: none
+}
+.isSpan2 {
+  position: relative;
+  display: inline-block;
+  padding-top: 1px;
+  transform: rotate(90deg);
+  transform-origin: center;
+  color: rgb(230, 59, 59);
+  font-size: 12px;
+  width: 40px;
+  text-align: center
+}
+
+.point {
+  display: inline-block;
+  position: absolute;
+  background: rgb(148, 248, 201);
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+
+  top: 16px;
+  left: 11px;
+}

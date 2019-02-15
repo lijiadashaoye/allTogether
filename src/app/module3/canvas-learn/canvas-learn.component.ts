@@ -6,7 +6,7 @@ import { Component, ElementRef } from "@angular/core";
   styleUrls: ["./canvas-learn.component.css"]
 })
 export class CanvasLearnComponent {
-  constructor(private elem: ElementRef) {}
+  constructor(private elem: ElementRef) { }
   text1 = [
     "标签内width和height属性设置画布的尺寸，不会造成图片的变形，对画布尺寸的改变相当于将画布切去一块或者添加一块；",
     "css的width和height属性，是以变形方式来拉伸和压缩画布，会导致图片变形。所以尽量避免使用css设置canvas尺寸。",
@@ -142,8 +142,12 @@ export class CanvasLearnComponent {
     // 绘制圆弧
     var canvas = this.elem.nativeElement.querySelector("#d3");
     var ctx = canvas.getContext("2d");
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = 'red';
     ctx.beginPath();
     ctx.arc(10, 10, 50, 0, Math.PI / 2, false);
+    ctx.moveTo(60, 10);
+    ctx.arc(110, 10, 50, Math.PI, Math.PI * 0.5, true);
     ctx.stroke();
   }
   arc2() {
@@ -441,6 +445,21 @@ export class CanvasLearnComponent {
     ctx.fillStyle = lg;
     ctx.fill();
     ctx.closePath();
+  }
+  yuanJB() {
+    var canvas = this.elem.nativeElement.querySelector("#rectJB");
+    var ctx = canvas.getContext("2d");
+    ctx.lineWidth = 30;
+    var lg = ctx.createLinearGradient(0, 175, 150, 175);
+    lg.addColorStop(0.1, "red");
+    lg.addColorStop(0.3, "yellow");
+    lg.addColorStop(0.5, "blue");
+    lg.addColorStop(0.7, "pink");
+    lg.addColorStop(0.9, "black");
+    ctx.strokeStyle = lg;
+    ctx.arc(75, 240, 60, Math.PI,Math.PI*1.9);
+    ctx.stroke()
+
   }
   /**************************************************************/
 
@@ -787,7 +806,7 @@ export class CanvasLearnComponent {
     sun.src = "assets/sun.jpeg";
     earth.src = "assets/earth.png";
     moon.src = "assets/moon.png";
-    sun.onload = function() {
+    sun.onload = function () {
       toDraw();
     };
 
@@ -808,7 +827,7 @@ export class CanvasLearnComponent {
       // 设置地球的旋转
       ctx.rotate(
         ((2 * Math.PI) / 60) * time.getSeconds() +
-          ((2 * Math.PI) / 60000) * time.getMilliseconds()
+        ((2 * Math.PI) / 60000) * time.getMilliseconds()
       );
       ctx.translate(60, 0); // 定位地球
       ctx.drawImage(earth, -15, -15, 30, 30);
@@ -822,7 +841,7 @@ export class CanvasLearnComponent {
       //设置月球的旋转
       ctx.rotate(
         ((2 * Math.PI) / 6) * time.getSeconds() +
-          ((2 * Math.PI) / 6000) * time.getMilliseconds()
+        ((2 * Math.PI) / 6000) * time.getMilliseconds()
       );
       ctx.translate(30, 0);
       ctx.drawImage(moon, -15, -15, 30, 30);
@@ -843,23 +862,23 @@ export class CanvasLearnComponent {
     //   canvas.width = window.innerWidth - 15;
     //   canvas.height = window.innerHeight - 15;
     // }
-    var RAF = (function() {
+    var RAF = (function () {
       return (
         window.requestAnimationFrame ||
         window.webkitRequestAnimationFrame ||
-        function(callback) {
+        function (callback) {
           window.setTimeout(callback, 1000 / 60);
         }
       );
     })();
     // 鼠标活动时，获取鼠标坐标
     var warea = { x: null, y: null, max: 20000 };
-    window.onmousemove = function(e: MouseEvent) {
+    window.onmousemove = function (e: MouseEvent) {
       let ev = e || self.event;
       warea.x = ev["pageX"];
       warea.y = ev["pageY"];
     };
-    window.onmouseout = function(e) {
+    window.onmouseout = function (e) {
       warea.x = null;
       warea.y = null;
     };
@@ -880,7 +899,7 @@ export class CanvasLearnComponent {
       });
     }
     // 延迟100秒开始执行动画，如果立即执行有时位置计算会出错
-    setTimeout(function() {
+    setTimeout(function () {
       animate();
     }, 100);
     // 每一帧循环的逻辑
@@ -888,7 +907,7 @@ export class CanvasLearnComponent {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       // 将鼠标坐标添加进去，产生一个用于比对距离的点数组
       var ndots = [warea].concat(dots);
-      dots.forEach(function(dot) {
+      dots.forEach(function (dot) {
         // 粒子位移
         dot.x += dot.xa;
         dot.y += dot.ya;
@@ -967,7 +986,7 @@ export class CanvasLearnComponent {
     }
     drawSanjiao();
 
-    myCanvas.onclick = function(event) {
+    myCanvas.onclick = function (event) {
       var e = event;
       var x = e.pageX - myCanvas.offsetLeft;
       var y = e.pageY - myCanvas.offsetTop;
@@ -1006,7 +1025,7 @@ export class CanvasLearnComponent {
     ctx.lineWidth = 30;
     var img = new Image();
     img.src = "../assets/over1.png";
-    img.onload = function() {
+    img.onload = function () {
       // createPattern() 方法在指定的方向内重复指定的元素。
       var pat = ctx.createPattern(img, "repeat");
       ctx.strokeStyle = pat;
