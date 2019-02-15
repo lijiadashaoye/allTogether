@@ -56,25 +56,40 @@
   </div>
   <section>
     <div>
-
-
       <p class="hexagon">no -webkit-</p>
-      <p class="hexagon1">-webkit- </p>
     </div>
     <div>
       <p class="kk1">no -webkit- <br>10deg</p><br>
-      <p class="kk2">-webkit- <br>10deg</p>
     </div>
     <p>
-      -webkit-linear-gradient(120deg, #fae1e1 83px, transparent 0 419px, #fae1e1 0),
+      linear-gradient(120deg, #fae1e1 83px, transparent 0,transparent 419px, #fae1e1 0),
       <br>
       -webkit-linear-gradient(旋转角度, 第一个颜色及宽度; <br>
       第二个颜色的宽度(如果尺寸间不是紧挨着，就会是渐变，尺寸之间为实色); <br>
       第三个颜色及宽度(最后一个颜色值，无论写的尺寸是多少，都会作用到余下宽度));<br>
       每个颜色值的宽度计算起始位置都为坐标轴原点
-      <br>
-      加了 -webkit- 的0deg处于水平y轴，按照逆时针为正向旋转deg;没加的0deg处于数值x轴，按照顺时针为正向旋转deg;
     </p>
+  </section>
+  <section>
+    <h2>图片地图</h2>
+    <p>
+      圆形：shape="circle"，coords="x,y,r"<br>
+      这里的 x 和 y 定义了圆心的位置（"0,0" 是图像左上角的坐标），r 是以像素为单位的圆形半径。<br>
+      多边形：shape="polygon"，coords="x1,y1,x2,y2,x3,y3,..."<br>
+      每一对 "x,y" 坐标都定义了多边形的一个顶点（"0,0" 是图像左上角的坐标）。<br>
+      定义三角形至少需要三组坐标；高纬多边形则需要更多数量的顶点。<br>
+      多边形会自动封闭，因此在列表的结尾不需要重复第一个坐标来闭合整个区域。<br>
+      矩形：shape="rectangle"，coords="x1,y1,x2,y2"<br>
+      第一个坐标是矩形的一个角的顶点坐标，另一对坐标是对角的顶点坐标，"0,0" 是图像左上角的坐标。<br>
+      定义矩形实际上是定义带有四个顶点的多边形的一种简化方法。<br>
+      img 标签和 map标签通过 usemap -> name 关联起来
+    </p>
+    <img src="assets/moon.png" usemap="#planetmap" class="isMap" alt="" />
+    <map name="planetmap">
+      <area shape="circle" coords="40,40,35" href="https://www.baidu.com/" title="aaaaaa" target="_blank" alt="Venus" />
+      <area shape="circle" coords="150,150,50" href="https://www.npmjs.com/" title="bbbbb" target="_blank" alt="Mercury" />
+      <area shape="rect" coords="100,0,200,80" href="https://cn.vuejs.org/" title="cccc" target="_blank" alt="Sun" />
+    </map>
   </section>
 </div>
 

@@ -222,35 +222,18 @@ section div {
   background-color: #053b17,
 }
 
-.hexagon1 {
-  display: inline-block;
-  width: 333px;
-  height: 388px;
-  background-image:
-    -webkit-linear-gradient(120deg, #fae1e1 83px, transparent 0 419px, #fae1e1 0),
-    -webkit-linear-gradient(-120deg, #fae1e1 83px, transparent 0 419px, #fae1e1 0),
-    -webkit-linear-gradient(160deg, transparent 345px, #1e934f 0),
-    -webkit-linear-gradient(140deg, transparent 376px, #1e934f 0),
-    -webkit-linear-gradient(120.6deg, transparent 250.9px, #085b25 0),
-    -webkit-linear-gradient(150deg, #053b17 183px, transparent 0),
-    -webkit-linear-gradient(0deg, transparent 0px, #085b25 0);
-  background-color: #053b17;
-  margin-left: 10px;
-}
 
 .kk1 {
   width: 150px;
   height: 100px;
   margin-right: 10px;
-  background: red;
-  background-image:
-    linear-gradient(10deg, #fae1e1 50px, transparent 50px 70px, #fae1e1 0px);
+  background-color: red;
+  background-image: linear-gradient(10deg, #fae1e1 50px, transparent 70px,transparent 80px, #fae1e1 0);
+
 }
 
-.kk2 {
-  width: 200px;
-  height: 60px;
-  background: red;
-  background-image:
-    -webkit-linear-gradient(10deg, #58eb58 40px, transparent 60px 90px, #9293e6 150px);
+.isMap{
+  width:200px;
+  height:200px;
+  border:1px solid;
 }
