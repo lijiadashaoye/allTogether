@@ -30,7 +30,8 @@
   </div>
   <div>
     <h2>文字超出</h2>
-    <p class="test">aksdjflkajsdflkjasldkfjalksdjflasdf</p>
+    <p class="test">单行文字超出 单行文字超出 单行文字超出</p>
+    <p class="test_more">多行文字超出 多行文字超出 多行文字超出 多行文字超出 多行文字超出 多行文字超出 </p>
   </div>
   <div>
     <h2 class="isBefore">伪元素::before</h2>
@@ -54,6 +55,10 @@
     <div class="icons3"></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <div class="icons4"></div>
   </div>
+  <div>
+    <h3>创建小三角</h3>
+    <div class="sanjiao"></div>
+  </div>
   <div id="boxs">
     使用css分栏 使用css分栏 使用css分栏 使用css分栏 使用css分栏 使用css分栏 使用css分栏 使用css分栏 使用css分栏 使用css分栏 使用css分栏 使用css分栏 使用css分栏 使用css分栏
     使用css分栏
@@ -73,7 +78,8 @@
       linear-gradient 添加旋转角度时，<br>
       无论角度为多少，都会在保证所有元素能显示出来的情况下进行旋转
       <br>
-      所以，并没有固定的旋转中心
+      所以，并没有固定的旋转中心;<br>
+      transparent是全透明黑色(black)的速记法，即rgba(0,0,0,0)这样的值。
     </p>
   </div>
   <section>
@@ -137,6 +143,89 @@
 
     </div>
   </div>
+</div>
+
+<div class="wraper">
+
+  <div>
+    <h3>让文字环绕一定的形状、路径排版</h3>
+    shape-outside: circle(arg) //创建圆<br>
+    shape-outside: polygon(arg); //创建多边形<br>
+    shape-outside: ellipse(arg); //创建椭圆<br>
+    shape-outside: inset(arg); //创建矩形
+  </div>
+
+  <div>
+    <div class="item">
+      <h4>创建圆:shape-outside: circle(100px);</h4>
+      <div>
+        <img src="http://www.daqianduan.com/wp-content/uploads/2018/11/shapes.jpg" class="shapes shapes1">
+        <p>关关雎鸠，在河之洲</p>
+        <p>窈窕淑女，君子好逑</p>
+        <p>参差荇菜，左右流之</p>
+        <p>窈窕淑女，寤寐求之</p>
+        <p>求之不得，寤寐思服</p>
+        <p>悠哉悠哉，辗转反侧</p>
+        <p>参差荇菜，左右采之</p>
+        <p>窈窕淑女，琴瑟友之</p>
+        <p>参差荇菜，左右芼之</p>
+        <p>窈窕淑女，钟鼓乐之</p>
+      </div>
+    </div>
+
+    <div class="item">
+      <h4>创建多边形:shape-outside: polygon(100% 0, 100% 100%, 0 100%);</h4>
+      <div>
+        <div class="shapes shapes2"></div>
+        <p>关关雎鸠，在河之洲</p>
+        <p>窈窕淑女，君子好逑</p>
+        <p>参差荇菜，左右流之</p>
+        <p>窈窕淑女，寤寐求之</p>
+        <p>求之不得，寤寐思服</p>
+        <p>悠哉悠哉，辗转反侧</p>
+        <p>参差荇菜，左右采之</p>
+        <p>窈窕淑女，琴瑟友之</p>
+        <p>参差荇菜，左右芼之</p>
+        <p>窈窕淑女，钟鼓乐之</p>
+      </div>
+    </div>
+
+    <div class="item">
+      <h4>创建椭圆:shape-outside: ellipse(72px 88px);</h4>
+      <div>
+        <div class="shapes shapes3"></div>
+        <p>关关雎鸠，在河之洲</p>
+        <p>窈窕淑女，君子好逑</p>
+        <p>参差荇菜，左右流之</p>
+        <p>窈窕淑女，寤寐求之</p>
+        <p>求之不得，寤寐思服</p>
+        <p>悠哉悠哉，辗转反侧</p>
+        <p>参差荇菜，左右采之</p>
+        <p>窈窕淑女，琴瑟友之</p>
+        <p>参差荇菜，左右芼之</p>
+        <p>窈窕淑女，钟鼓乐之</p>
+      </div>
+    </div>
+
+    <div class="item">
+      <h4>创建矩形: shape-outside: inset(72px 88px);</h4>
+      <div>
+        <div class="shapes shapes4"></div>
+        <p>关关雎鸠，在河之洲</p>
+        <p>窈窕淑女，君子好逑</p>
+        <p>参差荇菜，左右流之</p>
+        <p>窈窕淑女，寤寐求之</p>
+        <p>求之不得，寤寐思服</p>
+        <p>悠哉悠哉，辗转反侧</p>
+        <p>参差荇菜，左右采之</p>
+        <p>窈窕淑女，琴瑟友之</p>
+        <p>参差荇菜，左右芼之</p>
+        <p>窈窕淑女，钟鼓乐之</p>
+      </div>
+    </div>
+  </div>
+
+
 </div>
 
 <div class="stickyDiv">

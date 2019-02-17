@@ -38,10 +38,35 @@
 
 .test {
   text-overflow: ellipsis;
-  width: 150px;
   white-space: nowrap;
   width: 12em;
   overflow: hidden;
+}
+
+.test_more {
+  width: 12.5em;
+  height: 3.3em;
+  position: relative;
+  max-height: 5em;
+  overflow: hidden;
+  font-size: 14px;
+  line-height: 1.2em;
+
+  /* display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  该方法适用于WebKit浏览器及移动端 */
+}
+
+.test_more::after {
+  content: "...";
+  line-height: 1em;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding-left: 1em;
+  background: linear-gradient(to right, transparent, #fff 40%);
 }
 
 .isBefore,
@@ -290,4 +315,49 @@ section div {
   width: 200px;
   height: 200px;
   border: 1px solid;
+}
+
+.sanjiao{
+  width:40px;
+  height:50px;
+  box-sizing: border-box;
+  border:50px solid red;
+  border-left:20px solid transparent;
+  border-right:20px solid transparent;
+  border-bottom:none;
+}
+
+/**************************************************/
+.wraper>div:nth-child(2) {
+  display:flex;
+  flex-wrap: wrap;
+}
+
+.wraper .item {
+  flex-basis: 500px;
+  /* flex-basis 属性用于设置或检索弹性盒伸缩基准值,设置宽度用，避免自动设置宽度，没多大用 */
+}
+
+.shapes {
+  float: left;
+  width: 300px;
+  height: 300px;
+}
+
+.shapes1 {
+  shape-outside: circle(150px);
+}
+
+.shapes2 {
+  /* shape-outside: polygon(0 0, 100% 100%, 0 100%); */
+  shape-outside: polygon(0 0, 120px 50px, 16px 100px, 80px 166px, 150px 200px, 70px 250px, 20px 300px);
+}
+
+.shapes3 {
+  shape-outside: ellipse(124px 75px);
+}
+
+.shapes4 {
+  /* 使用*/
+   shape-outside: inset(80px 150px);
 }
