@@ -1,4 +1,9 @@
-import { Component, OnInit, Renderer2, ElementRef } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  Renderer2,
+  ElementRef
+} from "@angular/core";
 
 @Component({
   selector: "app-some-css3",
@@ -6,8 +11,7 @@ import { Component, OnInit, Renderer2, ElementRef } from "@angular/core";
   styleUrls: ["./some-css3.component.css"]
 })
 export class SomeCss3Component implements OnInit {
-  listData = [
-    {
+  listData = [{
       name: "首页",
       icon: "icon-zhibiao"
     },
@@ -19,7 +23,7 @@ export class SomeCss3Component implements OnInit {
   constructor(private rd: Renderer2, private elem: ElementRef) {}
 
   ngOnInit() {
-    document.ondragover = function(e) {
+    document.ondragover = function (e) {
       // 防止图片在新窗口打开
       e.preventDefault();
     };
@@ -75,5 +79,18 @@ export class SomeCss3Component implements OnInit {
     let dragImg = this.elem.nativeElement.querySelector("#dragImg");
     this.rd.appendChild(e.target, dragImg);
     console.log(e.dataTransfer.getData("text")); // 获取传递来的数据,保存在dataTransfer对象中的数据只能在drop事件处理程序中读取
+  }
+
+  inter: any
+  ngAfterViewInit(): void {
+    let el = this.elem.nativeElement.querySelector('#center');
+    let num = 0;
+    this.inter = setInterval(_ => {
+      num++;
+      if (num > 1439) {
+        clearInterval(this.inter)
+      }
+      this.rd.setStyle(el, 'background', `linear-gradient(${num}deg,#0E2D57 10px, red 10px, red 40px,blue 40px)`)
+    }, 50)
   }
 }

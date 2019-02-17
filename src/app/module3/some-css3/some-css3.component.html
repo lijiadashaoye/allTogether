@@ -58,23 +58,24 @@
     使用css分栏 使用css分栏 使用css分栏 使用css分栏 使用css分栏 使用css分栏 使用css分栏 使用css分栏 使用css分栏 使用css分栏 使用css分栏 使用css分栏 使用css分栏 使用css分栏
     使用css分栏
   </div>
-  <section>
-    <div>
-      <p class="hexagon">no -webkit-</p>
-    </div>
-    <br>
-    <div>
-      <p class="kk1">no -webkit- <br>10deg</p><br>
+  <div>
+    <p class="hexagon">no -webkit-</p>
+  </div>
+
+  <div>
+    <div id="center">
+      <p class="yuan1"></p>
+      <p class="yuan2"></p>
+      <p class="yuan3"></p>
+      <p class="yuan4"></p>
     </div>
     <p>
-      linear-gradient(120deg, #fae1e1 83px, transparent 0,transparent 419px, #fae1e1 0),
+      linear-gradient 添加旋转角度时，<br>
+      无论角度为多少，都会在保证所有元素能显示出来的情况下进行旋转
       <br>
-      -webkit-linear-gradient(旋转角度, 第一个颜色及宽度; <br>
-      第二个颜色的宽度(如果尺寸间不是紧挨着，就会是渐变，尺寸之间为实色); <br>
-      第三个颜色及宽度(最后一个颜色值，无论写的尺寸是多少，都会作用到余下宽度));<br>
-      每个颜色值的宽度计算起始位置都为坐标轴原点
+      所以，并没有固定的旋转中心
     </p>
-  </section>
+  </div>
   <section>
     <h2>图片地图</h2>
     <p>

@@ -176,9 +176,9 @@
   padding: 5px;
   background-color: #cae8ca;
   border: 2px solid #4CAF50;
-  font-size:14px;
+  font-size: 14px;
   font-weight: bold;
-  color:red;
+  color: red;
 }
 
 .active {
@@ -247,16 +247,45 @@ section div {
   background-color: #053b17,
 }
 
-
-.kk1 {
-  width: 150px;
-  height: 100px;
-  margin-right: 10px;
-  background-color: red;
-  background-image: linear-gradient(10deg, #fae1e1 50px, transparent 70px, transparent 80px, #fae1e1 0);
-
+/*******************************************************/
+#center {
+  width: 100px;
+  height: 50px;
+  margin: 10px auto;
+  position: relative;
 }
 
+#center p {
+  position: absolute;
+  margin: 0;
+  width: 20px;
+  height: 20px;
+  border: 1px solid rgb(208, 204, 204);
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+
+.yuan1 {
+  left: -10px;
+  top: -10px;
+}
+
+.yuan2 {
+  right: -10px;
+  top: -10px;
+}
+
+.yuan3 {
+  right: -10px;
+  bottom: -10px;
+}
+
+.yuan4 {
+  left: -10px;
+  bottom: -10px;
+}
+
+/**************************************************/
 .isMap {
   width: 200px;
   height: 200px;

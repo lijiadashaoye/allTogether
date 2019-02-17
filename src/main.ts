@@ -1,8 +1,16 @@
-import { enableProdMode } from "@angular/core";
-import { platformBrowserDynamic } from "@angular/platform-browser-dynamic";
+import {
+  enableProdMode
+} from "@angular/core";
+import {
+  platformBrowserDynamic
+} from "@angular/platform-browser-dynamic";
 
-import { AppModule } from "./app/app.module";
-import { environment } from "./environments/environment";
+import {
+  AppModule
+} from "./app/app.module";
+import {
+  environment
+} from "./environments/environment";
 
 // echarts主题
 import "echarts/theme/macarons.js";
@@ -19,15 +27,15 @@ platformBrowserDynamic()
     // 放到单独一个组件里
     let animate = document.getElementsByClassName("preloader")[0];
     let num = 1;
-    setTimeout(function() {
+    setTimeout(function () {
       let inter = setInterval(_ => {
         num -= 0.1;
-        if (num < .3) {
+        if (num < 0) {
           animate["style"]["display"] = "none";
           clearInterval(inter);
         }
-        animate["style"]["opacity"] -= 0.1;
-      }, 200);
-    }, 1200);
+        animate["style"]["opacity"]-=0.1;
+      }, 100);
+    }, 500);
   })
   .catch(err => console.log(err));
