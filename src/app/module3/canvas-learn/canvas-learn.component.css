@@ -39,7 +39,6 @@ p {
   height: 300px;
 }
 /******************************************/
-
 #d3_jindu {
   z-index: 2;
   position: absolute;
@@ -63,16 +62,21 @@ p {
 .toText {
   position: absolute;
   z-index: 4;
-  transform-origin: left center;
+  transform-origin: left top;
   text-align: right;
-  display: none
+  display: none;
+  height: 0;
+}
+.toText>div{
+  position: relative;
 }
 .isSpan2 {
-  position: relative;
+  position: absolute;
   display: inline-block;
-  padding-top: 1px;
   transform: rotate(90deg);
-  transform-origin: center;
+  top:-5px;
+  right:-25px;
+  transform-origin: center top;
   color: rgb(230, 59, 59);
   font-size: 12px;
   width: 40px;
@@ -83,10 +87,9 @@ p {
   display: inline-block;
   position: absolute;
   background: rgb(148, 248, 201);
-  width: 15px;
-  height: 15px;
+  top:-6px;
+  right:13px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
-
-  top: 16px;
-  left: 11px;
 }
