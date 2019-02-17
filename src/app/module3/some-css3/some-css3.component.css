@@ -317,19 +317,19 @@ section div {
   border: 1px solid;
 }
 
-.sanjiao{
-  width:40px;
-  height:50px;
+.sanjiao {
+  width: 40px;
+  height: 50px;
   box-sizing: border-box;
-  border:50px solid red;
-  border-left:20px solid transparent;
-  border-right:20px solid transparent;
-  border-bottom:none;
+  border: 50px solid red;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: none;
 }
 
 /**************************************************/
 .wraper>div:nth-child(2) {
-  display:flex;
+  display: flex;
   flex-wrap: wrap;
 }
 
@@ -340,24 +340,137 @@ section div {
 
 .shapes {
   float: left;
-  width: 300px;
+  width: 280px;
   height: 300px;
 }
 
 .shapes1 {
-  shape-outside: circle(150px);
+  /* 尺寸值为半径 */
+  /* 那么圆的半径为20px，圆心距离左侧为120px，距离顶部为140px的点。*/
+  /* shape-outside: circle(100px at 120px 140px); */
+
+  /* 那么圆的半径为100px，圆心在外部形状的中心*/
+  shape-outside: circle(100px);
 }
 
 .shapes2 {
-  /* shape-outside: polygon(0 0, 100% 100%, 0 100%); */
+  /* 尺寸值为每一个多边形点的坐标，也可以用百分比 */
   shape-outside: polygon(0 0, 120px 50px, 16px 100px, 80px 166px, 150px 200px, 70px 250px, 20px 300px);
 }
 
 .shapes3 {
+  /* 尺寸值为椭圆形x、y轴长度值*/
   shape-outside: ellipse(124px 75px);
 }
 
+.toScroll {
+  height: 300px;
+}
+
 .shapes4 {
-  /* 使用*/
-   shape-outside: inset(80px 150px);
+  /* 尺寸值为文字x、y轴距离形状中心点的距离*/
+  /* 允许1~4个值，分别是top，right，bottom，left的简写值 */
+  /* shape-outside: inset(30px 100px 150px 20px); */
+  /* round，可选值，环绕的意思。后面紧接的 border-radius是我们在熟悉不过的圆角属性，
+可定义凹形体中四个角的圆滑程度，也是有1~4个值，分别是左上角、右上角、右下角、左下角。*/
+  shape-outside: inset(20px 40px 10% 20px round 10px 40px 80px 10px);
+}
+
+.shapes5 {
+  float: left;
+  width: 500px;
+  height: 220px;
+  shape-outside: url('../../../assets/shape.png');
+  background: url('../../../assets/shape.png') no-repeat;
+  shape-image-threshold: 0.2;
+  /* 形状图像阈值 0 ~ 1*/
+  shape-margin: 20px;
+  /* 文字距离图像的距离 */
+}
+
+.shapes6 {
+  float: left;
+  width: 280px;
+  height: 280px;
+  background: linear-gradient(red, blue);
+  animation: 5s poly infinite alternate ease-in-out;
+  shape-margin: 10px;
+  margin: 0 auto;
+  display: block;
+}
+
+@keyframes poly {
+  from {
+    shape-outside: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  }
+
+  to {
+    shape-outside: polygon(44% 26%, 58% 38%, 58% 38%, 44% 81%, 44% 81%, 25% 49%);
+    clip-path: polygon(44% 26%, 58% 38%, 58% 38%, 44% 81%, 44% 81%, 25% 49%);
+  }
+}
+
+.main1 {
+  width: 500px;
+}
+
+.left1,
+.right1 {
+  width: 40%;
+  height: 12ex;
+  background-color: lightgray;
+}
+
+.left1 {
+  shape-outside: polygon(0 0, 100% 100%, 0 100%);
+  float: left;
+  clip-path: polygon(0 0, 100% 100%, 0 100%);
+}
+
+.right1 {
+  shape-outside: polygon(100% 0, 100% 100%, 0 100%);
+  float: right;
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+}
+
+.ppp {
+  text-align: center;
+}
+
+/*******************************************/
+
+.box {
+  max-width: 414px;
+  height: 480px;
+  border: solid #000;
+  margin: auto;
+  overflow: auto;
+}
+
+.shape {
+  float: left;
+  width: 32px;
+  height: 340px;
+  shape-outside: polygon(0 0, 0 150px, 16px 154px, 30px 166px, 30px 314px, 16px 326px, 0 330px, 0 0);
+  transition: shape-outside .1s;
+}
+
+.liuhai {
+  width: 24px;
+  height: 180px;
+  background: url('../../../assets/liuhai.png') no-repeat left center;
+  position: absolute;
+  margin-top: 150px;
+}
+
+.content ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.content li {
+  border-bottom: 1px solid #eee;
+  padding: .5em;
 }

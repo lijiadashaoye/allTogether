@@ -92,5 +92,23 @@ export class SomeCss3Component implements OnInit {
       }
       this.rd.setStyle(el, 'background', `linear-gradient(${num}deg,#0E2D57 10px, red 10px, red 40px,blue 40px)`)
     }, 50)
+    this.liuhai()
+  }
+
+  liuhai() {
+    var eleShape = document.getElementById('shape');
+    var eleBox = document.getElementById('box');
+    // 保证shape元素高度足够
+    eleShape.style.height = eleBox.scrollHeight + 10 + 'px';
+
+    var funShape = function () {
+      var scrollTop = eleBox.scrollTop;
+      // 滚动偏移应用在shape-outside上
+      var shapeOutside = 'polygon(0 0, 0 ' + (150 + scrollTop) + 'px, 16px ' + (154 + scrollTop) + 'px, 30px ' + (166 + scrollTop) + 'px, 30px ' + (314 + scrollTop) + 'px, 16px ' + (326 + scrollTop) + 'px, 0 ' + (330 + scrollTop) + 'px, 0 0)';
+      eleShape.style['shapeOutside'] = shapeOutside;
+    };
+    // 滚动时候实时改变shape形状
+    eleBox.addEventListener('scroll', funShape);
+    funShape();
   }
 }
