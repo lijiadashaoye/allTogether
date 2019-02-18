@@ -341,7 +341,7 @@ section div {
 .shapes {
   float: left;
   width: 280px;
-  height: 300px;
+  height: 250px;
 }
 
 .shapes1 {
@@ -412,13 +412,13 @@ section div {
 }
 
 .main1 {
-  width: 500px;
+  width: 350px;
 }
 
 .left1,
 .right1 {
   width: 40%;
-  height: 12ex;
+  height: 100px;
   background-color: lightgray;
 }
 
