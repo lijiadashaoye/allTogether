@@ -1,4 +1,8 @@
 <h2>动画及属性指令</h2>
+<p>
+  组件的路由动画只在当前模块路由切换组件中有效，如果路由时，进行的是模块切换，则当前组件的动画就无效了<br>
+  https://angular.cn/guide/router#adding-routable-animations
+</p>
 <div class="waper">
   <div style="width:510px;">
     <p (click)="hasclidk($event)" (@clicks.done)="animateDone($event)" [@clicks]="buttonAnimts" id="dd">
@@ -20,6 +24,3 @@
     <app-use-animate-list [data]="data" *ngFor="let data of datas"></app-use-animate-list>
   </div>
 </div>
-<p>
-  组件的路由动画只在当前模块路由切换组件中有效，如果路由时，进行的是模块切换，则当前组件的动画就无效了
-</p>
