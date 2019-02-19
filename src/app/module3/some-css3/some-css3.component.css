@@ -474,3 +474,69 @@ section div {
   border-bottom: 1px solid #eee;
   padding: .5em;
 }
+
+/*******************************************/
+.gundong .wap {
+  height: 100px;
+  width: 150px;
+}
+
+.gundong ul {
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  padding: 0;
+  margin: 0;
+}
+
+.gundong li {
+  list-style: none;
+  padding: 10px 0;
+  width: 300px;
+}
+
+.gundong li:nth-of-type(even) {
+  background: rgb(233, 135, 135)
+}
+
+.gundong li:nth-of-type(odd) {
+  background: rgb(137, 236, 175)
+}
+
+/* 自定义滚动条 */
+ul::-webkit-scrollbar {
+  /*滚动条整体样式*/
+  width: 15px;
+  /* 竖滚动条的宽度 */
+  height: 15px;
+  /* 横滚动条的高度 */
+}
+
+ul::-webkit-scrollbar-button {
+  /*滚动条里面点击后使滚动条滚动的按钮*/
+  /* border-radius: 10px;
+  background: black; */
+}
+
+.gundong ul::-webkit-scrollbar-track {
+  /*整个滚动条最底层*/
+  /* background: lawngreen; */
+}
+
+.gundong ul::-webkit-scrollbar-thumb {
+  /*滚动条内滑块*/
+  border-radius: 10px;
+  background: yellow;
+}
+
+ul::-webkit-scrollbar-track-piece {
+  /*滚动条滑轨*/
+  border-radius: 10px;
+  background: brown;
+}
+
+.gundong ul::-webkit-scrollbar-corner {
+  /* 两个滚动条交接的地方*/
+  border-radius: 10px;
+  background: skyblue;
+}

@@ -12,15 +12,15 @@ import {
 })
 export class SomeCss3Component implements OnInit {
   listData = [{
-      name: "首页",
-      icon: "icon-zhibiao"
-    },
-    {
-      name: "指标",
-      icon: "icon-home"
-    }
+    name: "首页",
+    icon: "icon-zhibiao"
+  },
+  {
+    name: "指标",
+    icon: "icon-home"
+  }
   ];
-  constructor(private rd: Renderer2, private elem: ElementRef) {}
+  constructor(private rd: Renderer2, private elem: ElementRef) { }
 
   ngOnInit() {
     document.ondragover = function (e) {
@@ -69,7 +69,7 @@ export class SomeCss3Component implements OnInit {
       tar,
       "style",
       `position:absolute;left:${mouseX - this.itemX}px;top:${mouseY -
-        this.itemY}px`
+      this.itemY}px`
     );
   }
   dragoverFn(e) {
@@ -92,6 +92,8 @@ export class SomeCss3Component implements OnInit {
       }
       this.rd.setStyle(el, 'background', `linear-gradient(${num}deg,#0E2D57 10px, red 10px, red 40px,blue 40px)`)
     }, 50)
+
+
     this.liuhai()
   }
 
