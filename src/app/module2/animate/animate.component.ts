@@ -22,7 +22,8 @@ import {
   templateUrl: './animate.component.html',
   styleUrls: ['./animate.component.css'],
   animations: [animates, buttonAnimt, queryAnimat],
-  changeDetection: ChangeDetectionStrategy.OnPush // 组件有变化时才进行检查，性能优化
+  changeDetection: ChangeDetectionStrategy.OnPush
+  // 必须与 markForCheck()一起使用，执行与 markForCheck()时才表示组件有变化，才进行检查，性能优化，
 })
 export class AnimateMainComponent implements OnInit {
 
@@ -38,7 +39,7 @@ export class AnimateMainComponent implements OnInit {
     private ch: ChangeDetectorRef,
     private rd: Renderer2,
     private el: ElementRef
-  ) {}
+  ) { }
   datas = [];
   addData() {
     let obj = {
@@ -77,17 +78,18 @@ export class AnimateMainComponent implements OnInit {
         this.one = false;
         this.three = false;
       } else
-      if (this.two == true) {
-        this.three = true;
-        this.two = false;
-        this.one = false;
-      } else
-      if (this.three == true) {
-        this.three = false;
-        this.two = false;
-        this.one = true;
-      }
-      this.ch.markForCheck() // 手动执行变更检测
+        if (this.two == true) {
+          this.three = true;
+          this.two = false;
+          this.one = false;
+        } else
+          if (this.three == true) {
+            this.three = false;
+            this.two = false;
+            this.one = true;
+          }
+      this.ch.markForCheck() // 标记这里需要触发一次push，以便进行变更检测
+      this.ch.detectChanges();  // 立即检查该视图及其子视图
     }, 2000)
 
   }
