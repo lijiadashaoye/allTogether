@@ -355,7 +355,7 @@
 
 <div class="stickyDiv">
   <h2>粘性定位</h2>
-  <div class="scrollDiv">
+  <div class="scrollDiv" style="background: pink">
     <div>*****直接父元素*****</div>
     <div style="color:red;">粘性定位的元素，会以他的直接父元素为定位参考，不会脱离当前文档流</div>
     <div style="color:red;">当他的直接父元素都滚出页面，他也就跟着消失</div>
@@ -380,6 +380,7 @@
     <div>**********</div>
     <div>**********</div>
   </div>
+
   <div>
     sticky可以使用sticky的前提条件<br>
     父元素不能overflow:hidden或者overflow:auto属性。<br>

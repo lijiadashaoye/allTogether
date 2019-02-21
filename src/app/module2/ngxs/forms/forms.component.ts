@@ -51,7 +51,7 @@ import {
   styleUrls: ["./forms.component.css"]
 })
 export class NgxsFormsTemplateComponent {
-  @Select(TodoState)
+
   todos$: Observable<string[]>;
   @Select(TodoState.pandas)
   pandas$: Observable<string[]>;
@@ -86,6 +86,11 @@ export class NgxsFormsTemplateComponent {
     private formBuilder: FormBuilder,
     private actions: Actions
   ) {
+    // 另外一种订阅action的写法，等同于：
+    // @Select(TodoState)
+    // todos$: Observable<string[]>;
+    this.todos$ = store.select(TodoState)
+
     // 状态变化可以实时监听
     // this.todos$.subscribe(val => {
     //   console.log(val)
