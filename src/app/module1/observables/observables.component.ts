@@ -76,6 +76,8 @@ export class ObservablesComponent implements OnInit {
   }
   subscribeObservableFn() {
     this.creatObservableFn();
+
+    // 订阅部分可以写在任何地方
     this.creatObservable.subscribe(val => {
       console.log(val);
     });
