@@ -1140,7 +1140,7 @@ export class CanvasLearnComponent {
             item.y = height - r;
             item.vy = -item.vy * 0.7;
           }
-          // 及时清理不显示出来的
+          // 及时清理不显示出来的，平均维持在7000个以内
           if (item.y > canvas2.height || item.x < 0 || item.x > canvas2.width) {
             balls.splice(index, 1)
           }
