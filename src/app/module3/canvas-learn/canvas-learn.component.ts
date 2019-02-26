@@ -1104,9 +1104,9 @@ export class CanvasLearnComponent {
               y: y,
               r: r,
               color: null,
-              g: 3,  // 数值越小，小球落得越慢
-              vx: Math.pow(-1, Math.ceil(Math.random() * 1000)) * 6,
-              vy: -1,
+              g: 5*Math.random(),  // 数值越小，小球落得越慢
+              vx: Math.pow(-1, Math.ceil(Math.random() * 100)) * 1.5,
+              vy: -1*Math.random(),
             };
             con.beginPath();
             con.arc(x, y, r, 0, 2 * Math.PI);
