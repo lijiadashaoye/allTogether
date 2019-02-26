@@ -301,6 +301,15 @@
       </div>
       <canvas id="rep"></canvas>
     </div>
+
+
+    <div>
+        <button (click)="digitalClock()">数字时钟</button>
+      <div id="waperD" style="display: inline-block; width:500px;height:250px;position: relative;">
+        <canvas id="canvasD"></canvas>
+        <canvas id="canvas2D"></canvas>
+    </div>
+    </div>
     <p>
       严重提示：canvas的绘图过程（即填充与描边）是非常消耗资源的，如果想节省系统资源提高效率，最好是绘制好所有路径，再一次性填充或描边图形。
     </p>

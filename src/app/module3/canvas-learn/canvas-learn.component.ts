@@ -1,5 +1,5 @@
 import { Component, ElementRef } from "@angular/core";
-
+import digit from './digit.js'
 @Component({
   selector: "app-canvas-learn",
   templateUrl: "./canvas-learn.component.html",
@@ -59,7 +59,7 @@ export class CanvasLearnComponent {
     "canvas中的绘制方法（如stroke,fill），都会以“上一次beginPath”之后的所有路径为基础进行绘制",
     "moveTo(x, y)；把画笔移动到指定的坐标(x, y)。 相当于设置路径的起始点坐标",
     "lineTo(x，y)；开始画一条路径出来，但不会反映在画布上，如果多个lineTo连续使用，则上一个线的终点变成下一个线的起点",
-    "closePath()；闭合路径，当起点和最后终点坐标相同时，这样只是让路径最后一个点和起点重合了而已，路径本身却没有闭合，所以要用closePath()收尾",
+    "closePath()；闭合路径，当起点和最后终点坐标相同时，这样只是让路径最后一个点和起点重合了而已，路径本身却没有闭合，所以要用closePath()收尾，不加的话就不自动闭合",
     "closePath的意思不是结束路径，而是关闭路径，它会试图从当前路径的终点连一条路径到起点，让整个路径闭合起来。但是，这并不意味着它之后的路径就是新路径了！",
     "stroke()；通过渲染路径，来绘制图形轮廓",
     "fill()；通过填充路径的内容区域生成实心的图形"
@@ -457,7 +457,7 @@ export class CanvasLearnComponent {
     lg.addColorStop(0.7, "pink");
     lg.addColorStop(0.9, "black");
     ctx.strokeStyle = lg;
-    ctx.arc(75, 240, 60, Math.PI,Math.PI*1.9);
+    ctx.arc(75, 240, 60, Math.PI, Math.PI * 1.9);
     ctx.stroke()
 
   }
@@ -1031,5 +1031,122 @@ export class CanvasLearnComponent {
       ctx.strokeStyle = pat;
       ctx.stroke();
     };
+  }
+
+  digitalClock() {
+    let con: any,
+    con2: any,
+    width,
+    height,
+    jiange, // 控制每个数字间的距离
+    r = 3.8,  // 球的大小
+    juli = 0.5, // 用来控制每个球之间的疏密程度
+    changeIndex = false,
+    beforeArray = [],
+    balls = [],
+    canvas = null,
+    canvas2 = null;
+
+    canvas = this.elem.nativeElement.querySelector('#canvasD');
+    canvas2 = this.elem.nativeElement.querySelector('#canvas2D');
+    let waper = this.elem.nativeElement.querySelector('#waperD');
+    width = waper.offsetWidth;
+    height = waper.offsetHeight;
+
+    canvas.width = width;
+    canvas.height = height;
+    canvas2.width = width;
+    canvas2.height = height;
+
+    con = canvas.getContext('2d');
+    con2 = canvas2.getContext('2d');
+
+    setInterval(_ => {
+      let time = new Date().toTimeString().split(' ')[0].split('');
+      con.clearRect(0, 0, width, height);
+      jiange = 0;
+
+      time.forEach((item, index) => {
+        if (beforeArray.length) {
+          if (time[index] == beforeArray[index]) {
+            changeIndex = false;
+          } else {
+            changeIndex = true;
+          }
+        }
+        if (item != ':') {
+          draw(digit[Number(item)])
+          jiange += (r + juli) * 2 * digit[Number(item)].length - 22;
+
+        } else {
+          draw(digit[10])
+          jiange += (r + juli) * 2 * digit[10].length - 50;
+        }
+      })
+      beforeArray = time;
+    }, 1000)
+    setInterval(_ => {
+      updateBalls()
+    }, 60)
+
+    function draw(arr) {
+      con.save();
+      con.translate(jiange, 5); // 用来控制每个数字中第一个圆球的坐标
+      arr.forEach((num, index2) => {  // 写完第一个数字
+        let lie = index2;  // 表示当前列第几行
+        num.forEach((num1, index3) => {
+          let hang = index3;   // 表示当前行第几列
+          let x = (r + juli) * (1 + 2 * hang);  // 圆心 x
+          let y = (r + juli) * (1 + 2 * lie);   // 圆心 y
+          if (num1) {
+            let obj = {
+              x: x + jiange,
+              y: y,
+              r: r,
+              color: null,
+              g: 3,  // 数值越小，小球落得越慢
+              vx: Math.pow(-1, Math.ceil(Math.random() * 1000)) * 6,
+              vy: -1,
+            };
+            con.beginPath();
+            con.arc(x, y, r, 0, 2 * Math.PI);
+            con.fillStyle = 'black'
+            con.fill();
+            if (changeIndex) {
+              let r = 255 - Number(Math.trunc(Math.random() * 255));
+              let g = 255 - Number(Math.trunc(Math.random() * 255));
+              let b = 255 - Number(Math.trunc(Math.random() * 255));
+              obj.color = `rgb(${r},${g},${b})`
+              balls.push(obj);
+            }
+          }
+        })
+      });
+      con.restore();
+    }
+    function updateBalls() {
+      if (balls.length) {
+        con2.clearRect(0, 0, canvas2.width, canvas2.height);
+        balls.forEach((item, index) => {
+          con2.beginPath();
+          con2.arc(item.x, item.y, item.r, 0, 2 * Math.PI);
+          con2.fillStyle = item.color;
+          con2.fill();
+
+          item.x += item.vx;
+          item.y += item.vy;
+          item.vy += item.g;
+          if (item.y >= height - r) {
+            item.y = height - r;
+            item.vy = -item.vy * 0.7;
+          }
+          // 及时清理不显示出来的
+          if (item.y > canvas2.height || item.x < 0 || item.x > canvas2.width) {
+            balls.splice(index, 1)
+          }
+        })
+      }
+
+    }
   }
 }
