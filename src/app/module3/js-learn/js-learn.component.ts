@@ -407,9 +407,11 @@ export class JsLearnComponent implements OnInit {
       // console.log(event)
       // console.log(event.path[0].files)
       let data = event.path[0].files;
+      // 使用 FormData 执行上传
       let formdata = new FormData();
       formdata.append('file', data);
       console.log(formdata)
+      // 使用 FileReader 执行断点续传 对 result 执行slice 即可
       var reader = new FileReader();
       // result 属性中保存的将是被读取文件
       reader.readAsArrayBuffer(data[0]);
