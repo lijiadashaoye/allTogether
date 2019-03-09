@@ -93,3 +93,10 @@ p {
   height: 14px;
   border-radius: 50%;
 }
+
+#canvasD{
+  position: absolute;
+}
+#canvasD{
+z-index: 2;
+}
