@@ -29,7 +29,7 @@ export class JsLearnComponent implements OnInit {
   ];
   showData;
 
-  constructor(private elem: ElementRef, private rd: Renderer2) { }
+  constructor(private elem: ElementRef, private rd: Renderer2) {}
   ngOnInit() {
     this.times();
     // this.autoAudio();
@@ -165,7 +165,7 @@ export class JsLearnComponent implements OnInit {
     }
     this.showData = arr2;
   }
-  fenzu() {   // 对数组分组
+  fenzu() { // 对数组分组
     let arrs = [1, 2, 3, 4, 5, 6, 7, 8, 9]
     let arr3 = [];
     for (let i = 0, len = arrs.length; i < len; i += 3) {
@@ -228,13 +228,13 @@ export class JsLearnComponent implements OnInit {
   }
   objectSort(how) {
     let arr = [{
-      name: "ffff",
-      age: 51
-    },
-    {
-      name: "hjytjh",
-      age: 61
-    }
+        name: "ffff",
+        age: 51
+      },
+      {
+        name: "hjytjh",
+        age: 61
+      }
     ];
     this.arrFns2Result = arr.sort(toSort("age"));
 
@@ -333,7 +333,7 @@ export class JsLearnComponent implements OnInit {
     }
     requestAnimationFrame(ani)
   }
-  start(da?) {
+  start(da ? ) {
     if (da) {
       this.animates();
     } else {
@@ -377,12 +377,55 @@ export class JsLearnComponent implements OnInit {
     var file = e.target.files[0];
     var imgs = new Image();
     var ele = this.elem.nativeElement.querySelector("#ele");
-    imgs.style.width = "50px";
+    imgs.style.width = "100px";
     // 页面卸载时会自动释放对象URL占用的内存
     this.fileUrl = window.URL.createObjectURL(file); // 指向一块内存的地址
     imgs.src = this.fileUrl;
     this.rd.appendChild(ele, imgs);
   }
+  // 使用 FileReader 动态显示图片
+  seefile1(e) {
+    var file = e.target.files[0];
+    var imgs = new Image();
+    var ele = this.elem.nativeElement.querySelector("#ele");
+    imgs.style.width = "100px";
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = (event2: any) => {
+      imgs.src = event2.target.result;
+      this.rd.appendChild(ele, imgs);
+    }
+  }
+  progress: any
+  // 监听 FileReader 进度
+  seefile2() {
+    let inputs = this.rd.createElement('input');
+    this.rd.setAttribute(inputs, 'type', 'file');
+    this.rd.setAttribute(inputs, 'multiple', 'multiple');
+    inputs.click();
+    inputs.onchange = (event) => {
+      // console.log(event)
+      // console.log(event.path[0].files)
+      let data = event.path[0].files;
+      let formdata = new FormData();
+      formdata.append('file', data);
+      console.log(formdata)
+      var reader = new FileReader();
+      // result 属性中保存的将是被读取文件
+      reader.readAsArrayBuffer(data[0]);
+      reader.onload = (event) => {
+        console.log(event)
+        console.log(reader.result)
+      }
+      // 监听进度
+      reader.onprogress = (event) => {
+        this.progress = ((event.loaded / event.total) * 100).toFixed(0) + '%'
+      }
+    }
+  }
+
+
+
   now_com() {
     let host = this.rd.selectRootElement("#isH2");
     console.log(host)

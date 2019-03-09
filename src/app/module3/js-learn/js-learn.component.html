@@ -41,8 +41,15 @@
     <button (click)="geolocation()">获取位置信息</button>
     <button (click)="closeGet()">关闭监听位置变化</button>
   </div>
-  <div id="ele">
-    <input type="file" (change)="seefile($event)"><br>
+  <div style="width:700px;">
+    <h3>使用createObjectURL动态显示图片</h3>
+    <input type="file" (change)="seefile($event)">
+    <h3>使用 FileReader 动态显示图片</h3>
+    <input type="file" (change)="seefile1($event)">
+    <div id="ele"></div>
+    <h3>通过js生成input标签来实现文件上传，并使用 FileReader 读取文件并监听进度</h3>
+    <button (click)="seefile2()">选择文件</button>
+    <div>{{progress}}</div>
   </div>
   <div>
     <h2>使用 Renderer2 选取dom元素</h2>
