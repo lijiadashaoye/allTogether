@@ -203,11 +203,11 @@ export class JsLearnComponent implements OnInit {
     let num = arr.length / 2;
 
     for (let i = 0; i < num; i++) {
-      let max1 = Math.max(...arr3);
-      let min1 = Math.min(...arr3);
-      arr2.push(max1, min1);
-      arr3 = arr3.filter(item => item != max1);
-      arr3 = arr3.filter(item => item != min1);
+      let max = Math.max(...arr3);
+      let min = Math.min(...arr3);
+      arr2.push(max, min);
+      arr3 = arr3.filter(item => item != max);
+      arr3 = arr3.filter(item => item != min);
     }
     this.arrFns2Result = arr2;
   }
@@ -267,6 +267,26 @@ export class JsLearnComponent implements OnInit {
     this.arrFns2Result = num2;
   }
   datas = [];
+  // 数值向下取整
+  quzheng = []
+  fn1() {
+    var a = ~~3.14; // 3
+    var b = 3.14 >> 0; // 3
+    var c = 3.14 | 0; // 3
+    var d = -~~3.14; // 3
+    var e = -3.14 >> 0; // 3
+    var f = -3.14 | 0; // 3
+    this.quzheng = [a, b, c, d, e, f]
+    console.log(a, b, c, d, e, f);
+  }
+  // 使用 && 替代单一条件判断
+  // 你可能这样写过
+  //    if(!token) {
+  //     login();
+  // }
+  // // 其实这样也可以
+  // !token && login();
+  /**************************************************************/
   times() {
     let da = new Date();
     let one1 = da.getFullYear(); //  取得年
@@ -427,11 +447,10 @@ export class JsLearnComponent implements OnInit {
     }
   }
 
-
-
   now_com() {
     let host = this.rd.selectRootElement("#isH2");
     console.log(host)
+
   }
   now_isBtn() {
     let host = this.rd.selectRootElement(".isBtn");

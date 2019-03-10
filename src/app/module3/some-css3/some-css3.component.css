@@ -317,16 +317,102 @@ section div {
   border: 1px solid;
 }
 
-.sanjiao {
-  width: 40px;
-  height: 50px;
-  box-sizing: border-box;
-  border: 50px solid red;
+.dd {
+  display: inline-block;
+  width: 0;
+  height: 0;
   border-left: 20px solid transparent;
   border-right: 20px solid transparent;
-  border-bottom: none;
 }
 
+.sanjiao {
+  border-top: 40px solid red;
+}
+
+.sanjiao1 {
+  border-bottom: 40px solid red;
+}
+
+.dd1 {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+}
+
+.sanjiao2 {
+  border-left: 40px solid red;
+}
+
+.sanjiao3 {
+  border-right: 40px solid red;
+}
+
+.sanjiao4 {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border: 20px solid red;
+  border-right: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+}
+
+.sanjiao5 {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border: 20px solid red;
+  border-top: 20px solid transparent;
+  border-right: 20px solid transparent;
+}
+
+.isCircle {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border: 10px solid red;
+  border-radius: 100%;
+}
+
+.qipao {
+  display: inline-block;
+  width: 100px;
+  height: 50px;
+  position: relative;
+  border-radius: 20px;
+  background: red;
+}
+
+.qipao:after {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 15px;
+  position: absolute;
+  top: 40px;
+  left: 20px;
+  border: 0 solid transparent;
+  border-bottom: 10px solid red;
+  border-radius: 0 0 0 40px;
+  transform: rotate(-90deg);
+}
+td{
+  border:1px solid rgb(161, 101, 230);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.isTable1{
+  border-collapse: collapse;
+  width:100%;
+  table-layout: auto;
+}
+.isTable2{
+  border-collapse: collapse;
+  width:100%;
+  table-layout: fixed;
+}
 /**************************************************/
 .wraper>div:nth-child(2) {
   display: flex;
