@@ -34,6 +34,9 @@ export class JsLearnComponent implements OnInit {
     this.times();
     // this.autoAudio();
   }
+  toReload(){
+    window.location.reload()
+  }
   autoAudio() {
     // 实现后台播放音频
     let au = new Audio();
