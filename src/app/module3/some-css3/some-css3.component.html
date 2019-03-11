@@ -347,10 +347,21 @@
         </ul>
       </div>
     </div>
+  </div>
+</div>
+<div>
+  <div>
+    <h2>瀑布流页面布局</h2>
+    <button (click)="makePuBu()">展示</button>
+  </div>
+  <div class="waterfall">
+
+    <div class="item" *ngFor="let item of pubuData">
+      <img [src]="item.img">
+      <p>{{item.text}}</p>
+    </div>
 
   </div>
-
-
 </div>
 
 <div class="stickyDiv">
