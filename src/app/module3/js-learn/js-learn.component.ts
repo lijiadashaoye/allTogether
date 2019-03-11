@@ -29,7 +29,7 @@ export class JsLearnComponent implements OnInit {
   ];
   showData;
 
-  constructor(private elem: ElementRef, private rd: Renderer2) {}
+  constructor(private elem: ElementRef, private rd: Renderer2) { }
   ngOnInit() {
     this.times();
     // this.autoAudio();
@@ -187,6 +187,23 @@ export class JsLearnComponent implements OnInit {
     }
     console.log(arr)
   }
+  // 字符串截取并添加新内容
+  fromString = '3234423423.2323432';
+  subString = '';
+  subNum = 3;
+  jiequString(): void {
+    var newStr = "";
+    var count = 0;
+    for (var i = this.fromString.indexOf(".") - 1; i >= 0; i--) {
+      if (count % this.subNum == 0 && count != 0) {
+        newStr = this.fromString.charAt(i) + "," + newStr; //碰到3的倍数则加上“,”号
+      } else {
+        newStr = this.fromString.charAt(i) + newStr; //逐个字符相接起来
+      }
+      count++;
+    }
+    this.subString = newStr + this.fromString.substr(this.fromString.indexOf("."), this.subNum);
+  }
   /************************************************************/
   arrFns2 = ["getMax_Min", "qiantao", "zhengxu", "daoxu", "getRandom"];
   num2 = null;
@@ -228,13 +245,13 @@ export class JsLearnComponent implements OnInit {
   }
   objectSort(how) {
     let arr = [{
-        name: "ffff",
-        age: 51
-      },
-      {
-        name: "hjytjh",
-        age: 61
-      }
+      name: "ffff",
+      age: 51
+    },
+    {
+      name: "hjytjh",
+      age: 61
+    }
     ];
     this.arrFns2Result = arr.sort(toSort("age"));
 
@@ -353,7 +370,7 @@ export class JsLearnComponent implements OnInit {
     }
     requestAnimationFrame(ani)
   }
-  start(da ? ) {
+  start(da?) {
     if (da) {
       this.animates();
     } else {
