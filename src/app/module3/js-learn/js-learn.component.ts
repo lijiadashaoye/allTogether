@@ -29,7 +29,7 @@ export class JsLearnComponent implements OnInit {
   ];
   showData;
 
-  constructor(private elem: ElementRef, private rd: Renderer2) { }
+  constructor(private elem: ElementRef, private rd: Renderer2) {}
   ngOnInit() {
     this.times();
     // this.autoAudio();
@@ -165,7 +165,7 @@ export class JsLearnComponent implements OnInit {
     }
     this.showData = arr2;
   }
-  fenzu() {   // 对数组分组
+  fenzu() { // 对数组分组
     let arrs = [1, 2, 3, 4, 5, 6, 7, 8, 9]
     let arr3 = [];
     for (let i = 0, len = arrs.length; i < len; i += 3) {
@@ -203,11 +203,11 @@ export class JsLearnComponent implements OnInit {
     let num = arr.length / 2;
 
     for (let i = 0; i < num; i++) {
-      let max1 = Math.max(...arr3);
-      let min1 = Math.min(...arr3);
-      arr2.push(max1, min1);
-      arr3 = arr3.filter(item => item != max1);
-      arr3 = arr3.filter(item => item != min1);
+      let max = Math.max(...arr3);
+      let min = Math.min(...arr3);
+      arr2.push(max, min);
+      arr3 = arr3.filter(item => item != max);
+      arr3 = arr3.filter(item => item != min);
     }
     this.arrFns2Result = arr2;
   }
@@ -228,13 +228,13 @@ export class JsLearnComponent implements OnInit {
   }
   objectSort(how) {
     let arr = [{
-      name: "ffff",
-      age: 51
-    },
-    {
-      name: "hjytjh",
-      age: 61
-    }
+        name: "ffff",
+        age: 51
+      },
+      {
+        name: "hjytjh",
+        age: 61
+      }
     ];
     this.arrFns2Result = arr.sort(toSort("age"));
 
@@ -267,6 +267,26 @@ export class JsLearnComponent implements OnInit {
     this.arrFns2Result = num2;
   }
   datas = [];
+  // 数值向下取整
+  quzheng = []
+  fn1() {
+    var a = ~~3.14; // 3
+    var b = 3.14 >> 0; // 3
+    var c = 3.14 | 0; // 3
+    var d = -~~3.14; // 3
+    var e = -3.14 >> 0; // 3
+    var f = -3.14 | 0; // 3
+    this.quzheng = [a, b, c, d, e, f]
+    console.log(a, b, c, d, e, f);
+  }
+  // 使用 && 替代单一条件判断
+  // 你可能这样写过
+  //    if(!token) {
+  //     login();
+  // }
+  // // 其实这样也可以
+  // !token && login();
+  /**************************************************************/
   times() {
     let da = new Date();
     let one1 = da.getFullYear(); //  取得年
@@ -333,7 +353,7 @@ export class JsLearnComponent implements OnInit {
     }
     requestAnimationFrame(ani)
   }
-  start(da?) {
+  start(da ? ) {
     if (da) {
       this.animates();
     } else {
@@ -377,15 +397,60 @@ export class JsLearnComponent implements OnInit {
     var file = e.target.files[0];
     var imgs = new Image();
     var ele = this.elem.nativeElement.querySelector("#ele");
-    imgs.style.width = "50px";
+    imgs.style.width = "100px";
     // 页面卸载时会自动释放对象URL占用的内存
     this.fileUrl = window.URL.createObjectURL(file); // 指向一块内存的地址
     imgs.src = this.fileUrl;
     this.rd.appendChild(ele, imgs);
   }
+  // 使用 FileReader 动态显示图片
+  seefile1(e) {
+    var file = e.target.files[0];
+    var imgs = new Image();
+    var ele = this.elem.nativeElement.querySelector("#ele");
+    imgs.style.width = "100px";
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = (event2: any) => {
+      imgs.src = event2.target.result;
+      this.rd.appendChild(ele, imgs);
+    }
+  }
+  progress: any
+  // 监听 FileReader 进度
+  seefile2() {
+    let inputs = this.rd.createElement('input');
+    this.rd.setAttribute(inputs, 'type', 'file');
+    this.rd.setAttribute(inputs, 'multiple', 'multiple');
+    inputs.click();
+    inputs.onchange = (event) => {
+      // console.log(event)
+      // console.log(event.path[0].files)
+      let data = event.path[0].files;
+      // 使用 FileReader 执行断点续传 对 result 执行slice 即可
+      let reader = new FileReader();
+      // result 属性中保存的将是被读取文件
+      reader.readAsArrayBuffer(data[0]);
+      reader.onload = (event) => {
+        console.log(event)
+        console.log(reader.result)
+        let slice = '' + reader.result.slice(0, 10 * 1024 * 1024); // 文件切割
+        // 使用 FormData 执行上传，只传了一片，后续使用循环 Promise 
+        let formdata = new FormData();
+        formdata.append('filename', slice);
+        console.log(formdata)
+      }
+      // 监听进度
+      reader.onprogress = (event) => {
+        this.progress = ((event.loaded / event.total) * 100).toFixed(0) + '%'
+      }
+    }
+  }
+
   now_com() {
     let host = this.rd.selectRootElement("#isH2");
     console.log(host)
+
   }
   now_isBtn() {
     let host = this.rd.selectRootElement(".isBtn");

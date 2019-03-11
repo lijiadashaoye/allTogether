@@ -9,6 +9,12 @@
         (click)="isClick2(item,i)">{{item}}</button>
       <br>方法的结果： {{arrFns2Result|json}}
     </div>
+    <div>
+      <button (click)="fn1()">数值向下取整</button>
+      <span *ngFor="let da of quzheng">{{da}}</span>
+
+      
+    </div>
   </div>
   <div>
     @Self() - 表示只在本级注入器查找依赖对象
@@ -17,10 +23,10 @@
   </div>
   <div>
     <h2>时间方法</h2>
-    <p style="margin:3px;" *ngFor="let da of datas">{{da}}</p>
+    <p style="margin:3px;" *ngFor="let da of datas,let i = index">{{i+1}}：{{da}}</p>
   </div>
   <div>
-    <h2>contextmenu事件</h2>
+    <h2>(contextmenu)鼠标右键点击事件</h2>
     <input type="button" style="font-size:12px;padding:0;" value="自定义点击鼠标右键" (contextmenu)="fff($event)">
     {{contextmenuData}}
   </div>
@@ -41,8 +47,15 @@
     <button (click)="geolocation()">获取位置信息</button>
     <button (click)="closeGet()">关闭监听位置变化</button>
   </div>
-  <div id="ele">
-    <input type="file" (change)="seefile($event)"><br>
+  <div style="width:700px;">
+    <h3>使用createObjectURL动态显示图片</h3>
+    <input type="file" (change)="seefile($event)">
+    <h3>使用 FileReader 动态显示图片</h3>
+    <input type="file" (change)="seefile1($event)">
+    <div id="ele"></div>
+    <h3>通过js生成input标签来实现文件上传，并使用 FileReader 读取文件并监听进度</h3>
+    <button (click)="seefile2()">选择文件</button>
+    <div>{{progress}}</div>
   </div>
   <div>
     <h2>使用 Renderer2 选取dom元素</h2>
@@ -50,6 +63,9 @@
       1.用id或class名都可以选择标签，但如果标签是组件内的元素，则会剪切标签的内容，从而实现，标签还在，但没了子元素，成为一个空标签<br>
       2.如果选取的标签是其他组件的宿主（host）标签，则不会清空标签的内容<br>
       3.如果选取的是其他组件内的标签，则会实现第一条的效果<br>
+      4.querySelector和querySelectorAll属于js原生方法:<br>
+      this.elem.nativeElement.querySelector('#isH2')选取的范围只是当前组件<br>
+      document.querySelector('#isH2')选取的范围为整个dom结构
     </p>
     <div>
       <span id="isH2">#id</span>
