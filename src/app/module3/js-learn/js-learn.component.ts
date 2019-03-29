@@ -190,7 +190,7 @@ export class JsLearnComponent implements OnInit {
     }
     console.log(arr)
   }
-  // 字符串截取并添加新内容
+  // 字符串截取并添加新内容 
   fromString = '3234423423.2323432';
   subString = '';
   subNum = 3;
