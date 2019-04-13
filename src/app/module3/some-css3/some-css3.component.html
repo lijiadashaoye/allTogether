@@ -89,10 +89,6 @@
       </tr>
     </table>
   </div>
-  <div id="boxs">
-    使用css分栏 使用css分栏 使用css分栏 使用css分栏 使用css分栏 使用css分栏 使用css分栏 使用css分栏 使用css分栏 使用css分栏 使用css分栏 使用css分栏 使用css分栏 使用css分栏
-    使用css分栏
-  </div>
   <div>
     <p class="hexagon">no -webkit-</p>
   </div>
@@ -176,6 +172,12 @@
       <h2>自定义滚动条</h2>
       <div class="wap">
         <ul>
+          <li>asdfasdf</li>
+          <li>asdfasdf</li>
+          <li>asdfasdf</li>
+          <li>asdfasdf</li>
+          <li>asdfasdf</li>
+          <li>asdfasdf</li>
           <li>asdfasdf</li>
           <li>asdfasdf</li>
           <li>asdfasdf</li>
@@ -377,6 +379,23 @@
         </ul>
       </div>
     </div>
+  </div>
+
+  <div id="boxs">
+    使用css分栏 使用css分栏 使用css分栏 使用css分栏 使用css分栏 使用css分栏 使用css分栏 使用css分栏 使用css分栏 使用css分栏 使用css分栏 使用css分栏 使用css分栏 使用css分栏
+    使用css分栏
+  </div>
+</div>
+<div>
+  <div>
+    <h2>瀑布流页面布局</h2>
+    <button (click)="makePuBu()">展示</button>
+  </div>
+  <div class="waterfall">
+    <div class="item" *ngFor="let item of pubuData">
+      <img [src]="item.img">
+      <p>{{item.text}}</p>
+    </div>
 
   </div>
   <div>
@@ -388,8 +407,6 @@
     <img src='assets/flex.png'>
     <img src='assets/flex1.png'>
   </div>
-
-
 </div>
 
 <div class="stickyDiv">

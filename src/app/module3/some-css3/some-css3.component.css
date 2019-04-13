@@ -99,16 +99,6 @@
   /* transform: translate(50px, 100px); */
   /* transform: rotateY(40deg); */
 }
-
-#boxs {
-  width: 350px;
-  display: column;
-  column-count: 3;
-  column-gap: 20px;
-  column-rule: 1px outset #ff00ff;
-}
-
-
 /* ////////////////////////////////////////////////////////////////////////////////// */
 
 .imgDiv {
@@ -182,13 +172,41 @@
   border-bottom-right-radius: 30px 40px;
 }
 
-/* ******************************************************************* */
+/* ******************************
+瀑布流布局
+************************************* */
+/* 只做个分栏*/
+#boxs {
+  width: 350px;
+  display: column;
+  column-count: 3;
+  column-gap: 20px;
+  column-rule: 1px outset #ff00ff;
+}
 
+/*瀑布流层*/
+.waterfall {
+    column-count: 5; /* 把 div 元素中的文本划分为三列。 */
+    column-gap: 10px; /* 性规定列之间的间隔 */
+    column-rule: 1px outset #ff00ff; /* 性规定列之间的间隔样式 */
+}
+.item {
+    padding: 5px;
+    margin: 0 0 10px 0;
+    break-inside: avoid; /* 声明一个元素内部是否应当放置分页符,avoid:避免在元素内部插入分页符 */ 
+    border: 1px solid rgb(202, 201, 201);
+}
+.item img {
+    width: 100%;
+    margin-bottom: 10px;
+}
+/**********************************************************************/
 .stickyDiv {
   height: 200px;
   background: rgb(234, 229, 238);
   margin-top: 40px;
   overflow-y: scroll;
+  box-sizing: border-box;
 }
 
 .scrollDiv>div>div {
@@ -563,8 +581,8 @@ td{
 
 /*******************************************/
 .gundong .wap {
-  height: 100px;
-  width: 150px;
+  height: 150px;
+  width: 200px;
 }
 
 .gundong ul {
@@ -578,7 +596,7 @@ td{
 .gundong li {
   list-style: none;
   padding: 10px 0;
-  width: 300px;
+  width: 350px;
 }
 
 .gundong li:nth-of-type(even) {
