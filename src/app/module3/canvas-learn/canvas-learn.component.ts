@@ -640,7 +640,10 @@ export class CanvasLearnComponent {
     var ctx = canvas.getContext("2d");
     // transform(a, b, c, d, e, f)
     // a (m11),b (m12),c (m21),d (m22),e (dx),f (dy)
-    ctx.transform(1, 1, 0, 1, 0, 0);
+    ctx.transform(1, 1, 0, 1, 0, 0);  // 多个transform效果是累加的
+    ctx.transform(1, 1.1, 0, 1, 1, 1);
+    // setTransform具有清空前面的所有transform效果，并以当前参数执行transform功能
+    ctx.setTransform(1, 0, 0, 1, 0, 0);  
     ctx.fillRect(0, 0, 50, 50);
   }
 
@@ -657,7 +660,7 @@ export class CanvasLearnComponent {
     ctx.beginPath();
     ctx.arc(25, 90, 25, 0, Math.PI * 2);
     ctx.stroke();
-    ctx.clip();
+    ctx.clip();  // clip 之后，画布的显示区域就只有clip这么大的面积了
     ctx.fillRect(20, 90, 40, 40);
   }
   /**************************************************************/
