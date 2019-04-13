@@ -404,10 +404,10 @@ export class CanvasLearnComponent {
     var ctx = canvas.getContext("2d");
     // 创建线性渐变对象
     // context.createLinearGradient(x0,y0,x1,y1);
-    // x0	渐变开始点的 x 坐标
-    // y0	渐变开始点的 y 坐标
-    // x1	渐变结束点的 x 坐标
-    // y1	渐变结束点的 y 坐标
+    // x0	渐变开始点的 x 坐标,可以为负数
+    // y0	渐变开始点的 y 坐标,可以为负数
+    // x1	渐变结束点的 x 坐标,可以为负数
+    // y1	渐变结束点的 y 坐标,可以为负数
     // 如果用坐标画出的线是有角度的，则填充也会有角度
     var lg = ctx.createLinearGradient(10, 10, 150, 10);
     // addColorStop不是加在画笔上，而是加在前面的那个保存渐变的变量上（lg）
@@ -1025,9 +1025,9 @@ export class CanvasLearnComponent {
     var ctx = myCanvas.getContext("2d");
     ctx.moveTo(10, 10);
     ctx.lineTo(300, 200);
-    ctx.lineWidth = 30;
+    ctx.lineWidth = 80;
     var img = new Image();
-    img.src = "../assets/over1.png";
+    img.src = "assets/over1.png";
     img.onload = function () {
       // createPattern() 方法在指定的方向内重复指定的元素。
       var pat = ctx.createPattern(img, "repeat");
