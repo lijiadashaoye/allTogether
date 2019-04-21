@@ -34,7 +34,7 @@ export class JsLearnComponent implements OnInit {
     this.times();
     // this.autoAudio();
   }
-  toReload(){
+  toReload() {
     window.location.reload()
   }
   autoAudio() {
@@ -484,4 +484,36 @@ export class JsLearnComponent implements OnInit {
     let host = this.elem.nativeElement.querySelector('#iskk')
     console.log(host.children)
   }
+  /////////////////////////////////////////////////////////////////////
+  obj = {
+    name: 'llllll',
+    age: 2
+  };
+  Proxy_set() {
+    let pro = new Proxy(this.obj, {
+      set(target, key, value) {
+        console.log('target：', target);
+        console.log('key：', key);
+        console.log('value：', value)
+        target[key] *= value;
+        return target[key]
+      }
+    });
+    pro.age = 4;
+    console.log(pro.age)
+  };
+  Proxy_get() {
+    let pro = new Proxy(this.obj, {
+      get(target, key) {
+        console.log('target：', target);
+        console.log('key：', key);
+        return target[key] + 2
+      },
+      // set(target, key, value) {
+      //   console.log(target, key, value)
+      //   return target[key] += value
+      // }
+    });
+    console.log(pro.age)
+  };
 }

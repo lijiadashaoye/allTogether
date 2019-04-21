@@ -1,5 +1,5 @@
 <div class="waper">
-  <div>
+  <div >
     <h2>一些数组的方法</h2>
     <button [ngStyle]="{color:num==i?'red':''}" *ngFor="let item of arrFns;let i=index" style="cursor: pointer;"
       (click)="isClick(item,i)">{{item}}</button>
@@ -32,6 +32,11 @@
     <h2>(contextmenu)鼠标右键点击事件</h2>
     <input type="button" style="font-size:12px;padding:0;" value="自定义点击鼠标右键" (contextmenu)="fff($event)">
     {{contextmenuData}}
+  </div>
+  <div>
+    <h2>Proxy 代理对象</h2>
+    <button (click)="Proxy_set()">Proxy_set</button>
+    <button (click)="Proxy_get()">Proxy_get</button>
   </div>
 </div>
 <hr>
