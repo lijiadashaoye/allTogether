@@ -1,4 +1,7 @@
-import { Component, ElementRef } from "@angular/core";
+import {
+  Component,
+  ElementRef
+} from "@angular/core";
 import digit from './digit.js'
 @Component({
   selector: "app-canvas-learn",
@@ -6,7 +9,7 @@ import digit from './digit.js'
   styleUrls: ["./canvas-learn.component.css"]
 })
 export class CanvasLearnComponent {
-  constructor(private elem: ElementRef) { }
+  constructor(private elem: ElementRef) {}
   text1 = [
     "标签内width和height属性设置画布的尺寸，不会造成图片的变形，对画布尺寸的改变相当于将画布切去一块或者添加一块；",
     "css的width和height属性，是以变形方式来拉伸和压缩画布，会导致图片变形。所以尽量避免使用css设置canvas尺寸。",
@@ -404,10 +407,10 @@ export class CanvasLearnComponent {
     var ctx = canvas.getContext("2d");
     // 创建线性渐变对象
     // context.createLinearGradient(x0,y0,x1,y1);
-    // x0	渐变开始点的 x 坐标
-    // y0	渐变开始点的 y 坐标
-    // x1	渐变结束点的 x 坐标
-    // y1	渐变结束点的 y 坐标
+    // x0	渐变开始点的 x 坐标,可以为负数
+    // y0	渐变开始点的 y 坐标,可以为负数
+    // x1	渐变结束点的 x 坐标,可以为负数
+    // y1	渐变结束点的 y 坐标,可以为负数
     // 如果用坐标画出的线是有角度的，则填充也会有角度
     var lg = ctx.createLinearGradient(10, 10, 150, 10);
     // addColorStop不是加在画笔上，而是加在前面的那个保存渐变的变量上（lg）
@@ -640,7 +643,10 @@ export class CanvasLearnComponent {
     var ctx = canvas.getContext("2d");
     // transform(a, b, c, d, e, f)
     // a (m11),b (m12),c (m21),d (m22),e (dx),f (dy)
-    ctx.transform(1, 1, 0, 1, 0, 0);
+    ctx.transform(1, 1, 0, 1, 0, 0); // 多个transform效果是累加的
+    ctx.transform(1, 1.1, 0, 1, 1, 1);
+    // setTransform具有清空前面的所有transform效果，并以当前参数执行transform功能
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
     ctx.fillRect(0, 0, 50, 50);
   }
 
@@ -657,7 +663,7 @@ export class CanvasLearnComponent {
     ctx.beginPath();
     ctx.arc(25, 90, 25, 0, Math.PI * 2);
     ctx.stroke();
-    ctx.clip();
+    ctx.clip(); // clip 之后，画布的显示区域就只有clip这么大的面积了
     ctx.fillRect(20, 90, 40, 40);
   }
   /**************************************************************/
@@ -714,6 +720,7 @@ export class CanvasLearnComponent {
     var ctx = canvas.getContext("2d");
     let that = this;
     step();
+
     function step() {
       drawDial(ctx); //绘制表盘
       drawAllHands(ctx); //绘制时分秒针
@@ -872,7 +879,11 @@ export class CanvasLearnComponent {
       );
     })();
     // 鼠标活动时，获取鼠标坐标
-    var warea = { x: null, y: null, max: 20000 };
+    var warea = {
+      x: null,
+      y: null,
+      max: 20000
+    };
     window.onmousemove = function (e: MouseEvent) {
       let ev = e || self.event;
       warea.x = ev["pageX"];
@@ -1022,11 +1033,13 @@ export class CanvasLearnComponent {
     var ctx = myCanvas.getContext("2d");
     ctx.moveTo(10, 10);
     ctx.lineTo(300, 200);
-    ctx.lineWidth = 30;
+    ctx.lineWidth = 80;
     var img = new Image();
-    img.src = "../assets/over1.png";
+    img.src = "assets/over1.png";
     img.onload = function () {
-      // createPattern() 方法在指定的方向内重复指定的元素。
+      // createPattern(item,type) 方法在指定的方向内重复指定的元素。
+      // item 可以是图片，也可以是另外的canvas画布
+      // type: repeat、repeat-x、repeat-y、no-repeat
       var pat = ctx.createPattern(img, "repeat");
       ctx.strokeStyle = pat;
       ctx.stroke();
@@ -1035,17 +1048,17 @@ export class CanvasLearnComponent {
 
   digitalClock() {
     let con: any,
-    con2: any,
-    width,
-    height,
-    jiange, // 控制每个数字间的距离
-    r = 3.8,  // 球的大小
-    juli = 0.5, // 用来控制每个球之间的疏密程度
-    changeIndex = false,
-    beforeArray = [],
-    balls = [],
-    canvas = null,
-    canvas2 = null;
+      con2: any,
+      width,
+      height,
+      jiange, // 控制每个数字间的距离
+      r = 3.8, // 球的大小
+      juli = 0.5, // 用来控制每个球之间的疏密程度
+      changeIndex = false,
+      beforeArray = [],
+      balls = [],
+      canvas = null,
+      canvas2 = null;
 
     canvas = this.elem.nativeElement.querySelector('#canvasD');
     canvas2 = this.elem.nativeElement.querySelector('#canvas2D');
@@ -1092,21 +1105,21 @@ export class CanvasLearnComponent {
     function draw(arr) {
       con.save();
       con.translate(jiange, 5); // 用来控制每个数字中第一个圆球的坐标
-      arr.forEach((num, index2) => {  // 写完第一个数字
-        let lie = index2;  // 表示当前列第几行
+      arr.forEach((num, index2) => { // 写完第一个数字
+        let lie = index2; // 表示当前列第几行
         num.forEach((num1, index3) => {
-          let hang = index3;   // 表示当前行第几列
-          let x = (r + juli) * (1 + 2 * hang);  // 圆心 x
-          let y = (r + juli) * (1 + 2 * lie);   // 圆心 y
+          let hang = index3; // 表示当前行第几列
+          let x = (r + juli) * (1 + 2 * hang); // 圆心 x
+          let y = (r + juli) * (1 + 2 * lie); // 圆心 y
           if (num1) {
             let obj = {
               x: x + jiange,
               y: y,
               r: r,
               color: null,
-              g: 5*Math.random(),  // 数值越小，小球落得越慢
+              g: 5 * Math.random(), // 数值越小，小球落得越慢
               vx: Math.pow(-1, Math.ceil(Math.random() * 100)) * 1.5,
-              vy: -1*Math.random(),
+              vy: -1 * Math.random(),
             };
             con.beginPath();
             con.arc(x, y, r, 0, 2 * Math.PI);
@@ -1124,6 +1137,7 @@ export class CanvasLearnComponent {
       });
       con.restore();
     }
+
     function updateBalls() {
       if (balls.length) {
         con2.clearRect(0, 0, canvas2.width, canvas2.height);
