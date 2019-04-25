@@ -12,3 +12,13 @@
     background: red;
     padding: 100px;
 }
+
+.toFull:-moz-full-screen {
+    background: rgb(0, 255, 149);
+    padding: 100px;
+}
+
+.toFull:fullscreen {
+    background: rgb(229, 255, 0);
+    padding: 100px;
+}
