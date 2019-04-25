@@ -89,7 +89,7 @@ export class AnimateMainComponent implements OnInit {
             this.one = true;
           }
       this.ch.markForCheck() // 标记这里需要触发一次push，以便进行变更检测
-      this.ch.detectChanges();  // 立即检查该视图及其子视图
+      // this.ch.detectChanges();  // 立即检查该视图及其子视图
     }, 2000)
 
   }
