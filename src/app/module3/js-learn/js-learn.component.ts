@@ -517,27 +517,39 @@ export class JsLearnComponent implements OnInit {
     console.log(pro.age)
   };
   full(type) {
+    // 任何选定的元素都可以被全屏化
     var element = document.documentElement
+    // var element = document.getElementsByClassName('toFull')[0];
+
+    var ua = navigator.userAgent.toLowerCase(); //取得浏览器的userAgent字符串  
+
+    let kk1 = (/msie ([\d.]+)/).test(ua); //判断是否IE浏览器 
+    let kk2 = (/firefox\/([\d.]+)/).test(ua); //判断是否Firefox浏览器 
+    let kk3 = (/chrome\/([\d.]+)/).test(ua); //判断Chrome浏览器 
+    let kk4 = (/opera.([\d.]+)/).test(ua); //判断是否Opera浏览器 
+
+    let fnType = '';
+    let fnTypeExit = '';
+    if (kk1) {
+      fnType = 'msRequestFullscreen';
+      fnTypeExit = 'msExitFullscreen';
+    }
+    if (kk2) {
+      fnType = 'mozRequestFullScreen';
+      fnTypeExit = 'mozExitFullscreen';
+    }
+    if (kk3) {
+      fnType = 'webkitRequestFullscreen';
+      fnTypeExit = 'webkitExitFullscreen';
+    }
+    if (kk4) {
+      fnType = 'oRequestFullScreen';
+      fnTypeExit = 'oExitFullscreen';
+    }
     if (type) {
-      if (element.requestFullscreen) {
-        element.requestFullscreen();
-      } else if (element.mozRequestFullScreen) {
-        element.mozRequestFullScreen();
-      } else if (element.webkitRequestFullscreen) {
-        element.webkitRequestFullscreen();
-      } else if (element.msRequestFullscreen) {
-        element.msRequestFullscreen();
-      }
+      element[fnType]();
     } else {
-      if (document.exitFullscreen) {
-        document.requestFullscreen();
-      } else if (document.mozExitFullscreen) {
-        document.mozRequestFullScreen();
-      } else if (document.webkitExitFullscreen) {
-        document.webkitExitFullscreen();
-      } else if (document.msExitFullscreen) {
-        document.msExitFullscreen();
-      }
+      document[fnTypeExit]();
     }
   }
 }
