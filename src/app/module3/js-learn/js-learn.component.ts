@@ -536,11 +536,11 @@ export class JsLearnComponent implements OnInit {
     }
     if (kk2) {
       fnType = 'mozRequestFullScreen';
-      fnTypeExit = 'mozExitFullscreen';
+      fnTypeExit = 'mozCancelFullScreen';
     }
     if (kk3) {
       fnType = 'webkitRequestFullscreen';
-      fnTypeExit = 'webkitExitFullscreen';
+      fnTypeExit = 'webkitCancelFullScreen';
     }
     if (kk4) {
       fnType = 'oRequestFullScreen';
