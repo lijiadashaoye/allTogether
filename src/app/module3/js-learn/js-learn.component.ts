@@ -516,4 +516,28 @@ export class JsLearnComponent implements OnInit {
     });
     console.log(pro.age)
   };
+  full(type) {
+    var element = document.documentElement
+    if (type) {
+      if (element.requestFullscreen) {
+        element.requestFullscreen();
+      } else if (element.mozRequestFullScreen) {
+        element.mozRequestFullScreen();
+      } else if (element.webkitRequestFullscreen) {
+        element.webkitRequestFullscreen();
+      } else if (element.msRequestFullscreen) {
+        element.msRequestFullscreen();
+      }
+    } else {
+      if (document.exitFullscreen) {
+        document.requestFullscreen();
+      } else if (document.mozExitFullscreen) {
+        document.mozRequestFullScreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      } else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+      }
+    }
+  }
 }
