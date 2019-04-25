@@ -1,5 +1,5 @@
 <div class="waper">
-  <div >
+  <div>
     <h2>一些数组的方法</h2>
     <button [ngStyle]="{color:num==i?'red':''}" *ngFor="let item of arrFns;let i=index" style="cursor: pointer;"
       (click)="isClick(item,i)">{{item}}</button>
@@ -42,6 +42,10 @@
     <h2>浏览器全屏显示</h2>
     <button (click)='full(true)'>全屏</button>
     <button (click)='full(false)'>退出全屏</button>
+
+    <div class="toFull">被全屏的元素<br>
+      <button (click)='full(false)'>退出全屏</button>
+    </div>
   </div>
 </div>
 <hr>

@@ -518,8 +518,8 @@ export class JsLearnComponent implements OnInit {
   };
   full(type) {
     // 任何选定的元素都可以被全屏化
-    var element = document.documentElement
-    // var element = document.getElementsByClassName('toFull')[0];
+    // var element = document.documentElement
+    var element = document.getElementsByClassName('toFull')[0];
 
     var ua = navigator.userAgent.toLowerCase(); //取得浏览器的userAgent字符串  
 

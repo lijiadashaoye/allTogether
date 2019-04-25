@@ -6,4 +6,9 @@
     font-size: 20px;
     padding: 5px;
     position: absolute;
-  }
+}
+
+.toFull:-webkit-full-screen {
+    background: red;
+    padding: 100px;
+}
