@@ -554,7 +554,6 @@ export class JsLearnComponent implements OnInit {
   }
   //////////////////////////////////////////////////////////////////////
 
-
   dataType() {
     var arr = [1, 'f', {}, [], null, undefined, false];
     arr.forEach(item => {
