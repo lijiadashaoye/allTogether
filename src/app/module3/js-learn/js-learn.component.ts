@@ -557,8 +557,8 @@ export class JsLearnComponent implements OnInit {
   dataType() {
     var arr = [1, 'f', {}, [], null, undefined, false];
     arr.forEach(item => {
-      console.log(Object.prototype.toString.call(item));
-    });
+      console.log((Object.prototype.toString.call(item)).toLowerCase());
+    })
     arr.forEach(item => {
       console.log(typeof item);
     })
