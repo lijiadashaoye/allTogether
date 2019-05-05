@@ -552,4 +552,17 @@ export class JsLearnComponent implements OnInit {
       document[fnTypeExit]();
     }
   }
+  //////////////////////////////////////////////////////////////////////
+
+
+  dataType() {
+    var arr = [1, 'f', {}, [], null, undefined, false];
+    arr.forEach(item => {
+      console.log(Object.prototype.toString.call(item));
+    });
+    arr.forEach(item => {
+      console.log(typeof item);
+    })
+  }
+
 }
