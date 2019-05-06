@@ -34,8 +34,9 @@ export class IndexDBLearnComponent implements OnInit {
       this.db = ev.target['result']
       this.log.push('数据库打开成功')
     };
-    //当第一次创建数据库，或数据库升级时调用的事件
-    //只有在onupgradeneeded事件中，才能创建和维护数据表(使用createObjectStore)
+    // 当第一次创建数据库，或数据库升级时调用的事件
+    // 第一次打开成功后或者版本有变化自动执行以下事件：一般用于初始化数据库。
+    // 只有在onupgradeneeded事件中，才能创建和维护数据表(使用createObjectStore)
     this.request.onupgradeneeded = (ev) => {
       this.db = ev.target['result'];
       let str = `${ev.oldVersion} -- ${ev.newVersion}`;
@@ -43,9 +44,8 @@ export class IndexDBLearnComponent implements OnInit {
 
       let objectStore;
       if (!this.db.objectStoreNames.contains('person')) {
-        objectStore = this.db.createObjectStore('person', { keyPath: 'id' });
         // 如果数据记录里面没有合适作为主键的属性，那么可以让 IndexedDB 自动生成主键
-        // objectStore = this.db.createObjectStore('person', { autoIncrement: true });
+        objectStore = this.db.createObjectStore('person', { keyPath: 'id', autoIncrement: true });
 
         // IDBObject.createIndex()的三个参数分别为索引名称、索引所在的属性、配置对象（说明该属性是否包含重复的值）。
         objectStore.createIndex('name', 'name', { unique: false });
@@ -57,7 +57,7 @@ export class IndexDBLearnComponent implements OnInit {
   add(age, name) {
     let request = this.db.transaction(['person'], 'readwrite')
       .objectStore('person')
-      .add({ id: this.ids+1, name: name, age: age });
+      .add({ id: this.ids + 1, name: name, age: age });
 
     request.onsuccess = (event) => {
       this.log.push('数据写入成功')
@@ -89,6 +89,8 @@ export class IndexDBLearnComponent implements OnInit {
       }
     };
   };
+
+  // 游标查询
   useIndex(name) {
     var transaction = this.db.transaction(['person'], 'readonly');
     var store = transaction.objectStore('person');
