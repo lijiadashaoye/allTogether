@@ -22,3 +22,10 @@
     background: rgb(229, 255, 0);
     padding: 100px;
 }
+
+.canEdit {
+    height: 100px;
+    width: 100px;
+    background: pink;
+    display: inline-block;
+}

@@ -529,22 +529,18 @@ export class JsLearnComponent implements OnInit {
     let kk4 = (/opera.([\d.]+)/).test(ua); //判断是否Opera浏览器 
 
     let fnType = '';
-    let fnTypeExit = '';
+    let fnTypeExit = 'exitFullscreen';
     if (kk1) {
       fnType = 'msRequestFullscreen';
-      fnTypeExit = 'msExitFullscreen';
     }
     if (kk2) {
       fnType = 'mozRequestFullScreen';
-      fnTypeExit = 'mozCancelFullScreen';
     }
     if (kk3) {
       fnType = 'webkitRequestFullscreen';
-      fnTypeExit = 'webkitCancelFullScreen';
     }
     if (kk4) {
       fnType = 'oRequestFullScreen';
-      fnTypeExit = 'oExitFullscreen';
     }
     if (type) {
       element[fnType]();
