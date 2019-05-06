@@ -1,25 +1,54 @@
-要先点击启动：
-<br>
-<input type="button" value="启动" (click)="openDB()">
 <div>
-  <input type="text" placeholder="title" #getDatas>
-  <input type="button" value="getData" (click)="getData(getDatas.value)">
+  <h4>要先点击启动，每次数据变化，都执行了遍历数据</h4>
+  <button (click)="openDB()">启动</button>
+  <button (click)="readAll()">遍历数据</button>
+</div>
+<div>
+  <p>如果插入数据不成功，则有可能是因为id已经被占用:{{ids}}</p>
+  <input type="number" placeholder="age" #ageInput>
+  <input type="text" placeholder="name" #nameInput>
+  <button (click)="add(ageInput.value,nameInput.value)">add</button>
 </div>
 
 <div>
-  <input type="text" placeholder="title" #titleInput>
-  <input type="text" placeholder="name" #contentInput>
-  <input type="button" value="save" (click)="save(titleInput.value,contentInput.value)">
+  <label for='useName'>使用name索引:</label>
+  <input id='useName' type="text" placeholder="name" #useNameDatas>
+  <button (click)="useIndex(useNameDatas.value)">useIndex</button>
+</div>
+<div>
+  <label for='useId'>使用 id:</label>
+  <input id='useId' type="number" placeholder="id" #useIdDatas>
+  <button (click)="useId(useIdDatas.value)">useId</button>
+  <div>
+    <p>
+      name:{{datas.name}} &nbsp;
+      age:{{datas.age}}
+    </p>
+  </div>
+</div>
+
+
+<div>
+  <input type="number" placeholder="id" #idInput1>
+  <input type="text" placeholder="name" #nameInput1>
+  <input type="number" placeholder="age" #ageInput1>
+  <button (click)="update(idInput1.value,nameInput1.value,ageInput1.value)">update</button>
 </div>
 
 <div>
-  <input type="text" placeholder="name" #contentInput1>
-  <input type="button" value="update" (click)="update(contentInput1.value)">
+  <input type="number" placeholder="id" #keypath>
+  <button (click)="deleteData(keypath.value)">deleteData</button>
 </div>
-<div>
-  <input type="text" placeholder="title" #keypath>
-  <input type="button" value="deleteData" (click)="deleteData(keypath.value)">
-</div>
-<div>
-  {{tip|json}}
+<div class="toFlex">
+  <ul>
+    <li *ngFor="let str of log">{{str}}</li>
+  </ul>
+
+  <div *ngIf="dataArr.length>0">
+    <p *ngFor="let item of dataArr">
+      id:{{item.id}} &nbsp;
+      name:{{item.name}} &nbsp;
+      age:{{item.age}}
+    </p>
+  </div>
 </div>

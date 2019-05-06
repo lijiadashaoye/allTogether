@@ -9,7 +9,6 @@ import {
   urlText
 } from "./module1-http";
 import { IndexDBLearnComponent } from "./index-dblearn/index-dblearn.component";
-import { IndexDBService } from "./index-dblearn/indexDB.service";
 
 /***************************************************************************/
 import { ObservablesComponent } from "./observables/observables.component";
@@ -32,7 +31,6 @@ import { ScssLearnComponent } from "./scss-learn/scss-learn.component";
     ScssLearnComponent
   ],
   providers: [
-    IndexDBService,
     Module1HttpService,
     {
       provide: Module1BASE_URL,
