@@ -28,8 +28,13 @@ export class IndexDBLearnComponent implements OnInit {
       this.title.setTitle(val.title);
     });
   }
+  // 关闭大开的数据库
   closeDB() {
     this.db.close()
+  }
+  // 直接删除数据库
+  deleteDB() {
+    window.indexedDB.deleteDatabase('test_DB')
   }
   openDB() {
     // 第一个参数是数据库的名称，第二个参数是数据库的版本号
