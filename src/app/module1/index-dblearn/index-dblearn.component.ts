@@ -28,7 +28,11 @@ export class IndexDBLearnComponent implements OnInit {
       this.title.setTitle(val.title);
     });
   }
+  closeDB() {
+    this.db.close()
+  }
   openDB() {
+    // 第一个参数是数据库的名称，第二个参数是数据库的版本号
     this.request = window.indexedDB.open('test_DB', 1);
     this.request.onsuccess = (ev) => {
       this.db = ev.target['result']
@@ -47,7 +51,7 @@ export class IndexDBLearnComponent implements OnInit {
         // 如果数据记录里面没有合适作为主键的属性，那么可以让 IndexedDB 自动生成主键
         objectStore = this.db.createObjectStore('person', { keyPath: 'id', autoIncrement: true });
 
-        // IDBObject.createIndex()的三个参数分别为索引名称、索引所在的属性、配置对象（说明该属性是否包含重复的值）。
+        // IDBObject.createIndex()的三个参数分别为索引名称、索引所在的属性、配置对象（说明该属性是否包含重复的值,索引属性值是否唯一）。
         objectStore.createIndex('name', 'name', { unique: false });
         // objectStore.createIndex('email', 'email', { unique: true });
       }
