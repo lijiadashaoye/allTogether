@@ -21,6 +21,6 @@
       点击按钮查看query动画效果，点击三次数据会清零一次
       <button (click)="addData()">addData</button>
     </div>
-    <app-use-animate-list [data]="data" *ngFor="let data of datas"></app-use-animate-list>
+    <app-use-animate-list [giveChild]="giveChild" [data]="data" *ngFor="let data of datas"></app-use-animate-list>
   </div>
 </div>

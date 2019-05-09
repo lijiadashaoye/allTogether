@@ -139,4 +139,7 @@ export class AnimateMainComponent implements OnInit {
   animateDone(e) { // 动画执行的回调，形式一
     // console.log(e)
   }
+  giveChild(){
+    console.log('通过子组件触发父组件的方法')
+  }
 }

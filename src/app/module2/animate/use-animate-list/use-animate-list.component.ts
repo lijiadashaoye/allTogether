@@ -17,10 +17,11 @@ import {
 })
 export class UseAnimateListComponent implements OnInit {
   @Input() data;
-  @HostBinding('@card') cardState = 'out';
-  constructor() {}
 
-  ngOnInit() {}
+  @HostBinding('@card') cardState = 'out';
+  constructor() { }
+
+  ngOnInit() { }
   @HostListener('mouseover')
   onmouseenter() {
     this.cardState = 'hover'
@@ -28,5 +29,10 @@ export class UseAnimateListComponent implements OnInit {
   @HostListener('mouseout')
   onmouseleave() {
     this.cardState = 'out'
+  }
+
+  @Input() giveChild;
+  testFromFather() {
+    this.giveChild()
   }
 }
