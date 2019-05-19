@@ -90,10 +90,12 @@
     </table>
   </div>
   <div>
+    <h3>线性渐变添加旋转角度</h3>
     <p class="hexagon">no -webkit-</p>
   </div>
 
   <div>
+    <h3>显性渐变添加旋转角度:{{degNum}}°</h3>
     <div id="center">
       <p class="yuan1"></p>
       <p class="yuan2"></p>
@@ -101,13 +103,60 @@
       <p class="yuan4"></p>
     </div>
     <p>
-      linear-gradient 添加旋转角度时，<br>
+      linear-gradient 添加旋转角度时，顺时针为正角度 +，逆时针为负角度 -<br>
       无论角度为多少，都会在保证所有元素能显示出来的情况下进行旋转
       <br>
       所以，并没有固定的旋转中心;<br>
       transparent是全透明黑色(black)的速记法，即rgba(0,0,0,0)这样的值。
     </p>
   </div>
+  <div>
+    <h3>线性渐变巧用</h3>
+    <div class="a">
+      <!-- a这个大卡片里边分上下两个卡片，对应上边灰色和下边白色部分 -->
+      <div class="b"></div>
+      <div class="c"></div>
+    </div>
+  </div>
+  <div>
+    <h3>径向渐变位置的变化</h3>
+    <p>可用来做倒圆角</p>
+    <div class="wa">
+      <div id="div1"></div>
+    </div>
+    <div class="tem">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+
+  <div>
+    <h3>径向渐变位置的变化</h3>
+    <p>https://leaverou.github.io/css3patterns/# <br>
+      https://blog.csdn.net/wjnf012/article/details/80263323</p>
+    <div class="radial-gradient"></div>
+  </div>
+
+  <div>
+    <div class="nb"></div>
+    <img src='assets/background.png'>
+
+    <p>
+        https://blog.csdn.net/xi_2130/article/details/49331923 <br>
+        位置含义解释：<br>
+        位置①：设置背景颜色（不设置则背景为透明）<br>
+        位置②：设置背景图片（url）<br>
+        位置③：设置背景平铺方式，不设置该属性，默认为repeat，背景图像将在垂直方向和水平方向重复。可能的值有（repeat-x, repeat-y, no-repeat）
+        <br>位置④：设置背景图距左边的距离（默认为0），可能的值（数值表示，%表示，top，left，bottom，center，right表示法），注意center占用两个位置（④⑤）；
+        <br>位置⑤：设置背景图距上边的距离（默认为0），可能的值（数值表示，%表示，top，left，bottom，center，right表示法），注意center占用两个位置（④⑤）；
+        <br>位置⑥：设置图片的滚动方式（默认scroll，背景图像会随着页面其余部分的滚动而移动），可能的值为（scroll，fixed）
+        <br>总结：如果要用这种形式，位置①和位置②至少写一个，应该值得注意的是，位置③，④，⑤，⑥都是为了修饰位置②，所以但不写位置②的时候，其他位置也没有写的必要了。 
+        <br>以上位置在写的时候无先后顺序。但是习惯一个好的顺序非常必要。
+    </p>
+  </div>
+
+
   <section>
     <h2>图片地图</h2>
     <p>
@@ -125,7 +174,8 @@
     <img src="assets/moon.png" usemap="#planetmap" class="isMap" alt="" />
     <map name="planetmap">
       <area shape="circle" coords="40,40,35" href="https://www.baidu.com/" title="aaaaaa" target="_blank" alt="Venus" />
-      <area shape="circle" coords="150,150,50" href="https://www.npmjs.com/" title="bbbbb" target="_blank" alt="Mercury" />
+      <area shape="circle" coords="150,150,50" href="https://www.npmjs.com/" title="bbbbb" target="_blank"
+        alt="Mercury" />
       <area shape="rect" coords="100,0,200,80" href="https://cn.vuejs.org/" title="cccc" target="_blank" alt="Sun" />
     </map>
   </section>
@@ -158,7 +208,8 @@
         <div>
           <p>拖动图片到div里，执行drag和drop</p>
           <div class="dropItem" (dragover)="dragoverFn($event)" (drop)="dropFn($event)"></div>
-          <img width="50px" id="dragImg" height="50px" src="../assets/earth.png" draggable="true" (dragstart)="dragstartFn1($event)">
+          <img width="50px" id="dragImg" height="50px" src="../assets/earth.png" draggable="true"
+            (dragstart)="dragstartFn1($event)">
         </div>
         <div style="margin-left:10px;">
           <p>只是将图片相对document进行定位</p>
