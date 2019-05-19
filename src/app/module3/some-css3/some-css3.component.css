@@ -431,15 +431,12 @@ section div {
   background: radial-gradient(20px 25px ellipse at top, red 10px, transparent 0px);
   background-size: 20px 10px;
 }
-.nb{
-  width: 200px;
-height: 200px;
-border-radius: 50%;
-border: 10px solid rgba(255,255,255,0.6);
-background: radial-gradient(circle,#fff 30%,transparent 0),#00caf5;
-background-size: 30px 30px;
 
+#nb {
+  width: 210px;
+  height: 200px;
 }
+
 /***************************************************************/
 .isMap {
   width: 200px;

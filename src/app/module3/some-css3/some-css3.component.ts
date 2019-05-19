@@ -98,6 +98,8 @@ export class SomeCss3Component implements OnInit {
     this.liuhai();
 
     let div1 = this.elem.nativeElement.querySelector('#div1');
+    let nb = this.elem.nativeElement.querySelector('#nb');
+    
     this.inter2 = setInterval(_ => {
       this.pos1++;
       this.pos2++;
@@ -106,6 +108,8 @@ export class SomeCss3Component implements OnInit {
       }
       this.rd.setStyle(div1, 'background', `-webkit-radial-gradient(${this.pos1}% ${this.pos2}%, #fff 0%, #fff 60%, green 60%, green 100%)`);
 
+      this.rd.setStyle(nb, 'background', `-webkit-radial-gradient(circle, pink ${this.pos1}%, transparent 0), #00caf5`);
+      this.rd.setStyle(nb, 'backgroundSize', `30px 30px`);
     }, 200)
   }
 

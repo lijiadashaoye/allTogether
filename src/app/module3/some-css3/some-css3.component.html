@@ -139,20 +139,27 @@
   </div>
 
   <div>
-    <div class="nb"></div>
+    <div id="nb"></div>
     <img src='assets/background.png'>
 
     <p>
-        https://blog.csdn.net/xi_2130/article/details/49331923 <br>
-        位置含义解释：<br>
-        位置①：设置背景颜色（不设置则背景为透明）<br>
-        位置②：设置背景图片（url）<br>
-        位置③：设置背景平铺方式，不设置该属性，默认为repeat，背景图像将在垂直方向和水平方向重复。可能的值有（repeat-x, repeat-y, no-repeat）
-        <br>位置④：设置背景图距左边的距离（默认为0），可能的值（数值表示，%表示，top，left，bottom，center，right表示法），注意center占用两个位置（④⑤）；
-        <br>位置⑤：设置背景图距上边的距离（默认为0），可能的值（数值表示，%表示，top，left，bottom，center，right表示法），注意center占用两个位置（④⑤）；
-        <br>位置⑥：设置图片的滚动方式（默认scroll，背景图像会随着页面其余部分的滚动而移动），可能的值为（scroll，fixed）
-        <br>总结：如果要用这种形式，位置①和位置②至少写一个，应该值得注意的是，位置③，④，⑤，⑥都是为了修饰位置②，所以但不写位置②的时候，其他位置也没有写的必要了。 
-        <br>以上位置在写的时候无先后顺序。但是习惯一个好的顺序非常必要。
+      https://blog.csdn.net/xi_2130/article/details/49331923
+      <br>位置含义解释：
+      <br>位置①：设置背景颜色（不设置则背景为透明）
+      <br>位置②：设置背景图片（url）
+      <br>位置③：设置背景平铺方式，不设置该属性，默认为repeat，背景图像将在垂直方向和水平方向重复。可能的值有（repeat-x, repeat-y, no-repeat）
+      <br>位置④：设置背景图距左边的距离（默认为0），可能的值（数值表示，%表示，top，left，bottom，center，right表示法），注意center占用两个位置（④⑤）；
+      <br>位置⑤：设置背景图距上边的距离（默认为0），可能的值（数值表示，%表示，top，left，bottom，center，right表示法），注意center占用两个位置（④⑤）；
+      <br>位置⑥：设置图片的滚动方式（默认scroll，背景图像会随着页面其余部分的滚动而移动），可能的值为（scroll，fixed）
+      <br>总结：如果要用这种形式，位置①和位置②至少写一个，应该值得注意的是，位置③，④，⑤，⑥都是为了修饰位置②，所以但不写位置②的时候，其他位置也没有写的必要了。
+      <br>以上位置在写的时候无先后顺序。但是习惯一个好的顺序非常必要。
+    </p>
+    <p>
+      ellipse:椭圆
+      <br>radial-gradient(circle 20px,color-stop,...);
+      <br>radial-gradient(ellipse 20px 40px,color-stop,...);
+      <br>radial-gradient语法中的radial参数中的值的位置是不能错乱的，下面把所有位置顺序列一下：
+      <br>circle/ellipse + radius/extent-keywrod + at position，color length,color length,...
     </p>
   </div>
 
