@@ -47,6 +47,12 @@
     <button (click)="hide(isTar)">hide</button>
   </div>
   <div>
+    <p>文字在固定宽度内与两边对齐</p>
+    <p class="toSapceBetween">两字</p>
+    <p class="toSapceBetween">三个字</p>
+    <p class="toSapceBetween">多个文字</p>
+  </div>
+  <div>
     <p>精灵图</p>
     <p>使用 zoom 进行缩放，会完整的缩放，导致页面重构</p>
     <div class="icons1"></div>&nbsp;&nbsp;
@@ -125,7 +131,8 @@
     <img src="assets/moon.png" usemap="#planetmap" class="isMap" alt="" />
     <map name="planetmap">
       <area shape="circle" coords="40,40,35" href="https://www.baidu.com/" title="aaaaaa" target="_blank" alt="Venus" />
-      <area shape="circle" coords="150,150,50" href="https://www.npmjs.com/" title="bbbbb" target="_blank" alt="Mercury" />
+      <area shape="circle" coords="150,150,50" href="https://www.npmjs.com/" title="bbbbb" target="_blank"
+        alt="Mercury" />
       <area shape="rect" coords="100,0,200,80" href="https://cn.vuejs.org/" title="cccc" target="_blank" alt="Sun" />
     </map>
   </section>
@@ -158,7 +165,8 @@
         <div>
           <p>拖动图片到div里，执行drag和drop</p>
           <div class="dropItem" (dragover)="dragoverFn($event)" (drop)="dropFn($event)"></div>
-          <img width="50px" id="dragImg" height="50px" src="../assets/earth.png" draggable="true" (dragstart)="dragstartFn1($event)">
+          <img width="50px" id="dragImg" height="50px" src="../assets/earth.png" draggable="true"
+            (dragstart)="dragstartFn1($event)">
         </div>
         <div style="margin-left:10px;">
           <p>只是将图片相对document进行定位</p>

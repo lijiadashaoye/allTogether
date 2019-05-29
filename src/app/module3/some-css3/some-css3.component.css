@@ -660,3 +660,10 @@ ul::-webkit-scrollbar-track-piece {
 .setPlaceholder::-webkit-input-placeholder {
     color: red;
 }
+
+.toSapceBetween {
+    margin: 10px 0;
+    width: 100px;
+    border: 1px solid red;
+    text-align-last: justify;
+}
