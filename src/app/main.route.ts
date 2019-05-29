@@ -1,9 +1,10 @@
 import {
   Routes,
-  RouterModule
+  RouterModule,
+  PreloadAllModules
 } from "@angular/router";
 import {
-  NgModule
+  NgModule,
 } from "@angular/core";
 import {
   LoginComponent
@@ -74,7 +75,11 @@ const routes: Routes = [{
 ];
 // 路由相关的，就写到路由模块里
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    // angular懒加载中的预加载策略
+    // Angular在第一个页面显示后，才陆续的將其他lazyLoading的modul下载到本机上
+    preloadingStrategy: PreloadAllModules
+  })],
   providers: [resolveService, ResolveGuard, canLoadGuard],
   exports: [RouterModule]
 })

@@ -12,15 +12,15 @@ import {
 })
 export class SomeCss3Component implements OnInit {
   listData = [{
-    name: "首页",
-    icon: "icon-zhibiao"
-  },
-  {
-    name: "指标",
-    icon: "icon-home"
-  }
+      name: "首页",
+      icon: "icon-zhibiao"
+    },
+    {
+      name: "指标",
+      icon: "icon-home"
+    }
   ];
-  constructor(private rd: Renderer2, private elem: ElementRef) { }
+  constructor(private rd: Renderer2, private elem: ElementRef) {}
 
   ngOnInit() {
     document.ondragover = function (e) {
@@ -82,19 +82,35 @@ export class SomeCss3Component implements OnInit {
   }
 
   inter: any
+  degNum: number = 0;
+  inter2: any
+  pos1 = 0;
+  pos2 = 0;
   ngAfterViewInit(): void {
     let el = this.elem.nativeElement.querySelector('#center');
-    let num = 0;
     this.inter = setInterval(_ => {
-      num++;
-      if (num > 1439) {
+      this.degNum++;
+      if (this.degNum > 380) {
         clearInterval(this.inter)
       }
-      this.rd.setStyle(el, 'background', `linear-gradient(${num}deg,#0E2D57 10px, red 10px, red 40px,blue 40px)`)
-    }, 50)
+      this.rd.setStyle(el, 'background', `linear-gradient(${this.degNum}deg,#0E2D57 10px, red 10px, red 40px,blue 40px)`)
+    }, 80)
+    this.liuhai();
 
+    let div1 = this.elem.nativeElement.querySelector('#div1');
+    let nb = this.elem.nativeElement.querySelector('#nb');
+    
+    this.inter2 = setInterval(_ => {
+      this.pos1++;
+      this.pos2++;
+      if (this.pos1 > 100) {
+        clearInterval(this.inter2)
+      }
+      this.rd.setStyle(div1, 'background', `-webkit-radial-gradient(${this.pos1}% ${this.pos2}%, #fff 0%, #fff 60%, green 60%, green 100%)`);
 
-    this.liuhai()
+      this.rd.setStyle(nb, 'background', `-webkit-radial-gradient(circle, pink ${this.pos1}%, transparent 0), #00caf5`);
+      this.rd.setStyle(nb, 'backgroundSize', `30px 30px`);
+    }, 200)
   }
 
   liuhai() {
@@ -113,8 +129,7 @@ export class SomeCss3Component implements OnInit {
     eleBox.addEventListener('scroll', funShape);
     funShape();
   }
-  imgArr = [
-    {
+  imgArr = [{
       img: 'https://imgsa.baidu.com/baike/c0%3Dbaike72%2C5%2C5%2C72%2C24/sign=f3d4063328738bd4d02cba63c0e2ecb3/a2cc7cd98d1001e910616de1be0e7bec55e797fa.jpg',
       text: '1 convallis timestamp'
     },
