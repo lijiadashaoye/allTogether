@@ -16,6 +16,7 @@ export class JsLearnComponent implements OnInit {
   arrFns = [
     "includesFn",
     "forEachFn",
+    'forFn',
     "findFn",
     "findIndexFn",
     "mapFn",
@@ -28,29 +29,35 @@ export class JsLearnComponent implements OnInit {
     'daoxubianli'
   ];
   showData;
-
   constructor(private elem: ElementRef, private rd: Renderer2) { }
   ngOnInit() {
     this.times();
     // this.autoAudio();
   }
-  toReload() {
-    window.location.reload()
-  }
-  autoAudio() {
-    // 实现后台播放音频
-    let au = new Audio();
-    au.src = "../assets/33.mp3";
-    au.play();
-  }
   isClick(item, index) {
     this.num = index;
     this[item]();
   }
+  toReload() {
+    window.location.reload()
+  }
+  // 实现后台播放音频
+  isAudio = null;
+  autoAudio() {
+
+    this.isAudio = new Audio();
+    this.isAudio.src = "https://rl01-sycdn.kuwo.cn/bf214f5434f47ec569f6ac458fbde5b4/5cf629df/resource/n3/1/49/4211576901.mp3";
+    this.isAudio.play();
+  }
+  // 停止播放
+  stopAudio() {
+    this.isAudio.pause();
+  }
+
   /*******************************************************************/
   // 判断一个数组是否包含一个指定的值，
   // 传参：（要查找的元素）；
-  // 返回值：true或 false；
+  // 返回值：true 或 false；
   includesFn() {
     let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     this.showData = arr.includes(5);
@@ -66,6 +73,16 @@ export class JsLearnComponent implements OnInit {
       console.log("index:", index);
       this.showData += item * 5;
     });
+  }
+  // for循环可以被终止，而forEach不可以
+  forFn() {
+    let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    for (let i = arr.length; i--;) {
+      console.log(i)
+      if (arr[i] < 5) {
+        break;
+      }
+    }
   }
   /*******************************************************************/
   // 返回数组中满足提供的测试函数的第一个元素的值，
@@ -176,7 +193,7 @@ export class JsLearnComponent implements OnInit {
       arr2.push(arrs.slice(i, i + 3))
       arr3.push(arr2)
     }
-    console.log(arr3)
+    this.showData = arr3
   }
   daoxubianli() {
     // 使用更少的代码实现固定长度数据的遍历
@@ -188,16 +205,17 @@ export class JsLearnComponent implements OnInit {
       }
       console.log(i)
     }
-    console.log(arr)
+    this.showData = arr4
   }
   // 字符串截取并添加新内容 
-  fromString = '3234423423.2323432';
+  fromString = '3234423421.2323432';
   subString = '';
   subNum = 3;
   jiequString(): void {
     var newStr = "";
     var count = 0;
-    for (var i = this.fromString.indexOf(".") - 1; i >= 0; i--) {
+    let num = this.fromString.indexOf(".");  // 找到小数点的索引
+    for (var i = num - 1; i >= 0; i--) {
       if (count % this.subNum == 0 && count != 0) {
         newStr = this.fromString.charAt(i) + "," + newStr; //碰到3的倍数则加上“,”号
       } else {
@@ -205,10 +223,19 @@ export class JsLearnComponent implements OnInit {
       }
       count++;
     }
-    this.subString = newStr + this.fromString.substr(this.fromString.indexOf("."), this.subNum);
+    this.subString = newStr + this.fromString.substr(num, this.subNum);
   }
   /************************************************************/
-  arrFns2 = ["getMax_Min", "qiantao", "zhengxu", "daoxu", "getRandom"];
+  // 定义要使用的函数名
+  arrFns2 = [
+    "getMax_Min",
+    "qiantao",
+    "zhengxu",
+    "daoxu",
+    "getRandom",
+    'getNum',
+    'binds'
+  ];
   num2 = null;
   arrFns2Result = null;
   isClick2(item, index) {
@@ -225,13 +252,13 @@ export class JsLearnComponent implements OnInit {
     for (let i = 0; i < num; i++) {
       let max = Math.max(...arr3);
       let min = Math.min(...arr3);
-      arr2.push(max, min);
+      arr2.push([max, min]);
       arr3 = arr3.filter(item => item != max);
       arr3 = arr3.filter(item => item != min);
     }
     this.arrFns2Result = arr2;
   }
-  qiaotao() {
+  qiantao() {
     // 函数嵌套函数，并集中调用
     function fn(a) {
       return function (b) {
@@ -276,15 +303,22 @@ export class JsLearnComponent implements OnInit {
   getRandom() {
     // 随机获取数组项
     let arr = ["red", "blue", "green", "yellow", "pink"];
-
-    function takeRandom(max, min) {
+    let takeRandom = (max, min) => {
+      // 获取指定区间随机数
+      let num = max - min + 1;
+      return Math.floor(Math.random() * num + min);
+    }
+    let num2 = arr[takeRandom(0, arr.length - 1)];
+    this.arrFns2Result = num2;
+  }
+  getNum() {
+    let takeRandom = (max, min) => {
       // 获取指定区间随机数
       let num = max - min + 1;
       return Math.floor(Math.random() * num + min);
     }
     let num = takeRandom(3, 19);
-    let num2 = arr[takeRandom(0, arr.length - 1)];
-    this.arrFns2Result = num2;
+    this.arrFns2Result = num;
   }
   datas = [];
   // 数值向下取整
@@ -293,9 +327,9 @@ export class JsLearnComponent implements OnInit {
     var a = ~~3.14; // 3
     var b = 3.14 >> 0; // 3
     var c = 3.14 | 0; // 3
-    var d = -~~3.14; // 3
-    var e = -3.14 >> 0; // 3
-    var f = -3.14 | 0; // 3
+    var d = -~~3.14; // -3
+    var e = -3.14 >> 0; // -3
+    var f = -3.14 | 0; // -3
     this.quzheng = [a, b, c, d, e, f]
     console.log(a, b, c, d, e, f);
   }
@@ -329,18 +363,7 @@ export class JsLearnComponent implements OnInit {
     this.datas.push(one10);
     this.datas.push(one11);
   }
-  // arguments对象还有一个名叫callee的属性，该属性是一个指针，指向拥有这个arguments对象的函数
-  // 从而避免了函数名字变更了，但函数的执行结果不变，解耦
-  // this 引用的是函数据以执行的环境对象
-
-  factorial(num) {
-    if (num <= 1) {
-      return 1;
-    } else {
-      return num * arguments.callee(num - 1);
-    }
-  }
-  // bind()。这个方法会创建一个函数的实例，其this值会被绑定到传给bind()函数的值
+  // bind()：这个方法会创建一个函数的实例，其this值会被绑定到传给bind()函数的值
   color = null;
   binds() {
     this.color = "red";
@@ -358,7 +381,7 @@ export class JsLearnComponent implements OnInit {
   fff(e: Event) {
     // 自定义点击鼠标右键
     e.preventDefault();
-    this.contextmenuData = "执行了contextmenu事件";
+    this.contextmenuData = "执行了contextmenu 自定义鼠标右键事件";
   }
   /****************************** */
 

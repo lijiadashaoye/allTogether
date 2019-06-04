@@ -18,6 +18,10 @@
       <span>{{fromString}}：{{subString}}</span>
       <button (click)="toReload()">浏览器刷新</button>
     </div>
+    <div>
+      <button (click)="autoAudio()">后台播放音乐</button>
+      <button (click)="stopAudio()">停止播放</button>
+    </div>
   </div>
   <div>
     @Self() - 表示只在本级注入器查找依赖对象

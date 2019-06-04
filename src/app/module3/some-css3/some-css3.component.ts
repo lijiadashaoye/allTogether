@@ -12,15 +12,15 @@ import {
 })
 export class SomeCss3Component implements OnInit {
   listData = [{
-      name: "首页",
-      icon: "icon-zhibiao"
-    },
-    {
-      name: "指标",
-      icon: "icon-home"
-    }
+    name: "首页",
+    icon: "icon-zhibiao"
+  },
+  {
+    name: "指标",
+    icon: "icon-home"
+  }
   ];
-  constructor(private rd: Renderer2, private elem: ElementRef) {}
+  constructor(private rd: Renderer2, private elem: ElementRef) { }
 
   ngOnInit() {
     document.ondragover = function (e) {
@@ -46,6 +46,7 @@ export class SomeCss3Component implements OnInit {
   itemY = null;
   dragstartFn(e) {
     let tar = e.target;
+    // 获取元素的位置，鼠标点击的位置减去鼠标在被点击的元素的内的位置
     this.itemX = e.clientX - tar.offsetLeft;
     this.itemY = e.clientY - tar.offsetTop;
   }
@@ -96,10 +97,14 @@ export class SomeCss3Component implements OnInit {
       this.rd.setStyle(el, 'background', `linear-gradient(${this.degNum}deg,#0E2D57 10px, red 10px, red 40px,blue 40px)`)
     }, 80)
     this.liuhai();
+    this.setJingXiang();
 
+  }
+  // 动态设置径向渐变
+  setJingXiang() {
     let div1 = this.elem.nativeElement.querySelector('#div1');
     let nb = this.elem.nativeElement.querySelector('#nb');
-    
+
     this.inter2 = setInterval(_ => {
       this.pos1++;
       this.pos2++;
@@ -130,21 +135,21 @@ export class SomeCss3Component implements OnInit {
     funShape();
   }
   imgArr = [{
-      img: 'https://imgsa.baidu.com/baike/c0%3Dbaike72%2C5%2C5%2C72%2C24/sign=f3d4063328738bd4d02cba63c0e2ecb3/a2cc7cd98d1001e910616de1be0e7bec55e797fa.jpg',
-      text: '1 convallis timestamp'
-    },
-    {
-      img: 'https://imgsa.baidu.com/baike/c0%3Dbaike92%2C5%2C5%2C92%2C30/sign=03948ea9b4315c60579863bdecd8a076/8326cffc1e178a825a6b5d1cfe03738da977e833.jpg',
-      text: '2 convallis timestamp 2 Donec a fermentum nisi.'
-    },
-    {
-      img: 'https://imgsa.baidu.com/baike/c0%3Dbaike80%2C5%2C5%2C80%2C26/sign=3d645bf2d0ca7bcb6976cf7ddf600006/6d81800a19d8bc3efe5f64fb858ba61ea8d345af.jpg',
-      text: '4 Donec a fermentum nisi. Integer dolor est, commodo utsagittis vitae, egestas at augue. '
-    },
-    {
-      img: 'https://imgsa.baidu.com/baike/c0%3Dbaike180%2C5%2C5%2C180%2C60/sign=fbc3501b0a087bf469e15fbb93ba3c49/bf096b63f6246b60ea65dd24e3f81a4c510fa273.jpg',
-      text: '5 Donec a fermentum nisi. Integer dolor est, commodo ut sagittis vitae, egestas at augue.'
-    }
+    img: 'https://imgsa.baidu.com/baike/c0%3Dbaike72%2C5%2C5%2C72%2C24/sign=f3d4063328738bd4d02cba63c0e2ecb3/a2cc7cd98d1001e910616de1be0e7bec55e797fa.jpg',
+    text: '1 convallis timestamp'
+  },
+  {
+    img: 'https://imgsa.baidu.com/baike/c0%3Dbaike92%2C5%2C5%2C92%2C30/sign=03948ea9b4315c60579863bdecd8a076/8326cffc1e178a825a6b5d1cfe03738da977e833.jpg',
+    text: '2 convallis timestamp 2 Donec a fermentum nisi.'
+  },
+  {
+    img: 'https://imgsa.baidu.com/baike/c0%3Dbaike80%2C5%2C5%2C80%2C26/sign=3d645bf2d0ca7bcb6976cf7ddf600006/6d81800a19d8bc3efe5f64fb858ba61ea8d345af.jpg',
+    text: '4 Donec a fermentum nisi. Integer dolor est, commodo utsagittis vitae, egestas at augue. '
+  },
+  {
+    img: 'https://imgsa.baidu.com/baike/c0%3Dbaike180%2C5%2C5%2C180%2C60/sign=fbc3501b0a087bf469e15fbb93ba3c49/bf096b63f6246b60ea65dd24e3f81a4c510fa273.jpg',
+    text: '5 Donec a fermentum nisi. Integer dolor est, commodo ut sagittis vitae, egestas at augue.'
+  }
   ]
   pubuData = []
   makePuBu() {
