@@ -144,7 +144,7 @@
   height: 50px;
 }
 
-/* 表示宽度至少480px，即大于1080 */
+/* 表示宽度至少1080px */
 
 @media screen and (min-width: 1080px) {
   .mediaDiv {
@@ -152,7 +152,7 @@
   }
 }
 
-/* 表示宽度最多480px，即小于680 */
+/* 表示宽度最多880px */
 
 @media screen and (max-width: 880px) {
   .mediaDiv {
