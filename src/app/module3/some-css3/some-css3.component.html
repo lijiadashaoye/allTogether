@@ -143,6 +143,21 @@
       https://blog.csdn.net/wjnf012/article/details/80263323</p>
     <div class="radial-gradient"></div>
   </div>
+  <div class="setImg">
+    <h3>img标签显示的图片填充尺寸设置</h3>
+    <div *ngFor="let item of imgSrc">
+      <img class="df" [src]="item.src" [style.object-fit]="item.type">
+      <p>object-fit:{{item.type}}</p>
+      <p>{{item.text}}</p>
+    </div>
+
+    <h3 style="margin-top:40px;">img标签显示的图片显示定位原点设置</h3>
+    <p>以定位原点的位置为起始，选择一定宽度高度的图片内容进行展示</p>
+    <div *ngFor="let item of imgSrc">
+      <img class="df" [src]="item.src" style="object-fit:cover" [style.object-position]="item.pos">
+      <p>object-position:{{item.pos}}</p>
+    </div>
+  </div>
 
   <div>
     <div id="nb"></div>
