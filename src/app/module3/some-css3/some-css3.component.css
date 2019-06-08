@@ -72,10 +72,12 @@
 
 .isBefore,
 .isAfter {
+  margin-left: 50px;
   position: relative;
+  display:inline-block
 }
 
-.isBefore::before {
+.isBefore:before {
   content: "@";
   font-weight: bold;
   position: absolute;
@@ -88,7 +90,7 @@
   font-weight: bold;
   position: absolute;
   top: 10%;
-  right: 30px;
+  right: -30px;
 }
 
 .test2 {
