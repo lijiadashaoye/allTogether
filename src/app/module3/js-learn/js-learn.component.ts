@@ -35,6 +35,16 @@ export class JsLearnComponent implements OnInit {
     // this.autoAudio();
     console.log(11_22_23)  // 对数字进行分隔，方便人阅读
   }
+  // 需要在 tsconfig.json 'lib'属性中添加对es2018的支持
+  promise_finally() {
+    new Promise(res => {
+      res(9)
+    })
+      .then(da => console.log(da))
+      .finally(() => {  // finally使Promise无论结果怎样，都会执行
+        console.log(99)
+      });
+  }
   isClick(item, index) {
     this.num = index;
     this[item]();
