@@ -33,7 +33,9 @@ export class JsLearnComponent implements OnInit {
   ngOnInit() {
     this.times();
     // this.autoAudio();
+    console.log(11_22_23)  // 对数字进行分隔，方便人阅读
   }
+
   isClick(item, index) {
     this.num = index;
     this[item]();
