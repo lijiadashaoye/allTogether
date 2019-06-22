@@ -33,7 +33,7 @@ export class JsLearnComponent implements OnInit {
   ngOnInit() {
     this.times();
     // this.autoAudio();
-    console.log(11_22_23)  // 对数字进行分隔，方便人阅读
+    console.log(11_22_23) // 对数字进行分隔，方便人阅读
   }
 
   isClick(item, index) {
@@ -649,4 +649,14 @@ export class JsLearnComponent implements OnInit {
     // 当变量是引用类型时，这个副本是指向堆内存的地址
     console.log(obj2['name']); // ConardLi
   }
+
+  // null:表示被赋值过的对象，刻意把一个对象赋值为null，故意表示其为空，不应有值。
+  // 所以对象的某个属性值为null是正常的，null转换为数值时值为0。
+
+  // undefined:表示“缺少值”，即此处应有一个值，但还没有定义
+  // undefined转为数值时为NaN(非数字值的特殊值)
+
+  // JavaScript是一门动态类型语言，
+  // 成员除了表示存在的空值外，还有可能根本就不存在（因为存不存在只在运行期才知道），
+  // 这就是undefined的意义所在
 }
