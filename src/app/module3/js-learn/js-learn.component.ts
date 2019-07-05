@@ -578,15 +578,25 @@ export class JsLearnComponent implements OnInit {
     }
   }
   //////////////////////////////////////////////////////////////////////
-
+  // 数据类型判断
   dataType() {
-    var arr = [1, 'f', {}, [], null, undefined, false];
+    var arr = [1, 'f', {}, [], null, undefined, false, /d/i,NaN];
+    var toString = Object.prototype.toString;
     arr.forEach(item => {
-      console.log((Object.prototype.toString.call(item)).toLowerCase());
+      console.log((toString.call(item)).toLowerCase());
     })
     arr.forEach(item => {
       console.log(typeof item);
     })
+    // Object类型数据，只有指向完全一样时，才相等
+    var a = {};
+    var b = {};
+    var c = [];
+    var d = [];
+    console.log(a === b)
+    console.log(a === a)
+    console.log(c === d)
+    console.log(c === c)
   }
 
 }
