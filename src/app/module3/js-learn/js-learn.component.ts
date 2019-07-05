@@ -29,11 +29,11 @@ export class JsLearnComponent implements OnInit {
     'daoxubianli'
   ];
   showData;
-  constructor(private elem: ElementRef, private rd: Renderer2) { }
+  constructor(private elem: ElementRef, private rd: Renderer2) {}
   ngOnInit() {
     this.times();
     // this.autoAudio();
-    console.log(11_22_23)  // 对数字进行分隔，方便人阅读
+    console.log(11_22_23) // 对数字进行分隔，方便人阅读
   }
 
   isClick(item, index) {
@@ -216,7 +216,7 @@ export class JsLearnComponent implements OnInit {
   jiequString(): void {
     var newStr = "";
     var count = 0;
-    let num = this.fromString.indexOf(".");  // 找到小数点的索引
+    let num = this.fromString.indexOf("."); // 找到小数点的索引
     for (var i = num - 1; i >= 0; i--) {
       if (count % this.subNum == 0 && count != 0) {
         newStr = this.fromString.charAt(i) + "," + newStr; //碰到3的倍数则加上“,”号
@@ -277,13 +277,13 @@ export class JsLearnComponent implements OnInit {
   }
   objectSort(how) {
     let arr = [{
-      name: "ffff",
-      age: 51
-    },
-    {
-      name: "hjytjh",
-      age: 61
-    }
+        name: "ffff",
+        age: 51
+      },
+      {
+        name: "hjytjh",
+        age: 61
+      }
     ];
     this.arrFns2Result = arr.sort(toSort("age"));
 
@@ -398,7 +398,7 @@ export class JsLearnComponent implements OnInit {
     }
     requestAnimationFrame(ani)
   }
-  start(da?) {
+  start(da ? ) {
     if (da) {
       this.animates();
     } else {
@@ -527,6 +527,7 @@ export class JsLearnComponent implements OnInit {
     pro.age = 4;
     console.log(pro.age)
   };
+  // Proxy 对象
   Proxy_get() {
     let pro = new Proxy(this.obj, {
       get(target, key) {
@@ -598,5 +599,72 @@ export class JsLearnComponent implements OnInit {
     console.log(c === d)
     console.log(c === c)
   }
+  //////////////////////////////////////////////////////////////////////
+  // js数据类型的学习
+  // 当我们复制引用类型的变量时，实际上复制的是栈中存储的地址，
+  // 所以复制出来的obj1实际上和obj2指向的堆中同一个对象
 
+  bijiao() {
+    // 对于原始类型，比较时会直接比较它们的值，如果值相等，即返回true。
+    var name = 'ConardLi';
+    var name2 = 'ConardLi';
+    console.log(name === name2); // true
+    // 对于引用类型，比较时会比较它们的引用地址，
+    // 虽然两个变量在堆中存储的对象具有的属性值都是相等的，
+    // 但是它们被存储在了不同的存储空间，因此比较值为false。
+    var obj = {
+      name: 'ConardLi'
+    };
+    var obj2 = {
+      name: 'ConardLi'
+    };
+    console.log(obj === obj2); // false
+  }
+  chuandi() {
+    // ECMAScript中所有的函数的参数都是按值传递的
+    let name = 'ConardLi';
+
+    function changeValue(name) {
+      name = 'code秘密花园';
+    }
+    changeValue(name);
+    // 函数参数仅仅是被传入变量复制给了的一个局部变量，
+    // 改变这个局部变量不会对外部变量产生影响
+    console.log(name); // ConardLi
+
+    let obj = {
+      name: 'ConardLi'
+    };
+
+    function changeValue2(obj) {
+      obj.name = 'code秘密花园';
+    }
+    changeValue2(obj);
+    // 改变对象的属性，其实是改变了对象所指的栈中保存的数据
+    console.log(obj.name); // code秘密花园
+
+    let obj2 = {};
+
+    function changeValue3(obj2) {
+      obj2.name = 'ConardLi'; // 改变的不是对象，而是对象指向的地址保存的数据
+      obj2 = { // 改变里参数而已，即改变了副本
+        name: 'code秘密花园'
+      };
+    }
+    changeValue3(obj2);
+    // 函数参数传递的并不是变量的引用，而是变量拷贝的副本，
+    // 当变量是原始类型时，这个副本就是值本身，
+    // 当变量是引用类型时，这个副本是指向堆内存的地址
+    console.log(obj2['name']); // ConardLi
+  }
+
+  // null:表示被赋值过的对象，刻意把一个对象赋值为null，故意表示其为空，不应有值。
+  // 所以对象的某个属性值为null是正常的，null转换为数值时值为0。
+
+  // undefined:表示“缺少值”，即此处应有一个值，但还没有定义
+  // undefined转为数值时为NaN(非数字值的特殊值)
+
+  // JavaScript是一门动态类型语言，
+  // 成员除了表示存在的空值外，还有可能根本就不存在（因为存不存在只在运行期才知道），
+  // 这就是undefined的意义所在
 }
