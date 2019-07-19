@@ -97,7 +97,7 @@ export class SomeCss3Component implements OnInit {
       tar,
       "style",
       `position:absolute;left:${mouseX - this.itemX}px;top:${mouseY -
-      this.itemY}px`
+      this.itemY}px;cursor:move`
     );
   }
   dragoverFn(e) {

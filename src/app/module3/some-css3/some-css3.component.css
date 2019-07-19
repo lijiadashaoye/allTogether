@@ -815,7 +815,7 @@ BFC
 .bfc_wap1 {
   border: 3px solid red;
   margin-bottom: 10px;
-  display: flow-root
+  display: flow-root;
 }
 
 .bfc_left {
