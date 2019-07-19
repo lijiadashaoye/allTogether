@@ -101,9 +101,13 @@ export class SomeCss3Component implements OnInit {
     );
   }
   dragoverFn(e) {
-    console.log(e);
+    // console.log(e);
+    // 默认地，无法将数据/元素放置到其他元素中。如果需要设置允许放置，我们必须阻止对元素的默认处理方式。
+    e.preventDefault()
   }
   dropFn(e) {
+    e.preventDefault();
+    // 调用 preventDefault() 来避免浏览器对数据的默认处理（drop 事件的默认行为是以链接形式打开）
     let dragImg = this.elem.nativeElement.querySelector("#dragImg");
     this.rd.appendChild(e.target, dragImg);
     console.log(e.dataTransfer.getData("text")); // 获取传递来的数据,保存在dataTransfer对象中的数据只能在drop事件处理程序中读取
