@@ -4,13 +4,13 @@ import {
   Renderer2,
   ElementRef
 } from "@angular/core";
-
 @Component({
   selector: "app-some-css3",
   templateUrl: "./some-css3.component.html",
   styleUrls: ["./some-css3.component.css"]
 })
 export class SomeCss3Component implements OnInit {
+
   listData = [{
     name: "首页",
     icon: "icon-zhibiao"
@@ -56,7 +56,7 @@ export class SomeCss3Component implements OnInit {
     let kk = document.querySelector('#setColor');
     this.make16Color = '#' + Math.floor(Math.random() * 0xffffff).toString(16).padEnd(6, '0');
     kk['style'].background = this.make16Color;
-    
+
   }
 
   // 元素的css样式增删
@@ -101,7 +101,7 @@ export class SomeCss3Component implements OnInit {
     );
   }
   dragoverFn(e) {
-    // console.log(e);
+    console.log(e);
   }
   dropFn(e) {
     let dragImg = this.elem.nativeElement.querySelector("#dragImg");

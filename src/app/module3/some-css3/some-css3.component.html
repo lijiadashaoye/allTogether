@@ -38,11 +38,23 @@
     <h2 class="isAfter">伪元素::after</h2><br>
     <img src='assets/weiyuansu.png'><br>
     <img src='assets/weilei.png'>
-
   </div>
   <div>
     <h2>css3变形</h2>
     <p class="test2">css3变形css3变形css3变形css3变形</p>
+    <div style="flex-shrink: 0;">
+      <h2>BFC</h2>
+      <p>https://www.jianshu.com/p/0d713b32cd0d</p>
+      <div class="bfc_wap1">
+        <div class="bfc_left"></div>
+      </div>
+
+
+      <div class="bfc_left2"></div>
+      <div class="bfc_righ2"></div>
+
+
+    </div>
   </div>
   <div>
     <p #isTar>元素的css样式增删</p>
@@ -242,7 +254,7 @@
       <div style="display:flex;justify-content: space-between">
         <div>
           <p>拖动图片到div里，执行drag和drop</p>
-          <div class="dropItem" (dragover)="dragoverFn($event)" (drop)="dropFn($event)"></div>
+          <div class="dropItem" (dragover)="dragoverFn($event)" (drop)="dropFn($event)">拖到这里</div>
           <img width="50px" id="dragImg" height="50px" src="../assets/earth.png" draggable="true"
             (dragstart)="dragstartFn1($event)">
         </div>

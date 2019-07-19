@@ -1,59 +1,59 @@
 .css3Waper {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .css3Waper>div {
-    min-width: 300px;
-    margin: 10px;
+  min-width: 300px;
+  margin: 10px;
 }
 
 .linearGradient1 {
-    height: 50px;
-    background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet)
+  height: 50px;
+  background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet)
 }
 
 .linearGradient2 {
-    height: 50px;
-    background: repeating-linear-gradient(90deg, yellow 10%, green 20%)
+  height: 50px;
+  background: repeating-linear-gradient(90deg, yellow 10%, green 20%)
 }
 
 .oneP {
-    width: 200px;
-    height: 40px;
-    background: #4CAF50;
-    position: relative;
-    z-index: 12;
+  width: 200px;
+  height: 40px;
+  background: #4CAF50;
+  position: relative;
+  z-index: 12;
 }
 
 .oneP:after {
-    content: '';
-    position: absolute;
-    z-index: 1;
-    box-shadow: 20px 5px 10px rgba(223, 19, 19, 0.9);
-    width: 100%;
-    height: 10px;
-    bottom: 0;
+  content: '';
+  position: absolute;
+  z-index: 1;
+  box-shadow: 20px 5px 10px rgba(223, 19, 19, 0.9);
+  width: 100%;
+  height: 10px;
+  bottom: 0;
 }
 
 .test {
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    width: 12em;
-    overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 12em;
+  overflow: hidden;
 }
 
 .test_more {
-    width: 12.5em;
-    height: 3.3em;
-    position: relative;
-    max-height: 5em;
-    overflow: hidden;
-    font-size: 14px;
-    line-height: 1.2em;
+  width: 12.5em;
+  height: 3.3em;
+  position: relative;
+  max-height: 5em;
+  overflow: hidden;
+  font-size: 14px;
+  line-height: 1.2em;
 
-    /* display: -webkit-box;
+  /* display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
   overflow: hidden;
@@ -61,119 +61,119 @@
 }
 
 .test_more::after {
-    content: "...";
-    line-height: 1em;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    padding-left: 1em;
-    background: linear-gradient(to right, transparent, #fff 40%);
+  content: "...";
+  line-height: 1em;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding-left: 1em;
+  background: linear-gradient(to right, transparent, #fff 40%);
 }
 
 .isBefore,
 .isAfter {
-    margin-left: 50px;
-    position: relative;
-    display: inline-block
+  margin-left: 50px;
+  position: relative;
+  display: inline-block
 }
 
 .isBefore:before {
-    content: "@";
-    font-weight: bold;
-    position: absolute;
-    top: 10%;
-    left: -30px;
+  content: "@";
+  font-weight: bold;
+  position: absolute;
+  top: 10%;
+  left: -30px;
 }
 
 .isAfter::after {
-    content: "#";
-    font-weight: bold;
-    position: absolute;
-    top: 10%;
-    right: -30px;
+  content: "#";
+  font-weight: bold;
+  position: absolute;
+  top: 10%;
+  right: -30px;
 }
 
 .test2 {
-    width: 250px;
-    border: 5px solid #f32a8f;
-    transform-origin: 50% 0%;
-    transform: rotate(10deg);
-    margin-left: 100px;
-    /* transform: translate(50px, 100px); */
-    /* transform: rotateY(40deg); */
+  width: 250px;
+  border: 5px solid #f32a8f;
+  transform-origin: 50% 0%;
+  transform: rotate(10deg);
+  margin-left: 100px;
+  /* transform: translate(50px, 100px); */
+  /* transform: rotateY(40deg); */
 }
 
 /* ////////////////////////////////////////////////////////////////////////////////// */
 
 .imgDiv {
-    width: 100%;
-    height: calc(100% - 21px);
-    margin-right: 10px;
+  width: 100%;
+  height: calc(100% - 21px);
+  margin-right: 10px;
 }
 
 .imgDiv img {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .filters {
-    display: flex;
-    justify-content: flex-start
+  display: flex;
+  justify-content: flex-start
 }
 
 .filters>div {
-    margin-right: 30px;
+  margin-right: 30px;
 }
 
 .filters>div:nth-child(1) img {
-    /* 模糊 */
-    filter: blur(1px);
+  /* 模糊 */
+  filter: blur(1px);
 }
 
 .filters>div:nth-child(2) {
-    /* 灰度 */
-    filter: grayscale(80%);
+  /* 灰度 */
+  filter: grayscale(80%);
 }
 
 .filters>div:nth-child(3) img {
-    /* 阴影 */
-    filter: drop-shadow(18px 8px 10px red);
+  /* 阴影 */
+  filter: drop-shadow(18px 8px 10px red);
 }
 
 /* ********************************************************************************* */
 
 .mediaDiv {
-    background: pink;
-    height: 50px;
+  background: pink;
+  height: 50px;
 }
 
 /* 表示宽度至少1080px */
 
 @media screen and (min-width: 1080px) {
-    .mediaDiv {
-        border: 3px solid rgb(19, 27, 19);
-    }
+  .mediaDiv {
+    border: 3px solid rgb(19, 27, 19);
+  }
 }
 
 /* 表示宽度最多880px */
 
 @media screen and (max-width: 880px) {
-    .mediaDiv {
-        border: 15px solid rgb(19, 27, 19);
-    }
+  .mediaDiv {
+    border: 15px solid rgb(19, 27, 19);
+  }
 }
 
 /* ******************************************************************* */
 
 .radiusDiv {
-    width: 200px;
-    height: 50px;
-    background-color: #cae8ca;
-    border: 2px solid #4CAF50;
-    border-top-left-radius: 20px 40px;
-    border-top-right-radius: 80px 40px;
-    border-bottom-left-radius: 30px 40px;
-    border-bottom-right-radius: 30px 40px;
+  width: 200px;
+  height: 50px;
+  background-color: #cae8ca;
+  border: 2px solid #4CAF50;
+  border-top-left-radius: 20px 40px;
+  border-top-right-radius: 80px 40px;
+  border-bottom-left-radius: 30px 40px;
+  border-bottom-right-radius: 30px 40px;
 }
 
 /* ******************************
@@ -181,630 +181,661 @@
 ************************************* */
 /* 只做个分栏*/
 #boxs {
-    width: 350px;
-    display: column;
-    column-count: 3;
-    column-gap: 20px;
-    column-rule: 1px outset #ff00ff;
+  width: 350px;
+  display: column;
+  column-count: 3;
+  column-gap: 20px;
+  column-rule: 1px outset #ff00ff;
 }
 
 /*瀑布流层*/
 .waterfall {
-    column-count: 5;
-    /* 把 div 元素中的文本划分为三列。 */
-    column-gap: 10px;
-    /* 性规定列之间的间隔 */
-    column-rule: 1px outset #ff00ff;
-    /* 性规定列之间的间隔样式 */
+  column-count: 5;
+  /* 把 div 元素中的文本划分为三列。 */
+  column-gap: 10px;
+  /* 性规定列之间的间隔 */
+  column-rule: 1px outset #ff00ff;
+  /* 性规定列之间的间隔样式 */
 }
 
 .item {
-    padding: 5px;
-    margin: 0 0 10px 0;
-    break-inside: avoid;
-    /* 声明一个元素内部是否应当放置分页符,avoid:避免在元素内部插入分页符 */
-    border: 1px solid rgb(202, 201, 201);
+  padding: 5px;
+  margin: 0 0 10px 0;
+  break-inside: avoid;
+  /* 声明一个元素内部是否应当放置分页符,avoid:避免在元素内部插入分页符 */
+  border: 1px solid rgb(202, 201, 201);
 }
 
 .item img {
-    width: 100%;
-    margin-bottom: 10px;
+  width: 100%;
+  margin-bottom: 10px;
 }
 
 /**********************************************************************/
 .stickyDiv {
-    height: 200px;
-    background: rgb(234, 229, 238);
-    margin-top: 40px;
-    overflow-y: scroll;
-    box-sizing: border-box;
+  height: 200px;
+  background: rgb(234, 229, 238);
+  margin-top: 40px;
+  overflow-y: scroll;
+  box-sizing: border-box;
 }
 
 .scrollDiv>div>div {
-    height: 25px;
+  height: 25px;
 }
 
 .sticky {
-    position: sticky;
-    top: 0;
-    padding: 5px;
-    background-color: #cae8ca;
-    border: 2px solid #4CAF50;
-    font-size: 14px;
-    font-weight: bold;
-    color: red;
+  position: sticky;
+  top: 0;
+  padding: 5px;
+  background-color: #cae8ca;
+  border: 2px solid #4CAF50;
+  font-size: 14px;
+  font-weight: bold;
+  color: red;
 }
 
 .active {
-    color: red;
+  color: red;
 }
 
 .icons1 {
-    display: inline-block;
-    width: 40px;
-    height: 42px;
-    background: url('../../../assets/jinglingtu.png') no-repeat -25px -20px;
-    zoom: 0.5;
-    border: 1px solid rgb(173, 148, 148);
+  display: inline-block;
+  width: 40px;
+  height: 42px;
+  background: url('../../../assets/jinglingtu.png') no-repeat -25px -20px;
+  zoom: 0.5;
+  border: 1px solid rgb(173, 148, 148);
 }
 
 .icons2 {
-    display: inline-block;
-    width: 55px;
-    height: 56px;
-    background: url('../../../assets/jinglingtu.png') no-repeat -108px -13px;
-    zoom: 1.5;
-    border: 1px solid rgb(173, 148, 148);
+  display: inline-block;
+  width: 55px;
+  height: 56px;
+  background: url('../../../assets/jinglingtu.png') no-repeat -108px -13px;
+  zoom: 1.5;
+  border: 1px solid rgb(173, 148, 148);
 }
 
 .icons3 {
-    display: inline-block;
-    width: 40px;
-    height: 42px;
-    background: url('../../../assets/jinglingtu.png') no-repeat -25px -20px;
-    transform: scale(0.5);
-    border: 1px solid rgb(173, 148, 148);
+  display: inline-block;
+  width: 40px;
+  height: 42px;
+  background: url('../../../assets/jinglingtu.png') no-repeat -25px -20px;
+  transform: scale(0.5);
+  border: 1px solid rgb(173, 148, 148);
 }
 
 .icons4 {
-    display: inline-block;
-    width: 55px;
-    height: 56px;
-    background: url('../../../assets/jinglingtu.png') no-repeat -108px -13px;
-    transform: scale(1.5);
-    border: 1px solid rgb(173, 148, 148);
+  display: inline-block;
+  width: 55px;
+  height: 56px;
+  background: url('../../../assets/jinglingtu.png') no-repeat -108px -13px;
+  transform: scale(1.5);
+  border: 1px solid rgb(173, 148, 148);
 }
 
 .dropItem {
-    width: 150px;
-    height: 80px;
-    background: red;
+  width: 150px;
+  height: 80px;
+  background: red;
 }
 
 /*******************************************************/
 section div {
-    display: flex
+  display: flex
 }
 
 .hexagon {
-    display: inline-block;
-    width: 388px;
-    height: 333px;
-    background-image:
-        linear-gradient(120deg, red 83px, transparent 0, transparent 419px, blue 0),
-        linear-gradient(-120deg, #fae1e1 83px, transparent 0, transparent 419px, blue 0),
-        linear-gradient(160deg, transparent 345px, #1e334d 0),
-        linear-gradient(140deg, transparent 376px, #1e910f 0),
-        linear-gradient(120deg, transparent 254px, yellow 0),
-        linear-gradient(150deg, brown 183px, transparent 0),
-        linear-gradient(80deg, transparent 0px, #085b25 0);
-    background-color: #053b17,
+  display: inline-block;
+  width: 388px;
+  height: 333px;
+  background-image:
+    linear-gradient(120deg, red 83px, transparent 0, transparent 419px, blue 0),
+    linear-gradient(-120deg, #fae1e1 83px, transparent 0, transparent 419px, blue 0),
+    linear-gradient(160deg, transparent 345px, #1e334d 0),
+    linear-gradient(140deg, transparent 376px, #1e910f 0),
+    linear-gradient(120deg, transparent 254px, yellow 0),
+    linear-gradient(150deg, brown 183px, transparent 0),
+    linear-gradient(80deg, transparent 0px, #085b25 0);
+  background-color: #053b17,
 }
 
 /*******************************************************/
 #center {
-    width: 100px;
-    height: 50px;
-    margin: 10px auto;
-    position: relative;
+  width: 100px;
+  height: 50px;
+  margin: 10px auto;
+  position: relative;
 }
 
 #center p {
-    position: absolute;
-    margin: 0;
-    width: 20px;
-    height: 20px;
-    border: 1px solid rgb(208, 204, 204);
-    border-radius: 50%;
-    box-sizing: border-box;
+  position: absolute;
+  margin: 0;
+  width: 20px;
+  height: 20px;
+  border: 1px solid rgb(208, 204, 204);
+  border-radius: 50%;
+  box-sizing: border-box;
 }
 
 .yuan1 {
-    left: -10px;
-    top: -10px;
+  left: -10px;
+  top: -10px;
 }
 
 .yuan2 {
-    right: -10px;
-    top: -10px;
+  right: -10px;
+  top: -10px;
 }
 
 .yuan3 {
-    right: -10px;
-    bottom: -10px;
+  right: -10px;
+  bottom: -10px;
 }
 
 .yuan4 {
-    left: -10px;
-    bottom: -10px;
+  left: -10px;
+  bottom: -10px;
 }
 
 /**************************************************/
 
 .a {
-    /*filter:滤镜，用于实现缺口那的阴影，用box-shadow缺口那会有问题*/
-    filter: drop-shadow(2px 2px 5px #000);
+  /*filter:滤镜，用于实现缺口那的阴影，用box-shadow缺口那会有问题*/
+  filter: drop-shadow(2px 2px 5px #000);
 }
 
 .b {
-    width: 100px;
-    height: 50px;
-    /*通过radial-gradient，用径向渐变创建 "图像"*/
-    /*定义了形状:圆形，位置：左下角，颜色：透明，半径：10，背景色：f5f5f5，背景位置：左右各一个*/
-    background: radial-gradient(circle at bottom left, transparent 10px, red 0) left,
-        radial-gradient(circle at bottom right, transparent 10px, blue 0) right;
-    /*对应上面左右各一个，这里把背景横向平分50%*/
-    background-size: 50% 100%;
-    /*必须设置否则去掉上面某些样式，会有多个透明扇形出现*/
-    background-repeat: no-repeat;
-    border-radius: 10px;
+  width: 100px;
+  height: 50px;
+  /*通过radial-gradient，用径向渐变创建 "图像"*/
+  /*定义了形状:圆形，位置：左下角，颜色：透明，半径：10，背景色：f5f5f5，背景位置：左右各一个*/
+  background: radial-gradient(circle at bottom left, transparent 10px, red 0) left,
+    radial-gradient(circle at bottom right, transparent 10px, blue 0) right;
+  /*对应上面左右各一个，这里把背景横向平分50%*/
+  background-size: 50% 100%;
+  /*必须设置否则去掉上面某些样式，会有多个透明扇形出现*/
+  background-repeat: no-repeat;
+  border-radius: 10px;
 }
 
 /*下面部分同理*/
 .c {
-    width: 100px;
-    height: 50px;
-    background: radial-gradient(circle at top left, transparent 10px, yellow 0) left,
-        radial-gradient(circle at top right, transparent 10px, pink 0) right;
-    background-size: 50% 100%;
-    background-repeat: no-repeat;
-    border-radius: 10px;
+  width: 100px;
+  height: 50px;
+  background: radial-gradient(circle at top left, transparent 10px, yellow 0) left,
+    radial-gradient(circle at top right, transparent 10px, pink 0) right;
+  background-size: 50% 100%;
+  background-repeat: no-repeat;
+  border-radius: 10px;
 }
 
 /****************************************************************/
 .wa {
-    width: 150px;
-    height: 150px;
-    background: palevioletred;
-    display: flex;
-    justify-content: center;
-    align-items: center
+  width: 150px;
+  height: 150px;
+  background: palevioletred;
+  display: flex;
+  justify-content: center;
+  align-items: center
 }
 
 #div1 {
-    width: 100px;
-    height: 100px;
+  width: 100px;
+  height: 100px;
 }
 
 /***************************************************************/
 .tem {
-    width: 150px;
-    height: 50px;
-    padding-top: 5px;
+  width: 150px;
+  height: 50px;
+  padding-top: 5px;
 }
 
 .tem span {
-    display: inline-block;
+  display: inline-block;
 }
 
 .tem>span:nth-child(2) {
-    width: 110px;
-    height: 100%;
-    background: #f32a8f;
-    border-radius: 20px 20px 0 0
+  width: 110px;
+  height: 100%;
+  background: #f32a8f;
+  border-radius: 20px 20px 0 0
 }
 
 .tem>span:nth-child(1) {
-    width: 20px;
-    height: 20px;
-    background: -webkit-radial-gradient(top left, #fff 0%, #fff 71%, #f32a8f 71%, #f32a8f 100%);
+  width: 20px;
+  height: 20px;
+  background: -webkit-radial-gradient(top left, #fff 0%, #fff 71%, #f32a8f 71%, #f32a8f 100%);
 }
 
 .tem>span:nth-child(3) {
-    width: 20px;
-    height: 20px;
-    background: -webkit-radial-gradient(top right, #fff 0%, #fff 71%, #f32a8f 71%, #f32a8f 100%);
+  width: 20px;
+  height: 20px;
+  background: -webkit-radial-gradient(top right, #fff 0%, #fff 71%, #f32a8f 71%, #f32a8f 100%);
 }
 
 /***************************************************************/
 .radial-gradient {
-    width: 200px;
-    height: 100px;
-    background: blue;
-    position: relative;
+  width: 200px;
+  height: 100px;
+  background: blue;
+  position: relative;
 }
 
 .radial-gradient:after {
-    content: '';
-    position: absolute;
-    height: 10px;
-    left: 0;
-    right: 0;
-    bottom: -10px;
-    background: radial-gradient(20px 25px ellipse at top, red 10px, transparent 0px);
-    background-size: 20px 10px;
+  content: '';
+  position: absolute;
+  height: 10px;
+  left: 0;
+  right: 0;
+  bottom: -10px;
+  background: radial-gradient(20px 25px ellipse at top, red 10px, transparent 0px);
+  background-size: 20px 10px;
 }
 
 #nb {
-    width: 210px;
-    height: 210px;
+  width: 210px;
+  height: 210px;
 }
 
 /***************************************************************/
 .isMap {
-    width: 200px;
-    height: 200px;
-    border: 1px solid;
+  width: 200px;
+  height: 200px;
+  border: 1px solid;
 }
 
 .dd {
-    display: inline-block;
-    width: 0;
-    height: 0;
-    border-left: 20px solid transparent;
-    border-right: 20px solid transparent;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
 }
 
 .sanjiao {
-    border-top: 40px solid red;
+  border-top: 40px solid red;
 }
 
 .sanjiao1 {
-    border-bottom: 40px solid red;
+  border-bottom: 40px solid red;
 }
 
 .dd1 {
-    display: inline-block;
-    width: 0;
-    height: 0;
-    border-top: 20px solid transparent;
-    border-bottom: 20px solid transparent;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
 }
 
 .sanjiao2 {
-    border-left: 40px solid red;
+  border-left: 40px solid red;
 }
 
 .sanjiao3 {
-    border-right: 40px solid red;
+  border-right: 40px solid red;
 }
 
 .sanjiao4 {
-    display: inline-block;
-    width: 0;
-    height: 0;
-    border: 20px solid red;
-    border-right: 20px solid transparent;
-    border-bottom: 20px solid transparent;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border: 20px solid red;
+  border-right: 20px solid transparent;
+  border-bottom: 20px solid transparent;
 }
 
 .sanjiao5 {
-    display: inline-block;
-    width: 0;
-    height: 0;
-    border: 20px solid red;
-    border-top: 20px solid transparent;
-    border-right: 20px solid transparent;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border: 20px solid red;
+  border-top: 20px solid transparent;
+  border-right: 20px solid transparent;
 }
 
 .isCircle {
-    display: inline-block;
-    width: 50px;
-    height: 50px;
-    border: 10px solid red;
-    border-radius: 50%;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border: 10px solid red;
+  border-radius: 50%;
 }
 
 .qipao {
-    display: inline-block;
-    width: 100px;
-    height: 50px;
-    position: relative;
-    border-radius: 20px;
-    background: red;
+  display: inline-block;
+  width: 100px;
+  height: 50px;
+  position: relative;
+  border-radius: 20px;
+  background: red;
 }
 
 .qipao:after {
-    content: '';
-    display: inline-block;
-    width: 20px;
-    height: 15px;
-    position: absolute;
-    top: 40px;
-    left: 20px;
-    border: 0 solid transparent;
-    border-bottom: 10px solid red;
-    border-radius: 0 0 0 40px;
-    transform: rotate(-90deg);
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 15px;
+  position: absolute;
+  top: 40px;
+  left: 20px;
+  border: 0 solid transparent;
+  border-bottom: 10px solid red;
+  border-radius: 0 0 0 40px;
+  transform: rotate(-90deg);
 }
 
 td {
-    border: 1px solid rgb(161, 101, 230);
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
+  border: 1px solid rgb(161, 101, 230);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .isTable1 {
-    border-collapse: collapse;
-    width: 100%;
-    table-layout: auto;
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: auto;
 }
 
 .isTable2 {
-    border-collapse: collapse;
-    width: 100%;
-    table-layout: fixed;
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
 }
 
 /**************************************************/
 .wraper>div:nth-child(2) {
-    display: flex;
-    flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .wraper .item {
-    flex-basis: 500px;
-    /* flex-basis 属性用于设置或检索弹性盒伸缩基准值,设置宽度用，避免自动设置宽度，没多大用 */
+  flex-basis: 500px;
+  /* flex-basis 属性用于设置或检索弹性盒伸缩基准值,设置宽度用，避免自动设置宽度，没多大用 */
 }
 
 .shapes {
-    float: left;
-    width: 280px;
-    height: 250px;
+  float: left;
+  width: 280px;
+  height: 250px;
 }
 
 .shapes1 {
-    /* 尺寸值为半径 */
-    /* 那么圆的半径为20px，圆心距离左侧为120px，距离顶部为140px的点。*/
-    /* shape-outside: circle(100px at 120px 140px); */
+  /* 尺寸值为半径 */
+  /* 那么圆的半径为20px，圆心距离左侧为120px，距离顶部为140px的点。*/
+  /* shape-outside: circle(100px at 120px 140px); */
 
-    /* 那么圆的半径为100px，圆心在外部形状的中心*/
-    shape-outside: circle(100px);
+  /* 那么圆的半径为100px，圆心在外部形状的中心*/
+  shape-outside: circle(100px);
 }
 
 .shapes2 {
-    /* 尺寸值为每一个点的坐标按顺序链接起来形成一个多边形，也可以用百分比 */
-    shape-outside: polygon(0 0, 120px 50px, 16px 100px, 80px 166px, 150px 200px, 70px 250px, 20px 300px);
+  /* 尺寸值为每一个点的坐标按顺序链接起来形成一个多边形，也可以用百分比 */
+  shape-outside: polygon(0 0, 120px 50px, 16px 100px, 80px 166px, 150px 200px, 70px 250px, 20px 300px);
 }
 
 .shapes3 {
-    /* 尺寸值为椭圆形x、y轴长度值*/
-    shape-outside: ellipse(124px 75px);
+  /* 尺寸值为椭圆形x、y轴长度值*/
+  shape-outside: ellipse(124px 75px);
 }
 
 .toScroll {
-    height: 300px;
+  height: 300px;
 }
 
 .shapes4 {
-    /* 尺寸值为文字x、y轴距离形状中心点的距离*/
-    /* 允许1~4个值，分别是top，right，bottom，left的简写值 */
-    /* shape-outside: inset(30px 100px 150px 20px); */
-    /* round，可选值，环绕的意思。后面紧接的 border-radius是我们在熟悉不过的圆角属性，
+  /* 尺寸值为文字x、y轴距离形状中心点的距离*/
+  /* 允许1~4个值，分别是top，right，bottom，left的简写值 */
+  /* shape-outside: inset(30px 100px 150px 20px); */
+  /* round，可选值，环绕的意思。后面紧接的 border-radius是我们在熟悉不过的圆角属性，
 可定义凹形体中四个角的圆滑程度，也是有1~4个值，分别是左上角、右上角、右下角、左下角。*/
-    shape-outside: inset(20px 40px 10% 20px round 10px 40px 80px 10px);
+  shape-outside: inset(20px 40px 10% 20px round 10px 40px 80px 10px);
 }
 
 .shapes5 {
-    float: left;
-    width: 500px;
-    height: 220px;
-    shape-outside: url('../../../assets/shape.png');
-    background: url('../../../assets/shape.png') no-repeat;
-    shape-image-threshold: 0.9;
-    /* 形状图像阈值 0 ~ 1,数值越小，表示颜色值扣的越细，
+  float: left;
+  width: 500px;
+  height: 220px;
+  shape-outside: url('../../../assets/shape.png');
+  background: url('../../../assets/shape.png') no-repeat;
+  shape-image-threshold: 0.9;
+  /* 形状图像阈值 0 ~ 1,数值越小，表示颜色值扣的越细，
     当图片有渐变时，最能看出效果
     https://www.zhangxinxu.com/study/201901/css-shape-image-threshold-demo.php
     */
-    shape-margin: 20px;
-    /* 文字距离图像的距离 */
+  shape-margin: 20px;
+  /* 文字距离图像的距离 */
 }
 
 .shapes6 {
-    float: left;
-    width: 280px;
-    height: 280px;
-    background: linear-gradient(red, blue);
-    animation: 5s poly infinite alternate ease-in-out;
-    shape-margin: 10px;
-    margin: 0 auto;
-    display: block;
+  float: left;
+  width: 280px;
+  height: 280px;
+  background: linear-gradient(red, blue);
+  animation: 5s poly infinite alternate ease-in-out;
+  shape-margin: 10px;
+  margin: 0 auto;
+  display: block;
 }
 
 @keyframes poly {
-    from {
-        shape-outside: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-        clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-    }
+  from {
+    shape-outside: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  }
 
-    to {
-        shape-outside: polygon(44% 26%, 58% 38%, 58% 38%, 44% 81%, 44% 81%, 25% 49%);
-        clip-path: polygon(44% 26%, 58% 38%, 58% 38%, 44% 81%, 44% 81%, 25% 49%);
-    }
+  to {
+    shape-outside: polygon(44% 26%, 58% 38%, 58% 38%, 44% 81%, 44% 81%, 25% 49%);
+    clip-path: polygon(44% 26%, 58% 38%, 58% 38%, 44% 81%, 44% 81%, 25% 49%);
+  }
 }
 
 .main1 {
-    width: 350px;
+  width: 350px;
 }
 
 .left1,
 .right1 {
-    width: 40%;
-    height: 100px;
-    background-color: lightgray;
+  width: 40%;
+  height: 100px;
+  background-color: lightgray;
 }
 
 .left1 {
-    shape-outside: polygon(0 0, 100% 100%, 0 100%);
-    float: left;
-    clip-path: polygon(0 0, 100% 100%, 0 100%);
+  shape-outside: polygon(0 0, 100% 100%, 0 100%);
+  float: left;
+  clip-path: polygon(0 0, 100% 100%, 0 100%);
 }
 
 .right1 {
-    shape-outside: polygon(100% 0, 100% 100%, 0 100%);
-    float: right;
-    clip-path: polygon(100% 0, 100% 100%, 0 100%);
+  shape-outside: polygon(100% 0, 100% 100%, 0 100%);
+  float: right;
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
 }
 
 .ppp {
-    text-align: center;
+  text-align: center;
 }
 
 /*******************************************/
 
 .box {
-    max-width: 414px;
-    height: 480px;
-    border: solid #000;
-    margin: auto;
-    overflow: auto;
+  max-width: 414px;
+  height: 480px;
+  border: solid #000;
+  margin: auto;
+  overflow: auto;
 }
 
 .shape {
-    float: left;
-    width: 32px;
-    height: 340px;
-    shape-outside: polygon(0 0, 0 150px, 16px 154px, 30px 166px, 30px 314px, 16px 326px, 0 330px, 0 0);
-    transition: shape-outside .1s;
+  float: left;
+  width: 32px;
+  height: 340px;
+  shape-outside: polygon(0 0, 0 150px, 16px 154px, 30px 166px, 30px 314px, 16px 326px, 0 330px, 0 0);
+  transition: shape-outside .1s;
 }
 
 .liuhai {
-    width: 24px;
-    height: 180px;
-    background: url('../../../assets/liuhai.png') no-repeat left center;
-    position: absolute;
-    margin-top: 150px;
+  width: 24px;
+  height: 180px;
+  background: url('../../../assets/liuhai.png') no-repeat left center;
+  position: absolute;
+  margin-top: 150px;
 }
 
 .content ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .content li {
-    border-bottom: 1px solid #eee;
-    padding: .5em;
+  border-bottom: 1px solid #eee;
+  padding: .5em;
 }
 
 /*******************************************/
 .gundong .wap {
-    height: 150px;
-    width: 200px;
+  height: 150px;
+  width: 200px;
 }
 
 .gundong ul {
-    height: 100%;
-    width: 100%;
-    overflow: auto;
-    padding: 0;
-    margin: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  padding: 0;
+  margin: 0;
 }
 
 .gundong li {
-    list-style: none;
-    padding: 10px 0;
-    width: 350px;
+  list-style: none;
+  padding: 10px 0;
+  width: 350px;
 }
 
 .gundong li:nth-of-type(even) {
-    background: rgb(233, 135, 135)
+  background: rgb(233, 135, 135)
 }
 
 .gundong li:nth-of-type(odd) {
-    background: rgb(137, 236, 175)
+  background: rgb(137, 236, 175)
 }
 
 /* 自定义滚动条 */
 ul::-webkit-scrollbar {
-    /*滚动条整体样式*/
-    width: 15px;
-    /* 竖滚动条的宽度 */
-    height: 15px;
-    /* 横滚动条的高度 */
+  /*滚动条整体样式*/
+  width: 15px;
+  /* 竖滚动条的宽度 */
+  height: 15px;
+  /* 横滚动条的高度 */
 }
 
 ul::-webkit-scrollbar-button {
-    /*滚动条里面点击后使滚动条滚动的按钮，向下。向上的箭头*/
-    border-radius: 10px;
-    background: black;
+  /*滚动条里面点击后使滚动条滚动的按钮，向下。向上的箭头*/
+  border-radius: 10px;
+  background: black;
 }
 
 .gundong ul::-webkit-scrollbar-track {
-    /*整个滚动条最底层*/
-    /* background: lawngreen; */
-    background: lawngreen;
+  /*整个滚动条最底层*/
+  /* background: lawngreen; */
+  background: lawngreen;
 }
 
 .gundong ul::-webkit-scrollbar-thumb {
-    /*滚动条内滑块*/
-    border-radius: 10px;
-    background: yellow;
+  /*滚动条内滑块*/
+  border-radius: 10px;
+  background: yellow;
 
 }
 
 ul::-webkit-scrollbar-track-piece {
-    /*滚动条滑轨*/
-    border-radius: 10px;
-    background: brown;
+  /*滚动条滑轨*/
+  border-radius: 10px;
+  background: brown;
 }
 
 .gundong ul::-webkit-scrollbar-corner {
-    /* 两个滚动条交接的地方*/
-    border-radius: 10px;
-    background: skyblue;
+  /* 两个滚动条交接的地方*/
+  border-radius: 10px;
+  background: skyblue;
 }
 
 .setPlaceholder::-webkit-input-placeholder {
-    color: red;
+  color: red;
 }
 
 .toSapceBetween {
-    margin: 10px 0;
-    width: 100px;
-    border: 1px solid red;
-    text-align-last: justify;
+  margin: 10px 0;
+  width: 100px;
+  border: 1px solid red;
+  text-align-last: justify;
 }
 
 .setImg>div {
-    display: inline-block;
-    width: 400px;
-    height: 200px;
-    margin: 0 5px;
-    border: 1px dashed rgb(26, 27, 26);
-    position: relative;
+  display: inline-block;
+  width: 400px;
+  height: 200px;
+  margin: 0 5px;
+  border: 1px dashed rgb(26, 27, 26);
+  position: relative;
 }
 
 .setImg>p:nth-child(1) {
-    position: absolute;
-    bottom: -30px;
-    left: 0;
+  position: absolute;
+  bottom: -30px;
+  left: 0;
 }
 
 .setImg>p:nth-child(2) {
-    position: absolute;
-    bottom: -70px;
-    left: 0;
+  position: absolute;
+  bottom: -70px;
+  left: 0;
 }
 
 
 .df {
-    width: 250px;
-    height: 140px;
+  width: 250px;
+  height: 140px;
 }
 
 #setColor {
-    width: 100px;
-    height: 50px;
+  width: 100px;
+  height: 50px;
+}
+
+/***************************
+BFC
+****************************************/
+.bfc_wap1 {
+  border: 3px solid red;
+  margin-bottom: 10px;
+  display: flow-root
+}
+
+.bfc_left {
+  min-width: 100px;
+  height: 100px;
+  background: rgb(9, 255, 0);
+  float: left;
+}
+
+.bfc_left2 {
+  background: grey;
+  height: 100px;
+  width: 100px;
+  float: left;
+  margin-right: 10px;
+}
+
+.bfc_righ2 {
+  background: rgb(201, 230, 98);
+  height: 100px;
+  width: 120px;
+  display: flow-root
 }
