@@ -189,7 +189,7 @@ export class SomeCss3Component implements OnInit {
       this.pubuData.push(this.imgArr[num])
     }
   }
-  // 直接定位到粘性定位元素
+  // 直接定位到元素
   toScroll(tar) {
     tar.scrollIntoView()
   }
