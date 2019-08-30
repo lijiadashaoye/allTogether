@@ -849,3 +849,10 @@ BFC
   width: 120px;
   display: flow-root
 }
+
+/****************************************************************************/
+.pp {
+  display: inline-block;
+  width: 100px;
+  height: 50px;
+}

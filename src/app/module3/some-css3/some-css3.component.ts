@@ -193,4 +193,12 @@ export class SomeCss3Component implements OnInit {
   toScroll(tar) {
     tar.scrollIntoView()
   }
+  // 操纵元素的style
+  changeColor(tar) {
+    tar.style.color == "blue" ? tar.style.color = "red" : tar.style.color = "blue"
+  }
+  changeBk(tar) {
+    tar.style.background == "pink" ? tar.style.removeProperty('background')
+      : tar.style.background = "pink"
+  }
 }
