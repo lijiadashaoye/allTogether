@@ -183,10 +183,14 @@ export class SomeCss3Component implements OnInit {
   }
   ]
   pubuData = []
-  makePuBu() {
+  makePuBu() {  // 瀑布流布局
     for (let i = 10; i--;) {
       let num = Math.trunc(Math.random() * this.imgArr.length);
       this.pubuData.push(this.imgArr[num])
     }
+  }
+  // 直接定位到粘性定位元素
+  toScroll(tar) {
+    tar.scrollIntoView()
   }
 }

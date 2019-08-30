@@ -60,6 +60,7 @@
     <p #isTar>元素的css样式增删</p>
     <button (click)="show(isTar)">show</button>
     <button (click)="hide(isTar)">hide</button>
+    <button (click)="toScroll(liuhai)">直接定位到某个元素(刘海屏)</button>
   </div>
   <div>
     <p>文字在固定宽度内与两边对齐</p>
@@ -439,7 +440,7 @@
       </div>
     </div>
 
-    <div id="box" class="box">
+    <div id="box" class="box" #liuhai>
       <i id="shape" class="shape"></i>
       <i class="liuhai"></i>
       <div class="content">
