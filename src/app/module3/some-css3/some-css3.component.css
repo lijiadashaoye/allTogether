@@ -38,10 +38,10 @@
 }
 
 .test {
-  text-overflow: ellipsis;
-  white-space: nowrap;
   width: 12em;
   overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .test_more {
@@ -52,12 +52,21 @@
   overflow: hidden;
   font-size: 14px;
   line-height: 1.2em;
+  padding: 2px;
+  border: 1px solid red;
+}
 
-  /* display: -webkit-box;
+.test_more2 {
+  border: 1px solid;
+  width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  /* autoprefixer: off */
+  /* 在-webkit-box-orient:vertical;时，添加如上注释进行包裹！ */
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
-  overflow: hidden;
-  该方法适用于WebKit浏览器及移动端 */
+  padding: 2px;
 }
 
 .test_more::after {
