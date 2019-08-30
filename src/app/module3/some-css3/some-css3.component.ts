@@ -194,7 +194,9 @@ export class SomeCss3Component implements OnInit {
     tar.scrollIntoView()
   }
   // 操纵元素的style
+  // style在元素上是一个以各种样式名为属性名的对象，操纵样式名即可达到操纵样式
   changeColor(tar) {
+    console.log(tar.style)
     tar.style.color == "blue" ? tar.style.color = "red" : tar.style.color = "blue"
   }
   changeBk(tar) {
