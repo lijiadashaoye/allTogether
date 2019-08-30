@@ -675,9 +675,10 @@ td {
 .box {
   max-width: 414px;
   height: 480px;
-  border: solid #000;
+  border: 2px solid #000;
   margin: auto;
   overflow: auto;
+  box-sizing: border-box
 }
 
 .shape {
