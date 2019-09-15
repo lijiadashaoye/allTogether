@@ -332,8 +332,17 @@ export class JsLearnComponent implements OnInit {
     var d = -~~3.14; // -3
     var e = -3.14 >> 0; // -3
     var f = -3.14 | 0; // -3
-    this.quzheng = [a, b, c, d, e, f]
-    console.log(a, b, c, d, e, f);
+    // 对整数来说 ~~ 运算结果与 Math.floor() 运算结果相同，而对于负数来说不相同：
+    var g = Math.floor(-4.5)
+    this.quzheng = [a, b, c, d, e, f, g]
+    console.log(a, b, c, d, e, f, g);
+  }
+
+  jigou(){
+    // 判断奇偶数
+    const num = 3;
+    console.log(!!(num & 1)); // true
+    console.log(!!(num % 2)); // true
   }
   // 使用 && 替代单一条件判断
   // 你可能这样写过
@@ -581,7 +590,9 @@ export class JsLearnComponent implements OnInit {
   //////////////////////////////////////////////////////////////////////
   // 数据类型判断
   dataType() {
-    var arr = [1, 'f', {}, [], null, undefined, false, /d/i,NaN];
+    var arr = [1, 'f', {},
+      [], null, undefined, false, /d/i, NaN
+    ];
     var toString = Object.prototype.toString;
     arr.forEach(item => {
       console.log((toString.call(item)).toLowerCase());

@@ -21,6 +21,9 @@
       <span *ngFor="let da of quzheng">{{da}}</span>
     </div>
     <div>
+      <button (click)="jigou()">奇偶数判断</button>
+    </div>
+    <div>
       <button (click)="jiequString()">字符串截取</button>
       <span>{{fromString}}：{{subString}}</span>
       <button (click)="toReload()">浏览器刷新</button>

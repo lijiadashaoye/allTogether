@@ -7,16 +7,16 @@ import {
 
 import {
   Module2Component
-} from './module2.component';
+} from '@IM/module2/module2.component';
 import {
   AnimateMainComponent
-} from './animate/animate.component';
+} from '@IM/module2/animate/animate.component';
 import {
   UseAnimateListComponent
-} from './animate/use-animate-list/use-animate-list.component';
+} from '@IM/module2/animate/use-animate-list/use-animate-list.component';
 import {
   module2RoutingModule
-} from './module2.route';
+} from '@IM/module2/module2.route';
 
 @NgModule({
   imports: [

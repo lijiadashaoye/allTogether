@@ -38,9 +38,13 @@
 <router-outlet></router-outlet><br>
 
 <hr>
-
+<h3>angular中定义路径快捷别名</h3>
+1：在tsconfig.json中定义好"paths"属性；<br>
+2：在paths中定义好路径别名，如："@IM/*": ["src/app/*"]则表示使用@IM代表路径src/app，后边再使用
+路径时，直接可以写：@IM/module2/angular-bi-ji/angular-bi-ji.component.html，可以找到这个文件
+<br>
 <p>
   ⇧⌘K 删除当前行<br>
   ⇧⌘\ 跳转到匹配的括号<br>
-  ⌃⇧`	创建新终端<br>
+  ⌃⇧` 创建新终端<br>
 </p>
