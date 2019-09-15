@@ -183,10 +183,24 @@ export class SomeCss3Component implements OnInit {
   }
   ]
   pubuData = []
-  makePuBu() {
+  makePuBu() {  // 瀑布流布局
     for (let i = 10; i--;) {
       let num = Math.trunc(Math.random() * this.imgArr.length);
       this.pubuData.push(this.imgArr[num])
     }
+  }
+  // 直接定位到元素
+  toScroll(tar) {
+    tar.scrollIntoView()
+  }
+  // 操纵元素的style
+  // style在元素上是一个以各种样式名为属性名的对象，操纵样式名即可达到操纵样式
+  changeColor(tar) {
+    console.log(tar.style)
+    tar.style.color == "blue" ? tar.style.color = "red" : tar.style.color = "blue"
+  }
+  changeBk(tar) {
+    tar.style.background == "pink" ? tar.style.removeProperty('background')
+      : tar.style.background = "pink"
   }
 }

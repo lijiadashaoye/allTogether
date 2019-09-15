@@ -1,5 +1,19 @@
 <div class="css3Waper">
   <div>
+    <p #isTar>元素的css样式增删</p>
+    <button (click)="show(isTar)">show</button>
+    <button (click)="hide(isTar)">hide</button>
+    <button (click)="toScroll(liuhai)">直接定位到某个元素(刘海屏)</button>
+  </div>
+  <div>
+    <p>操纵元素的style属性</p>
+    <div #wap class="pp">
+      发生地方发生的
+      <button (click)="changeColor(wap)">改变字体颜色</button>
+      <button (click)="changeBk(wap)">改变背景色</button>
+    </div>
+  </div>
+  <div>
     <h2>动态设置图标(导航使用)</h2>
     <div>
       <i class="iconfont" *ngFor="let lists of listData" [ngClass]="setClass(lists.icon)"> {{lists.name}}</i>
@@ -58,11 +72,7 @@
 
     </div>
   </div>
-  <div>
-    <p #isTar>元素的css样式增删</p>
-    <button (click)="show(isTar)">show</button>
-    <button (click)="hide(isTar)">hide</button>
-  </div>
+
   <div>
     <p>文字在固定宽度内与两边对齐</p>
     <p class="toSapceBetween">两字</p>
@@ -441,7 +451,7 @@
       </div>
     </div>
 
-    <div id="box" class="box">
+    <div id="box" class="box" #liuhai>
       <i id="shape" class="shape"></i>
       <i class="liuhai"></i>
       <div class="content">
