@@ -33,7 +33,7 @@ export class JsLearnComponent implements OnInit {
   ngOnInit() {
     this.times();
     // this.autoAudio();
-    console.log(11_22_23) // 对数字进行分隔，方便人阅读
+    // console.log(11_22_23) // 对数字进行分隔，方便人阅读
   }
 
   isClick(item, index) {
@@ -212,20 +212,54 @@ export class JsLearnComponent implements OnInit {
   // 字符串截取并添加新内容 
   fromString = '3234423421.2323432';
   subString = '';
+  subString2 = '';
   subNum = 3;
   jiequString(): void {
     var newStr = "";
     var count = 0;
     let num = this.fromString.indexOf("."); // 找到小数点的索引
     for (var i = num - 1; i >= 0; i--) {
-      if (count % this.subNum == 0 && count != 0) {
+      if (count % this.subNum === 0 && count != 0) {
         newStr = this.fromString.charAt(i) + "," + newStr; //碰到3的倍数则加上“,”号
       } else {
         newStr = this.fromString.charAt(i) + newStr; //逐个字符相接起来
       }
       count++;
     }
-    this.subString = newStr + this.fromString.substr(num, this.subNum);
+    this.subString = newStr + this.fromString.substr(num);
+  }
+
+  jiequ() {
+    let reg = /\.+/g,
+      point = '',
+      kk = '',
+      num = this.subNum,
+      str = this.fromString; // 将输入数据格式化为字符串
+    // 判断是否存在小数点
+    if (reg.test(str)) {
+      point = str.substring(str.indexOf('.'));
+      str = str.substr(0, str.indexOf('.'));
+    }
+    // 判断要截取的位数与字符串的长度
+    if (num >= str.length) {
+      this.subString2 = str + point;
+    } else {
+      // 遍历字符串格式化数据
+      for (let i = str.length - num; i >= 0; i -= num) {
+        kk = ',' + str.substr(i, num) + kk;
+        if (i - num < 0) {
+          kk = str.substr(0, i) + kk;
+        }
+      }
+      // 去除索引0处有可能的逗号
+      if (kk.charAt(0) === ',') {
+        this.subString2 = kk.substr(1) + point;
+      } else {
+        this.subString2 = kk + point;
+      }
+
+    }
+
   }
   /************************************************************/
   // 定义要使用的函数名
@@ -338,7 +372,7 @@ export class JsLearnComponent implements OnInit {
     console.log(a, b, c, d, e, f, g);
   }
 
-  jigou(){
+  jigou() {
     // 判断奇偶数
     const num = 3;
     console.log(!!(num & 1)); // true

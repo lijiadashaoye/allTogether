@@ -24,8 +24,11 @@
       <button (click)="jigou()">奇偶数判断</button>
     </div>
     <div>
-      <button (click)="jiequString()">字符串截取</button>
-      <span>{{fromString}}：{{subString}}</span>
+      <button (click)="jiequString()">字符串截取，必须是小数</button>
+
+      <p>{{fromString}}：{{subString}}</p>
+      <button (click)="jiequ()">字符串截取，任何数据</button>
+      <p>{{fromString}}：{{subString2}}</p>
       <button (click)="toReload()">浏览器刷新</button>
     </div>
     <div>
