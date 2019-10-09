@@ -856,3 +856,12 @@ BFC
   width: 100px;
   height: 50px;
 }
+
+.search-btn {
+  opacity: 0;
+  transition: all .5s ease-in-out
+}
+
+input:not(:placeholder-shown)+.search-btn {
+  opacity: 1
+}
