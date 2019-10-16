@@ -186,6 +186,7 @@
     <h3>img标签显示的图片填充尺寸设置</h3>
     <div *ngFor="let item of imgSrc">
       <img class="df" [src]="item.src" [style.object-fit]="item.type">
+      <hr style="margin:1px 0 0 0;" />
       <p>object-fit:{{item.type}}</p>
       <p>{{item.text}}</p>
     </div>
@@ -194,6 +195,7 @@
     <p>以定位原点的位置为起始，选择一定宽度高度的图片内容进行展示</p>
     <div *ngFor="let item of imgSrc">
       <img class="df" [src]="item.src" style="object-fit:cover" [style.object-position]="item.pos">
+      <hr style="margin:1px 0 0 0;" />
       <p>object-position:{{item.pos}}</p>
     </div>
   </div>
@@ -201,7 +203,7 @@
   <div>
     <div id="nb"></div>
     <img src='assets/background.png'>
-
+    <hr style="margin:1px 0 0 0;" />
     <p>
       https://blog.csdn.net/xi_2130/article/details/49331923
       <br>位置含义解释：
