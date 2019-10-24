@@ -24,7 +24,8 @@
       "my-library/*": [
         "dist/my-library/*"
       ],
-      "@IM/*": ["src/app/*"]
+      "@IM/*": ["src/app/*"],
+     
     }
   }
 }

@@ -25,6 +25,7 @@ export class SomeCss3Component implements OnInit {
   constructor(private rd: Renderer2, private elem: ElementRef) { }
 
   ngOnInit() {
+    
     document.ondragover = function (e) {
       // 防止图片在新窗口打开
       e.preventDefault();

@@ -1033,3 +1033,13 @@ input:not(:placeholder-shown)+.search-btn {
     transform: rotate(1turn);
   }
 }
+
+.for_bk_position {
+  width: 385px;
+  height: 208px;
+  background: palegoldenrod;
+  background-image: url('/assets/position.png');
+  background-position: 75% 40%;
+  background-repeat: no-repeat;
+
+}
