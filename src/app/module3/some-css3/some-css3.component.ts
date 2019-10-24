@@ -7,7 +7,7 @@ import {
 @Component({
   selector: "app-some-css3",
   templateUrl: "./some-css3.component.html",
-  styleUrls: ["./some-css3.component.css"]
+  styleUrls: ["./some-css3.component.scss"]
 })
 export class SomeCss3Component implements OnInit {
 
