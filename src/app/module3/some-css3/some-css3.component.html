@@ -23,9 +23,14 @@
   <div>
     <h2>动态显示隐藏搜索按钮</h2>
     <div>
-      <input type="text" placeholder="请输入关键字进行搜索">
+      <input type="text" class="setI" placeholder="输入文字才出按钮">
       <button type="button" class="search-btn">搜索</button>
     </div>
+    <div>
+      <input type="text" class="setI2" placeholder="获取焦点即出现按钮">
+      <button type="button" class="search-btn">搜索</button>
+    </div>
+
   </div>
 
   <div>
@@ -184,6 +189,7 @@
   </div>
   <div>
     <h3>锥形渐变，目前只有chrome支持</h3>
+    <p>css3 animation详解：https://www.cnblogs.com/Angies/p/9699515.html</p>
     <div class="div1"></div>
     <div class="div2"></div>
     <div class="div3"></div>
@@ -263,7 +269,8 @@
 
   <div>
     <h2>
-      background-position百分比的正确理解方式：图片自身的百分比位置与容器同样的百分比位置重合
+      background-position百分比的正确理解方式：图片自身的百分比位置与容器同样的百分比位置重合<br>
+      background-repeat新属性值：round和space。前者表示凑个整，后者表示留点缝
     </h2>
     <div class="for_bk_position">
 
@@ -276,19 +283,19 @@
   <h2>滤镜</h2>
   <div class="filters">
     <div style="width:200px;height:140px;">
-      <p>模糊</p>
+      <p>模糊:blur</p>
       <div class="imgDiv">
         <img src="assets/1.jpg">
       </div>
     </div>
     <div style="width:200px;height:140px;">
-      <p>灰度</p>
+      <p>灰度:grayscale</p>
       <div class="imgDiv">
         <img src="assets/1.jpg">
       </div>
     </div>
     <div style="width:200px;height:140px;">
-      <p>阴影</p>
+      <p>阴影:drop-shadow</p>
       <div class="imgDiv">
         <img src="assets/1.jpg">
       </div>

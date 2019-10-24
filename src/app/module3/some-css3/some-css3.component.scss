@@ -864,7 +864,11 @@ BFC
   transition: all .5s ease-in-out
 }
 
-input:not(:placeholder-shown)+.search-btn {
+.setI:not(:placeholder-shown)+.search-btn {
+  opacity: 1
+}
+
+.setI2:focus-within+.search-btn {
   opacity: 1
 }
 
@@ -1041,5 +1045,5 @@ input:not(:placeholder-shown)+.search-btn {
   background-image: url('/assets/position.png');
   background-position: 75% 40%;
   background-repeat: no-repeat;
-
+  // background-repeat: space;
 }
