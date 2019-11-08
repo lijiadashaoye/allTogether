@@ -70,8 +70,9 @@ export class JsLearnComponent implements OnInit {
       speechSynthesis.speak(msg);
     })
 
-    msg.onend = function (e) {
-      console.log('Finished in ' + e.elapsedTime + ' seconds.');
+    msg.onend = (event:any) => {
+      console.log(event)
+      console.log('Finished in ' + event.elapsedTime + ' seconds.');
     };
 
 

@@ -19,6 +19,10 @@
       <i class="iconfont" *ngFor="let lists of listData" [ngClass]="setClass(lists.icon)"> {{lists.name}}</i>
     </div>
   </div>
+  <div>
+    <h2>使用css函数获取自定义属性</h2>
+    <p class="isSpan" data-msg="使用'data-'方式的自定义属性">鼠标划入</p>
+  </div>
 
   <div>
     <h2>动态显示隐藏搜索按钮</h2>
