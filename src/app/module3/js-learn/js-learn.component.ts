@@ -29,7 +29,7 @@ export class JsLearnComponent implements OnInit {
     'daoxubianli'
   ];
   showData;
-  constructor(private elem: ElementRef, private rd: Renderer2) {}
+  constructor(private elem: ElementRef, private rd: Renderer2) { }
   ngOnInit() {
     this.times();
     // this.autoAudio();
@@ -48,12 +48,33 @@ export class JsLearnComponent implements OnInit {
   autoAudio() {
 
     this.isAudio = new Audio();
-    this.isAudio.src = "https://rl01-sycdn.kuwo.cn/bf214f5434f47ec569f6ac458fbde5b4/5cf629df/resource/n3/1/49/4211576901.mp3";
+    this.isAudio.src = "http://music.taihe.com/song/670342289?isshare=1";
     this.isAudio.play();
   }
   // 停止播放
   stopAudio() {
     this.isAudio.pause();
+  }
+
+  speak(text) {
+    // http://www.mathguide.de/info/tools/languagecode.html
+    var msg = new SpeechSynthesisUtterance();
+    var voices = window.speechSynthesis.getVoices();
+    msg.voice = voices[10];
+    msg.volume = 1; // 0 to 1  声音控制
+    msg.rate = 1; // 0.1 to 10  速度控制
+    msg.pitch = 2; //0 to 2  音调控制
+    msg.text = text;
+    ['zn', 'en'].forEach(str => {
+      msg.lang = str;
+      speechSynthesis.speak(msg);
+    })
+
+    msg.onend = function (e) {
+      console.log('Finished in ' + e.elapsedTime + ' seconds.');
+    };
+
+
   }
 
   /*******************************************************************/
@@ -311,13 +332,13 @@ export class JsLearnComponent implements OnInit {
   }
   objectSort(how) {
     let arr = [{
-        name: "ffff",
-        age: 51
-      },
-      {
-        name: "hjytjh",
-        age: 61
-      }
+      name: "ffff",
+      age: 51
+    },
+    {
+      name: "hjytjh",
+      age: 61
+    }
     ];
     this.arrFns2Result = arr.sort(toSort("age"));
 
@@ -441,7 +462,7 @@ export class JsLearnComponent implements OnInit {
     }
     requestAnimationFrame(ani)
   }
-  start(da ? ) {
+  start(da?) {
     if (da) {
       this.animates();
     } else {

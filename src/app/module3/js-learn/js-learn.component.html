@@ -36,6 +36,10 @@
       <button (click)="stopAudio()">停止播放</button>
     </div>
     <div>
+      <input #input>
+      <button (click)="speak(input.value)">朗读输入的内容，仅限中文、英文、数字</button>
+    </div>
+    <div>
       <button (click)="bijiao()">数据类型比较</button>
       <button (click)="chuandi()">按值传递和引用传递</button>
 
