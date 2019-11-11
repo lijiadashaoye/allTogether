@@ -3,7 +3,8 @@ import {
   OnInit,
   ElementRef,
   Renderer2,
-  ViewChild
+  ViewChild,
+  ChangeDetectorRef,
 } from "@angular/core";
 @Component({
   selector: "app-js-learn",
@@ -29,7 +30,22 @@ export class JsLearnComponent implements OnInit {
     'daoxubianli'
   ];
   showData;
-  constructor(private elem: ElementRef, private rd: Renderer2) { }
+  constructor(
+    private elem: ElementRef,
+    private rd: Renderer2,
+    private ch: ChangeDetectorRef) { }
+
+  jsMediaData;   // 如果点击按钮多次，会生成多个媒体监听
+  jsMedia() {
+    let that = this;
+    var mql = window.matchMedia('(max-width: 1000px)');
+    mql.onchange = (e) => {
+      // console.log(e)
+      that.jsMediaData = e.matches;
+      that.ch.detectChanges()
+    }
+  }
+
   ngOnInit() {
     this.times();
     // this.autoAudio();
@@ -46,7 +62,6 @@ export class JsLearnComponent implements OnInit {
   // 实现后台播放音频
   isAudio = null;
   autoAudio() {
-
     this.isAudio = new Audio();
     this.isAudio.src = "http://music.taihe.com/song/670342289?isshare=1";
     this.isAudio.play();
@@ -70,7 +85,7 @@ export class JsLearnComponent implements OnInit {
       speechSynthesis.speak(msg);
     })
 
-    msg.onend = (event:any) => {
+    msg.onend = (event: any) => {
       console.log(event)
       console.log('Finished in ' + event.elapsedTime + ' seconds.');
     };
@@ -709,7 +724,6 @@ export class JsLearnComponent implements OnInit {
     changeValue2(obj);
     // 改变对象的属性，其实是改变了对象所指的栈中保存的数据
     console.log(obj.name); // code秘密花园
-
     let obj2 = {};
 
     function changeValue3(obj2) {
@@ -734,4 +748,6 @@ export class JsLearnComponent implements OnInit {
   // JavaScript是一门动态类型语言，
   // 成员除了表示存在的空值外，还有可能根本就不存在（因为存不存在只在运行期才知道），
   // 这就是undefined的意义所在
+
+
 }
