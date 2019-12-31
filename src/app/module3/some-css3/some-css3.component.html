@@ -8,6 +8,23 @@
     </picture>
   </div>
   <div>
+    <h2>表单区块化</h2>
+    <form>
+      <fieldset style="width:300px;">
+        <legend>表单区块标题1:</legend>
+        Name: <input type="text" size="30"><br>
+        Email: <input type="text" size="30"><br>
+        Date of birth: <input type="text" size="10">
+      </fieldset>
+      <fieldset style="width:300px;">
+        <legend>表单区块标题2:</legend>
+        Name: <input type="text" size="30"><br>
+        Email: <input type="text" size="30"><br>
+        Date of birth: <input type="text" size="10">
+      </fieldset>
+    </form>
+  </div>
+  <div>
     <p #isTar>元素的css样式增删</p>
     <button (click)="show(isTar)">show</button>
     <button (click)="hide(isTar)">hide</button>
