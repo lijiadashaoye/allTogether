@@ -34,7 +34,7 @@
     "@ngxs/store": "3.2.0",
     "@ngxs/websocket-plugin": "3.2.0",
     "@notadd/ngx-xlsx": "1.0.1",
-    "animate.css": "3.7.0",
+    "animate.css": "^3.7.0",
     "bulma-start": "0.0.2",
     "chance": "1.0.18",
     "concurrently": "^3.6.1",

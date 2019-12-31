@@ -38,12 +38,12 @@ export class JsLearnComponent implements OnInit {
   jsMediaData;   // 如果点击按钮多次，会生成多个媒体监听
   jsMedia() {
     let that = this;
-    var mql = window.matchMedia('(max-width: 1000px)');
-    mql.onchange = (e) => {
-      // console.log(e)
-      that.jsMediaData = e.matches;
-      that.ch.detectChanges()
-    }
+    let mql = window.matchMedia('(max-width: 1000px)');
+    // mql.onchange = (e) => {
+    //   // console.log(e)
+    //   that.jsMediaData = e.matches;
+    //   that.ch.detectChanges()
+    // }
   }
 
   ngOnInit() {

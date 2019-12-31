@@ -25,7 +25,7 @@ export class SomeCss3Component implements OnInit {
   constructor(private rd: Renderer2, private elem: ElementRef) { }
 
   ngOnInit() {
-    
+
     document.ondragover = function (e) {
       // 防止图片在新窗口打开
       e.preventDefault();
@@ -49,6 +49,7 @@ export class SomeCss3Component implements OnInit {
       text: '保持其宽高比的同时填充元素的整个内容框',
     })
   }
+
   setClass(icon) {
     return icon;
   }
@@ -119,6 +120,7 @@ export class SomeCss3Component implements OnInit {
   inter2: any
   pos1 = 0;
   pos2 = 0;
+  screenWidth = '';
   ngAfterViewInit(): void {
     let el = this.elem.nativeElement.querySelector('#center');
     this.inter = setInterval(_ => {
@@ -130,6 +132,9 @@ export class SomeCss3Component implements OnInit {
     }, 80)
     this.liuhai();
     this.setJingXiang();
+    window.addEventListener('resize', e => {
+      this.screenWidth = e.target['innerWidth'] + ' px'
+    })
 
   }
   // 动态设置径向渐变
