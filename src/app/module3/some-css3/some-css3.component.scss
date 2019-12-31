@@ -1060,10 +1060,17 @@ BFC
 
 .isSpan:hover::after {
   position: absolute;
-  left:0;
-  bottom:-160%;
-  width:200px;
-  font-size:12px;
+  left: 0;
+  bottom: -160%;
+  width: 200px;
+  font-size: 12px;
   background: palegreen;
   content: attr(data-msg)
+}
+
+.teshufuhao span {
+  display: inline-block;
+  padding: 3px 8px;
+  border: 1px solid rgb(233, 229, 229);
+  margin:0 5px 5px 0;
 }
