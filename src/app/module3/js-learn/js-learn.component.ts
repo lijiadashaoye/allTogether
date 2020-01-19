@@ -750,4 +750,123 @@ export class JsLearnComponent implements OnInit {
   // 这就是undefined的意义所在
 
 
+  kaobei1() {
+    let obj = {
+      1: 'string',
+      2: 2,
+      3: undefined,
+      4: null,
+      5: NaN,
+      6: Symbol(),
+      7: false,
+      8: function () { },
+      9: {
+        age: 3,
+        kk: {
+          k: 8
+        },
+        ss: function () {
+          console.log('s')
+        }
+      },
+      10: [5, {
+        a: 'a',
+        s: function () {
+          console.log('s2')
+        }
+      }],
+      11: /\w/
+    }
+    // 方法1
+    function deep(tar) {
+      let finall;
+      if (type(tar, '').type === 'object') {
+        finall = {}
+      } else {
+        finall = []
+      }
+
+
+      function type(t, name) {
+        let what = Object.prototype.toString.call(t).match(/(?<=\s)\w+/)[0].toLowerCase();
+        if (what === 'number' && isNaN(t)) {
+          return {
+            name: name,
+            zhi: NaN,
+            type: 'NaN'
+          }
+        } else {
+          return {
+            name: name,
+            zhi: t,
+            type: what
+          }
+        }
+      }
+
+      function make(tar) {
+        let answer = tar.type;
+        switch (answer) {
+          case 'string':
+          case 'number':
+          case 'undefined':
+          case 'boolean':
+          case 'symbol':
+          case 'function':
+          case 'null':
+          case 'regexp':
+          case 'NaN':
+            finall[tar.name] = tar.zhi;
+            break;
+          case 'object':
+          case 'array':
+            finall[tar.name] = deep(tar.zhi)
+            break;
+        }
+      }
+
+      for (let i in tar) {
+        make(type(tar[i], i))
+      }
+      return finall
+    }
+    // 方法2
+    // 定义一个深拷贝函数  接收目标target参数
+    function deepClone(target) {
+      // 定义一个变量
+      let result;
+      // 如果当前需要深拷贝的是一个对象的话
+      if (typeof target === 'object') {
+        // 如果是一个数组的话
+        if (Array.isArray(target)) {
+          result = []; // 将result赋值为一个数组，并且执行遍历
+          for (let i in target) {
+            // 递归克隆数组中的每一项
+            result.push(deepClone(target[i]))
+          }
+          // 判断如果当前的值是null的话；直接赋值为null
+        } else if (target === null) {
+          result = null;
+          // 判断如果当前的值是一个RegExp对象的话，直接赋值    
+        } else if (target.constructor === RegExp) {
+          result = target;
+        } else {
+          // 否则是普通对象，直接for in循环，递归赋值对象的所有值
+          result = {};
+          for (let i in target) {
+            result[i] = deepClone(target[i]);
+          }
+        }
+        // 如果不是对象的话，就是基本数据类型，那么直接赋值
+      } else {
+        result = target;
+      }
+      // 返回最终结果
+      return result;
+    }
+    console.log(deep(obj))
+    console.log(deepClone(obj))
+  }
+
+
 }
