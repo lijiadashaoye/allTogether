@@ -235,14 +235,12 @@ button {
   box-sizing: border-box;
 }
 
-.scrollDiv>div>div {
-  height: 25px;
-}
 
 .sticky {
   position: sticky;
-  top: 10px;
-  bottom: 10px;
+  top: 0px;
+  /* 表示距离当前父元素上部多少距离时出现粘性定位效果 */
+  left: 0;
   padding: 5px;
   background-color: #cae8ca;
   border: 2px solid #4CAF50;
@@ -1072,5 +1070,5 @@ BFC
   display: inline-block;
   padding: 3px 8px;
   border: 1px solid rgb(233, 229, 229);
-  margin:0 5px 5px 0;
+  margin: 0 5px 5px 0;
 }
