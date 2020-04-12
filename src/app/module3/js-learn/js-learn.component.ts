@@ -481,6 +481,8 @@ export class JsLearnComponent implements OnInit {
   /********************************************** */
   fileUrl = null;
   // 使用createObjectURL动态显示图片
+  // 在每次调用 createObjectURL() 方法时，都会创建一个新的 URL 对象，即使你已经用相同的对象作为参数创建过。
+  // 当不再需要这些 URL 对象时，每个对象必须通过调用 URL.revokeObjectURL() 方法来释放。
   seefile(e) {
     var file = e.target.files[0];
     var imgs = new Image();
@@ -490,6 +492,7 @@ export class JsLearnComponent implements OnInit {
     this.fileUrl = window.URL.createObjectURL(file); // 指向一块内存的地址
     imgs.src = this.fileUrl;
     this.rd.appendChild(ele, imgs);
+    window.URL.revokeObjectURL(this.fileUrl) // 手动清空创建的 URL
   }
   // 使用 FileReader 动态显示图片
   seefile1(e) {
