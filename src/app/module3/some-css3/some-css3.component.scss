@@ -1,3 +1,8 @@
+button {
+  font-size: 14px;
+  font-weight: bold;
+}
+
 .css3Waper {
   display: flex;
   justify-content: space-between;
@@ -222,20 +227,20 @@
 
 /**********************************************************************/
 .stickyDiv {
-  height: 200px;
+  width: 300px;
+  height: 300px;
   background: rgb(234, 229, 238);
   margin-top: 40px;
   overflow-y: scroll;
   box-sizing: border-box;
 }
 
-.scrollDiv>div>div {
-  height: 25px;
-}
 
 .sticky {
   position: sticky;
-  top: 0;
+  top: 0px;
+  /* 表示距离当前父元素上部多少距离时出现粘性定位效果 */
+  left: 0;
   padding: 5px;
   background-color: #cae8ca;
   border: 2px solid #4CAF50;
@@ -853,6 +858,217 @@ BFC
 /****************************************************************************/
 .pp {
   display: inline-block;
-  width: 100px;
   height: 50px;
+}
+
+.search-btn {
+  opacity: 0;
+  transition: all .5s ease-in-out
+}
+
+.setI:not(:placeholder-shown)+.search-btn {
+  opacity: 1
+}
+
+.setI2:focus-within+.search-btn {
+  opacity: 1
+}
+
+
+/****************************************************************************/
+
+
+.div1,
+.div2,
+.div3,
+.bg {
+  float: left;
+  margin-right: 20px;
+}
+
+.div1 {
+  width: 200px;
+  height: 200px;
+  background: conic-gradient(#000 0, #000 12.5%, #fff 12.5%, #fff 37.5%, #000 37.5%, #000 62.5%, #fff 62.5%, #fff 87.5%, #000 87.5%, #000 0);
+  background-size: 100px 100px;
+}
+
+.div2 {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-image: conic-gradient(red 0, red 30%, blue 30%, blue 60%, green 60%, green 100%);
+}
+
+.div3 {
+  width: 200px;
+  height: 200px;
+  background: repeating-conic-gradient(deeppink 0, deeppink 15deg, yellowgreen 27deg, yellowgreen 30deg);
+  border: 1px solid #000;
+}
+
+
+.bg {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: conic-gradient(#f1462c 0%, #fc5d2c 12.4%, #fff 12.5%, #fff 12.5%, #fc5d2c 12.5%, #fba73e 24.9%, #fff 24.9%, #fff 25%, #fba73e 25%, #e0fa4e 37.4%, #fff 37.4%, #fff 37.5%, #e0fa4e 37.5%, #12dd7e 49.9%, #fff 49.9%, #fff 50%, #12dd7e 50%, #0a6e3f 62.4%, #fff 62.4%, #fff 62.5%);
+  transform: rotate(-112.5deg);
+  transform-origin: 50% 50%;
+}
+
+.bg::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background: #fff;
+}
+
+.bg::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background:
+    radial-gradient(#fff 0%, #fff 25%, transparent 25%, transparent 100%),
+    conic-gradient(#f1462c 0, #f1462c 12.5%, #fba73e 12.5%, #fba73e 25%, #e0fa4e 25%, #e0fa4e 37.5%, #12dd7e 37.5%, #12dd7e 50%, #0a6e3f 50%, #0a6e3f 62.5%, #fff 62.5%, #fff 100%);
+}
+
+.point {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  background: radial-gradient(#467dc6 0%, #a4c6f3 100%);
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.point::before {
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 290px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(0);
+  border-radius: 100% 100% 5% 5%;
+  background: linear-gradient(180deg,
+      #9bc7f6 0,
+      #467dc6 50%,
+      transparent 50%,
+      transparent 100%);
+  animation: pointerRotate 3s cubic-bezier(.93, 1.32, .89, 1) infinite;
+  animation-direction: alternate-reverse
+}
+
+@keyframes pointerRotate {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotate(205deg);
+  }
+}
+
+/**********************************************/
+@function randomNum($max, $min: 0, $u: 1) {
+  @return ($min + random($max)) * $u;
+}
+
+@function randomConicGradient() {
+  $n: 16 + random(16);
+  $list: ();
+
+  @for $i from 0 to $n {
+    $list: $list, rgba(hsl(100, randomNum(250, 5, 10%), randomNum(1, 1, 1%)), randomNum(100, 0, .01));
+  }
+
+  @return conic-gradient($list, nth($list, 1));
+}
+
+.div4 {
+  position: relative;
+  width: 300px;
+  height: 250px;
+  overflow: hidden;
+  margin: 0;
+  background:
+    radial-gradient(hsl(9, randomNum(100, 75, 1%), randomNum(100, 75%, 1%)), black);
+
+  &:before,
+  &:after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -100vmax;
+    width: 200vmax;
+    height: 200vmax;
+    opacity: .5;
+    mix-blend-mode: overlay;
+    animation: rotate randomNum(100, 25, .1s) ease-in-out infinite;
+    content: '';
+  }
+
+  &:before {
+    background: randomConicGradient();
+  }
+
+  &:after {
+    background: randomConicGradient();
+    animation-duration: randomNum(100, 25, .1s);
+    animation-direction: reverse;
+  }
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+.for_bk_position {
+  width: 385px;
+  height: 208px;
+  background: palegoldenrod;
+  background-image: url('/assets/position.png');
+  background-position: 75% 40%;
+  background-repeat: no-repeat;
+  // background-repeat: space;
+}
+
+
+.isSpan {
+  position: relative;
+  background: orange;
+}
+
+.isSpan:hover::after {
+  position: absolute;
+  left: 0;
+  bottom: -160%;
+  width: 200px;
+  font-size: 12px;
+  background: palegreen;
+  content: attr(data-msg)
+}
+
+.teshufuhao span {
+  display: inline-block;
+  padding: 3px 8px;
+  border: 1px solid rgb(233, 229, 229);
+  margin: 0 5px 5px 0;
 }

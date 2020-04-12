@@ -1,7 +1,7 @@
 <div class="waper">
-
   <div>
     <p>
+      <strong>Jenkins</strong> <br>
       https://www.cnblogs.com/jesse131/p/9405254.html
       <br>https://www.liaoxuefeng.com/article/1083282007018592
       <br>https://blog.csdn.net/qinkang1993/article/details/61644534
@@ -23,9 +23,10 @@
     <div>
       <button (click)="jigou()">奇偶数判断</button>
     </div>
+  </div>
+  <div>
     <div>
       <button (click)="jiequString()">字符串截取，必须是小数</button>
-
       <p>{{fromString}}：{{subString}}</p>
       <button (click)="jiequ()">字符串截取，任何数据</button>
       <p>{{fromString}}：{{subString2}}</p>
@@ -36,9 +37,12 @@
       <button (click)="stopAudio()">停止播放</button>
     </div>
     <div>
+      <input #input>
+      <button (click)="speak(input.value)">朗读输入的内容，仅限中文、英文、数字</button>
+    </div>
+    <div>
       <button (click)="bijiao()">数据类型比较</button>
       <button (click)="chuandi()">按值传递和引用传递</button>
-
     </div>
   </div>
   <div>
@@ -55,20 +59,6 @@
     <input type="button" style="font-size:12px;padding:0;" value="自定义点击鼠标右键" (contextmenu)="fff($event)">
     {{contextmenuData}}
   </div>
-  <div>
-    <h2>Proxy 代理对象</h2>
-    <button (click)="Proxy_set()">Proxy_set</button>
-    <button (click)="Proxy_get()">Proxy_get</button>
-  </div>
-  <div style="width:100px;margin:0;flex-shrink: 0">
-    <h2>浏览器全屏显示</h2>
-    <button (click)='full(true)'>全屏</button>
-    <button (click)='full(false)'>退出全屏</button>
-
-    <div class="toFull">被全屏的元素<br>
-      <button (click)='full(false)'>退出全屏</button>
-    </div>
-  </div>
 </div>
 <hr>
 <div class="waper">
@@ -79,7 +69,28 @@
   <div>
     <h2>将元素变成可编辑的</h2>
     <span contentEditable='true' class="canEdit"></span>
-
+  </div>
+  <div>
+    <h2>Proxy 代理对象</h2>
+    <button (click)="Proxy_set()">Proxy_set</button>
+    <button (click)="Proxy_get()">Proxy_get</button>
+  </div>
+  <div style="width:100px;margin:0;flex-shrink: 0">
+    <h2>浏览器全屏显示</h2>
+    <button (click)='full(true)'>全屏</button>
+    <button (click)='full(false)'>退出全屏</button>
+    <div class="toFull">被全屏的元素<br>
+      <button (click)='full(false)'>退出全屏</button>
+    </div>
+  </div>
+  <div>
+    <h2>使用js进行类似css @media的媒体查询 </h2>
+    <button (click)='jsMedia()'>开始监听(1000px)</button>
+    <p>{{jsMediaData}}</p>
+  </div>
+  <div>
+    <h2>深拷贝 </h2>
+    <button (click)='kaobei1()'>深拷贝</button>
   </div>
 
 </div>
@@ -129,10 +140,7 @@
     <button (click)="other_com()">选取当前组件内插入的其他组件</button>
   </div>
 </div>
-<div>
-  call/apply用来改变函数的执行上下文（this），它们的第一个参数是个对象，即作为函数内的this，第二个参数为传输的值
-  call/apply的第一个参数如果为null/undefined。this指向window
-</div>
+
 
 <hr>
 <div class="waper">

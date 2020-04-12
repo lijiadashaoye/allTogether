@@ -17,7 +17,7 @@ export class GaodeComponent implements OnInit {
   map_container: ElementRef;
   map: any; //地图对象
   tip;
-  constructor(private rd: Renderer2) {}
+  constructor(private rd: Renderer2) { }
   ngOnInit() {
     this.mapInit();
   }

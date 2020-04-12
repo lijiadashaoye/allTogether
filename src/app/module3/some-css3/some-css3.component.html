@@ -1,4 +1,99 @@
 <div class="css3Waper">
+  <div style="width:300px;">
+    <h2>H5新标签 picture：可以根据媒体查询自动切换图片{{screenWidth}}</h2>
+    <picture>
+      <source media="(min-width: 1400px)" srcset="assets/sun.jpeg" style="width:100%;">
+      <source media="(min-width: 1000px)" srcset="assets/earth.png" style="width:100%;">
+      <img src="assets/moon.png" style="width:100%;">
+    </picture>
+  </div>
+  <div>
+    <h2>表单区块化</h2>
+    <form>
+      <fieldset style="width:300px;">
+        <legend>表单区块标题1:</legend>
+        Name: <input type="text" size="30"><br>
+        Email: <input type="text" size="30"><br>
+        Date of birth: <input type="text" size="10">
+      </fieldset>
+      <fieldset style="width:300px;">
+        <legend>表单区块标题2:</legend>
+        Name: <input type="text" size="30"><br>
+        Email: <input type="text" size="30"><br>
+        Date of birth: <input type="text" size="10">
+      </fieldset>
+    </form>
+    <h2>下拉框自动补全搜索建议</h2>
+    <label for="myFruit">What's your favorite fruit?</label>
+    <input type="text" name="myFruit" id="myFruit" list="mySuggestion">
+    <datalist id="mySuggestion">
+      <option>Apple</option>
+      <option>Banana</option>
+      <option>Blackberry</option>
+      <option>Blueberry</option>
+      <option>Lemon</option>
+      <option>Lychee</option>
+      <option>Peach</option>
+      <option>Pear</option>
+    </datalist>
+  </div>
+  <div>
+    <h2>常用字体</h2>
+    <img src="assets/ziti.bmp" style="width:800px;"><br/>
+    <img src="assets/zixing.bmp" style="width:600px;">
+  </div>
+  <div>
+    <h2>自定义表单分组</h2>
+    <select>
+      <optgroup label="Swedish Cars" style="color:rgb(250, 108, 108);">
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+      </optgroup>
+      <optgroup label="German Cars" style="color:red;">
+        <option value="mercedes" style="color:rgb(0, 255, 55);">Mercedes</option>
+        <option value="audi">Audi</option>
+      </optgroup>
+    </select>
+  </div>
+  <div class="teshufuhao">
+    <h2>各种特殊字符</h2>
+    <p>https://www.runoob.com/tags/html-symbols.html</p>
+    <span>版权所有 ：&copy;</span>
+    <span>间断的竖杠 ：&brvbar;</span>
+    <span>左双角引号 ：&laquo;</span>
+    <span>注册商标 ：&reg;</span>
+    <span>度符号 ：&deg;</span>
+    <span>加减号/正负号 ：&plusmn;</span>
+    <span>上标 2 ： &#178; &sup2;</span>
+    <span>上标 3 ：&#179; &sup3;</span>
+    <span>中间点 ：&middot;</span>
+    <span>右双角引号 ：&raquo;</span>
+    <span>1/2 分数 ：&#189; &frac12;</span>
+    <span>除号 ： &divide;</span>
+    <span>乘号 ：&times;</span>
+    <span>日元符号 ：&yen;</span>
+    <span>约等于 ：&asymp;</span>
+    <span>不等 ：&ne;</span>
+    <span>小于等于 ：&le;</span>
+    <span>大于等于 ： &ge;</span>
+    <span>无穷 ：&infin;</span>
+    <span>对勾 ：&radic;</span>
+    <span>链接符 ：&sim;</span>
+    <span>点 ：&sdot;</span>
+    <span>大乘号 ：&Chi;</span>
+    <span>短横 ：&ndash;</span>
+    <span>左单引号 ：&lsquo;</span>
+    <span>右单引号 ：&rsquo;</span>
+    <span>左双引号 ：&ldquo;</span>
+    <span>右双引号 ：&rdquo;</span>
+    <span>点 ：&bull;</span>
+    <span>三点省略号 ：&hellip;</span>
+    <span>梅花 ：&clubs;</span>
+    <span>心形 ：&hearts;</span>
+
+
+  </div>
+
   <div>
     <p #isTar>元素的css样式增删</p>
     <button (click)="show(isTar)">show</button>
@@ -18,6 +113,23 @@
     <div>
       <i class="iconfont" *ngFor="let lists of listData" [ngClass]="setClass(lists.icon)"> {{lists.name}}</i>
     </div>
+  </div>
+  <div>
+    <h2>使用css函数获取自定义属性</h2>
+    <p class="isSpan" data-msg="使用'data-'方式的自定义属性">鼠标划入</p>
+  </div>
+
+  <div>
+    <h2>动态显示隐藏搜索按钮</h2>
+    <div>
+      <input type="text" class="setI" placeholder="输入文字才出按钮">
+      <button type="button" class="search-btn">搜索</button>
+    </div>
+    <div>
+      <input type="text" class="setI2" placeholder="获取焦点即出现按钮">
+      <button type="button" class="search-btn">搜索</button>
+    </div>
+
   </div>
 
   <div>
@@ -64,14 +176,11 @@
       <div class="bfc_wap1">
         <div class="bfc_left"></div>
       </div>
-
-
       <div class="bfc_left2"></div>
       <div class="bfc_righ2"></div>
-
-
     </div>
   </div>
+
 
   <div>
     <p>文字在固定宽度内与两边对齐</p>
@@ -174,10 +283,23 @@
       https://blog.csdn.net/wjnf012/article/details/80263323</p>
     <div class="radial-gradient"></div>
   </div>
+  <div>
+    <h3>锥形渐变，目前只有chrome支持</h3>
+    <p>css3 animation详解：https://www.cnblogs.com/Angies/p/9699515.html</p>
+    <div class="div1"></div>
+    <div class="div2"></div>
+    <div class="div3"></div>
+    <div class="div4"></div>
+
+    <div class="bg">
+      <div class="point"></div>
+    </div>
+  </div>
   <div class="setImg">
     <h3>img标签显示的图片填充尺寸设置</h3>
     <div *ngFor="let item of imgSrc">
       <img class="df" [src]="item.src" [style.object-fit]="item.type">
+      <hr style="margin:1px 0 0 0;" />
       <p>object-fit:{{item.type}}</p>
       <p>{{item.text}}</p>
     </div>
@@ -186,6 +308,7 @@
     <p>以定位原点的位置为起始，选择一定宽度高度的图片内容进行展示</p>
     <div *ngFor="let item of imgSrc">
       <img class="df" [src]="item.src" style="object-fit:cover" [style.object-position]="item.pos">
+      <hr style="margin:1px 0 0 0;" />
       <p>object-position:{{item.pos}}</p>
     </div>
   </div>
@@ -193,7 +316,7 @@
   <div>
     <div id="nb"></div>
     <img src='assets/background.png'>
-
+    <hr style="margin:1px 0 0 0;" />
     <p>
       https://blog.csdn.net/xi_2130/article/details/49331923
       <br>位置含义解释：
@@ -238,25 +361,36 @@
       <area shape="rect" coords="100,0,200,80" href="https://cn.vuejs.org/" title="cccc" target="_blank" alt="Sun" />
     </map>
   </section>
+
+
+  <div>
+    <h2>
+      background-position百分比的正确理解方式：图片自身的百分比位置与容器同样的百分比位置重合<br>
+      background-repeat新属性值：round和space。前者表示凑个整，后者表示留点缝
+    </h2>
+    <div class="for_bk_position">
+
+    </div>
+  </div>
 </div>
 
 <div>
   <h2>滤镜</h2>
   <div class="filters">
     <div style="width:200px;height:140px;">
-      <p>模糊</p>
+      <p>模糊:blur</p>
       <div class="imgDiv">
         <img src="assets/1.jpg">
       </div>
     </div>
     <div style="width:200px;height:140px;">
-      <p>灰度</p>
+      <p>灰度:grayscale</p>
       <div class="imgDiv">
         <img src="assets/1.jpg">
       </div>
     </div>
     <div style="width:200px;height:140px;">
-      <p>阴影</p>
+      <p>阴影:drop-shadow</p>
       <div class="imgDiv">
         <img src="assets/1.jpg">
       </div>
@@ -493,6 +627,103 @@
         </ul>
       </div>
     </div>
+
+    <div class="stickyDiv">
+      <h2>粘性定位</h2>
+      <div class="scrollDiv" style="background: pink">
+        <div>*****直接父元素*****</div>
+        <div style="color:red;">粘性定位的元素，会以他的直接父元素为定位参考，不会脱离当前文档流</div>
+        <div style="color:red;">当他的直接父元素都滚出页面，他也就跟着消失</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div class="sticky">我是粘性定位!</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+        <div>**********</div>
+      </div>
+
+      <div>
+        sticky可以使用sticky的前提条件<br>
+        父元素不能overflow:hidden或者overflow:auto属性。<br>
+        必须指定top、bottom、left、right4个值之一，否则只会处于相对定位<br>
+        父元素的高度不能低于sticky元素的高度<br>
+        sticky元素仅在其父元素内生效<br>
+        <div>**********</div>
+        <div>**********</div>
+        <div>另外的元素</div>
+        <div>****另外的元素******</div>
+        <div>****另外的元素******</div>
+        <div>****另外的元素******</div>
+        <div>****另外的元素******</div>
+        <div>****另外的元素******</div>
+        <div>****另外的元素******</div>
+        <div>****另外的元素******</div>
+        <div>****另外的元素******</div>
+        <div>****另外的元素******</div>
+        <div>****另外的元素******</div>
+        <div>****另外的元素******</div>
+        <div>****另外的元素******</div>
+        <div>****另外的元素******</div>
+        <div>****另外的元素******</div>
+        <div>****另外的元素******</div>
+        <div>****另外的元素******</div>
+      </div>
+    </div>
+
   </div>
 
   <div id="boxs">
@@ -525,61 +756,5 @@
   <div>
     <h3>图片的选择</h3>
     <img src='assets/图片选择.png'>
-  </div>
-</div>
-
-<div class="stickyDiv">
-  <h2>粘性定位</h2>
-  <div class="scrollDiv" style="background: pink">
-    <div>*****直接父元素*****</div>
-    <div style="color:red;">粘性定位的元素，会以他的直接父元素为定位参考，不会脱离当前文档流</div>
-    <div style="color:red;">当他的直接父元素都滚出页面，他也就跟着消失</div>
-    <div>**********</div>
-    <div>**********</div>
-    <div>**********</div>
-    <div>**********</div>
-    <div>**********</div>
-    <div>**********</div>
-    <div class="sticky">我是粘性定位!</div>
-    <div>**********</div>
-    <div>**********</div>
-    <div>**********</div>
-    <div>**********</div>
-    <div>**********</div>
-    <div>**********</div>
-    <div>**********</div>
-    <div>**********</div>
-    <div>**********</div>
-    <div>**********</div>
-    <div>**********</div>
-    <div>**********</div>
-    <div>**********</div>
-  </div>
-
-  <div>
-    sticky可以使用sticky的前提条件<br>
-    父元素不能overflow:hidden或者overflow:auto属性。<br>
-    必须指定top、bottom、left、right4个值之一，否则只会处于相对定位<br>
-    父元素的高度不能低于sticky元素的高度<br>
-    sticky元素仅在其父元素内生效<br>
-    <div>**********</div>
-    <div>**********</div>
-    <div>另外的元素</div>
-    <div>****另外的元素******</div>
-    <div>****另外的元素******</div>
-    <div>****另外的元素******</div>
-    <div>****另外的元素******</div>
-    <div>****另外的元素******</div>
-    <div>****另外的元素******</div>
-    <div>****另外的元素******</div>
-    <div>****另外的元素******</div>
-    <div>****另外的元素******</div>
-    <div>****另外的元素******</div>
-    <div>****另外的元素******</div>
-    <div>****另外的元素******</div>
-    <div>****另外的元素******</div>
-    <div>****另外的元素******</div>
-    <div>****另外的元素******</div>
-    <div>****另外的元素******</div>
   </div>
 </div>

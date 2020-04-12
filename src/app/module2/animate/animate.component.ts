@@ -36,7 +36,7 @@ export class AnimateMainComponent implements OnInit {
   // clicks动画，用于决定执行动画里的哪个状态
   buttonAnimts = 'two2';
   constructor(
-    private ch: ChangeDetectorRef,
+    private ch: ChangeDetectorRef, 
     private rd: Renderer2,
     private el: ElementRef
   ) { }

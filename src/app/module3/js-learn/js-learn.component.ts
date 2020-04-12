@@ -3,7 +3,8 @@ import {
   OnInit,
   ElementRef,
   Renderer2,
-  ViewChild
+  ViewChild,
+  ChangeDetectorRef,
 } from "@angular/core";
 @Component({
   selector: "app-js-learn",
@@ -29,7 +30,22 @@ export class JsLearnComponent implements OnInit {
     'daoxubianli'
   ];
   showData;
-  constructor(private elem: ElementRef, private rd: Renderer2) {}
+  constructor(
+    private elem: ElementRef,
+    private rd: Renderer2,
+    private ch: ChangeDetectorRef) { }
+
+  jsMediaData;   // 如果点击按钮多次，会生成多个媒体监听
+  jsMedia() {
+    let that = this;
+    let mql = window.matchMedia('(max-width: 1000px)');
+    // mql.onchange = (e) => {
+    //   // console.log(e)
+    //   that.jsMediaData = e.matches;
+    //   that.ch.detectChanges()
+    // }
+  }
+
   ngOnInit() {
     this.times();
     // this.autoAudio();
@@ -46,14 +62,35 @@ export class JsLearnComponent implements OnInit {
   // 实现后台播放音频
   isAudio = null;
   autoAudio() {
-
     this.isAudio = new Audio();
-    this.isAudio.src = "https://rl01-sycdn.kuwo.cn/bf214f5434f47ec569f6ac458fbde5b4/5cf629df/resource/n3/1/49/4211576901.mp3";
+    this.isAudio.src = "http://music.taihe.com/song/670342289?isshare=1";
     this.isAudio.play();
   }
   // 停止播放
   stopAudio() {
     this.isAudio.pause();
+  }
+
+  speak(text) {
+    // http://www.mathguide.de/info/tools/languagecode.html
+    var msg = new SpeechSynthesisUtterance();
+    var voices = window.speechSynthesis.getVoices();
+    msg.voice = voices[10];
+    msg.volume = 1; // 0 to 1  声音控制
+    msg.rate = 1; // 0.1 to 10  速度控制
+    msg.pitch = 2; //0 to 2  音调控制
+    msg.text = text;
+    ['zn', 'en'].forEach(str => {
+      msg.lang = str;
+      speechSynthesis.speak(msg);
+    })
+
+    msg.onend = (event: any) => {
+      console.log(event)
+      console.log('Finished in ' + event.elapsedTime + ' seconds.');
+    };
+
+
   }
 
   /*******************************************************************/
@@ -311,13 +348,13 @@ export class JsLearnComponent implements OnInit {
   }
   objectSort(how) {
     let arr = [{
-        name: "ffff",
-        age: 51
-      },
-      {
-        name: "hjytjh",
-        age: 61
-      }
+      name: "ffff",
+      age: 51
+    },
+    {
+      name: "hjytjh",
+      age: 61
+    }
     ];
     this.arrFns2Result = arr.sort(toSort("age"));
 
@@ -441,7 +478,7 @@ export class JsLearnComponent implements OnInit {
     }
     requestAnimationFrame(ani)
   }
-  start(da ? ) {
+  start(da?) {
     if (da) {
       this.animates();
     } else {
@@ -690,7 +727,6 @@ export class JsLearnComponent implements OnInit {
     changeValue2(obj);
     // 改变对象的属性，其实是改变了对象所指的栈中保存的数据
     console.log(obj.name); // code秘密花园
-
     let obj2 = {};
 
     function changeValue3(obj2) {
@@ -715,4 +751,125 @@ export class JsLearnComponent implements OnInit {
   // JavaScript是一门动态类型语言，
   // 成员除了表示存在的空值外，还有可能根本就不存在（因为存不存在只在运行期才知道），
   // 这就是undefined的意义所在
+
+
+  kaobei1() {
+    let obj = {
+      1: 'string',
+      2: 2,
+      3: undefined,
+      4: null,
+      5: NaN,
+      6: Symbol(),
+      7: false,
+      8: function () { },
+      9: {
+        age: 3,
+        kk: {
+          k: 8
+        },
+        ss: function () {
+          console.log('s')
+        }
+      },
+      10: [5, {
+        a: 'a',
+        s: function () {
+          console.log('s2')
+        }
+      }],
+      11: /\w/
+    }
+    // 方法1
+    function deep(tar) {
+      let finall;
+      if (type(tar, '').type === 'object') {
+        finall = {}
+      } else {
+        finall = []
+      }
+
+
+      function type(t, name) {
+        let what = Object.prototype.toString.call(t).match(/(?<=\s)\w+/)[0].toLowerCase();
+        if (what === 'number' && isNaN(t)) {
+          return {
+            name: name,
+            zhi: NaN,
+            type: 'NaN'
+          }
+        } else {
+          return {
+            name: name,
+            zhi: t,
+            type: what
+          }
+        }
+      }
+
+      function make(tar) {
+        let answer = tar.type;
+        switch (answer) {
+          case 'string':
+          case 'number':
+          case 'undefined':
+          case 'boolean':
+          case 'symbol':
+          case 'function':
+          case 'null':
+          case 'regexp':
+          case 'NaN':
+            finall[tar.name] = tar.zhi;
+            break;
+          case 'object':
+          case 'array':
+            finall[tar.name] = deep(tar.zhi)
+            break;
+        }
+      }
+
+      for (let i in tar) {
+        make(type(tar[i], i))
+      }
+      return finall
+    }
+    // 方法2
+    // 定义一个深拷贝函数  接收目标target参数
+    function deepClone(target) {
+      // 定义一个变量
+      let result;
+      // 如果当前需要深拷贝的是一个对象的话
+      if (typeof target === 'object') {
+        // 如果是一个数组的话
+        if (Array.isArray(target)) {
+          result = []; // 将result赋值为一个数组，并且执行遍历
+          for (let i in target) {
+            // 递归克隆数组中的每一项
+            result.push(deepClone(target[i]))
+          }
+          // 判断如果当前的值是null的话；直接赋值为null
+        } else if (target === null) {
+          result = null;
+          // 判断如果当前的值是一个RegExp对象的话，直接赋值    
+        } else if (target.constructor === RegExp) {
+          result = target;
+        } else {
+          // 否则是普通对象，直接for in循环，递归赋值对象的所有值
+          result = {};
+          for (let i in target) {
+            result[i] = deepClone(target[i]);
+          }
+        }
+        // 如果不是对象的话，就是基本数据类型，那么直接赋值
+      } else {
+        result = target;
+      }
+      // 返回最终结果
+      return result;
+    }
+    console.log(deep(obj))
+    console.log(deepClone(obj))
+  }
+
+
 }
