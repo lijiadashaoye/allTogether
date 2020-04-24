@@ -9,7 +9,7 @@ import digit from './digit.js'
   styleUrls: ["./canvas-learn.component.css"]
 })
 export class CanvasLearnComponent {
-  constructor(private elem: ElementRef) {}
+  constructor(private elem: ElementRef) { }
   text1 = [
     "标签内width和height属性设置画布的尺寸，不会造成图片的变形，对画布尺寸的改变相当于将画布切去一块或者添加一块；",
     "css的width和height属性，是以变形方式来拉伸和压缩画布，会导致图片变形。所以尽量避免使用css设置canvas尺寸。",
@@ -560,7 +560,7 @@ export class CanvasLearnComponent {
     "同理，设置为 2.0 时，1 个单位就对应变成了 2 像素，绘制的结果就是图形放大了 2 倍。会变得模糊",
     "transform(a, b, c, d, e, f)：",
     "a (m11),b (m12),c (m21),d (m22),e (dx),f (dy)",
-    "clip()：把已经创建的路径转换成裁剪路径。",
+    "clip()：把已经创建的路径转换成裁剪路径。需要在clicp()之前绘制好剪切的形状",
     "裁剪路径的作用是遮罩。只显示裁剪路径内的区域，裁剪路径外的区域会被隐藏。",
     "注意：clip()只能遮罩在这个方法调用之后绘制的图像，如果是clip()方法调用之前绘制的图像，则无法实现遮罩。",
     "clip是一直存在的，不论你后面画多少路径,所以最好用save()和resotre()"
@@ -665,6 +665,30 @@ export class CanvasLearnComponent {
     ctx.stroke();
     ctx.clip(); // clip 之后，画布的显示区域就只有clip这么大的面积了
     ctx.fillRect(20, 90, 40, 40);
+
+    var d152 = this.elem.nativeElement.querySelector("#d152"),
+      ctx2 = d152.getContext('2d');
+    // 绘制需要被涂抹的背景
+    ctx2.moveTo(0, 0);
+    ctx2.beginPath();
+    ctx2.fillStyle = 'red'
+    ctx2.fillRect(0, 0, 100, 120);
+    ctx2.fill();
+    // 绘制涂抹效果
+    d152.addEventListener('mousemove', function (e) {
+      let x = e.offsetX,
+        y = e.offsetY;
+      ctx2.save();
+      ctx2.moveTo(x, y);
+      ctx2.beginPath();
+      ctx2.arc(x, y, 5, 0, 2 * Math.PI);
+      ctx2.clip();
+      ctx2.clearRect(0, 0, 100, 120);
+      ctx2.restore();
+
+    })
+
+
   }
   /**************************************************************/
   text7 = [
