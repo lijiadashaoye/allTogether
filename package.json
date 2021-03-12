@@ -43,7 +43,7 @@
     "echarts": "4.1.0",
     "file-saver": "1.3.8",
     "json-server": "^0.14.0",
-    "jspdf": "1.4.1",
+    "jspdf": "2.3.1",
     "kjua": "0.1.2",
     "ngx-amap": "2.1.1",
     "ngx-drag-drop": "1.1.0",
